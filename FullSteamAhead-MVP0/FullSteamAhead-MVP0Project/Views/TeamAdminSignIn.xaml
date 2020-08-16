@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="380"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="110"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Team Admin" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="LightSlateGray" FontSize="36" BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
+
+        <Editor Margin="2"  
+                Grid.Column="1" 
+                Grid.Row="2" 
+                Placeholder="Team Username" 
+                Text="{Binding TeamUsername}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center" 
+                WidthRequest="207"/>
+        <Editor Margin="2" 
+                Grid.Column="1" 
+                Grid.Row="3" 
+                Placeholder="Team Password" 
+                Text="{Binding TeamPassword}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center" 
+                WidthRequest="207"/>
+        <Button Margin="2" 
+                Grid.Column="1" 
+                Grid.Row="1" 
+                Text="Back" 
+                CornerRadius="10"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+        <Button Margin="2" 
+                Grid.Column="1" 
+                Grid.Row="4" 
+                Text="Sign In" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"/>
+
+    </Grid>
+    
+</ContentPage>
