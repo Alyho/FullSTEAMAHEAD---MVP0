@@ -9,6 +9,6 @@ namespace UsernamePasswordProject.Models
         Task<Account> GetAccountAsync(string userName);
         Task<List<Account>> GetAccountsAsync();
         Task SaveAccountAsync(Account account);
-        bool IsAccountValid(Account account);
+        Task<bool> IsAccountValid(Account account);
     }
 }
