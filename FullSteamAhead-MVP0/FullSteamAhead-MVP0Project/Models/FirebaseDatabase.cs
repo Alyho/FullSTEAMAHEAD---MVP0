@@ -46,7 +46,12 @@ namespace UsernamePasswordProject.Models
 
         public bool IsAccountValid(Account account)
         {
-            throw new NotImplementedException();
+            Task<Account> account2 = GetAccountAsync(account.Username);
+            if (account2 == null || account2.Password != account.Password)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
