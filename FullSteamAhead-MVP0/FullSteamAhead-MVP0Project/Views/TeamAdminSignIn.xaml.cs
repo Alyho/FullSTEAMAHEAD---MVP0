@@ -14,7 +14,7 @@ public partial class TeamAdminSignIn : ContentPage
 {
     public TeamAdminSignIn()
     {
-        //InitializeComponent();
+        InitializeComponent();
     }
 }
 }

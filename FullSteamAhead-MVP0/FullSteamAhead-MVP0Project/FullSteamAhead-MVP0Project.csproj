@@ -21,8 +21,8 @@
     <Compile Update="ShowDataPage.xaml.cs">
       <DependentUpon>ShowDataPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\FirstPage.xaml.cs">
-      <DependentUpon>FirstPage.xaml</DependentUpon>
+    <Compile Update="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

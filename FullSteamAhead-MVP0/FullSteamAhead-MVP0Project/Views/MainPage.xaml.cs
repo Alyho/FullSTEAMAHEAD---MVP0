@@ -27,9 +27,9 @@ namespace UsernamePasswordProject.Views
             mainPageViewModel.PropertyChanged += MainPageViewModel_PropertyChanged;
         }
 
-        private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName=="UserCreated")
+            if (e.PropertyName == "UserCreated")
             {
                 //if (mainPageViewModel.UserCreated)
                 //    await Navigation.PushAsync(new ShowDataPage(mainPageViewModel));
@@ -37,6 +37,19 @@ namespace UsernamePasswordProject.Views
                 //    await DisplayAlert("Unavailable", "This username is already taken", "OK");
 
             }
+        }
+
+        private async void CreateAnAccount_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SignUpPage());
+        }
+        private async void TeamMember_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TeamMemberSignIn());
+        }
+        private async void TeamAdmin_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TeamAdminSignIn());
         }
 
     }
