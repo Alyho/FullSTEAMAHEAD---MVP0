@@ -16,5 +16,10 @@ public partial class SignUpPage : ContentPage
     {
         InitializeComponent();
     }
+
+    private async void LookingForTeam_Button_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CreateStudentAccount());
+    }
 }
 }
