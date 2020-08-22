@@ -44,9 +44,14 @@ namespace UsernamePasswordProject.Models
             await firebase.Child(ChildName).PostAsync(account);
         }
 
-        public bool IsAccountValid(Account account)
+        public async Task<bool> IsAccountValid(Account account)
         {
-            throw new NotImplementedException();
+            Account account2 = await GetAccountAsync(account.Username);
+            if (account2 == null || account2.Password != account.Password)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
