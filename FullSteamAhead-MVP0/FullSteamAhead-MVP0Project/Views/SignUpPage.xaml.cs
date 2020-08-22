@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UsernamePasswordProject.Views
+namespace FullSteamAheadMVP0Project.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class SignUpPage : ContentPage
@@ -17,9 +17,9 @@ public partial class SignUpPage : ContentPage
         InitializeComponent();
     }
 
-    private async void LookingForTeam_Button_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new CreateStudentAccount());
+        private async void LookingForTeam_Button_Clicked (object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateStudentAccount());
+        }
     }
-}
 }

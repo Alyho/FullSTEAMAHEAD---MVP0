@@ -4,9 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
-using UsernamePasswordProject.Models;
 
-namespace UsernamePasswordProject.Models
+namespace FullSteamAheadMVP0Project.Models
 {
     public class FirebaseDatabase : IDatabase
     {
@@ -44,14 +43,9 @@ namespace UsernamePasswordProject.Models
             await firebase.Child(ChildName).PostAsync(account);
         }
 
-        public async Task<bool> IsAccountValid(Account account)
+        public bool IsAccountValid(Account account)
         {
-            Account account2 = await GetAccountAsync(account.Username);
-            if (account2 == null || account2.Password != account.Password)
-            {
-                return false;
-            }
-            return true;
+            throw new NotImplementedException();
         }
     }
 }

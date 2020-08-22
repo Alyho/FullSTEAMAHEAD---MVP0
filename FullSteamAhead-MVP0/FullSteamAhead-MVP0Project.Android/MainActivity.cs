@@ -6,7 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using UsernamePasswordProject;
+using FullSteamAheadMVP0Project;
 
 namespace FullSteamAheadMVP0.Droid
 {

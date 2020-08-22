@@ -1,6 +1,6 @@
 ﻿using SQLite;
 
-namespace UsernamePasswordProject.Models
+namespace FullSteamAheadMVP0Project.Models
 {
     public class Account
     {

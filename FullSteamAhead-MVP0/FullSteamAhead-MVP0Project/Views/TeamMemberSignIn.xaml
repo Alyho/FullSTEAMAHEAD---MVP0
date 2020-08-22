@@ -4,28 +4,25 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="UsernamePasswordProject.Views.TeamMemberSignIn">
+             x:Class="FullSteamAheadMVP0Project.Views.TeamMemberSignIn">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
-            <RowDefinition Height="360"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="400"/>
 
         </Grid.ColumnDefinitions>
 
-        <Label Text="Team Member" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="LightSlateGray" FontSize="36" BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
+        <Label Text="Team Member" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="LightSlateGray" FontSize="36" BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="0"/>
 
         <Editor Margin="2"  
-                Grid.Column="1" 
-                Grid.Row="2" 
+                Grid.Row="1" 
                 Placeholder="Username" 
                 Text="{Binding Username}"
                 TextColor="LightSlateGray" 
@@ -34,8 +31,7 @@
                 HorizontalOptions="Center" 
                 WidthRequest="207"/>
         <Editor Margin="2" 
-                Grid.Column="1" 
-                Grid.Row="3" 
+                Grid.Row="2" 
                 Placeholder="Password" 
                 Text="{Binding Password}"
                 TextColor="LightSlateGray" 
@@ -44,13 +40,13 @@
                 HorizontalOptions="Center" 
                 WidthRequest="207"/>
         <Button Margin="2" 
-                Grid.Column="1" 
-                Grid.Row="4" 
+                Grid.Row="3" 
                 Text="Sign In" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Command="{Binding CheckUserCommand}"/>
 
     </Grid>
     

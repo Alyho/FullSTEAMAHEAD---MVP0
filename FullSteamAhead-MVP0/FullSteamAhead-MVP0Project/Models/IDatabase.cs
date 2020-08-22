@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using SQLite;
 
-namespace UsernamePasswordProject.Models
+namespace FullSteamAheadMVP0Project.Models
 {
     public interface IDatabase
     {
         Task<Account> GetAccountAsync(string userName);
         Task<List<Account>> GetAccountsAsync();
         Task SaveAccountAsync(Account account);
-        Task<bool> IsAccountValid(Account account);
+        bool IsAccountValid(Account account);
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
-using UsernamePasswordProject.Views;
-using UsernamePasswordProject.Models;
+using FullSteamAheadMVP0Project.Models;
+using FullSteamAheadMVP0Project.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UsernamePasswordProject
+namespace FullSteamAheadMVP0Project
 {
     public partial class App : Application
     {

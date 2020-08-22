@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace UsernamePasswordProject.Views
+namespace FullSteamAheadMVP0Project.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class TeamAdminSignIn : ContentPage

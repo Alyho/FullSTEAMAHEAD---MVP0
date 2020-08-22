@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using SQLite;
 
-namespace UsernamePasswordProject.Models
+namespace FullSteamAheadMVP0Project.Models
 {
     public class LocalDatabase : IDatabase
     {
@@ -34,7 +34,7 @@ namespace UsernamePasswordProject.Models
             return _database.InsertAsync(account);
         }
 
-        public Task<bool> IsAccountValid(Account account)
+        bool IDatabase.IsAccountValid(Account account)
         {
             throw new System.NotImplementedException();
         }

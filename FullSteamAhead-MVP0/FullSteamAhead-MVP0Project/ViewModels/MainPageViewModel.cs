@@ -6,15 +6,14 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
-using UsernamePasswordProject.Models;
+using FullSteamAheadMVP0Project.Models;
 
-namespace UsernamePasswordProject.ViewModels
+namespace FullSteamAheadMVP0Project.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
         public Command SaveCommand { get; }
-
-        private ObservableCollection<Account> _userListView;
+        public Command CheckUserCommand { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,9 +29,6 @@ namespace UsernamePasswordProject.ViewModels
 
         public MainPageViewModel()
         {
-            _userListView = new ObservableCollection<Account>();
-            //get existing users from database to populate the collection
-            PopulateUsers();
 
             SaveCommand = new Command(async () =>
             {
@@ -54,7 +50,6 @@ namespace UsernamePasswordProject.ViewModels
                 {
                     //save the new user
                     await App.Database.SaveAccountAsync(_user);
-                    _userListView.Add(_user);
 
                     _userCreated = true;
                 }
@@ -69,29 +64,36 @@ namespace UsernamePasswordProject.ViewModels
                 
             });
 
-        }
+            CheckUserCommand = new Command(async () =>
+                                      {
+                                          var _user = new Account
+                                                      {
+                                                          Username = Username_,
+                                                          Password = Password_
+                                                      };
 
-        public async void PopulateUsers()
-        {
-            var users = await App.Database.GetAccountsAsync();
-            foreach (var user in users)
-            {
-                _userListView.Add(user);
-            }
-        }
+                                          //call the database to find any users
+                                          var found = await App.Database.GetAccountAsync(_user.Username);
 
-        public ObservableCollection<Account> userListView
-        {
-            get { return _userListView; }
-            set
-            {
-                if (_userListView != value)
-                {
-                    _userListView = value;
-                    var args = new PropertyChangedEventArgs(nameof(userListView));
-                    PropertyChanged?.Invoke(this, args);
-                }
-            }
+                                          if (found != null)
+                                          {
+                                              //user already exists
+                                              _userCreated = false;
+                                          }
+                                          else
+                                          {
+                                              _userCreated = true;
+                                          }
+
+                                          //Raise the Property Changed Event to notify the MainPage
+                                          var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                                          PropertyChanged?.Invoke(this, ar);
+
+                                          //clear the textboxes
+                                          Username = string.Empty;
+                                          Password = string.Empty;
+
+                                      });
         }
 
         public string Username
