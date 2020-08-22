@@ -21,7 +21,7 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label Text="Create Student Account" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="LightSlateGray" FontSize="33" BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
+        <Label Text="Create Student Account" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="LightSlateGray" FontSize="32" BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
 
         <Editor Margin="2"  
                 Grid.Column="1" 
