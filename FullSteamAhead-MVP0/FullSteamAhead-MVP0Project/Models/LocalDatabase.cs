@@ -34,7 +34,7 @@ namespace FullSteamAheadMVP0Project.Models
             return _database.InsertAsync(account);
         }
 
-        bool IDatabase.IsAccountValid(Account account)
+        public Task<bool> IsAccountValid(Account account)
         {
             throw new System.NotImplementedException();
         }
