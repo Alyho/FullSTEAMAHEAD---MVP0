@@ -26,12 +26,12 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "UserCreated")
+            if (e.PropertyName == "UserExists")
             {
-                if (mainPageViewModel.UserCreated)
-                    await DisplayAlert("Incorrect", "Username is not correct", "OK");
-                else
+                if (mainPageViewModel.UserExists)
                     await DisplayAlert("Correct", "", "OK");
+                else
+                    await DisplayAlert("Incorrect", "Username or password is not correct", "OK");
 
             }
         }

@@ -21,10 +21,16 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private string Password_;
 
         private bool _userCreated;
+        private bool _userExists;
 
         public bool UserCreated
         {
             get { return _userCreated; }
+        }
+
+        public bool UserExists
+        {
+            get { return _userExists; }
         }
 
         public MainPageViewModel()
@@ -73,20 +79,20 @@ namespace FullSteamAheadMVP0Project.ViewModels
                                                       };
 
                                           //call the database to find any users
-                                          var found = await App.Database.GetAccountAsync(_user.Username);
+                                          var found = await App.Database.IsAccountValid(_user);
 
-                                          if (found != null)
+                                          if (found == false)
                                           {
-                                              //user already exists
-                                              _userCreated = false;
+                                              //user doesn't exist
+                                              _userExists = false;
                                           }
                                           else
                                           {
-                                              _userCreated = true;
+                                              _userExists = true;
                                           }
 
                                           //Raise the Property Changed Event to notify the MainPage
-                                          var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                                          var ar = new PropertyChangedEventArgs(nameof(UserExists));
                                           PropertyChanged?.Invoke(this, ar);
 
                                           //clear the textboxes
