@@ -4,53 +4,59 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.TeamAdminSignIn">
+             x:Class="FullSteamAheadMVP0Project.Views.TeamAdminSignIn"
+             BackgroundColor="AliceBlue">
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
-            <RowDefinition Height="360"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="480*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="400"/>
 
         </Grid.ColumnDefinitions>
 
-        <Label Text="Team Admin" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="LightSlateGray" FontSize="36" BackgroundColor="AliceBlue" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
+        <Label Text="Team Admin" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="36"  
+               Grid.Column="0" 
+               Grid.Row="0"/>
 
         <Editor Margin="2"  
-                Grid.Column="1" 
-                Grid.Row="2" 
-                Placeholder="Team Username" 
+                Grid.Row="1"
+                Grid.Column="0"
+                Placeholder="Team Username       " 
                 Text="{Binding TeamUsername}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
-                HorizontalOptions="Center" 
-                WidthRequest="207"/>
+                HorizontalOptions="Center"/>
+
         <Editor Margin="2" 
-                Grid.Column="1" 
-                Grid.Row="3" 
-                Placeholder="Team Password" 
+                Grid.Row="2" 
+                Grid.Column="0"
+                Placeholder="Team Password       " 
                 Text="{Binding TeamPassword}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center" 
-                WidthRequest="207"/>
+                HorizontalOptions="Center"/>
+
         <Button Margin="2" 
-                Grid.Column="1" 
-                Grid.Row="4" 
+                Grid.Row="3" 
                 Text="Sign In" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Command="{Binding CheckUserCommand}"/>
+
 
     </Grid>
     
