@@ -50,12 +50,14 @@
         
         <Button Margin="2" 
                 Grid.Row="3" 
-                Text="Sign In" CornerRadius="10" 
+                Text="Sign In" 
+                CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command="{Binding CheckUserCommand}"/>
+                Command="{Binding CheckUserCommand}"
+                Clicked="TeamMemberSignIn_Button_Clicked"/>
 
     </Grid>
     

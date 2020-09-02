@@ -36,5 +36,10 @@ namespace FullSteamAheadMVP0Project.Views
             }
         }
 
+        private async void TeamMemberSignIn_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Homepage());
+        }
+
     }
 }

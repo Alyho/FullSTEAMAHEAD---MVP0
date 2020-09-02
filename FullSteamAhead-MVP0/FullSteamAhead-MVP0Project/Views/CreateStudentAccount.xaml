@@ -54,7 +54,8 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveCommand}"/>
+                Command ="{Binding SaveCommand}"
+                Clicked="SignUpHomepage_Button_Clicked"/>
 
     </Grid>
 

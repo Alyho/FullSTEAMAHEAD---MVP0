@@ -36,5 +36,11 @@ public partial class CreateStudentAccount : ContentPage
             }
         }
 
+        private async void SignUpHomepage_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Homepage());
+        }
+
     }
+
 }
