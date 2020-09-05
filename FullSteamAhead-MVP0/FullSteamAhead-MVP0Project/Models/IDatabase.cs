@@ -6,9 +6,9 @@ namespace FullSteamAheadMVP0Project.Models
 {
     public interface IDatabase
     {
-        Task<Account> GetAccountAsync(string userName);
-        Task<List<Account>> GetAccountsAsync();
-        Task SaveAccountAsync(Account account);
-        Task<bool> IsAccountValid(Account account);
+        Task<User> GetAccountAsync(string userName);
+        Task<List<User>> GetAccountsAsync();
+        Task SaveAccountAsync(User account);
+        Task<bool> IsAccountValid(User account);
     }
 }

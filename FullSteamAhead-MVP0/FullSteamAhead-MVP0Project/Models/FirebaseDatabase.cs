@@ -9,7 +9,15 @@ namespace FullSteamAheadMVP0Project.Models
 {
     public class FirebaseDatabase : IDatabase
     {
-        private readonly string ChildName = "Accounts";
+
+
+        private readonly string Users = "Users";
+        private readonly string Teams = "Teams";
+        private readonly string TeamAdmins = "Team_Admins";
+        private readonly string TeamMembers = "Team_Members";
+
+
+
 
         readonly FirebaseClient firebase;
 
@@ -18,39 +26,50 @@ namespace FullSteamAheadMVP0Project.Models
             firebase = new FirebaseClient(dbPath);
         }
 
-        public async Task<Account> GetAccountAsync(string userName)
+
+
+
+        public async Task<User> GetAccountAsync(string username)
         {
             var allPersons = await GetAccountsAsync();
             await firebase
-                .Child(ChildName)
-                .OnceAsync<Account>();
-            return allPersons.FirstOrDefault(a => a.Username == userName);
+                .Child(Users)
+                .OnceAsync<User>();
+            return allPersons.FirstOrDefault(a => a.Username == username);
         }
 
-        public async Task<List<Account>> GetAccountsAsync()
+        public async Task<List<User>> GetAccountsAsync()
         {
             return (await firebase
-                .Child(ChildName)
-                .OnceAsync<Account>()).Select(item => new Account
+                .Child(Users)
+                .OnceAsync<User>()).Select(item => new User
                 {
                     Username = item.Object.Username, 
-                    Password = item.Object.Password
+                    Password = item.Object.Password,
+                    Information = item.Object.Information
                 }).ToList();
         }
 
-        public async Task SaveAccountAsync(Account account)
+        public async Task SaveAccountAsync(User account)
         {
-            await firebase.Child(ChildName).PostAsync(account);
+            await firebase.Child(Users).Child(account.Username).PutAsync(account);
         }
 
-        public async Task<bool> IsAccountValid(Account account)
+        public async Task<bool> IsAccountValid(User account)
         {
-            Account account2 = await GetAccountAsync(account.Username);
+            User account2 = await GetAccountAsync(account.Username);
             if (account2 == null || account2.Password != account.Password)
             {
                 return false;
             }
             return true;
         }
+
+
+
+
+        // Team methods
+
+
     }
 }

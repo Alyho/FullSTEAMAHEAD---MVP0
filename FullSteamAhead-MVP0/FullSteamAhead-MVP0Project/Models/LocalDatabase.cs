@@ -4,6 +4,7 @@ using SQLite;
 
 namespace FullSteamAheadMVP0Project.Models
 {
+    /*
     public class LocalDatabase : IDatabase
     {
         readonly SQLiteAsyncConnection _database;
@@ -11,32 +12,33 @@ namespace FullSteamAheadMVP0Project.Models
         public LocalDatabase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<Account>().Wait();
+            _database.CreateTableAsync<User>().Wait();
         }
 
-        public Task<Account> GetAccountAsync(string userName)
+        public Task<User> GetAccountAsync(string userName)
         {
             // var existingItem = _database.GetAsync<Account>(userName); // ? not completely sure if this is how you do it
             // return existingItem;
 
-            return _database.Table<Account>()
+            return _database.Table<User>()
                             .Where(i => i.Username == userName)
                             .FirstOrDefaultAsync();
         }
 
-        public Task<List<Account>> GetAccountsAsync()
+        public Task<List<User>> GetAccountsAsync()
         {
-            return _database.Table<Account>().ToListAsync();
+            return _database.Table<User>().ToListAsync();
         }
 
-        public Task SaveAccountAsync(Account account)
+        public Task SaveAccountAsync(User account)
         {
             return _database.InsertAsync(account);
         }
 
-        public Task<bool> IsAccountValid(Account account)
+        public Task<bool> IsAccountValid(User account)
         {
             throw new System.NotImplementedException();
         }
     }
+    */
 }

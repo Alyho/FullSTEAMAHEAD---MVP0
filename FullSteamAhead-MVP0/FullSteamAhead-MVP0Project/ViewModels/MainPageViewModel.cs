@@ -38,7 +38,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             SaveCommand = new Command(async () =>
             {
-                var _user = new Account
+                var _user = new User
                 {
                     Username = Username_,
                     Password = Password_
@@ -72,7 +72,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             CheckUserCommand = new Command(async () =>
                                       {
-                                          var _user = new Account
+                                          var _user = new User
                                                       {
                                                           Username = Username_,
                                                           Password = Password_

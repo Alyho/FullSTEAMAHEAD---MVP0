@@ -19,7 +19,7 @@ namespace FullSteamAheadMVP0Project
                 if (database == null)
                 {
                     //database = new LocalDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "accounts.db3"));
-                    database = new FirebaseDatabase("https://usernamepasswordproject.firebaseio.com/");
+                    database = new FirebaseDatabase("https://full-steam-ahead---mvp-0.firebaseio.com/");
                 }
                 return database;
             }
