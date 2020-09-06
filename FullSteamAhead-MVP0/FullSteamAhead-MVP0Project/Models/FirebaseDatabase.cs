@@ -45,8 +45,7 @@ namespace FullSteamAheadMVP0Project.Models
                 .OnceAsync<User>()).Select(item => new User
                 {
                     Username = item.Object.Username, 
-                    Password = item.Object.Password,
-                    Information = item.Object.Information
+                    Password = item.Object.Password
                 }).ToList();
         }
 
