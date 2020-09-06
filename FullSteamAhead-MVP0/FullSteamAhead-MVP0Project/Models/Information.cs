@@ -3,6 +3,14 @@ namespace FullSteamAheadMVP0Project.Models
 {
     public class Information
     {
+        public Information()
+        {
+            City = "";
+            Email = "";
+            State = "";
+            Preferences = new Preferences();
+        }
+
         public int Age { get; set; }
         public string City { get; set; }
         public string Email { get; set; }
