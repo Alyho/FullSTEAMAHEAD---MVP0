@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Homepage : ContentPage
+    public partial class Homepage2 : ContentPage
     {
-        public Homepage()
+        public Homepage2()
         {
             InitializeComponent();
-        }
-
-        private async void ToHomePage2(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Homepage2());
         }
 
     }

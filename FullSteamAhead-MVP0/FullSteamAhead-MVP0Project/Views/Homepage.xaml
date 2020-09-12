@@ -21,12 +21,13 @@
         </Grid.ColumnDefinitions>
 
 
-        <Editor Grid.Column="0" 
+        <Button Grid.Column="0" 
                 Grid.Row="0" 
                 Grid.ColumnSpan="4" 
                 TextColor="Black" 
                 BackgroundColor="LightCyan" 
-                Placeholder="Search..." />
+                Text="Search..."  
+                Clicked="ToHomePage2"/>
 
         <Button Grid.Column="0" Grid.Row="3" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
