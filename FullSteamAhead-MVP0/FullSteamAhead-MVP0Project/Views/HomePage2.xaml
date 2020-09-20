@@ -7,61 +7,70 @@
              x:Class="FullSteamAheadMVP0Project.Views.Homepage2"
              BackgroundColor="AliceBlue">
 
-    <Grid>
+    <ListView ItemsSource="{Binding Teams}"
+              HasUnevenRows="true"
+              ItemSelected="OnListViewItemSelected"
+              ItemTapped="OnListViewItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".2*"/>
+                            <RowDefinition Height=".6*"/>
+                            <RowDefinition Height=".6*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height=".2*"/>
-            <RowDefinition Height=".6*"/>
-            <RowDefinition Height=".6*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                        <Editor Grid.Column="0" 
+                                Grid.Row="0" 
+                                Grid.ColumnSpan="4" 
+                                TextColor="Black" 
+                                BackgroundColor="LightCyan" 
+                                Placeholder="Search..." />
 
+                        <Label Grid.Column="0" 
+                               Grid.Row="1" 
+                               Grid.ColumnSpan="4"
+                               BackgroundColor="SkyBlue"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"
+                               Text="{Binding TeamUsername}"/>
+                        <Label Text="{Binding TeamBio}"
+                               Grid.Column="0" 
+                               Grid.Row="1"/>
+                        <Image Source="{Binding TeamPicture}"
+                               Grid.Column="0" 
+                               Grid.Row="1"/>
 
-        <Editor Grid.Column="0" 
-                Grid.Row="0" 
-                Grid.ColumnSpan="4" 
-                TextColor="Black" 
-                BackgroundColor="LightCyan" 
-                Placeholder="Search..." />
+                        <Label Grid.Column="0" 
+                               Grid.Row="2" 
+                               Grid.ColumnSpan="4"
+                               BackgroundColor="Violet"
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center"
+                               Text="{Binding TeamUsername}"/>
+                        <Label Text="{Binding TeamBio}"
+                               Grid.Column="0" 
+                               Grid.Row="2"/>
+                        <Image Source="{Binding TeamPicture}"
+                               Grid.Column="0" 
+                               Grid.Row="2"/>
 
-        <Label Grid.Column="0" 
-               Grid.Row="1" 
-               Grid.ColumnSpan="4"
-               BackgroundColor="SkyBlue"
-               HorizontalTextAlignment="Center" 
-               VerticalTextAlignment="Center"
-               Text="{Binding TeamUsername}"/>
-        <Label Text="{Binding TeamBio}"
-               Grid.Column="0" 
-               Grid.Row="1"/>
-        <Image Source="{Binding TeamPicture}"
-               Grid.Column="0" 
-               Grid.Row="1"/>
-
-        <Label Grid.Column="0" 
-               Grid.Row="2" 
-               Grid.ColumnSpan="4"
-               BackgroundColor="Violet"
-               HorizontalTextAlignment="Center" 
-               VerticalTextAlignment="Center"
-               Text="{Binding TeamUsername}"/>
-        <Label Text="{Binding TeamBio}"
-               Grid.Column="0" 
-               Grid.Row="2"/>
-        <Image Source="{Binding TeamPicture}"
-               Grid.Column="0" 
-               Grid.Row="2"/>
-
-        <Button Grid.Column="0" Grid.Row="3" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="2" Grid.Row="3" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="3" Grid.Row="3" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
+                        <Button Grid.Column="0" Grid.Row="3" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
+                        <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
+                        <Button Grid.Column="2" Grid.Row="3" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
+                        <Button Grid.Column="3" Grid.Row="3" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
 
 
-    </Grid>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 
 </ContentPage>
