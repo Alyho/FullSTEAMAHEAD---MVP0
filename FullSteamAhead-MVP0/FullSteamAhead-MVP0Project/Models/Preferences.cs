@@ -5,12 +5,13 @@ namespace FullSteamAheadMVP0Project.Models
     {
         public Preferences()
         {
+            Distance = "";
             Gender = "";
             Privacy = "";
             Role = "";
         }
 
-        public int Distance { get; set; }
+        public string Distance { get; set; }
         public string Gender { get; set; }
         public string Privacy { get; set; }
         public string Role { get; set; }
