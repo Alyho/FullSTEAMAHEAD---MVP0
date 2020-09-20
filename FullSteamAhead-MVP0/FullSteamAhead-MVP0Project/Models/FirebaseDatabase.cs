@@ -28,6 +28,7 @@ namespace FullSteamAheadMVP0Project.Models
 
 
 
+        // Account methods
 
         public async Task<User> GetAccountAsync(string username)
         {
@@ -69,6 +70,40 @@ namespace FullSteamAheadMVP0Project.Models
 
         // Team methods
 
+        public async Task<Team> GetTeamAsync(string teamUserName)
+        {
+            var allPersons = await GetTeamsAsync();
+            await firebase
+                .Child(Teams)
+                .OnceAsync<Team>();
+            return allPersons.FirstOrDefault(a => a.Team_Username == teamUserName);
+        }
+
+        public async Task<List<Team>> GetTeamsAsync()
+        {
+            return (await firebase
+                .Child(Teams)
+                .OnceAsync<Team>()).Select(item => new Team
+                {
+                    Team_Username = item.Key,
+                    Team_Password = item.Object.Team_Password
+                }).ToList();
+        }
+
+        public async Task SaveTeamAsync(Team team)
+        {
+            await firebase.Child(Users).Child(team.Team_Username).PutAsync(team);
+        }
+
+        public async Task<bool> IsTeamValid(Team team)
+        {
+            Team team2 = await GetTeamAsync(team.Team_Username);
+            if (team2 == null || team2.Team_Password != team.Team_Password)
+            {
+                return false;
+            }
+            return true;
+        }
 
     }
 }
