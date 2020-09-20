@@ -13,12 +13,12 @@ namespace FullSteamAheadMVP0Project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Homepage2 : ContentPage
     {
-        public IList<Team> Teams { get; private set; }
+        public IList<Team> TeamListView { get; private set; }
         public Homepage2()
         {
             InitializeComponent();
 
-            Teams = new List<Team>();
+            TeamListView = new List<Team>();
 
             BindingContext = this;
 

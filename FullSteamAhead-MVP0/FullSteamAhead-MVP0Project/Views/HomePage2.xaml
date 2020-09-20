@@ -7,7 +7,7 @@
              x:Class="FullSteamAheadMVP0Project.Views.Homepage2"
              BackgroundColor="AliceBlue">
 
-    <ListView ItemsSource="{Binding Teams}"
+    <ListView ItemsSource="{Binding TeamListView}"
               HasUnevenRows="true"
               ItemSelected="OnListViewItemSelected"
               ItemTapped="OnListViewItemTapped">
