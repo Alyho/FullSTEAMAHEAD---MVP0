@@ -24,15 +24,6 @@ namespace FullSteamAheadMVP0Project.Views
 
             
         }
-        void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            Team selectedItem = e.SelectedItem as Team;
-        }
-
-        void OnListViewItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            Team tappedItem = e.Item as Team;
-        }
 
     }
 }
