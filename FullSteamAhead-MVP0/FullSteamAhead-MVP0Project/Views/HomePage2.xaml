@@ -32,21 +32,23 @@
         <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="2" Grid.Row="3" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
-    
 
 
-        <ListView Grid.Row="1"
+
+        <ListView Grid.Column="0" 
+                  Grid.Row="1" 
+                  Grid.ColumnSpan="4"
                   ItemsSource="{Binding TeamListView}"
                   HorizontalOptions="Center"
                   BackgroundColor="SkyBlue">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Team_Nickname}"/>
+                        <Grid>
+                            <Label Text="{Binding Team_Username}"/>
                             <Label Text="{Binding Team_Information.Bio}"/>
                             <Image Source="{Binding TeamPicture}"/>
-                        </StackLayout>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
