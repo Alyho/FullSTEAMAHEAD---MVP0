@@ -29,17 +29,11 @@ namespace FullSteamAheadMVP0Project.Views
             if (e.PropertyName == "UserExists")
             {
                 if (mainPageViewModel.UserExists)
-                    await DisplayAlert("Correct", "", "OK");
+                    await Navigation.PushAsync(new Homepage());
                 else
                     await DisplayAlert("Incorrect", "Username or password is not correct", "OK");
 
             }
         }
-
-        private async void TeamMemberSignIn_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Homepage());
-        }
-
     }
 }

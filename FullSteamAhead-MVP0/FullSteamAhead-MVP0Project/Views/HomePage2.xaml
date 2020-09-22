@@ -25,7 +25,8 @@
                 Grid.ColumnSpan="4" 
                 TextColor="Black" 
                 BackgroundColor="LightCyan" 
-                Placeholder="Search..." />
+                Placeholder="Search..."
+                Text="{Binding SearchText}"/>
         
         <Button Grid.Column="0" Grid.Row="3" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
@@ -42,8 +43,8 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding TeamUsername}"/>
-                            <Label Text="{Binding TeamBio}"/>
+                            <Label Text="{Binding Team_Nickname}"/>
+                            <Label Text="{Binding Team_Information.Bio}"/>
                             <Image Source="{Binding TeamPicture}"/>
                         </StackLayout>
                     </ViewCell>
