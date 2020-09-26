@@ -55,8 +55,7 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command="{Binding CheckUserCommand}"
-                Clicked="TeamAdminSignIn_Button_Clicked"/>
+                Command="{Binding CheckUserCommand}"/>
 
 
     </Grid>

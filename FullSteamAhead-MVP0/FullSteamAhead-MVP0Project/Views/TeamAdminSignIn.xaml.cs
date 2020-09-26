@@ -16,9 +16,6 @@ public partial class TeamAdminSignIn : ContentPage
     {
         InitializeComponent();
     }
-        private async void TeamAdminSignIn_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Homepage());
-        }
+
     }
 }

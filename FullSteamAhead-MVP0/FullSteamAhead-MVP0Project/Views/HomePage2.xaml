@@ -20,20 +20,25 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Button Grid.Column="3" 
+                Grid.Row="0" 
+                TextColor="White" 
+                BackgroundColor="LightGray" 
+                Text="🔍"
+                FontSize="22"
+                CornerRadius="7"/>
+
         <Editor Grid.Column="0" 
                 Grid.Row="0" 
-                Grid.ColumnSpan="4" 
+                Grid.ColumnSpan="3" 
                 TextColor="Black" 
                 BackgroundColor="LightCyan" 
-                Placeholder="Search..."
-                Text="{Binding SearchText}"/>
-        
+                Placeholder="Search..."/>
+
         <Button Grid.Column="0" Grid.Row="3" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="2" Grid.Row="3" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
-
-
 
         <ListView Grid.Column="0" 
                   Grid.Row="1" 

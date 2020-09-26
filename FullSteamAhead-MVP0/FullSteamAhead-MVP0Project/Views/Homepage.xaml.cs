@@ -17,10 +17,5 @@ namespace FullSteamAheadMVP0Project.Views
             InitializeComponent();
         }
 
-        private async void ToHomePage2(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Homepage2());
-        }
-
     }
 }
