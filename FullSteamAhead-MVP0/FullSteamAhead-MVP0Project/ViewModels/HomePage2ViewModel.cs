@@ -50,7 +50,7 @@ public class HomePage2ViewModel : INotifyPropertyChanged
 
             if (found == true)
             {
-                var team = await App.Database.GetTeamAsync(_team.Team_Username);
+                var team = await App.Database.UsernameSearch(_team.Team_Username);
                 var list = new ObservableCollection<Team>();
                 list.Add(team);
                 _TeamListView = list;

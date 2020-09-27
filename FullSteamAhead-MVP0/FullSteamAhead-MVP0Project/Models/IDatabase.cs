@@ -11,9 +11,12 @@ namespace FullSteamAheadMVP0Project.Models
         Task SaveAccountAsync(User account);
         Task<bool> IsAccountValid(User account);
 
-        Task<Team> GetTeamAsync(string teamUserName);
+        Task<Team> UsernameSearch(string teamUserName);
+        Task<List<Team>> NicknameSearch(string teamNickname);
         Task<List<Team>> GetTeamsAsync();
         Task SaveTeamAsync(Team team);
         Task<bool> IsTeamValid(Team team);
+        Task AddTeamMember(Team team, User account);
+        Task UpdateTeamMembers(Team team);
     }
 }

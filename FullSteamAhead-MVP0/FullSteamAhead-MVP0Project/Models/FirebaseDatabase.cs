@@ -13,8 +13,8 @@ namespace FullSteamAheadMVP0Project.Models
 
         private readonly string Users = "Users";
         private readonly string Teams = "Teams";
-        private readonly string TeamAdmins = "Team_Admins";
-        private readonly string TeamMembers = "Team_Members";
+        private readonly string Team_Members = "Team_Members";
+
 
 
 
@@ -69,14 +69,23 @@ namespace FullSteamAheadMVP0Project.Models
 
 
         // Team methods
-
-        public async Task<Team> GetTeamAsync(string teamUserName)
+        
+        public async Task<Team> UsernameSearch(string teamUsername)
         {
             var allPersons = await GetTeamsAsync();
             await firebase
                 .Child(Teams)
                 .OnceAsync<Team>();
-            return allPersons.FirstOrDefault(a => a.Team_Username == teamUserName);
+            return allPersons.FirstOrDefault(a => a.Team_Username == teamUsername);
+        }
+
+        public async Task<List<Team>> NicknameSearch(string teamNickname)
+        {
+            var allPersons = await GetTeamsAsync();
+            await firebase
+                .Child(Teams)
+                .OnceAsync<Team>();
+            return allPersons.Where(a => a.Team_Nickname == teamNickname).ToList();
         }
 
         public async Task<List<Team>> GetTeamsAsync()
@@ -86,23 +95,35 @@ namespace FullSteamAheadMVP0Project.Models
                 .OnceAsync<Team>()).Select(item => new Team
                 {
                     Team_Username = item.Key,
-                    Team_Password = item.Object.Team_Password
+                    Team_Password = item.Object.Team_Password, 
+                    Team_Nickname = item.Object.Team_Nickname
                 }).ToList();
         }
 
         public async Task SaveTeamAsync(Team team)
         {
-            await firebase.Child(Users).Child(team.Team_Username).PutAsync(team);
+            await firebase.Child(Teams).Child(team.Team_Username).PutAsync(team);
         }
 
         public async Task<bool> IsTeamValid(Team team)
         {
-            Team team2 = await GetTeamAsync(team.Team_Username);
+            Team team2 = await UsernameSearch(team.Team_Username);
             if (team2 == null || team2.Team_Password != team.Team_Password)
             {
                 return false;
             }
             return true;
+        }
+
+        public async Task AddTeamMember(Team team, User account)
+        {
+            team.Team_Members.Add(account);
+            await UpdateTeamMembers(team);
+        }
+
+        public async Task UpdateTeamMembers(Team team)
+        {
+            await firebase.Child(Team_Members).PatchAsync(team.Team_Members);
         }
 
     }
