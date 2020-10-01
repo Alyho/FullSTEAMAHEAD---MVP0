@@ -20,28 +20,41 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-
-        <Button Grid.Column="3" 
-                Grid.Row="0" 
-                TextColor="White" 
-                BackgroundColor="LightGray" 
-                Text="🔍" 
-                FontSize="22"
-                CornerRadius="7"
-                Command="Binding SearchCommand"/>
-
-        <Editor Grid.Column="0" 
-                Grid.Row="0" 
-                Grid.ColumnSpan="3" 
-                TextColor="Black" 
-                BackgroundColor="LightCyan" 
-                Placeholder="Search..."/>
+        <SearchBar x:Name="searchBar"
+                   Grid.Column="0" 
+                   Grid.Row="0" 
+                   Grid.ColumnSpan="4" 
+                   TextColor="Black" 
+                   BackgroundColor="LightCyan" 
+                   Placeholder="Search..."
+                   CancelButtonColor="LightGray"
+                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
         <Button Grid.Column="0" Grid.Row="3" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="2" Grid.Row="3" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
 
+        <ListView x:Name="searchResults"
+                  Grid.Column="0" 
+                  Grid.Row="1" 
+                  Grid.ColumnSpan="4"
+                  ItemsSource="{Binding TeamListView}"
+                  HorizontalOptions="Center"
+                  BackgroundColor="SkyBlue">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Label Text="{Binding Team_Username}"/>
+                            <Label Text="{Binding Team_Information.Bio}"/>
+                            <Image Source="{Binding TeamPicture}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
     </Grid>
 
