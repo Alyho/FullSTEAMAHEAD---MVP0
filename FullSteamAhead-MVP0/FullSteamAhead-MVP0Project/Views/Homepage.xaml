@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="FullSteamAheadMVP0Project.Views.Homepage"
              BackgroundColor="AliceBlue">
-
+       
     <Grid>
         
         <Grid.RowDefinitions>
@@ -46,11 +46,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
+                        <StackLayout>
                             <Label Text="{Binding Team_Username}"/>
                             <Label Text="{Binding Team_Information.Bio}"/>
                             <Image Source="{Binding TeamPicture}"/>
-                        </Grid>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

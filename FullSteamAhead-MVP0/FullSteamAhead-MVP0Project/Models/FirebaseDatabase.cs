@@ -96,7 +96,8 @@ namespace FullSteamAheadMVP0Project.Models
                 {
                     Team_Username = item.Key,
                     Team_Password = item.Object.Team_Password, 
-                    Team_Nickname = item.Object.Team_Nickname
+                    Team_Nickname = item.Object.Team_Nickname,
+                    Team_Information = item.Object.Team_Information
                 }).ToList();
         }
 
