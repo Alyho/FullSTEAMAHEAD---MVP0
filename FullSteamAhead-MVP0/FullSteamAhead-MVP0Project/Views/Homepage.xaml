@@ -48,7 +48,9 @@
                     <ViewCell>
                         <StackLayout>
                             <Label Text="{Binding Team_Username}"/>
-                            <Label Text="{Binding Team_Information.Bio}"/>
+                            <Label Text="{Binding Team_Information.Bio}"
+                                   LineBreakMode="WordWrap"
+                                   MaxLines="10"/>
                             <Image Source="{Binding TeamPicture}"/>
                         </StackLayout>
                     </ViewCell>
