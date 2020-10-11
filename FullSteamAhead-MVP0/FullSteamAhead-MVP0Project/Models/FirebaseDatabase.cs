@@ -108,7 +108,13 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<bool> IsTeamValid(Team team)
         {
-            Team team2 = await UsernameSearch(team.Team_Username);
+            var allPersons = await GetTeamsAsync();
+
+            //await firebase
+            //    .Child(Teams)
+            //    .OnceAsync<Team>();
+
+            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
             if (team2 == null || team2.Team_Password != team.Team_Password)
             {
                 return false;
