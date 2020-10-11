@@ -22,16 +22,14 @@ public class HomePageViewModel : INotifyPropertyChanged
     {
         var normalizedQuery = query?.ToLower() ?? "";
 
-        var _team = new Team
-        {
-            Team_Username = normalizedQuery
-        };
-
-        var team = await App.Database.UsernameSearch(_team.Team_Username);
-        if (team != null)
+        var teams = await App.Database.TeamSearch(normalizedQuery);
+        if (teams != null)
         {
             list.Clear();
-            list.Add(team);
+            foreach (var team in teams)
+            {
+                list.Add(team);
+            }
             TeamListView = list;
         }
     });
