@@ -69,23 +69,23 @@ namespace FullSteamAheadMVP0Project.Models
 
 
         // Team methods
-        
-        public async Task<Team> UsernameSearch(string teamUsername)
-        {
-            var allPersons = await GetTeamsAsync();
-            await firebase
-                .Child(Teams)
-                .OnceAsync<Team>();
-            return allPersons.FirstOrDefault(a => a.Team_Username == teamUsername);
-        }
 
-        public async Task<List<Team>> NicknameSearch(string teamNickname)
+        public async Task<List<Team>> TeamSearch(string name)
         {
             var allPersons = await GetTeamsAsync();
-            await firebase
-                .Child(Teams)
-                .OnceAsync<Team>();
-            return allPersons.Where(a => a.Team_Nickname == teamNickname).ToList();
+
+            //await firebase
+            //    .Child(Teams)
+            //    .OnceAsync<Team>();
+
+
+            // nickname
+            List<Team> teams = allPersons.Where(a => a.Team_Nickname == name).ToList();
+
+            // username
+            teams.Add(allPersons.FirstOrDefault(a => a.Team_Username == name));
+
+            return teams;
         }
 
         public async Task<List<Team>> GetTeamsAsync()
