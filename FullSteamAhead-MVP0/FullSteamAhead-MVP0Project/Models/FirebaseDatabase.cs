@@ -80,10 +80,10 @@ namespace FullSteamAheadMVP0Project.Models
 
 
             // nickname
-            List<Team> teams = allPersons.Where(a => a.Team_Nickname == name).ToList();
+            List<Team> teams = allPersons.Where(a => a.Team_Nickname.ToLower() == name).ToList();
 
             // username
-            teams.Add(allPersons.FirstOrDefault(a => a.Team_Username == name));
+            teams.Add(allPersons.FirstOrDefault(a => a.Team_Username.ToLower() == name));
 
             return teams;
         }
