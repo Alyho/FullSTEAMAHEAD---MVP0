@@ -19,5 +19,19 @@ namespace FullSteamAheadMVP0Project.Views
             BindingContext = new HomePageViewModel();
         }
 
+        private async void DisplayTeam_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DisplayTeamInformation());
+        }
+
+        private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+
+        }
+
+        private void searchResults_ItemTapped_1(object sender, ItemTappedEventArgs e)
+        {
+
+        }
     }
 }

@@ -50,8 +50,10 @@
                             <Label Text="{Binding Team_Username}"/>
                             <Label Text="{Binding Team_Information.Bio}"
                                    LineBreakMode="WordWrap"
-                                   MaxLines="10"/>
-                            <Image Source="{Binding TeamPicture}"/>
+                                   MaxLines="10"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"/>
+                            <Image Source="{Binding Team_ProfilePicture}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
