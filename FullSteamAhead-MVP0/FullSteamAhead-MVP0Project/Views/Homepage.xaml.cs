@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FullSteamAheadMVP0Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +20,19 @@ namespace FullSteamAheadMVP0Project.Views
             BindingContext = new HomePageViewModel();
         }
 
+        /*
         private async void DisplayTeam_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DisplayTeamInformation());
         }
+        */
 
-        private void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            var selectedItem = e.Item as Team;
+            await Navigation.PushAsync(new DisplayTeamInformation(selectedItem));
 
-        }
-
-        private void searchResults_ItemTapped_1(object sender, ItemTappedEventArgs e)
-        {
-
+            
         }
     }
 }

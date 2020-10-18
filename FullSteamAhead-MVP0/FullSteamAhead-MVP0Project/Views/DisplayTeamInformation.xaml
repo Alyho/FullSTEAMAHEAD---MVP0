@@ -33,7 +33,7 @@
         <Image Source="{Binding Team_ProfilePicture}"
                Grid.Column="0" 
                Grid.Row="2" 
-               Grid.ColumnSpan="0"
+               Grid.ColumnSpan="1"
                BackgroundColor="Cyan"/>
 
         <Label Text="{Binding Team_Username}"
@@ -60,7 +60,7 @@
                Grid.ColumnSpan="3"
                BackgroundColor="MediumPurple"/>
 
-        <Label Text="{Binding Team_Information.Bio}"
+        <Label Text="{Binding Team_Bio}"
                LineBreakMode="WordWrap"
                MaxLines="10"
                Grid.Column="0" 

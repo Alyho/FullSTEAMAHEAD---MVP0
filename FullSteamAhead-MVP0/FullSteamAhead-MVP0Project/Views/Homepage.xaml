@@ -42,7 +42,8 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding TeamListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue">
+                  BackgroundColor="SkyBlue"
+                  ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
