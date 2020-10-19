@@ -79,11 +79,8 @@ namespace FullSteamAheadMVP0Project.Models
             //    .OnceAsync<Team>();
 
 
-            // nickname
-            List<Team> teams = allPersons.Where(a => a.Team_Nickname.ToLower() == name).ToList();
-
-            // username
-            teams.Add(allPersons.FirstOrDefault(a => a.Team_Username.ToLower() == name));
+            // nickname or username
+            List<Team> teams = allPersons.Where(a => a.Team_Nickname.ToLower() == name || a.Team_Username.ToLower() == name).ToList();
 
             return teams;
         }
