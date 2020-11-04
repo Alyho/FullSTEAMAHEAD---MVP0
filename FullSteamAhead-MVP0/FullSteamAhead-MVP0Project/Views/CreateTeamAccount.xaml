@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.SignUpPage"
+             x:Class="FullSteamAheadMVP0Project.Views.CreateTeamAccount"
              BackgroundColor="AliceBlue">
 
     <Grid>
@@ -18,9 +18,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
 
+
         </Grid.ColumnDefinitions>
 
-        <Label Text="Sign Up" 
+        <Label Text="Create Team Account" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
@@ -28,25 +29,33 @@
                Grid.Column="0" 
                Grid.Row="0"/>
 
-        <Button Margin="2"  
+        <Editor Margin="2"   
                 Grid.Row="1" 
-                Text="Looking for team" 
-                CornerRadius="10" 
+                Placeholder="Team Username            " 
+                Text="{Binding TeamUsername}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
-                HorizontalOptions="Center" 
-                Clicked="LookingForTeam_Button_Clicked"/>
-        
-        <Button Margin="2" 
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2" 
                 Grid.Row="2" 
-                Text="            Admin            " 
-                CornerRadius="10" 
+                Placeholder="Team Password            " 
+                Text="{Binding TeamPassword}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
+                HorizontalOptions="Center"/>
+
+        <Button Margin="2" 
+                Grid.Row="3" 
+                Text="Next" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Clicked="Admin_Button_Clicked"/>
+                Command ="{Binding SaveCommand}"
+                Clicked="SignUpHomepage_Button_Clicked"/>
 
     </Grid>
 
