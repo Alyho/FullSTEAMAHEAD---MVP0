@@ -19,7 +19,6 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-
         </Grid.ColumnDefinitions>
 
         <Label Text="Team Admin" 
@@ -78,7 +77,6 @@
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command="{Binding CheckUserCommand}"/>
-
 
     </Grid>
     
