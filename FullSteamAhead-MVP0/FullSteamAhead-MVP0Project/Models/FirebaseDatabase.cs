@@ -113,7 +113,7 @@ namespace FullSteamAheadMVP0Project.Models
                 .OnceAsync<Team>()).Select(item => new Team
                 {
                     Team_Username = item.Key,
-                    Team_Password = item.Object.Team_Password, 
+                    Team_Password = item.Object.Team_Password,
                     Team_Nickname = item.Object.Team_Nickname,
                     Team_Information = item.Object.Team_Information,
                     Team_Admins = item.Object.Team_Admins,

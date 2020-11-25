@@ -15,6 +15,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private string Username_;
         private string Password_;
         private string PersonalUsername_;
+        private string AdminPassword_;
 
         private bool _teamExists;
         public bool TeamExists
@@ -26,15 +27,19 @@ namespace FullSteamAheadMVP0Project.ViewModels
         {
             CheckUserCommand = new Command(async () =>
             {
+                var _admin = new Admin
+                {
+                    Username = PersonalUsername_,
+                    Password = AdminPassword_
+                };
                 var _team = new Team
                 {
                     Team_Username = Username_,
                     Team_Password = Password_,
-                    Team_PersonalUsername = PersonalUsername_
                 };
 
             //call the database to find any teams
-            var found = await App.Database.IsTeamValid(_team);
+            var found = await App.Database.IsTeamValid(_team, _admin);
 
                 if (found == false)
                 {
@@ -95,6 +100,20 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     PersonalUsername_ = value;
                     var args = new PropertyChangedEventArgs(nameof(TeamPersonalUsername));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string TeamAdminPassword
+        {
+            get => AdminPassword_;
+            set
+            {
+                if (AdminPassword_ != value)
+                {
+                    AdminPassword_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(TeamAdminPassword));
                     PropertyChanged?.Invoke(this, args);
                 }
             }
