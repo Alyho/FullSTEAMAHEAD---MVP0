@@ -29,7 +29,7 @@ public partial class TeamAdminSignIn : ContentPage
             if (e.PropertyName == "TeamExists")
             {
                 if (teamAdminSignInViewModel.TeamExists)
-                    await Navigation.PushAsync(new Homepage());
+                    await Navigation.PushAsync(new DisplayUser_Homepage());
                 else
                     await DisplayAlert("Incorrect", "Username or password is not correct", "OK");
 

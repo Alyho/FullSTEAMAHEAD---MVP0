@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FullSteamAheadMVP0Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,15 @@ public partial class DisplayUser_Homepage : ContentPage
     {
         InitializeComponent();
         
-        /*BindingContext = new DisplayUser_HomePageViewModel();*/
+        BindingContext = new DisplayUser_HomePageViewModel();
     }
-}
+
+        private async void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedItem = e.Item as User;
+            //await Navigation.PushAsync(new DisplayUserInformation(selectedItem));
+
+
+        }
+    }
 }
