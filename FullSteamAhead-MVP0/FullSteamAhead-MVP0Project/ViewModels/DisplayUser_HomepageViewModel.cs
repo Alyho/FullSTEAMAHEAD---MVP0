@@ -22,7 +22,7 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
     {
         var normalizedQuery = query?.ToLower() ?? "";
 
-        var users = await App.Database.UserSearch(normalizedQuery);
+        var users = await App.Database.AccountSearch(normalizedQuery);
         if (users != null)
         {
             list.Clear();
@@ -34,8 +34,8 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
         }
     });
 
-    private ObservableCollection<Team> _UserListView;
-    public ObservableCollection<Team> UserListView
+    private ObservableCollection<User> _UserListView;
+    public ObservableCollection<User> UserListView
     {
         get
         {

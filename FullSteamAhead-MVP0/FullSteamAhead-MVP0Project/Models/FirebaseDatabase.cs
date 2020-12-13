@@ -74,6 +74,16 @@ namespace FullSteamAheadMVP0Project.Models
             return true;
         }
 
+        public async Task<List<User>> AccountSearch(string name)
+        {
+            var allPersons = await GetAccountsAsync();
+
+            // nickname or username
+            List<User> users = allPersons.Where(a => a.Username.ToLower() == name || a.Nickname.ToLower() == name).ToList();
+
+            return users;
+        }
+
 
 
 
