@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FullSteamAheadMVP0Project.Views.DisplayUserPage"
+             BackgroundColor="AliceBlue">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height=".8*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="{Binding User_BackgroundPicture}"
+               Grid.Column="0" 
+               Grid.Row="0" 
+               Grid.ColumnSpan="4"
+               BackgroundColor="LightBlue"/>
+
+        <Image Source="{Binding User_ProfilePicture}"
+               Grid.Column="0" 
+               Grid.Row="1" 
+               Grid.ColumnSpan="1"
+               Grid.RowSpan="2"
+               BackgroundColor="Cyan"/>
+
+        <Label Text="{Binding User_Username}"
+               Grid.Column="1" 
+               Grid.Row="1" 
+               Grid.ColumnSpan="3"
+               BackgroundColor="Fuchsia"/>
+
+        <Label Text="{Binding User_Nickname}"
+               Grid.Column="1" 
+               Grid.Row="2" 
+               Grid.ColumnSpan="3"
+               BackgroundColor="LightSeaGreen"/>
+
+        <Label Text="{Binding User_Bio}"
+               LineBreakMode="WordWrap"
+               MaxLines="10"
+               Grid.Column="0" 
+               Grid.Row="3" 
+               Grid.ColumnSpan="4"
+               BackgroundColor="GreenYellow"/>
+
+        <Button Margin=".2"  
+                Grid.Row="4" 
+                Grid.Column="1"
+                Grid.ColumnSpan="1"
+                Text="Invite" 
+                CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="17" 
+                BackgroundColor="White" 
+                HorizontalOptions="CenterAndExpand" 
+                WidthRequest="400"
+                Command="{Binding InviteUserCommand}"/>
+
+        <Button Grid.Column="0" Grid.Row="5" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
+        <Button Grid.Column="1" Grid.Row="5" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
+        <Button Grid.Column="2" Grid.Row="5" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
+        <Button Grid.Column="3" Grid.Row="5" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
+
+    </Grid>
+    
+</ContentPage>

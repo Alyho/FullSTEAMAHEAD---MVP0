@@ -23,9 +23,7 @@ public partial class DisplayUser_Homepage : ContentPage
         private async void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as User;
-            //await Navigation.PushAsync(new DisplayUserInformation(selectedItem));
-
-
+            await Navigation.PushAsync(new DisplayUserPage(selectedItem));
         }
     }
 }
