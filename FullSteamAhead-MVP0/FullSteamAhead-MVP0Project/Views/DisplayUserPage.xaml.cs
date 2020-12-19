@@ -18,7 +18,7 @@ namespace FullSteamAheadMVP0Project.Views
         public DisplayUserPage(User user)
         {
             InitializeComponent();
-            /*BindingContext = new DisplayUserPageViewModel(user);*/
+            BindingContext = new DisplayUserPageViewModel(user);
         }
 
     }

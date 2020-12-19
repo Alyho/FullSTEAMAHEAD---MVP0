@@ -136,7 +136,7 @@ namespace FullSteamAheadMVP0Project.Models
             await firebase.Child(Teams).Child(team.Team_Username).PutAsync(team);
         }
 
-        public async Task<bool> IsTeamValid(Team team, Admin admin)
+        public async Task<Team> IsTeamValid(Team team, Admin admin)
         {
             var allPersons = await GetTeamsAsync();
 
@@ -147,7 +147,7 @@ namespace FullSteamAheadMVP0Project.Models
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
             if (team2 == null || team2.Team_Password != team.Team_Password)
             {
-                return false;
+                return null;
             }
 
             List<Admin> allAdmins = team.Team_Admins;
@@ -157,13 +157,13 @@ namespace FullSteamAheadMVP0Project.Models
                 {
                     if (allAdmins[i].Password != admin.Password)
                     {
-                        return false;
+                        return null;
                     }
-                    return true;
+                    return team;
                 }
             }
 
-            return false;
+            return null;
         }
 
         public async Task<bool> TeamExists(Team team)

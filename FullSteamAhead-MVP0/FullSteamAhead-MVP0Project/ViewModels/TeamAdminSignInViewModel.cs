@@ -41,7 +41,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
             //call the database to find any teams
             var found = await App.Database.IsTeamValid(_team, _admin);
 
-                if (found == false)
+                if (found == null)
                 {
                 //team doesn't exist
                 _teamExists = false;
@@ -49,6 +49,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 else
                 {
                     _teamExists = true;
+                    Global.TeamSignedIn = found;
                 }
 
             //Raise the Property Changed Event to notify the MainPage
