@@ -6,6 +6,7 @@ namespace FullSteamAheadMVP0Project.Models
         public Information()
         {
             Age = "";
+            Bio = "";
             City = "";
             Email = "";
             Grade = "";
@@ -17,6 +18,7 @@ namespace FullSteamAheadMVP0Project.Models
         }
 
         public string Age { get; set; }
+        public string Bio { get; set; }
         public string City { get; set; }
         public string Email { get; set; }
         public string Grade { get; set;}
