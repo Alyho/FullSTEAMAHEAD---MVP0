@@ -13,7 +13,6 @@ namespace FullSteamAheadMVP0Project.Models
 
         private readonly string Users = "Users";
         private readonly string Teams = "Teams";
-        private readonly string Team_Members = "Team_Members";
 
 
 
@@ -105,11 +104,6 @@ namespace FullSteamAheadMVP0Project.Models
         {
             var allPersons = await GetTeamsAsync();
 
-            //await firebase
-            //    .Child(Teams)
-            //    .OnceAsync<Team>();
-
-
             // nickname or username
             List<Team> teams = allPersons.Where(a => a.Team_Nickname.ToLower() == name || a.Team_Username.ToLower() == name).ToList();
 
@@ -140,22 +134,18 @@ namespace FullSteamAheadMVP0Project.Models
         {
             var allPersons = await GetTeamsAsync();
 
-            //await firebase
-            //    .Child(Teams)
-            //    .OnceAsync<Team>();
-
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
             if (team2 == null || team2.Team_Password != team.Team_Password)
             {
                 return null;
             }
 
-            List<Admin> allAdmins = team.Team_Admins;
-            for (int i = 0; i < allAdmins.Count; i++)
+            Dictionary<string, Admin> allAdmins = team.Team_Admins;
+            foreach (KeyValuePair<string, Admin> entry in allAdmins)
             {
-                if (allAdmins[i].Username == admin.Username)
+                if (entry.Key == admin.Username)
                 {
-                    if (allAdmins[i].Password != admin.Password)
+                    if (entry.Value.Password != admin.Password)
                     {
                         return null;
                     }
@@ -170,10 +160,6 @@ namespace FullSteamAheadMVP0Project.Models
         {
             var allPersons = await GetTeamsAsync();
 
-            //await firebase
-            //    .Child(Teams)
-            //    .OnceAsync<Team>();
-
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
             if (team2 == null)
             {
@@ -185,7 +171,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task AddTeamMember(Team team, User account)
         {
-            team.Members.Add(account);
+            team.Members.Add(account.Username, account);
             await UpdateTeamMembers(team);
         }
 
@@ -196,7 +182,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task AddTeamAdmin(Team team, Admin admin)
         {
-            team.Team_Admins.Add(admin);
+            team.Team_Admins.Add(admin.Username, admin);
             await UpdateTeamAdmins(team);
         }
 
