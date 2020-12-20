@@ -140,7 +140,7 @@ namespace FullSteamAheadMVP0Project.Models
                 return null;
             }
 
-            Dictionary<string, Admin> allAdmins = team.Team_Admins;
+            Dictionary<string, Admin> allAdmins = team2.Team_Admins;
             foreach (KeyValuePair<string, Admin> entry in allAdmins)
             {
                 if (entry.Key == admin.Username)
