@@ -57,9 +57,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 PropertyChanged?.Invoke(this, ar);
 
             //clear the textboxes
-            TeamUsername = string.Empty;
+                TeamUsername = string.Empty;
                 TeamPassword = string.Empty;
                 TeamPersonalUsername = string.Empty;
+                TeamAdminPassword = string.Empty;
+
 
             });
         }
