@@ -4,11 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.Homepage"
+             x:Class="FullSteamAheadMVP0Project.Views.DisplayUser_Homepage"
              BackgroundColor="AliceBlue">
-       
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height=".3*"/>
             <RowDefinition Height="*"/>
@@ -28,33 +27,35 @@
                    BackgroundColor="LightCyan" 
                    Placeholder="Search..."
                    CancelButtonColor="LightGray"
-                   SearchCommand="{Binding SearchCommand}"
+                   SearchCommand="{Binding SearchUserCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
-        <Button Grid.Column="0" Grid.Row="3" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="2" Grid.Row="3" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="3" Grid.Row="3" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
+        <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
+        <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
 
         <ListView x:Name="searchResults"
                   Grid.Column="0" 
                   Grid.Row="1" 
                   Grid.ColumnSpan="4"
-                  ItemsSource="{Binding TeamListView}"
+                  ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue"
+                  BackgroundColor="LightPink"
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding Team_Username}"/>
-                            <Label Text="{Binding Team_Information.Bio}"
+                            <Label Text="{Binding User_Nickname}"/>
+                            <Label Text="{Binding User_Username}"/>
+                            <Label Text="{Binding User_Location}"/>
+                            <Label Text="{Binding User_Information.Bio}"
                                    LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand"/>
-                            <Image Source="{Binding Team_ProfilePicture}"/>
+                            <Image Source="{Binding User_ProfilePicture}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

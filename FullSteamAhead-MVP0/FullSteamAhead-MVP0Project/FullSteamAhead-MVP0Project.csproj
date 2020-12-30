@@ -29,7 +29,7 @@
     <Compile Update="ShowDataPage.xaml.cs">
       <DependentUpon>ShowDataPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\MainPage.xaml.cs">
+    <Compile Update="Views\SignUpSignIn\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -38,31 +38,34 @@
     <EmbeddedResource Update="ShowDataPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\CreateStudentAccount.xaml">
+    <EmbeddedResource Update="Views\SignUpSignIn\CreateStudentAccount.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\CreateTeamAccount.xaml">
+    <EmbeddedResource Update="Views\SignUpSignIn\CreateTeamAccount.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DisplayTeamInformation.xaml">
+    <EmbeddedResource Update="Views\StudentAccount\DisplayTeamInformation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DisplayUserPage.xaml">
+    <EmbeddedResource Update="Views\AdminAccount\DisplayUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DisplayUser_Homepage.xaml">
+    <EmbeddedResource Update="Views\AdminAccount\DisplayUser_Homepage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Homepage.xaml">
+    <EmbeddedResource Update="Views\StudentAccount\Homepage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SignUpPage.xaml">
+    <EmbeddedResource Update="Views\StudentAccount\MyTeamsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TeamAdminSignIn.xaml">
+    <EmbeddedResource Update="Views\SignUpSignIn\SignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\TeamMemberSignIn.xaml">
+    <EmbeddedResource Update="Views\SignUpSignIn\TeamAdminSignIn.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SignUpSignIn\TeamMemberSignIn.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

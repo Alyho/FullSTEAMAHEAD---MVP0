@@ -67,11 +67,11 @@
                 WidthRequest="400"
                 Command="{Binding InviteUserCommand}"/>
 
-        <Button Grid.Column="0" Grid.Row="5" Text="Icon1" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="1" Grid.Row="5" Text="Icon2" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="2" Grid.Row="5" Text="Icon3" CornerRadius="5" VerticalOptions="End"/>
-        <Button Grid.Column="3" Grid.Row="5" Text="Icon4" CornerRadius="5" VerticalOptions="End"/>
-
+        <Button Grid.Column="0" Grid.Row="5" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <Button Grid.Column="1" Grid.Row="5" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <Button Grid.Column="2" Grid.Row="5" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
+        <Button Grid.Column="3" Grid.Row="5" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+    
     </Grid>
     
 </ContentPage>
