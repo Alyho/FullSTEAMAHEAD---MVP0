@@ -18,7 +18,7 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 
     public ObservableCollection<User> list { get; }
 
-    public ICommand SearchCommand => new Command<string>(async (string query) =>
+    public ICommand SearchUserCommand => new Command<string>(async (string query) =>
     {
         var normalizedQuery = query?.ToLower() ?? "";
 

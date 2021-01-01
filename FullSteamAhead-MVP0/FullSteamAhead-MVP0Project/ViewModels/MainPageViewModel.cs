@@ -58,6 +58,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     await App.Database.SaveAccountAsync(_user);
 
                     _userCreated = true;
+                    Global.UserSignedIn = _user;
                 }
 
                 //Raise the Property Changed Event to notify the MainPage
@@ -89,6 +90,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                                           else
                                           {
                                               _userExists = true;
+                                              Global.UserSignedIn = _user; 
                                           }
 
                                           //Raise the Property Changed Event to notify the MainPage

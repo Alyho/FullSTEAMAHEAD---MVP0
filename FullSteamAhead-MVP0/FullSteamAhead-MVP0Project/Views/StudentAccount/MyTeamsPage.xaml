@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" />
-        <Button Grid.Column="1" Grid.Row="3" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsComand}"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsCommand}"/>
         <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
 
@@ -33,13 +33,13 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding MyTeam_Username}"/>
-                            <Label Text="{Binding MyTeam_Information.Bio}"
+                            <Label Text="{Binding Team_Username}"/>
+                            <Label Text="{Binding Team_Information.Bio}"
                                    LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand"/>
-                            <Image Source="{Binding MyTeam_ProfilePicture}"/>
+                            <Image Source="{Binding Team_ProfilePicture}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

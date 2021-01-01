@@ -5,8 +5,9 @@ using Xamarin.Forms;
 using FullSteamAheadMVP0Project.Models;
 using FullSteamAheadMVP0Project;
 using System.Windows.Input;
+using FullSteamAheadMVP0Project.Views;
 
-public class HomePageViewModel : INotifyPropertyChanged
+public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 {
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -17,6 +18,8 @@ public class HomePageViewModel : INotifyPropertyChanged
     }
 
     public ObservableCollection<Team> list { get; }
+    public ObservableCollection<Team> myList { get; }
+    public Command MyTeamsCommand { get; }
 
     public ICommand SearchCommand => new Command<string>(async (string query) =>
     {
@@ -51,6 +54,25 @@ public class HomePageViewModel : INotifyPropertyChanged
     public HomePageViewModel()
     {
         list = new ObservableCollection<Team>();
+        myList = new ObservableCollection<Team>();
+
+        MyTeamsCommand = new Command(async () =>
+        {
+            var myTeams = await App.Database.GetTeamsAsync();
+
+            myList.Clear();
+            foreach (var team in myTeams)
+            {
+                if (team.Members.ContainsKey(Global.UserSignedIn.Username))
+                {
+                    myList.Add(team);
+                }
+            }
+
+            Global.MyTeams = myList;
+            await Navigation.PushAsync(new MyTeamsPage());
+
+        });
     }
 
 }

@@ -54,7 +54,10 @@ namespace FullSteamAheadMVP0Project.Models
                 .OnceAsync<User>()).Select(item => new User
                 {
                     Username = item.Key, 
-                    Password = item.Object.Password
+                    Password = item.Object.Password,
+                    Nickname = item.Object.Nickname,
+                    Information = item.Object.Information
+                    
                 }).ToList();
         }
 
@@ -77,7 +80,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             var allPersons = await GetAccountsAsync();
 
-            // nickname or username
+            // nickname or username: if null, use for loop
             List<User> users = allPersons.Where(a => a.Username.ToLower() == name || a.Nickname.ToLower() == name).ToList();
 
             return users;

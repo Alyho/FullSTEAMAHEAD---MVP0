@@ -29,7 +29,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         public string User_Bio
         {
-            /*get => _user.Information.Bio;*/
+            get => _user.Information.Bio;
             set { }
         }
 

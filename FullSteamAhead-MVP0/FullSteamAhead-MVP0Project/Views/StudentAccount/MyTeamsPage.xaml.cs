@@ -1,4 +1,5 @@
 ﻿using FullSteamAheadMVP0Project.Models;
+using FullSteamAheadMVP0Project.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,10 @@ namespace FullSteamAheadMVP0Project.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class MyTeamsPage : ContentPage
 {
-    public MyTeamsPage(Team myteams)
+    public MyTeamsPage()
     {
         InitializeComponent();
-        /*BindingContext = new MyTeamsPageViewModel(myteams);*/
+        BindingContext = new MyTeamsPageViewModel();
     }
 }
 }
