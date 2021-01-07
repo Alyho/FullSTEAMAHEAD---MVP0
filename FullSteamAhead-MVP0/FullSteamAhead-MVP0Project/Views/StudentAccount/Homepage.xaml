@@ -31,7 +31,7 @@
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
-        <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
         <Button Grid.Column="1" Grid.Row="3" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsCommand}"/>
         <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
@@ -40,7 +40,8 @@
                   Grid.Column="0" 
                   Grid.Row="1" 
                   Grid.ColumnSpan="4"
-                  ItemsSource="{Binding TeamListView}"
+                  ItemsSource="{Binding TeamListView}" 
+                  RowHeight="180"
                   HorizontalOptions="Center"
                   BackgroundColor="SkyBlue"
                   ItemTapped="searchResults_ItemTapped">
@@ -52,8 +53,11 @@
                             <Label Text="{Binding Team_Information.Bio}"
                                    LineBreakMode="WordWrap"
                                    MaxLines="10"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand"/>
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"/>
+                            <Label Text="{Binding Team_Information.Gender}"/>
+                            <Label Text="{Binding Team_Information.City}"/>
+                            <Label Text="{Binding Team_Information.State}"/>
                             <Image Source="{Binding Team_ProfilePicture}"/>
                         </StackLayout>
                     </ViewCell>
