@@ -12,6 +12,8 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
+    private INavigation _navigation;
+    
     protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -51,11 +53,12 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
         }
     }
 
-    public HomePageViewModel()
+    public HomePageViewModel(INavigation Navigation)
     {
         list = new ObservableCollection<Team>();
         myList = new ObservableCollection<Team>();
-
+        _navigation = Navigation;
+        
         MyTeamsCommand = new Command(async () =>
         {
             var myTeams = await App.Database.GetTeamsAsync();
@@ -70,7 +73,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
             }
 
             Global.MyTeams = myList;
-            await Navigation.PushAsync(new MyTeamsPage());
+            await _navigation.PushAsync(new MyTeamsPage());
 
         });
     }
