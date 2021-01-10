@@ -47,14 +47,41 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding User_Nickname}"/>
-                            <Label Text="{Binding User_Username}"/>
-                            <Label Text="{Binding User_Location}"/>
-                            <Label Text="{Binding User_Information.Bio}"
-                                   LineBreakMode="WordWrap"
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Nickname:" />
+                                        <Span Text="{Binding User_Nickname}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Username:" />
+                                        <Span Text="{Binding User_Username}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Location:" />
+                                        <Span Text="{Binding User_Location}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand"/>
+                                   VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Bio:" />
+                                        <Span Text="{Binding User_Information.Bio}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Image Source="{Binding User_ProfilePicture}"/>
                         </StackLayout>
                     </ViewCell>

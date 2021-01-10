@@ -33,12 +33,25 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding Team_Username}"/>
-                            <Label Text="{Binding Team_Information.Bio}"
-                                   LineBreakMode="WordWrap"
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Username:" />
+                                        <Span Text="{Binding Team_Username}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand"/>
+                                   VerticalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Bio:" />
+                                        <Span Text="{Binding Team_Information.Bio}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
                             <Image Source="{Binding Team_ProfilePicture}"/>
                         </StackLayout>
                     </ViewCell>
