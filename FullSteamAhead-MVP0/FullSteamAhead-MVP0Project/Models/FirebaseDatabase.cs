@@ -13,10 +13,9 @@ namespace FullSteamAheadMVP0Project.Models
 
         private readonly string Users = "Users";
         private readonly string Teams = "Teams";
-
-
-
-
+        private readonly string Members = "Members";
+        private readonly string Mentors = "Mentors";
+        private readonly string Team_Admins = "Team_Admins";
 
 
 
@@ -33,6 +32,12 @@ namespace FullSteamAheadMVP0Project.Models
         {
             firebase = new FirebaseClient(dbPath);
         }
+
+
+
+
+
+
 
 
 
@@ -57,7 +62,6 @@ namespace FullSteamAheadMVP0Project.Models
                     Password = item.Object.Password,
                     Nickname = item.Object.Nickname,
                     Information = item.Object.Information
-                    
                 }).ToList();
         }
 
@@ -80,8 +84,8 @@ namespace FullSteamAheadMVP0Project.Models
         {
             var allPersons = await GetAccountsAsync();
 
-            // nickname or username: if null, use for loop
-            List<User> users = allPersons.Where(a => a.Username.ToLower() == name || a.Nickname.ToLower() == name).ToList();
+            // nickname or username: null issues
+            List<User> users = allPersons.Where(a => (a.Username != null && a.Username.ToLower() == name) || a.Nickname.ToLower() == name).ToList();
 
             return users;
         }
@@ -108,7 +112,7 @@ namespace FullSteamAheadMVP0Project.Models
             var allPersons = await GetTeamsAsync();
 
             // nickname or username
-            List<Team> teams = allPersons.Where(a => a.Team_Nickname.ToLower() == name || a.Team_Username.ToLower() == name).ToList();
+            List<Team> teams = allPersons.Where(a => (a.Team_Nickname != null && a.Team_Nickname.ToLower() == name) || a.Team_Username.ToLower() == name).ToList();
 
             return teams;
         }
@@ -172,15 +176,27 @@ namespace FullSteamAheadMVP0Project.Models
             return true;
         }
 
-        public async Task AddTeamMember(Team team, User account)
+        public async Task AddUser(Team team, User account)
         {
-            team.Members.Add(account.Username, account);
-            await UpdateTeamMembers(team);
+            if (account.Information.Role == "Mentor")
+            {
+                team.Mentors.Add(account.Username, account);
+                await UpdateTeamMentors(team);
+            } else if (account.Information.Role == "Member")
+            {
+                team.Members.Add(account.Username, account);
+                await UpdateTeamMembers(team);
+            }
         }
 
         public async Task UpdateTeamMembers(Team team)
         {
-            await firebase.Child(Teams).Child(team.Team_Username).PatchAsync(team.Members);
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).PatchAsync(team.Members);
+        }
+
+        public async Task UpdateTeamMentors(Team team)
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).PatchAsync(team.Mentors);
         }
 
         public async Task AddTeamAdmin(Team team, Admin admin)
@@ -191,7 +207,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task UpdateTeamAdmins(Team team)
         {
-            await firebase.Child(Teams).Child(team.Team_Username).PatchAsync(team.Team_Admins);
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Team_Admins).PatchAsync(team.Team_Admins);
         }
 
     }

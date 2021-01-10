@@ -8,12 +8,10 @@ namespace FullSteamAheadMVP0Project.Models
             Distance = "";
             Gender = "";
             Privacy = "";
-            Role = "";
         }
 
         public string Distance { get; set; }
         public string Gender { get; set; }
         public string Privacy { get; set; }
-        public string Role { get; set; }
     }
 }

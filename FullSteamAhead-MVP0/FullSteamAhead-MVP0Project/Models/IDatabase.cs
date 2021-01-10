@@ -17,8 +17,9 @@ namespace FullSteamAheadMVP0Project.Models
         Task SaveTeamAsync(Team team);
         Task<Team> IsTeamValid(Team team, Admin admin);
         Task<bool> TeamExists(Team team);
-        Task AddTeamMember(Team team, User account);
+        Task AddUser(Team team, User account);
         Task UpdateTeamMembers(Team team);
+        Task UpdateTeamMentors(Team team);
         Task AddTeamAdmin(Team team, Admin admin);
         Task UpdateTeamAdmins(Team team);
     }
