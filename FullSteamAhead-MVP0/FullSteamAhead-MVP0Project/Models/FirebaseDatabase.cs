@@ -12,7 +12,7 @@ namespace FullSteamAheadMVP0Project.Models
 
 
         private readonly string Users = "Users";
-        private readonly string Teams = "Teams";
+        private readonly string Teams = "sTeams";
         private readonly string Members = "Members";
         private readonly string Mentors = "Mentors";
         private readonly string Team_Admins = "Team_Admins";
