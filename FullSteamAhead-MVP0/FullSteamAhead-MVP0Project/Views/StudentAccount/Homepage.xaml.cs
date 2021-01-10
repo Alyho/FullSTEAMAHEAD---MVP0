@@ -16,9 +16,8 @@ namespace FullSteamAheadMVP0Project.Views
         public Homepage()
         {
             InitializeComponent();
-            var homepageviewmodel = new HomePageViewModel();
-            homepageviewmodel.Navigation = Navigation;
-            BindingContext = homepageviewmodel;
+
+            BindingContext = new HomePageViewModel();
         }
 
         /*

@@ -7,12 +7,11 @@ using FullSteamAheadMVP0Project;
 using System.Windows.Input;
 using FullSteamAheadMVP0Project.Views;
 
-public class HomePageViewModel : INotifyPropertyChanged
+public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 {
 
     public event PropertyChangedEventHandler PropertyChanged;
-    public INavigation Navigation { get; set; }
-    
+
     protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
