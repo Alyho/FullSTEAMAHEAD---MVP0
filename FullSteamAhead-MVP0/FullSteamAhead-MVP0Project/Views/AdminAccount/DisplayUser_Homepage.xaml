@@ -35,27 +35,26 @@
         <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
 
-        <ListView x:Name="usersearchResults"
+        <ListView x:Name="searchResults"
                   Grid.Column="0" 
                   Grid.Row="1" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
                   BackgroundColor="LightPink"
-                  RowHeight="180"
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
                             <Label Text="{Binding User_Nickname}"/>
+                            <Label Text="{Binding User_Username}"/>
+                            <Label Text="{Binding User_Location}"/>
                             <Label Text="{Binding User_Information.Bio}"
                                    LineBreakMode="WordWrap"
                                    MaxLines="10"
-                                   HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand"/>
-                            <Label Text="{Binding User_Username}"/>
-                            <Label Text="{Binding User_Location}"/>
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalOptions="CenterAndExpand"/>
                             <Image Source="{Binding User_ProfilePicture}"/>
                         </StackLayout>
                     </ViewCell>
