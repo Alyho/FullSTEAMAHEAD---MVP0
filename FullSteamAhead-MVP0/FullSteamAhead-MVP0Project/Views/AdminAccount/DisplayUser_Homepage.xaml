@@ -35,13 +35,14 @@
         <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
 
-        <ListView x:Name="searchResults"
+        <ListView x:Name="usersearchResults"
                   Grid.Column="0" 
                   Grid.Row="1" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
                   BackgroundColor="LightPink"
+                  RowHeight="180"
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -73,8 +74,8 @@
                             </Label>
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand">
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Bio:" />

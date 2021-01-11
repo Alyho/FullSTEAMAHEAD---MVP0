@@ -13,12 +13,17 @@ using Xamarin.Forms.Xaml;
 namespace FullSteamAheadMVP0Project.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class MyTeamsPage : ContentPage
-{
-    public MyTeamsPage()
+    public partial class MyTeamsPage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = new MyTeamsPageViewModel();
+        public MyTeamsPage()
+        {
+            InitializeComponent();
+            BindingContext = new MyTeamsPageViewModel();
+        }
+
+        private async void HomePage_Button_Clicked(object sender, EventArgs e)
+        {
+                await Navigation.PushAsync(new Homepage());
+        }
     }
-}
 }
