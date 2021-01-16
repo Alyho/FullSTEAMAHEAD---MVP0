@@ -20,7 +20,7 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 
     public ICommand SearchUserCommand => new Command<string>(async (string query) =>
     {
-        var normalizedQuery = query?.ToLower() ?? "";
+       var normalizedQuery = query?.ToLower() ?? "";
 
         var users = await App.Database.AccountSearch(normalizedQuery);
         if (users != null)

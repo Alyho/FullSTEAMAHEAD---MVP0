@@ -12,7 +12,7 @@ namespace FullSteamAheadMVP0Project.Models
 
 
         private readonly string Users = "Users";
-        private readonly string Teams = "sTeams";
+        private readonly string Teams = "Teams";
         private readonly string Members = "Members";
         private readonly string Mentors = "Mentors";
         private readonly string Team_Admins = "Team_Admins";
@@ -85,7 +85,8 @@ namespace FullSteamAheadMVP0Project.Models
             var allPersons = await GetAccountsAsync();
 
             // nickname or username: null issues
-            List<User> users = allPersons.Where(a => (a.Username != null && a.Username.ToLower() == name) || a.Nickname.ToLower() == name).ToList();
+           
+            List<User> users = allPersons.Where(a => (a.Username != null && a.Username.ToLower() == name) || (a.Nickname != null && a.Nickname.ToLower() == name)).ToList();
 
             return users;
         }
@@ -182,7 +183,7 @@ namespace FullSteamAheadMVP0Project.Models
             {
                 team.Mentors.Add(account.Username, account);
                 await UpdateTeamMentors(team);
-            } else if (account.Information.Role == "Member")
+            } else if (account.Information.Role == "Student")
             {
                 team.Members.Add(account.Username, account);
                 await UpdateTeamMembers(team);

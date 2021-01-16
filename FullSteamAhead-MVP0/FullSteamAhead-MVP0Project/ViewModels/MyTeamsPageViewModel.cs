@@ -10,7 +10,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
     public class MyTeamsPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<Team> MyTeamsListView
+        public IList <Team> MyTeamsListView
         {
             get => Global.MyTeams;
             set { }

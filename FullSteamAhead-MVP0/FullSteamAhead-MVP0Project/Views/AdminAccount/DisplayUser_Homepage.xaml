@@ -51,24 +51,24 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Nickname:" />
-                                        <Span Text="{Binding User_Nickname}"/>
+                                        <Span Text="Nickname: " />
+                                        <Span Text="{Binding Nickname}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Username:" />
-                                        <Span Text="{Binding User_Username}"/>
+                                        <Span Text="Username: " />
+                                        <Span Text="{Binding Username}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Location:" />
-                                        <Span Text="{Binding User_Location}"/>
+                                        <Span Text="Location: " />
+                                        <Span Text="{Binding Information.City}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -78,8 +78,8 @@
                                    VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Bio:" />
-                                        <Span Text="{Binding User_Information.Bio}"/>
+                                        <Span Text="Bio: " />
+                                        <Span Text="{Binding Information.Bio}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

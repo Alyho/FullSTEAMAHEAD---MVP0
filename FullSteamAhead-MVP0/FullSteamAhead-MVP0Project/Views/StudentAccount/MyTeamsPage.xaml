@@ -37,7 +37,7 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Username:" />
+                                        <Span Text="Username: " />
                                         <Span Text="{Binding Team_Username}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -48,7 +48,7 @@
                                    VerticalOptions="CenterAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Bio:" />
+                                        <Span Text="Bio: " />
                                         <Span Text="{Binding Team_Information.Bio}"/>
                                     </FormattedString>
                                 </Label.FormattedText>

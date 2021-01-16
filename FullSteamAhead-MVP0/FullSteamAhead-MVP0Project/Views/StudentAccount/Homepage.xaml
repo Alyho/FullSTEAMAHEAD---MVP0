@@ -52,7 +52,7 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Username:" />
+                                        <Span Text="Username: " />
                                         <Span Text="{Binding Team_Username}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -63,7 +63,7 @@
                                    VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Bio:" />
+                                        <Span Text="Bio: " />
                                         <Span Text="{Binding Team_Information.Bio}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -71,7 +71,7 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Gender:" />
+                                        <Span Text="Gender: " />
                                         <Span Text="{Binding Team_Information.Gender}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -79,7 +79,7 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="City:" />
+                                        <Span Text="City: " />
                                         <Span Text="{Binding Team_Information.City}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -87,7 +87,7 @@
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="State:" />
+                                        <Span Text="State: " />
                                         <Span Text="{Binding Team_Information.State}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
