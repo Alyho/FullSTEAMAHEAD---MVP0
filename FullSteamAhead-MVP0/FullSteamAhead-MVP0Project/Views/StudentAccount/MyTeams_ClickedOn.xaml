@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FullSteamAheadMVP0Project.Views.MyTeams_ClickedOn"
+             BackgroundColor="AliceBlue">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="2" Text="Chat" CornerRadius="5" FontSize="22" Grid.ColumnSpan="4" Clicked="Chat_Button_Clicked"/>
+        <Button Grid.Column="0" Grid.Row="3" Text="Calendar" CornerRadius="5" FontSize="22" Grid.ColumnSpan="4" Clicked="Calendar_Button_Clicked"/>
+        <Button Grid.Column="0" Grid.Row="4" Text="Announcements" CornerRadius="5" FontSize="22" Grid.ColumnSpan="4"/>
+        <Button Grid.Column="0" Grid.Row="5" Text="Members" CornerRadius="5" FontSize="22" Grid.ColumnSpan="4"/>
+        <Button Grid.Column="0" Grid.Row="6" Text="Edit Page" CornerRadius="5" FontSize="22" Grid.ColumnSpan="4"/>
+
+
+        <Button Grid.Column="0" Grid.Row="7" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
+        <Button Grid.Column="1" Grid.Row="7" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsCommand}"/>
+        <Button Grid.Column="2" Grid.Row="7" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
+        <Button Grid.Column="3" Grid.Row="7" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+
+    </Grid>
+
+
+</ContentPage>

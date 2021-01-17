@@ -29,7 +29,8 @@
                   ItemsSource="{Binding MyTeamsListView}"
                   RowHeight="180"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue">
+                  BackgroundColor="SkyBlue"
+                  ItemTapped="MyTeams_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -21,6 +21,12 @@ namespace FullSteamAheadMVP0Project.Views
             BindingContext = new MyTeamsPageViewModel();
         }
 
+        private async void MyTeams_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeams_ClickedOn());
+
+        }
+
         private async void HomePage_Button_Clicked(object sender, EventArgs e)
         {
                 await Navigation.PushAsync(new Homepage());
