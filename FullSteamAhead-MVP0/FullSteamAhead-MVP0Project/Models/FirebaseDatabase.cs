@@ -164,17 +164,36 @@ namespace FullSteamAheadMVP0Project.Models
             return null;
         }
 
-        public async Task<bool> TeamExists(Team team)
+        public async Task<int> TeamExists(Team team)
         {
             var allPersons = await GetTeamsAsync();
-
+            // (0) username & password matches / (1) username matches / (2) neither
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
             if (team2 == null)
             {
-                return false;
+                return 2;
             }
+            if (team2.Team_Password == team.Team_Password)
+            {
+                return 0;
+            }
+            return 1;
+        }
 
-            return true;
+        public async Task<bool> TeamAdminExists(Team team, Admin admin)
+        {
+            // add method TeamAdminExists - checks if the username is already within the team
+            var allPersons = await GetTeamsAsync();
+            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            Dictionary<string, Admin> allAdmins = team2.Team_Admins;
+            foreach (KeyValuePair<string, Admin> entry in allAdmins)
+            {
+                if (entry.Key == admin.Username)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public async Task AddUser(Team team, User account)
