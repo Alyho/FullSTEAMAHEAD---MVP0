@@ -19,6 +19,12 @@ namespace FullSteamAheadMVP0Project.Models
             set;
         }
 
+        public static Admin AdminSignedIn
+        {
+            get;
+            set;
+        }
+
         public static ObservableCollection<Team> MyTeams
         {
             get;

@@ -49,7 +49,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 else
                 {
                     _teamExists = true;
-                    Global.TeamSignedIn = found;
+                    Global.TeamSignedIn = _team;
+                    Global.AdminSignedIn = _admin;
                 }
 
             //Raise the Property Changed Event to notify the MainPage

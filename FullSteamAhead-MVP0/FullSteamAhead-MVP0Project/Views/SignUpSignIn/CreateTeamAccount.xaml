@@ -51,7 +51,7 @@
                 Grid.Row="3" 
                 Grid.Column="0"
                 Placeholder="Personal Username     " 
-                Text="{Binding TeamPersonalUsername}"
+                Text="{Binding TeamAdminUsername}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
@@ -74,7 +74,7 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveCommand}"
+                Command ="{Binding SaveTeamCommand}"
                 Clicked="SignUpHomepage_Button_Clicked"/>
 
     </Grid>
