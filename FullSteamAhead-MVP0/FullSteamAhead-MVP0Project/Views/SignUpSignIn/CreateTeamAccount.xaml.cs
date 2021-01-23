@@ -31,7 +31,7 @@ namespace FullSteamAheadMVP0Project.Views
                 if (createTeamAccountViewModel.TeamCreated == 0)
                 {
                     await DisplayAlert("New Admin", "You are creating a new admin account for an existing team", "OK");
-                    //await Navigation.PushAsync(new CreateAdminAccount());
+                    await Navigation.PushAsync(new CreateAdminAccount());
                 }
                 
                 else if (createTeamAccountViewModel.TeamCreated == 1)
@@ -42,39 +42,13 @@ namespace FullSteamAheadMVP0Project.Views
                 else if (createTeamAccountViewModel.TeamCreated == 2)
                 {
                     await DisplayAlert("New Team", "New team account created", "OK");
-                    //await Navigation.PushAsync(new CreateAdminAccount());
+                    await Navigation.PushAsync(new CreateAdminAccount());
                 }
 
             }
 
         }
 
-        private void SignUpHomepage_Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        /*
-         * Put this code into CreateAdminAccount.xaml.cs:
-         * private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "AdminExists")
-            {
-                if (createTeamAccountViewModel.AdminExists)
-                {
-                    await DisplayAlert("Error", "This Username is already taken", "OK");
-                }
-                
-                else 
-                {
-                    await DisplayAlert("Success", "New Admin Created", "OK");
-                    await Navigation.PushAsync(new DisplayUser_Homepage());
-               }
-            }
-
-        }
-
-         */
 
     }
 

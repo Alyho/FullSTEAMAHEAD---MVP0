@@ -41,8 +41,8 @@
                   Grid.Row="1" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding TeamListView}"
-                  RowHeight="180"
                   HorizontalOptions="Center"
+                  HasUnevenRows="True"                  
                   BackgroundColor="SkyBlue"
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>

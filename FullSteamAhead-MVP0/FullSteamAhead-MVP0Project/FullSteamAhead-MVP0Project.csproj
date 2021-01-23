@@ -20,14 +20,17 @@
 
   <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
-    <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="ShowDataPage.xaml.cs">
       <DependentUpon>ShowDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SignUpSignIn\CreateAdminAccount.xaml.cs">
+      <DependentUpon>CreateAdminAccount.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SignUpSignIn\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -41,7 +44,7 @@
     <EmbeddedResource Update="Views\SignUpSignIn\CreateStudentAccount.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SignUpSignIn\CreateTeamAccount.xaml">
+    <EmbeddedResource Update="Views\SignUpSignIn\CreateAdminAccount.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentAccount\DisplayTeamInformation.xaml">

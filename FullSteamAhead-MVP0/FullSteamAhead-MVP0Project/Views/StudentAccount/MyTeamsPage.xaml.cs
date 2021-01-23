@@ -23,6 +23,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void MyTeams_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            var selectedItem = e.Item as Team;
             await Navigation.PushAsync(new MyTeams_ClickedOn());
 
         }

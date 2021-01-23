@@ -42,7 +42,7 @@
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
                   BackgroundColor="LightPink"
-                  RowHeight="180"
+                  HasUnevenRows="True"                                    
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
