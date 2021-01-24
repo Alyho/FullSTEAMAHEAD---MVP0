@@ -9,6 +9,7 @@ namespace FullSteamAheadMVP0Project.Models
         Task<User> GetAccountAsync(string userName);
         Task<List<User>> GetAccountsAsync();
         Task SaveAccountAsync(User account);
+        Task UpdateAccount(User account);
         Task<bool> IsAccountValid(User account);
         Task<List<User>> AccountSearch(string name);
 

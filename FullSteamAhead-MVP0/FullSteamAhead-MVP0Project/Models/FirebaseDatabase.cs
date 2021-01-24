@@ -70,6 +70,11 @@ namespace FullSteamAheadMVP0Project.Models
             await firebase.Child(Users).Child(account.Username).PutAsync(account);
         }
 
+        public async Task UpdateAccount(User account)
+        {
+            await firebase.Child(Users).Child(account.Username).PatchAsync(account);
+        }
+
         public async Task<bool> IsAccountValid(User account)
         {
             User account2 = await GetAccountAsync(account.Username);
