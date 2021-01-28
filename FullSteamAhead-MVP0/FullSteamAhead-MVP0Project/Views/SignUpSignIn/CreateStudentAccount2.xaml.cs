@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 
 namespace FullSteamAheadMVP0Project.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class CreateStudentAccount : ContentPage
-{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CreateStudentAccount2 : ContentPage
+    {
         public MainPageViewModel mainPageViewModel { get; set; }
 
-        public CreateStudentAccount()
+        public CreateStudentAccount2()
         {
             InitializeComponent();
 
@@ -26,17 +26,17 @@ public partial class CreateStudentAccount : ContentPage
 
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            /*if (e.PropertyName == "UserFirstStep")
+            /*if (e.PropertyName == "UserSecondStep")
             {
-                if (mainPageViewModel.UserFirstStep)
-                    await Navigation.PushAsync(new CreateStudentAccount2());
+                if (mainPageViewModel.UserSecondStep)
+                    await Navigation.PushAsync(new CreateStudentAccount3());
 
             }*/
         }
 
-        private async void CreateStudentAccount2_Button_Clicked(object sender, EventArgs e)
+        private async void CreateStudentAccount3_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateStudentAccount2());
+            await Navigation.PushAsync(new CreateStudentAccount3());
         }
 
     }

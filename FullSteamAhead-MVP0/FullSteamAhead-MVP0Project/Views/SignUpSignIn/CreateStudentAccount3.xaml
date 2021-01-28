@@ -4,12 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.CreateStudentAccount"
+             x:Class="FullSteamAheadMVP0Project.Views.CreateStudentAccount3"
              BackgroundColor="AliceBlue">
-
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="480*"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
@@ -17,7 +18,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-          
+
 
         </Grid.ColumnDefinitions>
 
@@ -31,32 +32,49 @@
 
         <Editor Margin="2"   
                 Grid.Row="1" 
-                Placeholder="Username            " 
-                Text="{Binding Username}"
+                Placeholder="Distance            " 
+                Text="{Binding Distance}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"/>
-        
+
         <Editor Margin="2" 
                 Grid.Row="2" 
-                Placeholder="Password            " 
-                Text="{Binding Password}"
+                Placeholder="Gender            " 
+                Text="{Binding Gender}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
-        
-        <Button Margin="2" 
+
+        <Editor Margin="2" 
                 Grid.Row="3" 
-                Text="Next" CornerRadius="10" 
+                Placeholder="Role            " 
+                Text="{Binding Gender}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2" 
+                Grid.Row="4" 
+                Placeholder="Privacy            " 
+                Text="{Binding Gender}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
+
+        <Button Margin="2" 
+                Grid.Row="5" 
+                Text="Create account" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveCommand}"
-                Clicked="CreateStudentAccount2_Button_Clicked"/>
+                Clicked="SignUpHomepage_Button_Clicked"/>
 
     </Grid>
-
 </ContentPage>
