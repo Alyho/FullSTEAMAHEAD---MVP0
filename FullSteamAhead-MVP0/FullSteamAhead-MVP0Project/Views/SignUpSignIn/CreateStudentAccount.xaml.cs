@@ -19,24 +19,26 @@ public partial class CreateStudentAccount : ContentPage
         {
             InitializeComponent();
 
-            mainPageViewModel = new MainPageViewModel();
+            mainPageViewModel = new MainPageViewModel(this.Navigation);
             mainPageViewModel.PropertyChanged += MainPageViewModel_PropertyChanged;
             this.BindingContext = mainPageViewModel;
         }
 
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            /*if (e.PropertyName == "UserFirstStep")
+            if (e.PropertyName == "UserCreated")
             {
-                if (mainPageViewModel.UserFirstStep)
+                if (mainPageViewModel.UserCreated)
+                {
                     await Navigation.PushAsync(new CreateStudentAccount2());
+                }
 
-            }*/
-        }
-
-        private async void CreateStudentAccount2_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CreateStudentAccount2());
+                else
+                {
+                    await DisplayAlert("Error", "This Username is already taken", "OK");
+                }
+                    
+            }
         }
 
     }

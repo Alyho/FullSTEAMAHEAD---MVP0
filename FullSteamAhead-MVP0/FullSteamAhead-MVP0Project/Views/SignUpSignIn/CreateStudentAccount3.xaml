@@ -51,7 +51,7 @@
         <Editor Margin="2" 
                 Grid.Row="3" 
                 Placeholder="Role            " 
-                Text="{Binding Gender}"
+                Text="{Binding Role}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
@@ -60,7 +60,7 @@
         <Editor Margin="2" 
                 Grid.Row="4" 
                 Placeholder="Privacy            " 
-                Text="{Binding Gender}"
+                Text="{Binding Privacy}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
@@ -73,8 +73,7 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveCommand}"
-                Clicked="SignUpHomepage_Button_Clicked"/>
+                Command ="{Binding SaveUserCommand}"/>
 
     </Grid>
 </ContentPage>

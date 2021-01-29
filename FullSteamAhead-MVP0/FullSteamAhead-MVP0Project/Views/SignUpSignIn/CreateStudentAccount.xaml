@@ -54,8 +54,7 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveCommand}"
-                Clicked="CreateStudentAccount2_Button_Clicked"/>
+                Command ="{Binding SaveCommand}"/>
 
     </Grid>
 

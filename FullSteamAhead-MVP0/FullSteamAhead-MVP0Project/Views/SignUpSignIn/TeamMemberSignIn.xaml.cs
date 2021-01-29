@@ -19,7 +19,7 @@ namespace FullSteamAheadMVP0Project.Views
         {
             InitializeComponent();
 
-            mainPageViewModel = new MainPageViewModel();
+            mainPageViewModel = new MainPageViewModel(this.Navigation);
             mainPageViewModel.PropertyChanged += MainPageViewModel_PropertyChanged;
             this.BindingContext = mainPageViewModel;
         }

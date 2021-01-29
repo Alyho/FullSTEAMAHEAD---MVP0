@@ -51,7 +51,7 @@
         <Editor Margin="2" 
                 Grid.Row="3" 
                 Placeholder="Zip code            " 
-                Text="{Binding State}"
+                Text="{Binding Zipcode}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
@@ -64,8 +64,7 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveCommand}"
-                Clicked="CreateStudentAccount3_Button_Clicked"/>
+                Command ="{Binding NextCommand}"/>
 
     </Grid>
 </ContentPage>

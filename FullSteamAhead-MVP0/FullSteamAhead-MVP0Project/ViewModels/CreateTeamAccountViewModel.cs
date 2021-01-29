@@ -9,6 +9,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 {
     public class CreateTeamAccountViewModel : INotifyPropertyChanged
     {
+
         public Command SaveTeamCommand { get; }
         public Command SaveAdminCommand { get; }
 

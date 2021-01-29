@@ -19,26 +19,8 @@ namespace FullSteamAheadMVP0Project.Views
         {
             InitializeComponent();
 
-            mainPageViewModel = new MainPageViewModel();
-            mainPageViewModel.PropertyChanged += MainPageViewModel_PropertyChanged;
+            mainPageViewModel = new MainPageViewModel(this.Navigation);
             this.BindingContext = mainPageViewModel;
-        }
-
-        private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == "UserCreated")
-            {
-                if (mainPageViewModel.UserCreated)
-                    await DisplayAlert("Account Created", "", "OK");
-                else
-                    await DisplayAlert("Unavailable", "This username is already taken", "OK");
-
-            }
-        }
-
-        private async void SignUpHomepage_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Homepage());
         }
 
     }
