@@ -3,5 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FullSteamAheadMVP0Project.Views.MyTeams_Chat"
              BackgroundImageSource="MyTeams_Chat">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width=".3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="3" Grid.Row="0" Text="Calendar" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
+
+    </Grid>
+    
 
 </ContentPage>

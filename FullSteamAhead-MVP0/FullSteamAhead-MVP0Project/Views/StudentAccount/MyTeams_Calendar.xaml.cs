@@ -16,5 +16,10 @@ public partial class MyTeams_Calendar : ContentPage
     {
         InitializeComponent();
     }
-}
+    private async void Chat_Button_CLicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeams_Chat());
+        }
+
+    }
 }

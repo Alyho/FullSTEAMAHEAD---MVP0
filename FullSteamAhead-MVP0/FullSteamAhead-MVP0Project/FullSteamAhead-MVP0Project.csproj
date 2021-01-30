@@ -83,8 +83,5 @@
     <EmbeddedResource Update="Views\StudentAccount\MyTeams_Chat.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentAccount\MyTeams_ClickedOn.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
