@@ -39,15 +39,21 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center"/>
 
-        <Editor Margin="2" 
+        <Picker x:Name="State"
+                Title="State"
+                TitleColor="LightSlateGray"
+                Margin="2"   
                 Grid.Row="2" 
-                Placeholder="State            " 
-                Text="{Binding State}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
-        
+                BindingContext="{Binding State}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Alabama</x:String>
+                    <x:String>Alaska</x:String>
+                    <x:String>Arizona</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
         <Editor Margin="2" 
                 Grid.Row="3" 
                 Placeholder="Zip code            " 

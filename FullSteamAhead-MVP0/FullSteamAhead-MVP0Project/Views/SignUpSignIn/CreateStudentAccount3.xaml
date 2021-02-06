@@ -11,15 +11,14 @@
             <RowDefinition Height="200*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="180*"/>
+            <RowDefinition Height="120*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-
-
+            <ColumnDefinition Width="2.4*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Create Student Account" 
@@ -27,11 +26,12 @@
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
                FontSize="36" 
-               Grid.Column="0" 
-               Grid.Row="0"/>
+               Grid.Row="0"
+               Grid.ColumnSpan="2"/>
 
         <Editor Margin="2"   
                 Grid.Row="1" 
+                Grid.Column="0"
                 Placeholder="Distance            " 
                 Text="{Binding Distance}"
                 TextColor="LightSlateGray" 
@@ -39,32 +39,72 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center"/>
 
-        <Editor Margin="2" 
+        <Label Text="Preferred distance of teams (in miles)" 
+               TextColor="LightSlateGray" 
+               FontSize="15" 
+               Grid.Column="1" 
+               Grid.Row="1"/>
+
+        <Picker x:Name="Gender"
+                Title="Gender"
+                TitleColor="LightSlateGray"
                 Grid.Row="2" 
-                Placeholder="Gender            " 
-                Text="{Binding Gender}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                Grid.Column="0"
+                BindingContext="{Binding Distance}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Female</x:String>
+                    <x:String>Male</x:String>
+                    <x:String>All genders</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
 
-        <Editor Margin="2" 
+        <Label Text="Note that the gender must align with your identified gender" 
+               TextColor="LightSlateGray" 
+               FontSize="15" 
+               Grid.Column="1" 
+               Grid.Row="2"/>
+
+        <Picker x:Name="Role"
+                Title="Role"
+                TitleColor="LightSlateGray"
                 Grid.Row="3" 
-                Placeholder="Role            " 
-                Text="{Binding Role}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                Grid.Column="0"
+                BindingContext="{Binding Role}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Student</x:String>
+                    <x:String>Mentor</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
 
-        <Editor Margin="2" 
+        <Label Text="Chose to be a student or mentor. Mentors are expected to already have more than adequate experience, but will have the same features as students. They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed" 
+               TextColor="LightSlateGray" 
+               FontSize="14" 
+               Grid.Column="1" 
+               Grid.Row="3"/>
+
+        <Picker x:Name="Privacy"
+                Title="Privacy"
+                TitleColor="LightSlateGray"
                 Grid.Row="4" 
-                Placeholder="Privacy            " 
-                Text="{Binding Privacy}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                Grid.Column="0"
+                BindingContext="{Binding Privacy}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Private</x:String>
+                    <x:String>Public</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Public members are available to all searching teams. Private members will only be able to search teams, but will not be searchable." 
+               TextColor="LightSlateGray" 
+               FontSize="14" 
+               Grid.Column="1" 
+               Grid.Row="4"/>
 
         <Button Margin="2" 
                 Grid.Row="5" 
@@ -73,7 +113,8 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveUserCommand}"/>
+                Command ="{Binding SaveUserCommand}"
+                Grid.ColumnSpan="2"/>
 
     </Grid>
 </ContentPage>
