@@ -21,5 +21,10 @@ public partial class MyTeams_Calendar : ContentPage
             await Navigation.PushAsync(new MyTeams_Chat());
         }
 
+    private async void Announcements_Button_CLicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeams_Announcements());
+        }
+
     }
 }

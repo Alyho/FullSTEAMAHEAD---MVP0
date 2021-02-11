@@ -6,8 +6,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height=".3"/>
             <RowDefinition Height=".3*"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -22,6 +22,8 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Column="3" Grid.Row="0" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
+        <Button Grid.Column="3" Grid.Row="1" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="7" Clicked="Announcements_Button_CLicked"/>
+
 
     </Grid>
 </ContentPage>

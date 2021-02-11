@@ -1,5 +1,4 @@
 ﻿using FullSteamAheadMVP0Project.Models;
-using FullSteamAheadMVP0Project.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +11,15 @@ using Xamarin.Forms.Xaml;
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Settingspage : ContentPage
+    public partial class Notifications : ContentPage
     {
-
-        public Settingspage()
+        public Notifications()
         {
             InitializeComponent();
+
         }
 
-        private async void MainPage_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MainPage());
-        }
+
         private async void HomePage_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Homepage());
@@ -39,7 +35,5 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new Notifications());
         }
 
-
     }
-
 }

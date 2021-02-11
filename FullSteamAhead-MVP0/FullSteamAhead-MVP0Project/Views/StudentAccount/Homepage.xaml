@@ -33,7 +33,7 @@
 
         <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
         <Button Grid.Column="1" Grid.Row="3" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsCommand}"/>
-        <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
+        <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked="Notifications_Button_Clicked"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
 
         <ListView x:Name="searchResults"
