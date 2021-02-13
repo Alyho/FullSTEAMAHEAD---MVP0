@@ -50,7 +50,7 @@
                 TitleColor="LightSlateGray"
                 Grid.Row="2" 
                 Grid.Column="0"
-                BindingContext="{Binding Distance}">
+                SelectedItem="{Binding Gender}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Female</x:String>
@@ -71,7 +71,7 @@
                 TitleColor="LightSlateGray"
                 Grid.Row="3" 
                 Grid.Column="0"
-                BindingContext="{Binding Role}">
+                SelectedItem="{Binding Role}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Student</x:String>
@@ -91,7 +91,7 @@
                 TitleColor="LightSlateGray"
                 Grid.Row="4" 
                 Grid.Column="0"
-                BindingContext="{Binding Privacy}">
+                SelectedItem="{Binding Privacy}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Private</x:String>

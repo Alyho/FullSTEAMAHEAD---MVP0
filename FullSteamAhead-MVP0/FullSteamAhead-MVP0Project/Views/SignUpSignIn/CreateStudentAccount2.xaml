@@ -44,7 +44,7 @@
                 TitleColor="LightSlateGray"
                 Margin="2"   
                 Grid.Row="2" 
-                BindingContext="{Binding State}">
+                SelectedItem="{Binding State}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Alabama</x:String>
