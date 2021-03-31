@@ -42,7 +42,7 @@ namespace FullSteamAheadMVP0Project.Views
                 else if (createTeamAccountViewModel.TeamCreated == 2)
                 {
                     await DisplayAlert("New Team", "New team account created", "OK");
-                    await Navigation.PushAsync(new CreateAdminAccount());
+                    await Navigation.PushAsync(new CreateTeamAccount2());
                 }
 
             }
