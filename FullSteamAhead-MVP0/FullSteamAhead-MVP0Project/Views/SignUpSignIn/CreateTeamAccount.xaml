@@ -15,6 +15,7 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -31,6 +32,24 @@
 
         <Editor Margin="2"   
                 Grid.Row="1" 
+                Placeholder="Team Email            " 
+                Text="{Binding TeamEmail}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2"   
+                Grid.Row="2" 
+                Placeholder="Team Nickname            " 
+                Text="{Binding TeamNickname}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2"   
+                Grid.Row="3" 
                 Placeholder="Team Username            " 
                 Text="{Binding TeamUsername}"
                 TextColor="LightSlateGray" 
@@ -39,7 +58,7 @@
                 HorizontalOptions="Center"/>
 
         <Editor Margin="2" 
-                Grid.Row="2" 
+                Grid.Row="4" 
                 Placeholder="Team Password            " 
                 Text="{Binding TeamPassword}"
                 TextColor="LightSlateGray" 

@@ -4,12 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.CreateStudentAccount2"
+             x:Class="FullSteamAheadMVP0Project.Views.CreateTeamAccount2"
              BackgroundColor="AliceBlue">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="350*"/>
+            <RowDefinition Height="480*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
@@ -20,11 +22,9 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-
-
         </Grid.ColumnDefinitions>
 
-        <Label Text="Create Student Account" 
+        <Label Text="Create Team Account" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
@@ -65,17 +65,43 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
 
-        <Editor Margin="2" 
+        <Picker x:Name="Gender"
+                Title="Gender"
+                TitleColor="LightSlateGray"
                 Grid.Row="4" 
-                Placeholder="Phone Number         " 
-                Text="{Binding PhoneNumber}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                Grid.Column="0"
+                SelectedItem="{Binding Gender}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Female</x:String>
+                    <x:String>Male</x:String>
+                    <x:String>All genders</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Picker x:Name="Privacy"
+                Title="Privacy"
+                TitleColor="LightSlateGray"
+                Grid.Row="5" 
+                Grid.Column="0"
+                SelectedItem="{Binding Privacy}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Private</x:String>
+                    <x:String>Public</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Public teams are available to all searching members. Private teams will be invite only and will not be searchable." 
+               TextColor="LightSlateGray" 
+               FontSize="14" 
+               Grid.Column="1" 
+               Grid.Row="5"/>
 
         <Editor Margin="2" 
-                Grid.Row="5" 
+                Grid.Row="6" 
                 Placeholder="Bio            " 
                 Text="{Binding Bio}"
                 TextColor="LightSlateGray" 
@@ -83,14 +109,15 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
 
-        <Button Margin="2" 
-                Grid.Row="6" 
-                Text="Next" CornerRadius="10" 
+        <Editor Margin="2" 
+                Grid.Row="7" 
+                Placeholder="Schedule            " 
+                Text="{Binding Schedule}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
-                BackgroundColor="AliceBlue" 
-                HorizontalOptions="Center"
-                Command ="{Binding NextCommand}"/>
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
 
     </Grid>
+
 </ContentPage>

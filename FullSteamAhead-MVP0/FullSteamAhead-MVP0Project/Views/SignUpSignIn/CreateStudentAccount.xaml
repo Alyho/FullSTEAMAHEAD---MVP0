@@ -9,7 +9,11 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="480*"/>
+            <RowDefinition Height="400*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
@@ -31,6 +35,24 @@
 
         <Editor Margin="2"   
                 Grid.Row="1" 
+                Placeholder="Email            " 
+                Text="{Binding Email}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2"   
+                Grid.Row="2" 
+                Placeholder="Nickname            " 
+                Text="{Binding Nickname}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2"   
+                Grid.Row="3" 
                 Placeholder="Username            " 
                 Text="{Binding Username}"
                 TextColor="LightSlateGray" 
@@ -39,16 +61,34 @@
                 HorizontalOptions="Center"/>
         
         <Editor Margin="2" 
-                Grid.Row="2" 
+                Grid.Row="4" 
                 Placeholder="Password            " 
                 Text="{Binding Password}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
-        
+
+        <Editor Margin="2" 
+                Grid.Row="5" 
+                Placeholder="Age            " 
+                Text="{Binding Age}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2" 
+                Grid.Row="6" 
+                Placeholder="Grade            " 
+                Text="{Binding Grade}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
+
         <Button Margin="2" 
-                Grid.Row="3" 
+                Grid.Row="7" 
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
