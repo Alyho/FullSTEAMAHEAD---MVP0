@@ -25,9 +25,17 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         private string Username_;
         private string Password_;
+        private string Email_;
+        private string Age_;
+        private string Nickname_;
+        private string Grade_;
+
         private string State_;
         private string City_;
         private string Zipcode_;
+        private string PhoneNumber_;
+        private string Bio_;
+
         private string Distance_;
         private string Gender_;
         private string Role_;
@@ -52,11 +60,14 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             SaveCommand = new Command(async () =>
             {
+            
                 var _user = new User
                 {
                     Username = Username_,
                     Password = Password_,
-                    Information=new Information()
+                    Nickname = Nickname_,
+                    Email = Email_,
+                    Information = new Information()
                 };
 
                 //call the database to find any users
@@ -72,6 +83,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                     _userCreated = true;
                     Global.UserSignedIn = _user;
+                    Global.UserSignedIn.Information.Age = Age_;
+                    Global.UserSignedIn.Information.Grade = Grade_;
                 }
 
                 //Raise the Property Changed Event to notify the MainPage
@@ -89,6 +102,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 Global.UserSignedIn.Information.City = City_;
                 Global.UserSignedIn.Information.State = State_;
                 Global.UserSignedIn.Information.Zip_Code = Zipcode_;
+                Global.UserSignedIn.Information.Phone_Number = PhoneNumber_;
+                Global.UserSignedIn.Information.Bio = Bio_;
 
                 await _navigation.PushAsync(new CreateStudentAccount3());
             });
@@ -166,6 +181,62 @@ namespace FullSteamAheadMVP0Project.ViewModels
             }
         }
 
+        public string Email
+        {
+            get => Email_;
+            set
+            {
+                if (Email_ != value)
+                {
+                   Email_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(Email));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string Nickname
+        {
+            get => Nickname_;
+            set
+            {
+                if (Nickname_ != value)
+                {
+                    Nickname_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(Nickname));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string Age
+        {
+            get => Age_;
+            set
+            {
+                if (Age_ != value)
+                {
+                    Age_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(Age));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string Grade
+        {
+            get => Grade_;
+            set
+            {
+                if (Grade_ != value)
+                {
+                    Grade_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(Grade));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
         public string City
         {
             get => City_;
@@ -203,6 +274,34 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     Zipcode_ = value;
                     var args = new PropertyChangedEventArgs(nameof(Zipcode));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string PhoneNumber
+        {
+            get => PhoneNumber_;
+            set
+            {
+                if (PhoneNumber_ != value)
+                {
+                    PhoneNumber_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(PhoneNumber));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string Bio
+        {
+            get => Bio_;
+            set
+            {
+                if (Bio_ != value)
+                {
+                    Bio_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(Bio));
                     PropertyChanged?.Invoke(this, args);
                 }
             }

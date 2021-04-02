@@ -73,7 +73,7 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveTeamCommand}"/>
+                Command ="{Binding CreateTeamCommand}"/>
 
     </Grid>
 

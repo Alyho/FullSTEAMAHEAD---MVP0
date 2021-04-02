@@ -8,7 +8,6 @@ namespace FullSteamAheadMVP0Project.Models
             Age = "";
             Bio = "";
             City = "";
-            Email = "";
             Grade = "";
             Phone_Number = "";
             State = "";
@@ -21,7 +20,6 @@ namespace FullSteamAheadMVP0Project.Models
         public string Age { get; set; }
         public string Bio { get; set; }
         public string City { get; set; }
-        public string Email { get; set; }
         public string Grade { get; set; }
         public string Phone_Number { get; set; }
         public string State { get; set; }

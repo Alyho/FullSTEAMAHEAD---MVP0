@@ -19,13 +19,8 @@ namespace FullSteamAheadMVP0Project.Views
         {
             InitializeComponent();
 
-            createTeamAccountViewModel.PropertyChanged += CreateTeamAccountViewModel_PropertyChanged;
+            createTeamAccountViewModel = new CreateTeamAccountViewModel(this.Navigation);
             this.BindingContext = createTeamAccountViewModel;
-        }
-
-        private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-
         }
 
     }
