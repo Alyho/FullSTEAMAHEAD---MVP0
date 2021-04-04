@@ -123,6 +123,36 @@ namespace FullSteamAheadMVP0Project.Models
             return teams;
         }
 
+        public List<Team> FilterTeamGender(List<Team> teams, string gender) // cleans out based on gender
+        {
+
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Team_Information.Gender == gender)
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            return teams;
+        }
+
+        public List<Team> FilterTeamCity(List<Team> teams, string city) // cleans out based on city
+        {
+
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Team_Information.City == city)
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            return teams;
+        }
+
         public async Task<List<Team>> GetTeamsAsync()
         {
             return (await firebase
