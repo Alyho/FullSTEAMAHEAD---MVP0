@@ -14,6 +14,8 @@ namespace FullSteamAheadMVP0Project.Models
             Privacy = "";
             Bio = "";
             Schedule = "";
+            Min_Age = "";
+            Max_Age = "";
         }
         public string Team_Email { get; set; }
         public string State { get; set; }
@@ -23,7 +25,8 @@ namespace FullSteamAheadMVP0Project.Models
         public string Gender { get; set; }
         public string Privacy { get; set; }
         public string Bio { get; set; }
-
         public string Schedule { get; set; }
+        public string Min_Age { get; set; }
+        public string Max_Age { get; set; }
     }
 }

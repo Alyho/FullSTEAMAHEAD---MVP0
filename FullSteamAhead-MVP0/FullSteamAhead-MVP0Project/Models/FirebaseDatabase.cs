@@ -128,7 +128,7 @@ namespace FullSteamAheadMVP0Project.Models
 
             for (int i = 0; i < teams.Count; i++)
             {
-                if (teams[i].Team_Information.Gender == gender)
+                if (!(teams[i].Team_Information.Gender == gender || teams[i].Team_Information.Gender == "All Genders"))
                 {
                     teams.RemoveAt(i);
                     i--;
@@ -143,7 +143,55 @@ namespace FullSteamAheadMVP0Project.Models
 
             for (int i = 0; i < teams.Count; i++)
             {
-                if (teams[i].Team_Information.City == city)
+                if (teams[i].Team_Information.City != city)
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            return teams;
+        }
+
+        public List<Team> FilterTeamState(List<Team> teams, string state) // cleans out based on state
+        {
+
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Team_Information.State != state)
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            return teams;
+        }
+
+        public List<Team> FilterTeamPrivacy(List<Team> teams) // cleans out private teams
+        {
+
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Team_Information.Privacy == "private")
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            return teams;
+        }
+
+        public List<Team> FilterTeamAge(List<Team> teams, string age) // cleans out based on age
+        {
+            int minAge, maxAge;
+            int userAge = Int32.Parse(age);
+            for (int i = 0; i < teams.Count; i++)
+            {
+                minAge = Int32.Parse(teams[i].Team_Information.Min_Age);
+                maxAge = Int32.Parse(teams[i].Team_Information.Max_Age);
+                if (userAge < minAge || userAge > maxAge)
                 {
                     teams.RemoveAt(i);
                     i--;
