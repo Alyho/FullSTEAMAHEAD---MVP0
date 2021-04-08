@@ -7,6 +7,7 @@ using System.ComponentModel;
 using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -22,7 +23,7 @@ namespace FullSteamAheadMVP0Project.Views
             createTeamAccountViewModel.PropertyChanged += CreateTeamAccountViewModel_PropertyChanged;
             this.BindingContext = createTeamAccountViewModel;
         }
-               
+
         private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "AdminExists")
@@ -39,6 +40,16 @@ namespace FullSteamAheadMVP0Project.Views
                }
             }
 
+        }
+
+        protected void PrivacyPolicy(object sender, EventArgs e)
+        {
+            Launcher.OpenAsync(new Uri("https://www.privacypolicies.com/live/e9b6a4c7-b65e-462a-8a44-91d78e8b99c7"));
+        }
+
+        protected void TermsAndConditions(object sender, EventArgs e)
+        {
+            Launcher.OpenAsync(new Uri("https://www.privacypolicies.com/live/a7b55c2a-bd8b-45c1-9a62-86a16b1714b3"));
         }
 
 

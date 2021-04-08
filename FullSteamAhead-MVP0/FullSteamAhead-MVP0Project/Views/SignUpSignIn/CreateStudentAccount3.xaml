@@ -11,8 +11,9 @@
             <RowDefinition Height="200*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="120*"/>
-            <RowDefinition Height="190*"/>
+            <RowDefinition Height="210*"/>
             <RowDefinition Height="140*"/>
+            <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
@@ -113,21 +114,38 @@
                 Text="Privacy Policy" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="15" 
-                BackgroundColor="AliceBlue" 
+                BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2"
+                Clicked="PrivacyPolicy"/>
 
         <Button Margin="2" 
                 Grid.Row="6" 
                 Text="Terms and Conditions" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="15" 
-                BackgroundColor="AliceBlue" 
+                BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2"
+                Clicked="TermsAndConditions"/>
+
+        <CheckBox Grid.Row="7"
+                  Grid.Column="1"
+                  HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="EndAndExpand"/>
+
+        <Label Text=" I have read and agreed to the terms and conditions and privacy policy" 
+               TextColor="LightSlateGray" 
+               FontSize="16" 
+               Grid.Column="0" 
+               Grid.Row="7"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+
 
         <Button Margin="2" 
-                Grid.Row="7" 
+                Grid.Row="8" 
                 Text="Create account" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 

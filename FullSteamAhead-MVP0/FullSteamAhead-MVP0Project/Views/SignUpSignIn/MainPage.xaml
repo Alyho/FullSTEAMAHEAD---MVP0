@@ -14,7 +14,7 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
-            
+
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -50,7 +50,7 @@
                 HorizontalOptions="Center" 
                 WidthRequest="170"
                 Clicked="TeamAdmin_Button_Clicked"/>
-        
+
         <Button Margin="2" 
                 Grid.Row="3" 
                 Text="Create an account" 
