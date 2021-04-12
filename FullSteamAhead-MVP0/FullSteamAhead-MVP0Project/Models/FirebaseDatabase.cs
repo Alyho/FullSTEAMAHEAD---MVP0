@@ -41,9 +41,11 @@ namespace FullSteamAheadMVP0Project.Models
 
 
 
+
+
         // Account methods
 
-        public async Task<User> GetAccountAsync(string username)
+        public async Task<User> GetAccountAsync(string username) // returns the User that matches with the username
         {
             var allPersons = await GetAccountsAsync();
             await firebase
@@ -52,7 +54,7 @@ namespace FullSteamAheadMVP0Project.Models
             return allPersons.FirstOrDefault(a => a.Username == username);
         }
 
-        public async Task<List<User>> GetAccountsAsync()
+        public async Task<List<User>> GetAccountsAsync() // returns list of all Users in database
         {
             return (await firebase
                 .Child(Users)
@@ -65,17 +67,17 @@ namespace FullSteamAheadMVP0Project.Models
                 }).ToList();
         }
 
-        public async Task SaveAccountAsync(User account)
+        public async Task SaveAccountAsync(User account) // saves User to database
         {
             await firebase.Child(Users).Child(account.Username).PutAsync(account);
         }
 
-        public async Task UpdateAccount(User account)
+        public async Task UpdateAccount(User account) // updates User in database
         {
             await firebase.Child(Users).Child(account.Username).PatchAsync(account);
         }
 
-        public async Task<bool> IsAccountValid(User account)
+        public async Task<bool> IsAccountValid(User account) // returns if User has created an account and if the password matches
         {
             User account2 = await GetAccountAsync(account.Username);
             if (account2 == null || account2.Password != account.Password)
@@ -85,14 +87,122 @@ namespace FullSteamAheadMVP0Project.Models
             return true;
         }
 
-        public async Task<List<User>> AccountSearch(string name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Account searching and filtering methods
+
+        public async Task<List<User>> AccountSearch(string name) // returns list of Users that match the name (either username or nickname)
         {
             var allPersons = await GetAccountsAsync();
-
             // nickname or username: null issues
-           
             List<User> users = allPersons.Where(a => (a.Username != null && a.Username.ToLower() == name) || (a.Nickname != null && a.Nickname.ToLower() == name)).ToList();
+            return users;
+        }
 
+        public List<User> FilterBestAccountResults(List<User> users, Team team) // cleans out users for best results that match with the team variable
+        {
+            users = FilterAccountGender(users, team.Team_Information.Gender);
+            users = FilterAccountCity(users, team.Team_Information.City, team.Team_Information.State);
+            users = FilterAccountPrivacy(users);
+            users = FilterAccountAge(users, team.Team_Information.Min_Age, team.Team_Information.Max_Age);
+            return users;
+        }
+
+        public List<User> FilterAccountGender(List<User> users, string gender) // cleans out users based on gender
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (!(users[i].Information.Preferences.Gender == gender || users[i].Information.Preferences.Gender == "All Genders"))
+                {
+                    users.RemoveAt(i);
+                    i--;
+                }
+            }
+            return users;
+        }
+
+        public List<User> FilterAccountCity(List<User> users, string city, string state) // cleans out users based on city AND state
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Information.City != city || users[i].Information.State != state)
+                {
+                    users.RemoveAt(i);
+                    i--;
+                }
+            }
+            return users;
+        }
+
+        public List<User> FilterAccountState(List<User> users, string state) // cleans out users based on state
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Information.State != state)
+                {
+                    users.RemoveAt(i);
+                    i--;
+                }
+            }
+            return users;
+        }
+
+        public List<User> FilterAccountPrivacy(List<User> users) // cleans out private users
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Information.Preferences.Privacy == "Private")
+                {
+                    users.RemoveAt(i);
+                    i--;
+                }
+            }
+            return users;
+        }
+
+        public List<User> FilterAccountAge(List<User> users, string teamMinAge, string teamMaxAge) // cleans out users based on age
+        {
+            int userAge;
+            int minAge = Int32.Parse(teamMinAge);
+            int maxAge = Int32.Parse(teamMaxAge);
+            for (int i = 0; i < users.Count; i++)
+            {
+                userAge = Int32.Parse(users[i].Information.Age);
+                if (userAge < minAge || userAge > maxAge)
+                {
+                    users.RemoveAt(i);
+                    i--;
+                }
+            }
+            return users;
+        }
+
+        // Note: this is the only method not called in FilterBestAccountResults()
+        public List<User> FilterAccountRole(List<User> users, string role) // cleans out users based on role (member / mentor)
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].Information.Role != role)
+                {
+                    users.RemoveAt(i);
+                    i--;
+                }
+            }
             return users;
         }
 
@@ -111,97 +221,11 @@ namespace FullSteamAheadMVP0Project.Models
 
 
 
+
+
         // Team methods
 
-        public async Task<List<Team>> TeamSearch(string name)
-        {
-            var allPersons = await GetTeamsAsync();
-
-            // nickname or username
-            List<Team> teams = allPersons.Where(a => (a.Team_Nickname != null && a.Team_Nickname.ToLower() == name) || a.Team_Username.ToLower() == name).ToList();
-
-            return teams;
-        }
-
-        public List<Team> FilterTeamGender(List<Team> teams, string gender) // cleans out based on gender
-        {
-
-            for (int i = 0; i < teams.Count; i++)
-            {
-                if (!(teams[i].Team_Information.Gender == gender || teams[i].Team_Information.Gender == "All Genders"))
-                {
-                    teams.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            return teams;
-        }
-
-        public List<Team> FilterTeamCity(List<Team> teams, string city) // cleans out based on city
-        {
-
-            for (int i = 0; i < teams.Count; i++)
-            {
-                if (teams[i].Team_Information.City != city)
-                {
-                    teams.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            return teams;
-        }
-
-        public List<Team> FilterTeamState(List<Team> teams, string state) // cleans out based on state
-        {
-
-            for (int i = 0; i < teams.Count; i++)
-            {
-                if (teams[i].Team_Information.State != state)
-                {
-                    teams.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            return teams;
-        }
-
-        public List<Team> FilterTeamPrivacy(List<Team> teams) // cleans out private teams
-        {
-
-            for (int i = 0; i < teams.Count; i++)
-            {
-                if (teams[i].Team_Information.Privacy == "private")
-                {
-                    teams.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            return teams;
-        }
-
-        public List<Team> FilterTeamAge(List<Team> teams, string age) // cleans out based on age
-        {
-            int minAge, maxAge;
-            int userAge = Int32.Parse(age);
-            for (int i = 0; i < teams.Count; i++)
-            {
-                minAge = Int32.Parse(teams[i].Team_Information.Min_Age);
-                maxAge = Int32.Parse(teams[i].Team_Information.Max_Age);
-                if (userAge < minAge || userAge > maxAge)
-                {
-                    teams.RemoveAt(i);
-                    i--;
-                }
-            }
-
-            return teams;
-        }
-
-        public async Task<List<Team>> GetTeamsAsync()
+        public async Task<List<Team>> GetTeamsAsync() // returns list of all Teams in database
         {
             return (await firebase
                 .Child(Teams)
@@ -216,12 +240,47 @@ namespace FullSteamAheadMVP0Project.Models
                 }).ToList();
         }
 
-        public async Task SaveTeamAsync(Team team)
+        public async Task SaveTeamAsync(Team team) // saves Team to database
         {
             await firebase.Child(Teams).Child(team.Team_Username).PutAsync(team);
         }
 
-        public async Task<Team> IsTeamValid(Team team, Admin admin)
+        public async Task AddUser(Team team, User account) // adds User to Team, either in Mentors list or Members list
+        {
+            if (account.Information.Role == "Mentor")
+            {
+                team.Mentors.Add(account.Username, account);
+                await UpdateTeamMentors(team);
+            }
+            else if (account.Information.Role == "Student")
+            {
+                team.Members.Add(account.Username, account);
+                await UpdateTeamMembers(team);
+            }
+        }
+
+        public async Task AddTeamAdmin(Team team, Admin admin) // adds Admin to Team, through the Team_Admins list
+        {
+            team.Team_Admins.Add(admin.Username, admin);
+            await UpdateTeamAdmins(team);
+        }
+
+        public async Task UpdateTeamMembers(Team team) // updates Members list in database
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).PatchAsync(team.Members);
+        }
+
+        public async Task UpdateTeamMentors(Team team) // updates Mentors list in database
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).PatchAsync(team.Mentors);
+        }
+
+        public async Task UpdateTeamAdmins(Team team) // updates Team_Admins list in database
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Team_Admins).PatchAsync(team.Team_Admins);
+        }
+
+        public async Task<Team> IsTeamValid(Team team, Admin admin) // returns Team if it exists in database + password matches + admin user and password matches, otherwise returns null
         {
             var allPersons = await GetTeamsAsync();
 
@@ -247,10 +306,9 @@ namespace FullSteamAheadMVP0Project.Models
             return null;
         }
 
-        public async Task<int> TeamExists(Team team)
+        public async Task<int> TeamExists(Team team) // returns an integer - given a Team, checks with database: (0) username & password matches / (1) username matches / (2) neither
         {
             var allPersons = await GetTeamsAsync();
-            // (0) username & password matches / (1) username matches / (2) neither
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
             if (team2 == null)
             {
@@ -263,9 +321,8 @@ namespace FullSteamAheadMVP0Project.Models
             return 1;
         }
 
-        public async Task<bool> TeamAdminExists(Team team, Admin admin)
+        public async Task<bool> TeamAdminExists(Team team, Admin admin) // returns if Admin username already exists within Team
         {
-            // add method TeamAdminExists - checks if the username is already within the team
             var allPersons = await GetTeamsAsync();
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
             Dictionary<string, Admin> allAdmins = team2.Team_Admins;
@@ -279,39 +336,121 @@ namespace FullSteamAheadMVP0Project.Models
             return false;
         }
 
-        public async Task AddUser(Team team, User account)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Team searching and filtering methods
+
+        public async Task<List<Team>> TeamSearch(string name) // returns list of Teams that match the name (either username or nickname)
         {
-            if (account.Information.Role == "Mentor")
+            var allPersons = await GetTeamsAsync();
+            // nickname or username
+            List<Team> teams = allPersons.Where(a => (a.Team_Nickname != null && a.Team_Nickname.ToLower() == name) || a.Team_Username.ToLower() == name).ToList();
+            return teams;
+        }
+
+        public List<Team> FilterBestTeamResults(List<Team> teams, User user) // cleans out teams for best results that match with the user variable
+        {
+            teams = FilterTeamGender(teams, user.Information.Preferences.Gender);
+            teams = FilterTeamCity(teams, user.Information.City, user.Information.State);
+            teams = FilterTeamPrivacy(teams);
+            teams = FilterTeamAge(teams, user.Information.Age);
+            return teams;
+        }
+
+        public List<Team> FilterTeamGender(List<Team> teams, string gender) // cleans out teams based on gender
+        {
+            for (int i = 0; i < teams.Count; i++)
             {
-                team.Mentors.Add(account.Username, account);
-                await UpdateTeamMentors(team);
-            } else if (account.Information.Role == "Student")
-            {
-                team.Members.Add(account.Username, account);
-                await UpdateTeamMembers(team);
+                if (!(teams[i].Team_Information.Gender == gender || teams[i].Team_Information.Gender == "All Genders"))
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
             }
+            return teams;
         }
 
-        public async Task UpdateTeamMembers(Team team)
+        public List<Team> FilterTeamCity(List<Team> teams, string city, string state) // cleans out teams based on city AND state
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).PatchAsync(team.Members);
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Team_Information.City != city || teams[i].Team_Information.State != state)
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+            return teams;
         }
 
-        public async Task UpdateTeamMentors(Team team)
+        public List<Team> FilterTeamState(List<Team> teams, string state) // cleans out teams based on state
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).PatchAsync(team.Mentors);
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Team_Information.State != state)
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+            return teams;
         }
 
-        public async Task AddTeamAdmin(Team team, Admin admin)
+        public List<Team> FilterTeamPrivacy(List<Team> teams) // cleans out private teams
         {
-            team.Team_Admins.Add(admin.Username, admin);
-            await UpdateTeamAdmins(team);
+            for (int i = 0; i < teams.Count; i++)
+            {
+                if (teams[i].Team_Information.Privacy == "Private")
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+            return teams;
         }
 
-        public async Task UpdateTeamAdmins(Team team)
+        public List<Team> FilterTeamAge(List<Team> teams, string age) // cleans out teams based on age
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Team_Admins).PatchAsync(team.Team_Admins);
+            int minAge, maxAge;
+            int userAge = Int32.Parse(age);
+            for (int i = 0; i < teams.Count; i++)
+            {
+                minAge = Int32.Parse(teams[i].Team_Information.Min_Age);
+                maxAge = Int32.Parse(teams[i].Team_Information.Max_Age);
+                if (userAge < minAge || userAge > maxAge)
+                {
+                    teams.RemoveAt(i);
+                    i--;
+                }
+            }
+            return teams;
         }
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

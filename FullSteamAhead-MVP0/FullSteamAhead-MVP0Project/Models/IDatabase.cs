@@ -6,23 +6,43 @@ namespace FullSteamAheadMVP0Project.Models
 {
     public interface IDatabase
     {
-        Task<User> GetAccountAsync(string userName);
-        Task<List<User>> GetAccountsAsync();
-        Task SaveAccountAsync(User account);
-        Task UpdateAccount(User account);
-        Task<bool> IsAccountValid(User account);
-        Task<List<User>> AccountSearch(string name);
+        // Account methods
+        Task<User> GetAccountAsync(string username);  // returns the User that matches with the username
+        Task<List<User>> GetAccountsAsync();          // returns list of all Users in database
+        Task SaveAccountAsync(User account);          // saves User to database
+        Task UpdateAccount(User account);             // updates User in database
+        Task<bool> IsAccountValid(User account);      // returns if User has created an account and if the password matches
 
-        Task<List<Team>> TeamSearch(string name);
-        Task<List<Team>> GetTeamsAsync();
-        Task SaveTeamAsync(Team team);
-        Task<Team> IsTeamValid(Team team, Admin admin);
-        Task<int> TeamExists(Team team);
-        Task<bool> TeamAdminExists(Team team, Admin admin);
-        Task AddUser(Team team, User account);
-        Task UpdateTeamMembers(Team team);
-        Task UpdateTeamMentors(Team team);
-        Task AddTeamAdmin(Team team, Admin admin);
-        Task UpdateTeamAdmins(Team team);
+        // Account searching and filtering methods
+        Task<List<User>> AccountSearch(string name);                                          // returns list of Users that match the name (either username or nickname)
+        List<User> FilterBestAccountResults(List<User> users, Team team);                     // cleans out users for best results that match with the team variable
+        List<User> FilterAccountGender(List<User> users, string gender);                      // cleans out users based on gender
+        List<User> FilterAccountCity(List<User> users, string city, string state);            // cleans out users based on city AND state
+        List<User> FilterAccountState(List<User> users, string state);                        // cleans out users based on state
+        List<User> FilterAccountPrivacy(List<User> users);                                    // cleans out private users
+        List<User> FilterAccountAge(List<User> users, string teamMinAge, string teamMaxAge);  // cleans out users based on age
+        // Note: this is the only method not called in FilterBestAccountResults()
+        List<User> FilterAccountRole(List<User> users, string role);                          // cleans out users based on role (member / mentor)
+
+        // Team methods
+        Task<List<Team>> GetTeamsAsync();                    // returns list of all Teams in database
+        Task SaveTeamAsync(Team team);                       // saves Team to database
+        Task AddUser(Team team, User account);               // adds User to Team, either in Mentors list or Members list
+        Task AddTeamAdmin(Team team, Admin admin);           // adds Admin to Team, through the Team_Admins list
+        Task UpdateTeamMembers(Team team);                   // updates Members list in database
+        Task UpdateTeamMentors(Team team);                   // updates Mentors list in database
+        Task UpdateTeamAdmins(Team team);                    // updates Team_Admins list in database
+        Task<Team> IsTeamValid(Team team, Admin admin);      // returns Team if it exists in database + password matches + admin user and password matches, otherwise returns null
+        Task<int> TeamExists(Team team);                     // returns an integer - given a Team, checks with database: (0) username & password matches / (1) username matches / (2) neither
+        Task<bool> TeamAdminExists(Team team, Admin admin);  // returns if Admin username already exists within Team
+
+        // Team searching and filtering methods
+        Task<List<Team>> TeamSearch(string name);                                // returns list of Teams that match the name (either username or nickname)
+        List<Team> FilterBestTeamResults(List<Team> teams, User user);           // cleans out teams for best results that match with the user variable
+        List<Team> FilterTeamGender(List<Team> teams, string gender);            // cleans out teams based on gender
+        List<Team> FilterTeamCity(List<Team> teams, string city, string state);  // cleans out teams based on city AND state
+        List<Team> FilterTeamState(List<Team> teams, string state);              // cleans out teams based on state
+        List<Team> FilterTeamPrivacy(List<Team> teams);                          // cleans out private teams
+        List<Team> FilterTeamAge(List<Team> teams, string age);                  // cleans out teams based on age
     }
 }
