@@ -25,6 +25,8 @@ namespace FullSteamAheadMVP0Project.Models
         List<User> FilterAccountRole(List<User> users, string role);                          // cleans out users based on role (member / mentor)
 
         // Team methods
+        Task<Team> GetTeamAsync(string username);            // returns the Team that matches with the username
+        Task<Admin> GetAdminAsync(string username);          // returns the Admin that matches with the username
         Task<List<Team>> GetTeamsAsync();                    // returns list of all Teams in database
         Task SaveTeamAsync(Team team);                       // saves Team to database
         Task AddUser(Team team, User account);               // adds User to Team, either in Mentors list or Members list

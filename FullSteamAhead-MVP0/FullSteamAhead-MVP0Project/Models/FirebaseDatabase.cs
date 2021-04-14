@@ -225,6 +225,33 @@ namespace FullSteamAheadMVP0Project.Models
 
         // Team methods
 
+        public async Task<Team> GetTeamAsync(string username) // returns the Team that matches with the username
+        {
+            var teams = await GetTeamsAsync();
+            await firebase
+                .Child(Teams)
+                .OnceAsync<Team>();
+            return teams.FirstOrDefault(a => a.Team_Username == username);
+        }
+
+        public async Task<Admin> GetAdminAsync(string username) // returns the Admin that matches with the username
+        {
+            List<Team> teams = await GetTeamsAsync();
+            for (int i = 0; i < teams.Count; i++)
+            {
+                Team team = teams[i];
+                Dictionary<string, Admin> admins = team.Team_Admins;
+                foreach (KeyValuePair<string, Admin> entry in admins)
+                {
+                    if (entry.Key == username)
+                    {
+                        return entry.Value;
+                    }
+                }
+            }
+            return null;
+        }
+
         public async Task<List<Team>> GetTeamsAsync() // returns list of all Teams in database
         {
             return (await firebase
