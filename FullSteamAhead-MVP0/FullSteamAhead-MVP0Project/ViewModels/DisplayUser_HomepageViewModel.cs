@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using FullSteamAheadMVP0Project.Models;
 using FullSteamAheadMVP0Project;
 using System.Windows.Input;
+using System.Threading.Tasks;
 
 public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 {
@@ -49,8 +50,22 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
     }
 
     public DisplayUser_HomePageViewModel()
-    {
+    {   
         list = new ObservableCollection<User>();
+        
+        Task.Run(new System.Action(async () =>
+        {
+            var users = await App.Database.GetAccountsAsync();
+
+            list.Clear();
+            var userBest = App.Database.FilterBestAccountResults(users, Global.TeamSignedIn);
+
+            foreach (var user in userBest)
+            {
+                list.Add(user);
+            }
+            UserListView = list;
+        }));
     }
 
 }

@@ -54,6 +54,8 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"/>
+        
+        <!--Add "MaxAge" and "MinAge" boxes for Age range required to join a team-->
 
         <Picker x:Name="State"
                 Title="State"

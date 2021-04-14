@@ -6,6 +6,8 @@ using FullSteamAheadMVP0Project.Models;
 using FullSteamAheadMVP0Project;
 using System.Windows.Input;
 using FullSteamAheadMVP0Project.Views;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 {
@@ -13,7 +15,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
 
     private INavigation _navigation;
-    
+
     protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -58,6 +60,43 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
         list = new ObservableCollection<Team>();
         myList = new ObservableCollection<Team>();
         _navigation = Navigation;
+
+
+        if (Global.UserSignedIn.Information.Role == "Mentor")
+        {
+            Task.Run(new System.Action(async ()  =>
+            {
+                var teams = await App.Database.GetTeamsAsync();
+
+                list.Clear();
+                var teamPrivacies = App.Database.FilterTeamPrivacy(teams);
+                var teamCities = App.Database.FilterTeamCity(teamPrivacies, Global.UserSignedIn.Information.City, Global.UserSignedIn.Information.State);
+                foreach (var team in teamCities)
+                {
+                    list.Add(team);
+                }
+                TeamListView = list;
+
+            }));
+            
+        } 
+        
+        else
+        {
+            Task.Run(new System.Action(async () =>
+            {
+                var teams = await App.Database.GetTeamsAsync();
+               
+                list.Clear();
+                var teamBest = App.Database.FilterBestTeamResults(teams, Global.UserSignedIn);
+                foreach (var team in teamBest)
+                {
+                    list.Add(team);
+                }
+                TeamListView = list;
+
+            }));
+        }
         
         MyTeamsCommand = new Command(async () =>
         {
@@ -76,6 +115,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
             await _navigation.PushAsync(new MyTeamsPage());
 
         });
+
     }
 
 }

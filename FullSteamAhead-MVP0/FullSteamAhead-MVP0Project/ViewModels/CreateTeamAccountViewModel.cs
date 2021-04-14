@@ -24,6 +24,9 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private string TeamNickname_;
         private string TeamEmail_;
 
+        private string TeamMinAge_;
+        private string TeamMaxAge_;
+
         private string TeamAdminUsername_;
         private string TeamAdminPassword_;
 
@@ -61,7 +64,6 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     Team_Username = TeamUsername_,
                     Team_Password = TeamPassword_,
-                    Team_Nickname = TeamNickname_,
                     Team_Information = new TeamInformation()
                 };
 
@@ -76,7 +78,6 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 else if (_teamCreated == 2)
                 {
                     Global.TeamSignedIn = _team;
-                    Global.TeamSignedIn.Team_Information.Team_Email = TeamEmail_;
                 }
 
              
@@ -117,6 +118,10 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             SaveTeamCommand = new Command(async () =>
             {
+                Global.TeamSignedIn.Team_Nickname = TeamNickname_;
+                Global.TeamSignedIn.Team_Information.Team_Email = TeamEmail_;
+                Global.TeamSignedIn.Team_Information.Min_Age = TeamMinAge_;
+                Global.TeamSignedIn.Team_Information.Max_Age = TeamMaxAge_;
                 Global.TeamSignedIn.Team_Information.State = TeamState_;
                 Global.TeamSignedIn.Team_Information.City = TeamCity_;
                 Global.TeamSignedIn.Team_Information.Zip_Code= TeamZipcode_;
@@ -309,6 +314,34 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     TeamSchedule_ = value;
                     var args = new PropertyChangedEventArgs(nameof(Schedule));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string MinAge
+        {
+            get => TeamMinAge_;
+            set
+            {
+                if (TeamMinAge_ != value)
+                {
+                    TeamMinAge_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(MinAge));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
+        public string MaxAge
+        {
+            get => TeamMaxAge_;
+            set
+            {
+                if (TeamMaxAge_ != value)
+                {
+                    TeamMaxAge_ = value;
+                    var args = new PropertyChangedEventArgs(nameof(MaxAge));
                     PropertyChanged?.Invoke(this, args);
                 }
             }

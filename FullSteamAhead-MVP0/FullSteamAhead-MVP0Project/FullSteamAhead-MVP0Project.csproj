@@ -10,6 +10,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <IntermediateOutputPath>C:\VS2019\MyApp</IntermediateOutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Views\HomePage2.xaml.cs" />
   </ItemGroup>

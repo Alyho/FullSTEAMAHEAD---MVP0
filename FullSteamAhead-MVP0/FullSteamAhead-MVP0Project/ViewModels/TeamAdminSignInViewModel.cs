@@ -49,8 +49,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 else
                 {
                     _teamExists = true;
-                    Global.TeamSignedIn = _team;
-                    Global.AdminSignedIn = _admin;
+                    //Global.TeamSignedIn = await App.Database.GetTeamAsync(_team.Team_Username);
+                    //Global.AdminSignedIn = await App.Database.GetAdminAsync(_admin.Username);
                 }
 
             //Raise the Property Changed Event to notify the MainPage

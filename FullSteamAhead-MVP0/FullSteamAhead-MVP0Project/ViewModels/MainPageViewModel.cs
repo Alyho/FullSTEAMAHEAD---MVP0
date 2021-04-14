@@ -126,7 +126,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                                                       {
                                                           Username = Username_,
                                                           Password = Password_
-                                                      };
+                                          };
 
                                           //call the database to find any users
                                           var found = await App.Database.IsAccountValid(_user);
@@ -139,7 +139,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                                           else
                                           {
                                               _userExists = true;
-                                              Global.UserSignedIn = _user; 
+                                              Global.UserSignedIn = await App.Database.GetAccountAsync(_user.Username); 
                                           }
 
                                           //Raise the Property Changed Event to notify the MainPage
