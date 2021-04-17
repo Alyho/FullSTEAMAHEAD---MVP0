@@ -9,20 +9,22 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="87*"/>
-            <RowDefinition Height="87*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
             <RowDefinition Height="82*"/>
-            <RowDefinition Height="87*"/>
-            <RowDefinition Height="87*"/>
-            <RowDefinition Height="75*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="170*"/>
-            <RowDefinition Height="87*"/>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="74*"/>
+            <RowDefinition Height="92*"/>
+            <RowDefinition Height="140*"/>
+            <RowDefinition Height="82*"/>
+            <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -30,7 +32,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="30" 
+               FontSize="25" 
                Grid.Column="0" 
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
@@ -40,7 +42,7 @@
                 Placeholder="Team Email            " 
                 Text="{Binding TeamEmail}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"/>
@@ -50,18 +52,38 @@
                 Placeholder="Team Nickname            " 
                 Text="{Binding TeamNickname}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"/>
         
         <!--Add "MaxAge" and "MinAge" boxes for Age range required to join a team-->
+        <Editor Margin="2" 
+                Grid.Row="3" 
+                Placeholder="Max age            " 
+                Text="{Binding MaxAge}"
+                TextColor="LightSlateGray" 
+                Grid.Column="1"
+                FontSize="17" 
+                Grid.ColumnSpan="3"
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2" 
+                Grid.Row="3" 
+                Placeholder="Min age            " 
+                Text="{Binding MinAge}"
+                TextColor="LightSlateGray" 
+                FontSize="17" 
+                Grid.ColumnSpan="2"
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
 
         <Picker x:Name="State"
                 Title="State"
                 TitleColor="LightSlateGray"
                 Margin="2"   
-                Grid.Row="3" 
+                Grid.Row="4" 
                 Grid.ColumnSpan="4"
                 SelectedItem="{Binding State}">
             <Picker.ItemsSource>
@@ -74,21 +96,21 @@
         </Picker>
 
         <Editor Margin="2"   
-                Grid.Row="4" 
+                Grid.Row="5" 
                 Placeholder="City            " 
                 Text="{Binding City}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 BackgroundColor="White" 
                 Grid.ColumnSpan="4"
                 HorizontalOptions="Center"/>
 
         <Editor Margin="2" 
-                Grid.Row="5" 
+                Grid.Row="6" 
                 Placeholder="Zip code            " 
                 Text="{Binding Zipcode}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 Grid.ColumnSpan="4"
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
@@ -96,7 +118,7 @@
         <Picker x:Name="Gender"
                 Title="Gender"
                 TitleColor="LightSlateGray"
-                Grid.Row="6" 
+                Grid.Row="7" 
                 Grid.Column="0"
                 Grid.ColumnSpan="4"
                 SelectedItem="{Binding Gender}">
@@ -112,7 +134,7 @@
         <Picker x:Name="Privacy"
                 Title="Privacy"
                 TitleColor="LightSlateGray"
-                Grid.Row="7" 
+                Grid.Row="8" 
                 Grid.Column="0"
                 SelectedItem="{Binding Privacy}">
             <Picker.ItemsSource>
@@ -127,33 +149,33 @@
                TextColor="LightSlateGray" 
                FontSize="14" 
                Grid.Column="1" 
-               Grid.Row="7"
+               Grid.Row="8"
                Grid.ColumnSpan="3"/>
 
         <Editor Margin="2" 
-                Grid.Row="8" 
+                Grid.Row="9" 
                 Placeholder="Bio                 " 
                 Text="{Binding Bio}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 BackgroundColor="White" 
                 Grid.ColumnSpan="4"/>
 
         <Editor Margin="2" 
-                Grid.Row="9" 
+                Grid.Row="10" 
                 Placeholder="Schedule            " 
                 Text="{Binding Schedule}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"/>
          
         <Button Margin="2" 
-                Grid.Row="10" 
-                Text="Next" CornerRadius="10" 
+                Grid.Row="11" 
+                Text="Next" CornerRadius="11" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveTeamCommand}"

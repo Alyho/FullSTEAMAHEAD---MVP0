@@ -48,7 +48,10 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label>
+                            <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
@@ -56,7 +59,10 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
@@ -64,7 +70,10 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Location: " />

@@ -27,6 +27,11 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new MyTeams_Announcements());
         }
 
+        private async void Members_Button_CLicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeams_Members());
+        }
+
     }
 
 

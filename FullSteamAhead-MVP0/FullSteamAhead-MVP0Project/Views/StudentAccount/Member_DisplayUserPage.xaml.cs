@@ -12,13 +12,13 @@ using Xamarin.Forms.Xaml;
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DisplayUserPage : ContentPage
+    public partial class Member_DisplayUserPage : ContentPage
     {
-        public DisplayUserPage()
+        public Member_DisplayUserPage()
         {
         }
 
-        public DisplayUserPage(User user)
+        public Member_DisplayUserPage(User user)
         {
             InitializeComponent();
             BindingContext = new DisplayUserPageViewModel(user);
