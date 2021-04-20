@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.MyTeams_Members"
+             x:Class="FullSteamAheadMVP0Project.Views.MyTeam_Members"
              BackgroundColor="AliceBlue">
 
     <Grid>
@@ -143,7 +143,7 @@
                Grid.Row="5"
                Grid.ColumnSpan="4"/>
 
-        <ListView x:Name="Members"
+        <!-- <ListView x:Name="Members"
                   Grid.Column="0" 
                   Grid.Row="6" 
                   Grid.ColumnSpan="4"
@@ -177,11 +177,11 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView> 
+        </ListView> -->
 
-        <Button Grid.Column="0" Grid.Row="7" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
-        <Button Grid.Column="1" Grid.Row="7" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Announcements_Button_CLicked"/>
-        <Button Grid.Column="2" Grid.Row="7" Text="Calendar" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
+        <Button Grid.Column="0" Grid.Row="7" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat2_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="7" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Announcements2_Button_CLicked"/>
+        <Button Grid.Column="2" Grid.Row="7" Text="Calendar" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Calendar2_Button_CLicked"/>
 
     </Grid>
 </ContentPage>

@@ -26,5 +26,11 @@ public partial class DisplayUser_Homepage : ContentPage
             var selectedItem = e.Item as User;
             await Navigation.PushAsync(new DisplayUserPage(selectedItem));
         }
+
+        private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeam_Calendar());
+        }
+
     }
 }

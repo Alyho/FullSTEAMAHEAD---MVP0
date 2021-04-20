@@ -11,16 +11,16 @@ using Xamarin.Forms.Xaml;
 
 namespace FullSteamAheadMVP0Project.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class MyTeams_Members : ContentPage
-{
-    public MyTeams_Members()
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MyTeam_Members : ContentPage
     {
-        InitializeComponent();
-        /*BindingContext = new DisplayUser_HomePageViewModel();*/
-    }
+        public MyTeam_Members()
+        {
+            InitializeComponent();
+            /*BindingContext = new DisplayUser_HomePageViewModel();*/
+        }
 
-        private async void Members_ItemTapped(object sender, ItemTappedEventArgs e)
+        /*private async void Members_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as User;
             await Navigation.PushAsync(new Member_DisplayUserPage());
@@ -39,21 +39,21 @@ public partial class MyTeams_Members : ContentPage
             var selectedItem = e.Item as User;
             await Navigation.PushAsync(new Mentor_DisplayUserPage());
 
+        } */
+
+        private async void Chat2_Button_CLicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeam_Chat());
         }
 
-        private async void Chat_Button_CLicked(object sender, EventArgs e)
+        private async void Announcements2_Button_CLicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Chat());
+            await Navigation.PushAsync(new MyTeam_Announcements());
         }
 
-    private async void Announcements_Button_CLicked(object sender, EventArgs e)
+        private async void Calendar2_Button_CLicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Announcements());
-        }
-
-    private async void Calendar_Button_CLicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyTeams_Calendar());
+            await Navigation.PushAsync(new MyTeam_Calendar());
         }
 
     }
