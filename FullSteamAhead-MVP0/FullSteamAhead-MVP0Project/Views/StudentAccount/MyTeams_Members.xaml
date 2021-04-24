@@ -43,7 +43,7 @@
                Grid.Row="1"
                Grid.ColumnSpan="4"/>
 
-        <!-- <ListView x:Name="Admins" 
+        <ListView x:Name="Admins" 
                   Grid.Row="2" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding AdminsListView}"
@@ -62,7 +62,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
-                                        <Span Text="{Binding Admin_Nickname}"/>
+                                        <Span Text="{Binding Nickname}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -73,7 +73,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
-                                        <Span Text="{Binding Admin_Username}"/>
+                                        <Span Text="{Binding Username}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -82,7 +82,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView> -->
+        </ListView> 
 
         <Label Text="Mentors" 
                HorizontalTextAlignment="Center" 
@@ -93,7 +93,7 @@
                Grid.Row="3"
                Grid.ColumnSpan="4"/>
 
-        <!-- <ListView x:Name="Mentors"
+        <ListView x:Name="Mentors"
                   Grid.Row="4" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding MentorsListView}"
@@ -132,7 +132,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView> -->
+        </ListView> 
 
         <Label Text="Members" 
                HorizontalTextAlignment="Center" 

@@ -42,7 +42,7 @@
                Grid.Row="2" 
                Grid.ColumnSpan="3"/>
 
-        <Label Text="{Binding Admin_Bio}"
+        <Label Text="{Binding Admin_Email}"
                LineBreakMode="WordWrap"
                MaxLines="10"
                Grid.Column="0" 

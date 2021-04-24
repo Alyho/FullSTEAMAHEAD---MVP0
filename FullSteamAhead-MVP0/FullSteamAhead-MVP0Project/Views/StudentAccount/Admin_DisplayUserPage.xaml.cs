@@ -21,7 +21,7 @@ namespace FullSteamAheadMVP0Project.Views
         public Admin_DisplayUserPage(Admin admin)
         {
             InitializeComponent();
-            /*BindingContext = new ViewModel(admin);*/
+            BindingContext = new AdminDisplayViewModel(admin);
         }
 
     }

@@ -30,5 +30,11 @@ namespace FullSteamAheadMVP0Project.Models
             get;
             set;
         }
+
+        public static Team SelectedTeam
+        {
+            get;
+            set;
+        }
     }
 }

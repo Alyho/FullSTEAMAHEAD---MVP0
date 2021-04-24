@@ -17,29 +17,29 @@ namespace FullSteamAheadMVP0Project.Views
         public MyTeam_Members()
         {
             InitializeComponent();
-            /*BindingContext = new DisplayUser_HomePageViewModel();*/
+            BindingContext = new MembersViewModel();
         }
 
-        /*private async void Members_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void Members_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as User;
-            await Navigation.PushAsync(new Member_DisplayUserPage());
+            await Navigation.PushAsync(new Member_DisplayUserPage(selectedItem));
 
         }
 
         private async void Admins_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as Admin;
-            await Navigation.PushAsync(new Admin_DisplayUserPage());
+            await Navigation.PushAsync(new Admin_DisplayUserPage(selectedItem));
 
         }
 
         private async void Mentors_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as User;
-            await Navigation.PushAsync(new Mentor_DisplayUserPage());
+            await Navigation.PushAsync(new Mentor_DisplayUserPage(selectedItem));
 
-        } */
+        } 
 
         private async void Chat2_Button_CLicked(object sender, EventArgs e)
         {
