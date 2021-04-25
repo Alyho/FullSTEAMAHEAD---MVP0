@@ -363,6 +363,21 @@ namespace FullSteamAheadMVP0Project.Models
             return false;
         }
 
+        public void AddAnnouncement(Team team, string announcement)
+        {
+            team.Announcements.Insert(0, announcement);
+        }
+
+        public void RemoveAnnouncement(Team team, int index)
+        {
+            team.Announcements.RemoveAt(index);
+        }
+
+        public List<string> GetAnnouncements(Team team)
+        {
+            return team.Announcements;
+        }
+
 
 
 

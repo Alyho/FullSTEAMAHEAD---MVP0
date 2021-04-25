@@ -37,6 +37,9 @@ namespace FullSteamAheadMVP0Project.Models
         Task<Team> IsTeamValid(Team team, Admin admin);      // returns Team if it exists in database + password matches + admin user and password matches, otherwise returns null
         Task<int> TeamExists(Team team);                     // returns an integer - given a Team, checks with database: (0) username & password matches / (1) username matches / (2) neither
         Task<bool> TeamAdminExists(Team team, Admin admin);  // returns if Admin username already exists within Team
+        void AddAnnouncement(Team team, string announcement);// adds announcement to beginning of list
+        void RemoveAnnouncement(Team team, int index);       // removes announcement based on index
+        List<string> GetAnnouncements(Team team);            // returns team announcements
 
         // Team searching and filtering methods
         Task<List<Team>> TeamSearch(string name);                                // returns list of Teams that match the name (either username or nickname)

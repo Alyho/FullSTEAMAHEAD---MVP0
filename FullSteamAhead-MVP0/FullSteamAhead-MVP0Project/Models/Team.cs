@@ -4,11 +4,13 @@ namespace FullSteamAheadMVP0Project.Models
 {
     public class Team
     {
+        public List<string> Announcements { get; set; }
         public Dictionary<string, User> Members { get; set; }
         public Dictionary<string, User> Mentors { get; set; }
         public Dictionary<string, Admin> Team_Admins { get; set; }
         public Team()
         {
+            Announcements = new List<string>();
             Members = new Dictionary<string, User>();
             Mentors = new Dictionary<string, User>();
             Team_Admins = new Dictionary<string, Admin>();
