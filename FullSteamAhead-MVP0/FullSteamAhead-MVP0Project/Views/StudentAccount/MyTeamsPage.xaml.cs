@@ -26,6 +26,16 @@ namespace FullSteamAheadMVP0Project.Views
             Global.SelectedTeam = selectedItem;
             await Navigation.PushAsync(new MyTeams_Chat());
 
+            /*  if (Global.AdminSignedIn != null)
+            {
+                await Navigation.PushAsync(new MyTeams_Chat());
+            }
+
+            if (Global.UserSignedIn != null)
+            {
+                await Navigation.PushAsync(new MyTeams_Chat());
+            }*/
+
         }
 
         private async void HomePage_Button_Clicked(object sender, EventArgs e)

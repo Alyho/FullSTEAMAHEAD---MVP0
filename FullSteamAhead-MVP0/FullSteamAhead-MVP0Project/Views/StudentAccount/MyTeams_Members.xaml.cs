@@ -34,14 +34,8 @@ public partial class MyTeams_Members : ContentPage
 
         }
 
-        private async void Mentors_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var selectedItem = e.Item as User;
-            await Navigation.PushAsync(new Mentor_DisplayUserPage(selectedItem));
 
-        }
-
-        private async void Chat_Button_CLicked(object sender, EventArgs e)
+    private async void Chat_Button_CLicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MyTeams_Chat());
         }

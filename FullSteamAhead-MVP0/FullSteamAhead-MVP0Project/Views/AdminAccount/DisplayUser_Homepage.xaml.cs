@@ -10,16 +10,16 @@ using Xamarin.Forms.Xaml;
 
 namespace FullSteamAheadMVP0Project.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class DisplayUser_Homepage : ContentPage
-{
-    public DisplayUser_Homepage()
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DisplayUser_Homepage : ContentPage
     {
-        InitializeComponent();
-        
-        BindingContext = new DisplayUser_HomePageViewModel();
-        
-    }
+        public DisplayUser_Homepage()
+        {
+            InitializeComponent();
+
+            BindingContext = new DisplayUser_HomePageViewModel();
+
+        }
 
         private async void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -27,10 +27,23 @@ public partial class DisplayUser_Homepage : ContentPage
             await Navigation.PushAsync(new DisplayUserPage(selectedItem));
         }
 
+        /*private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
+        {
+            if (Global.AdminSignedIn != null)
+            {
+                await Navigation.PushAsync(new MyTeams_Chat());
+            }
+
+            if (Global.UserSignedIn != null)
+            {
+                await Navigation.PushAsync(new MyTeams_Chat());
+            }
+            
+        }*/
+
         private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeam_Calendar());
+            await Navigation.PushAsync(new MyTeams_Chat());
         }
-
     }
 }

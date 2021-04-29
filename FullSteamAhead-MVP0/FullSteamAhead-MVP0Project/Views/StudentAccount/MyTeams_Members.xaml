@@ -11,12 +11,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="1.8*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.8*"/>
+            <RowDefinition Height=".8*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -84,7 +82,7 @@
             </ListView.ItemTemplate>
         </ListView> 
 
-        <Label Text="Mentors" 
+        <Label Text="Mentors and members" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
@@ -93,59 +91,9 @@
                Grid.Row="3"
                Grid.ColumnSpan="4"/>
 
-        <ListView x:Name="Mentors"
-                  Grid.Row="4" 
-                  Grid.ColumnSpan="4"
-                  ItemsSource="{Binding MentorsListView}"
-                  HorizontalOptions="Center"
-                  BackgroundColor="LightPink"
-                  HasUnevenRows="True"                                    
-                  ItemTapped="Mentors_ItemTapped">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
-                            <Label LineBreakMode="WordWrap"
-                                   MaxLines="10"
-                                   HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Nickname: " />
-                                        <Span Text="{Binding Nickname}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label LineBreakMode="WordWrap"
-                                   MaxLines="10"
-                                   HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Username: " />
-                                        <Span Text="{Binding Username}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Image Source="{Binding User_ProfilePicture}"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView> 
-
-        <Label Text="Members" 
-               HorizontalTextAlignment="Center" 
-               VerticalTextAlignment="Center" 
-               TextColor="LightSlateGray" 
-               FontSize="25" 
-               Grid.Column="0" 
-               Grid.Row="5"
-               Grid.ColumnSpan="4"/>
-
         <ListView x:Name="Members"
                   Grid.Column="0" 
-                  Grid.Row="6" 
+                  Grid.Row="4" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
@@ -179,9 +127,9 @@
             </ListView.ItemTemplate>
         </ListView> 
 
-        <Button Grid.Column="0" Grid.Row="7" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
-        <Button Grid.Column="1" Grid.Row="7" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Announcements_Button_CLicked"/>
-        <Button Grid.Column="2" Grid.Row="7" Text="Calendar" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
+        <Button Grid.Column="0" Grid.Row="5" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="5" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Announcements_Button_CLicked"/>
+        <Button Grid.Column="2" Grid.Row="5" Text="Calendar" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
 
     </Grid>
 </ContentPage>

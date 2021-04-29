@@ -12,10 +12,12 @@
 
   <ItemGroup>
     <Compile Remove="Views\HomePage2.xaml.cs" />
+    <Compile Remove="Views\StudentAccount\Mentor_DisplayUserPage.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="Views\HomePage2.xaml" />
+    <EmbeddedResource Remove="Views\StudentAccount\Mentor_DisplayUserPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,9 +30,6 @@
   <ItemGroup>
     <Compile Update="ShowDataPage.xaml.cs">
       <DependentUpon>ShowDataPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\AdminAccount\MyTeam_Calendar.xaml.cs">
-      <DependentUpon>MyTeam_Calendar.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SignUpSignIn\CreateAdminAccount.xaml.cs">
       <DependentUpon>CreateAdminAccount.xaml</DependentUpon>
@@ -45,18 +44,6 @@
 
   <ItemGroup>
     <EmbeddedResource Update="ShowDataPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminAccount\MyTeam_Announcements.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminAccount\MyTeam_Calendar.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminAccount\MyTeam_Chat.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AdminAccount\MyTeam_Members.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SignUpSignIn\CreateStudentAccount.xaml">
@@ -90,9 +77,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentAccount\Member_DisplayUserPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\StudentAccount\Mentor_DisplayUserPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\StudentAccount\MyTeams_Members.xaml">
