@@ -12,8 +12,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
 
         private IList<Admin> _AdminsListView; 
-        private IList<User> _MembersListView;
-        private IList<User> _MentorsListView;
+        private IList<User> _UserListView;
         public IList<Admin> AdminsListView
         {
             get
@@ -26,30 +25,17 @@ namespace FullSteamAheadMVP0Project.ViewModels
             }
         }
 
-        public IList<User> MembersListView
+        public IList<User> UserListView
         {
             get
             {
-                return _MembersListView;
+                return _UserListView;
             }
             set 
             {
-                _MembersListView = value;
+                _UserListView = value;
             }
         }
-
-        public IList<User> MentorsListView
-        {
-            get
-            {
-                return _MentorsListView;
-            }
-            set 
-            {
-                _MentorsListView = value;
-            }
-        }
-
 
         public MembersViewModel()
         {
@@ -58,8 +44,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
             Dictionary<string, User> MentorDict = new Dictionary<string, User>();
 
             List<Admin> AdminList = new List<Admin>();
-            List<User> MemberList = new List<User>();
-            List<User> MentorList = new List<User>();
+            List<User> UserList = new List<User>();
 
 
             if (Global.SelectedTeam != null)
@@ -75,24 +60,34 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 MemberDict = Global.TeamSignedIn.Members;
                 MentorDict = Global.TeamSignedIn.Mentors;
             }
+            
+            int i = 0;
 
             foreach (KeyValuePair<string, Admin> entry in AdminDict)
             {
+                
                 AdminList.Add(entry.Value);
+                AdminList[i].Username = entry.Key;
                 AdminsListView = AdminList;
+                i++;
             }
+
+            i = 0;
 
             foreach (KeyValuePair<string, User> entry in MemberDict)
             {
-                MemberList.Add(entry.Value);
-                MembersListView = MemberList;
+                UserList.Add(entry.Value);
+                UserList[i].Username = entry.Key;
+                i++;
+                UserListView = UserList;
             }
-
 
             foreach (KeyValuePair<string, User> entry in MentorDict)
             {
-                MentorList.Add(entry.Value);
-                MentorsListView = MentorList;
+                UserList.Add(entry.Value);
+                UserList[i].Username = entry.Key;
+                i++;
+                UserListView = UserList;
             }
 
         }

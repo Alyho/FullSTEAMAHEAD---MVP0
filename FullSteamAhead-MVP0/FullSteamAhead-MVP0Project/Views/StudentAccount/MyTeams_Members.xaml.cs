@@ -23,7 +23,8 @@ public partial class MyTeams_Members : ContentPage
         private async void Members_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as User;
-            await Navigation.PushAsync(new Member_DisplayUserPage(selectedItem));
+            var _selectedItem = await App.Database.GetAccountAsync(selectedItem.Username);
+            await Navigation.PushAsync(new Member_DisplayUserPage(_selectedItem));
 
         }
 

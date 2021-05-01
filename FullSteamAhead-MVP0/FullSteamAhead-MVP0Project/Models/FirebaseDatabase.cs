@@ -177,6 +177,11 @@ namespace FullSteamAheadMVP0Project.Models
 
         public List<User> FilterAccountAge(List<User> users, string teamMinAge, string teamMaxAge) // cleans out users based on age
         {
+            if (string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge))
+            {
+                return users;
+            }
+
             int userAge;
             int minAge = Int32.Parse(teamMinAge);
             int maxAge = Int32.Parse(teamMaxAge);
@@ -263,7 +268,8 @@ namespace FullSteamAheadMVP0Project.Models
                     Team_Nickname = item.Object.Team_Nickname,
                     Team_Information = item.Object.Team_Information,
                     Team_Admins = item.Object.Team_Admins,
-                    Members = item.Object.Members
+                    Members = item.Object.Members,
+                    Mentors = item.Object.Mentors
                 }).ToList();
         }
 
