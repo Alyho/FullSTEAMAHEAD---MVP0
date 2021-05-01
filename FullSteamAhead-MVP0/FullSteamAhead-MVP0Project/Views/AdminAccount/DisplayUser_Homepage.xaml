@@ -10,7 +10,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height=".3*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -41,7 +41,6 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="LightPink"
                   HasUnevenRows="True"                                    
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
