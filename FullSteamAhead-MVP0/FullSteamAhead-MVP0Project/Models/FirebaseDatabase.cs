@@ -16,6 +16,9 @@ namespace FullSteamAheadMVP0Project.Models
         private readonly string Members = "Members";
         private readonly string Mentors = "Mentors";
         private readonly string Team_Admins = "Team_Admins";
+        private readonly string Announcements = "Announcements";
+        private readonly string User_Requests = "User_Requests";
+        private readonly string Team_Requests = "Team_Requests";
 
 
 
@@ -60,10 +63,12 @@ namespace FullSteamAheadMVP0Project.Models
                 .Child(Users)
                 .OnceAsync<User>()).Select(item => new User
                 {
-                    Username = item.Key, 
+                    Username = item.Key,
                     Password = item.Object.Password,
                     Nickname = item.Object.Nickname,
-                    Information = item.Object.Information
+                    Information = item.Object.Information,
+                    Email = item.Object.Email,
+                    Team_Requests = item.Object.Team_Requests
                 }).ToList();
         }
 
@@ -85,6 +90,30 @@ namespace FullSteamAheadMVP0Project.Models
                 return false;
             }
             return true;
+        }
+
+        public async Task AddTeamRequest(User user, string username)
+        {
+            user.Team_Requests.Add(username);
+            await UpdateTeamRequests(user);
+        }
+
+        public async Task RemoveTeamRequest(User user, string username)
+        {
+            user.Team_Requests.Remove(username);
+            await UpdateTeamRequests(user);
+        }
+
+        public async Task<List<string>> GetTeamRequests(User user)
+        {
+            var allPersons = await GetAccountsAsync();
+            User account2 = allPersons.FirstOrDefault(a => a.Username == user.Username);
+            return account2.Team_Requests;
+        }
+
+        public async Task UpdateTeamRequests(User user)
+        {
+            await firebase.Child(Users).Child(user.Username).Child(Team_Requests).PatchAsync(user.Team_Requests);
         }
 
 
@@ -269,7 +298,9 @@ namespace FullSteamAheadMVP0Project.Models
                     Team_Information = item.Object.Team_Information,
                     Team_Admins = item.Object.Team_Admins,
                     Members = item.Object.Members,
-                    Mentors = item.Object.Mentors
+                    Mentors = item.Object.Mentors,
+                    Announcements = item.Object.Announcements,
+                    User_Requests = item.Object.User_Requests
                 }).ToList();
         }
 
@@ -369,19 +400,52 @@ namespace FullSteamAheadMVP0Project.Models
             return false;
         }
 
-        public void AddAnnouncement(Team team, string announcement)
+        public async Task AddAnnouncement(Team team, string announcement)
         {
             team.Announcements.Insert(0, announcement);
+            await UpdateAnnouncements(team);
         }
 
-        public void RemoveAnnouncement(Team team, int index)
+        public async Task RemoveAnnouncement(Team team, int index)
         {
             team.Announcements.RemoveAt(index);
+            await UpdateAnnouncements(team);
         }
 
-        public List<string> GetAnnouncements(Team team)
+        public async Task<List<string>> GetAnnouncements(Team team)
         {
-            return team.Announcements;
+            var allPersons = await GetTeamsAsync();
+            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            return team2.Announcements;
+        }
+
+        public async Task UpdateAnnouncements(Team team)
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Announcements).PatchAsync(team.Announcements);
+        }
+
+        public async Task AddUserRequest(Team team, string username)
+        {
+            team.User_Requests.Add(username);
+            await UpdateUserRequests(team);
+        }
+
+        public async Task RemoveUserRequest(Team team, string username)
+        {
+            team.User_Requests.Remove(username);
+            await UpdateUserRequests(team);
+        }
+
+        public async Task<List<string>> GetUserRequests(Team team)
+        {
+            var allPersons = await GetTeamsAsync();
+            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            return team2.User_Requests;
+        }
+
+        public async Task UpdateUserRequests(Team team)
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).PatchAsync(team.User_Requests);
         }
 
 
