@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using FullSteamAheadMVP0Project.Models;
+using FullSteamAheadMVP0Project.ViewModels;
+
 namespace FullSteamAheadMVP0Project.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,9 +24,18 @@ public partial class MyTeams_Calendar : ContentPage
             await Navigation.PushAsync(new MyTeams_Chat());
         }
 
-    private async void Announcements_Button_CLicked(object sender, EventArgs e)
+        private async void Announcements_Button_CLicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Announcements());
+            if (Global.TeamSignedIn != null)
+            {
+                await Navigation.PushAsync(new Team_Announcements());
+            }
+
+            else if (Global.UserSignedIn != null)
+            {
+                await Navigation.PushAsync(new MyTeams_Announcements());
+
+            }
         }
 
     private async void Members_Button_CLicked(object sender, EventArgs e)

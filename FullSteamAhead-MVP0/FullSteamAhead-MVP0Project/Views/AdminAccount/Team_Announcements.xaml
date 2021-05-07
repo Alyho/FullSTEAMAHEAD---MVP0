@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FullSteamAheadMVP0Project.Views.MyTeams_Announcements">
+             x:Class="FullSteamAheadMVP0Project.Views.Team_Announcements">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height=".2*"/>
             <RowDefinition Height=".2*"/>
             <RowDefinition Height="1.2*"/>
             <RowDefinition Height=".2*"/>
@@ -24,9 +25,20 @@
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
 
+        <Editor Margin="2" 
+                Grid.Row="1" 
+                Grid.Column="0"
+                Placeholder="Type announcement     " 
+                Text="{Binding Announcements}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="4"/>
+
         <ListView x:Name="MyTeams"
                   Grid.Column="0" 
-                  Grid.Row="1" 
+                  Grid.Row="2" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding AnnouncementsListView}"
                   HorizontalOptions="Center"
@@ -53,10 +65,10 @@
         </ListView>
 
 
-        <Button Grid.Column="0" Grid.Row="2" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
-        <Button Grid.Column="1" Grid.Row="2" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Members_Button_CLicked"/>
-        <Button Grid.Column="2" Grid.Row="2" Text="Calendar" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
-        <Button Grid.Column="3" Grid.Row="2" Text="Back" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Back_Button_MyTeams"/>
+        <Button Grid.Column="0" Grid.Row="3" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Members_Button_CLicked"/>
+        <Button Grid.Column="2" Grid.Row="3" Text="Calendar" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
+        <Button Grid.Column="3" Grid.Row="3" Text="Back" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Back_Button_MyTeam"/>
 
     </Grid>
 

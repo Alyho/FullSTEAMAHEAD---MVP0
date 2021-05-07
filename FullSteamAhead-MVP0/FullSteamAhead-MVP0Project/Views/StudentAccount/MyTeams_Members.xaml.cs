@@ -43,10 +43,19 @@ public partial class MyTeams_Members : ContentPage
 
     private async void Announcements_Button_CLicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Announcements());
+            if (Global.TeamSignedIn != null)
+            {
+                await Navigation.PushAsync(new Team_Announcements());
+            }
+
+            else if (Global.UserSignedIn != null)
+            {
+                await Navigation.PushAsync(new MyTeams_Announcements());
+
+            }
         }
 
-    private async void Calendar_Button_CLicked(object sender, EventArgs e)
+        private async void Calendar_Button_CLicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MyTeams_Calendar());
         }

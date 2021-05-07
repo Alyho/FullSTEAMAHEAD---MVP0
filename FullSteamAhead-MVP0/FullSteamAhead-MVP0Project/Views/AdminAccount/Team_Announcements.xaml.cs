@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyTeams_Announcements : ContentPage
+    public partial class Team_Announcements : ContentPage
     {
-        public MyTeams_Announcements()
+        public Team_Announcements()
         {
             InitializeComponent();
         }
@@ -31,9 +31,9 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new MyTeams_Members());
         }
 
-        private async void Back_Button_MyTeams(object sender, EventArgs e)
+        private async void Back_Button_MyTeam(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeamsPage());
+            await Navigation.PushAsync(new DisplayUser_Homepage());
         }
 
     }
