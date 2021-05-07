@@ -41,6 +41,7 @@
                   Grid.Row="2" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding AnnouncementsListView}"
+                  SelectedItem ="{Binding Item}"
                   HorizontalOptions="Center"
                   BackgroundColor="SkyBlue"
                   HasUnevenRows="True">

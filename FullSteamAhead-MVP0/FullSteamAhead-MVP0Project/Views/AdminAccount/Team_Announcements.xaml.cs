@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FullSteamAheadMVP0Project.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace FullSteamAheadMVP0Project.Views
         public Team_Announcements()
         {
             InitializeComponent();
+            BindingContext = new AnnouncementsViewModel();
         }
         private async void Chat_Button_CLicked(object sender, EventArgs e)
         {
