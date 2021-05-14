@@ -31,7 +31,8 @@
                   ItemsSource="{Binding AnnouncementsListView}"
                   HorizontalOptions="Center"
                   BackgroundColor="SkyBlue"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  ItemTapped="DeleteAnnouncement_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

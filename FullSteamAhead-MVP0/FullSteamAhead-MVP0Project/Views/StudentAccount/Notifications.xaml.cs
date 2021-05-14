@@ -1,4 +1,5 @@
 ﻿using FullSteamAheadMVP0Project.Models;
+using FullSteamAheadMVP0Project.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace FullSteamAheadMVP0Project.Views
         public Notifications()
         {
             InitializeComponent();
+            /*BindingContext = new NotificationsViewModel();*/
 
         }
-
 
         private async void HomePage_Button_Clicked(object sender, EventArgs e)
         {
@@ -30,10 +31,6 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new Settingspage());
         }
 
-        private async void Notifications_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Notifications());
-        }
 
     }
 }

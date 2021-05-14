@@ -24,6 +24,7 @@ namespace FullSteamAheadMVP0Project.Views
             BindingContext = new DisplayUserPageViewModel(user);
         }
 
+
     }
 
 }

@@ -38,10 +38,6 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new Settingspage());
         }
 
-        private async void Notifications_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Notifications());
-        }
 
     }
 }

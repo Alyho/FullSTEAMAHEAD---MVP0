@@ -11,9 +11,8 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width=".9*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Announcements" 
@@ -36,6 +35,16 @@
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"/>
 
+        <Button Margin="2" 
+                Grid.Row="1"
+                Grid.Column="3"
+                Text="Create" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="18" 
+                BackgroundColor="White" 
+                HorizontalOptions="End"
+                Command ="{Binding SendCommand}"/>
+
         <ListView x:Name="MyTeams"
                   Grid.Column="0" 
                   Grid.Row="2" 
@@ -44,7 +53,8 @@
                   SelectedItem ="{Binding Item}"
                   HorizontalOptions="Center"
                   BackgroundColor="SkyBlue"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  ItemTapped="DeleteAnnouncement_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

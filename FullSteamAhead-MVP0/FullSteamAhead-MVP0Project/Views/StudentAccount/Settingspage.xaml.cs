@@ -22,6 +22,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void MainPage_Button_Clicked(object sender, EventArgs e)
         {
+            _ = Global.UserSignedIn == null;
             await Navigation.PushAsync(new MainPage());
         }
         private async void HomePage_Button_Clicked(object sender, EventArgs e)

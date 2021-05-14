@@ -27,23 +27,10 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new DisplayUserPage(selectedItem));
         }
 
-        /*private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
-        {
-            if (Global.AdminSignedIn != null)
-            {
-                await Navigation.PushAsync(new MyTeams_Chat());
-            }
-
-            if (Global.UserSignedIn != null)
-            {
-                await Navigation.PushAsync(new MyTeams_Chat());
-            }
-            
-        }*/
-
         private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MyTeams_Chat());
         }
+
     }
 }
