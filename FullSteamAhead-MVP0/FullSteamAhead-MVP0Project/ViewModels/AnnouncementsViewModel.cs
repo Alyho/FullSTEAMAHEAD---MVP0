@@ -51,23 +51,6 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 AnnouncementsListView = _AnnouncementsListView;
 
             });
-
-            DeleteCommand = new Command(async () =>
-            {
-                int i = 0; 
-                foreach (var announcement in Global.TeamSignedIn.Announcements)
-                {
-                    if (Global.TeamSignedIn.Announcements[i] == Item_)
-                    {
-                        await App.Database.RemoveAnnouncement(Global.TeamSignedIn, i);
-                        _AnnouncementsListView = Global.TeamSignedIn.Announcements;
-                        AnnouncementsListView = _AnnouncementsListView;
-                        break;
-                    }
-
-                    i++; 
-                }
-            });
         }
 
         public string Announcements

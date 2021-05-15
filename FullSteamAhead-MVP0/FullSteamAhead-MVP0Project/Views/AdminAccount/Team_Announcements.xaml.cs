@@ -15,10 +15,12 @@ namespace FullSteamAheadMVP0Project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Team_Announcements : ContentPage
     {
+        private AnnouncementsViewModel _announcementViewModel;
         public Team_Announcements()
         {
             InitializeComponent();
-            BindingContext = new AnnouncementsViewModel();
+            _announcementViewModel = new AnnouncementsViewModel();
+            BindingContext = _announcementViewModel;
         }
         private async void Chat_Button_CLicked(object sender, EventArgs e)
         {
@@ -46,7 +48,18 @@ namespace FullSteamAheadMVP0Project.Views
 
             if (delete == true)
             {
+                int i = 0;
+                foreach (var announcement in Global.TeamSignedIn.Announcements)
+                {
+                    if (Global.TeamSignedIn.Announcements[i] == _announcementViewModel.Item)
+                    {
+                        await App.Database.RemoveAnnouncement(Global.TeamSignedIn, i);
+                        MyTeams.ItemsSource = Global.TeamSignedIn.Announcements;
+                        break;
+                    }
 
+                    i++;
+                }
             }
 
         }
