@@ -24,5 +24,10 @@ public partial class TeamNotifications : ContentPage
         {
             await Navigation.PushAsync(new MyTeams_Chat());
         }
+
+    private async void TeamSettings_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TeamSettingspage());
+        }
     }
 }

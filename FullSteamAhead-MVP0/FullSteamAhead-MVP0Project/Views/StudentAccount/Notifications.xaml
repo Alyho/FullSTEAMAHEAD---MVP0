@@ -9,8 +9,8 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="1.2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -19,10 +19,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!--<Button Grid.Column="0" Grid.Row="0" Text="Requests" CornerRadius="5" FontSize="15" Command="UserRequestCommand"/> -->
 
         <ListView x:Name="notifications"
                   Grid.Column="0" 
-                  Grid.Row="0" 
+                  Grid.Row="1" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding NotificationsListView}"
                   HorizontalOptions="Center"

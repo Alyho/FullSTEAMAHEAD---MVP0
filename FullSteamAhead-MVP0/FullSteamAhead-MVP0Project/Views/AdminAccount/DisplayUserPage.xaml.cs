@@ -24,6 +24,11 @@ namespace FullSteamAheadMVP0Project.Views
             BindingContext = new DisplayUserPageViewModel(user);
         }
 
+        private async void TeamSettings_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TeamSettingspage());
+        }
+
 
     }
 

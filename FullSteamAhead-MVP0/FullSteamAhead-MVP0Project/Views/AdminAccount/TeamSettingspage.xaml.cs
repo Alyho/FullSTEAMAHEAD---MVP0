@@ -1,4 +1,5 @@
 ﻿using FullSteamAheadMVP0Project.Models;
+using FullSteamAheadMVP0Project.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +12,18 @@ using Xamarin.Forms.Xaml;
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DisplayUser_Homepage : ContentPage
+    public partial class TeamSettingspage : ContentPage
     {
-        public DisplayUser_Homepage()
+
+        public TeamSettingspage()
         {
             InitializeComponent();
-
-            BindingContext = new DisplayUser_HomePageViewModel();
-
         }
 
-        private async void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void MainPage2_Button_Clicked(object sender, EventArgs e)
         {
-            var selectedItem = e.Item as User;
-            await Navigation.PushAsync(new DisplayUserPage(selectedItem));
+            _ = Global.TeamSignedIn == null;
+            await Navigation.PushAsync(new MainPage());
         }
 
         private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
@@ -32,10 +31,6 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new MyTeams_Chat());
         }
 
-        private async void TeamSettings_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new TeamSettingspage());
-        }
-
     }
+
 }
