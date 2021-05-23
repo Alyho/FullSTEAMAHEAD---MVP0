@@ -94,7 +94,8 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task AddTeamRequest(User user, string username)
         {
-            user.Team_Requests.Add(username);
+            Team team = await GetTeamAsync(username);
+            user.Team_Requests.Add(username, team);
             await UpdateTeamRequests(user);
         }
 
@@ -104,7 +105,7 @@ namespace FullSteamAheadMVP0Project.Models
             await UpdateTeamRequests(user);
         }
 
-        public async Task<List<string>> GetTeamRequests(User user)
+        public async Task<Dictionary<string, Team>> GetTeamRequests(User user)
         {
             var allPersons = await GetAccountsAsync();
             User account2 = allPersons.FirstOrDefault(a => a.Username == user.Username);
@@ -402,17 +403,35 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task AddAnnouncement(Team team, string announcement)
         {
-            team.Announcements.Insert(0, announcement);
+            int maxIndex = 0;
+            foreach (KeyValuePair<string, string> entry in team.Announcements)
+            {
+                int cur = Int32.Parse(entry.Key);
+                if (cur > maxIndex)
+                {
+                    maxIndex = cur;
+                }
+            }
+            team.Announcements.Add((maxIndex+1) + "", announcement);
             await UpdateAnnouncements(team);
         }
 
         public async Task RemoveAnnouncement(Team team, int index)
         {
-            team.Announcements.RemoveAt(index);
-            await UpdateAnnouncements(team);
+            int curInd = 0;
+            foreach (KeyValuePair<string, string> entry in team.Announcements)
+            {
+                if (index == curInd)
+                {
+                    team.Announcements.Remove(entry.Key);
+                    await UpdateAnnouncements(team);
+                    return;
+                }
+                curInd++;
+            }
         }
 
-        public async Task<List<string>> GetAnnouncements(Team team)
+        public async Task<Dictionary<string, string>> GetAnnouncements(Team team)
         {
             var allPersons = await GetTeamsAsync();
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
@@ -426,7 +445,8 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task AddUserRequest(Team team, string username)
         {
-            team.User_Requests.Add(username);
+            User user = await GetAccountAsync(username);
+            team.User_Requests.Add(username, user);
             await UpdateUserRequests(team);
         }
 
@@ -436,7 +456,7 @@ namespace FullSteamAheadMVP0Project.Models
             await UpdateUserRequests(team);
         }
 
-        public async Task<List<string>> GetUserRequests(Team team)
+        public async Task<Dictionary<string, User>> GetUserRequests(Team team)
         {
             var allPersons = await GetTeamsAsync();
             Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
