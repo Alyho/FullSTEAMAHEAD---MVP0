@@ -39,7 +39,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             InviteUserCommand = new Command(async () =>
             {
-                await App.Database.AddUser(Global.TeamSignedIn, _user);
+                await App.Database.AddTeamRequest(_user, Global.TeamSignedIn.Team_Username);
             });
         }
     }

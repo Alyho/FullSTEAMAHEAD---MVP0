@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace FullSteamAheadMVP0Project.ViewModels
 {
@@ -42,11 +43,16 @@ namespace FullSteamAheadMVP0Project.ViewModels
             set { }
         }
 
-
+        public Command RequestToJoinTeamCommand { get; }
 
         public DisplayTeamInformationViewModel(Team team)
         {
             _team = team;
+            
+            RequestToJoinTeamCommand = new Command(async () =>
+            {
+                await App.Database.AddUserRequest(_team, Global.UserSignedIn.Username);
+            });
         }
     }
 }

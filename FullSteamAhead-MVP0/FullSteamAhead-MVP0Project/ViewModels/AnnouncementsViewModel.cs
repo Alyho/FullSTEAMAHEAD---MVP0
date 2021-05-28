@@ -16,7 +16,6 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private string Announcement_;
         private string Item_;
         public Command SendCommand { get; }
-        public Command DeleteCommand { get;  }
 
         private IList<string> _AnnouncementsListView;
         public IList<string> AnnouncementsListView
@@ -33,22 +32,36 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         public AnnouncementsViewModel()
         {
+            Dictionary<string, string> AnnouncementDict = new Dictionary<string, string>();
+            List<string> AnnouncementList = new List<string>();
+
             if (Global.UserSignedIn != null)
             {
-                _AnnouncementsListView = Global.SelectedTeam.Announcements;
+                AnnouncementDict = Global.SelectedTeam.Announcements;
+
+                foreach (KeyValuePair<string, string> entry in AnnouncementDict)
+                {
+                    AnnouncementList.Add(entry.Value);
+                    AnnouncementsListView = AnnouncementList;
+                }
+                
             }
             else
             {
-                _AnnouncementsListView = Global.TeamSignedIn.Announcements;
-            }
+                AnnouncementDict = Global.TeamSignedIn.Announcements;
 
-            AnnouncementsListView = _AnnouncementsListView;
+                foreach (KeyValuePair<string, string> entry in AnnouncementDict)
+                {
+                    AnnouncementList.Add(entry.Value);
+                    AnnouncementsListView = AnnouncementList;
+                }
+            }
 
             SendCommand = new Command(async () =>
             {
                 await App.Database.AddAnnouncement(Global.TeamSignedIn, Announcement_);
-                _AnnouncementsListView = Global.TeamSignedIn.Announcements;
-                AnnouncementsListView = _AnnouncementsListView;
+                AnnouncementList.Add(Announcement_);
+                AnnouncementsListView = AnnouncementList;
 
             });
         }

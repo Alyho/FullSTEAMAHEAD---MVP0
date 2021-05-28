@@ -48,17 +48,15 @@ namespace FullSteamAheadMVP0Project.Views
 
             if (delete == true)
             {
-                int i = 0;
-                foreach (var announcement in Global.TeamSignedIn.Announcements)
+                foreach (KeyValuePair<string, string> entry in Global.TeamSignedIn.Announcements)
                 {
-                    if (Global.TeamSignedIn.Announcements[i] == _announcementViewModel.Item)
+                    if (entry.Value == _announcementViewModel.Item)
                     {
-                        await App.Database.RemoveAnnouncement(Global.TeamSignedIn, i);
+                        int Key = int.Parse(entry.Key);
+                        await App.Database.RemoveAnnouncement(Global.TeamSignedIn, Key);
                         MyTeams.ItemsSource = Global.TeamSignedIn.Announcements;
                         break;
                     }
-
-                    i++;
                 }
             }
 

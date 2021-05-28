@@ -37,8 +37,8 @@
                                    VerticalOptions="FillAndExpand">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="Nickname: " />
-                                            <Span Text="{Binding Notifications}"/>
+                                            <Span Text="Username: " />
+                                            <Span Text="{Binding Username}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

@@ -17,7 +17,7 @@ namespace FullSteamAheadMVP0Project.Views
         public Notifications()
         {
             InitializeComponent();
-            /*BindingContext = new NotificationsViewModel();*/
+            BindingContext = new NotificationsViewModel();
 
         }
 
