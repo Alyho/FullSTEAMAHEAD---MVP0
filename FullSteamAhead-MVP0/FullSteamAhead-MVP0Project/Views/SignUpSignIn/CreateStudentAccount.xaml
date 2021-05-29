@@ -9,29 +9,32 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="400*"/>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-          
-
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Create Student Account" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="36" 
+               FontSize="30" 
                Grid.Column="0" 
-               Grid.Row="0"/>
+               Grid.Row="0"
+               Grid.ColumnSpan="2"/>
 
         <Editor Margin="2"   
                 Grid.Row="1" 
@@ -40,7 +43,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Editor Margin="2"   
                 Grid.Row="2" 
@@ -49,7 +53,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Editor Margin="2"   
                 Grid.Row="3" 
@@ -58,7 +63,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
         
         <Editor Margin="2" 
                 Grid.Row="4" 
@@ -67,34 +73,83 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
-        <Editor Margin="2" 
+        <Picker x:Name="State"
+                Title="State"
+                TitleColor="LightSlateGray"
+                Margin="2"   
                 Grid.Row="5" 
-                Placeholder="Age            " 
-                Text="{Binding Age}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                SelectedItem="{Binding State}"
+                Grid.ColumnSpan="2">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Alabama</x:String>
+                    <x:String>Alaska</x:String>
+                    <x:String>Arizona</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
 
-        <Editor Margin="2" 
+        <Editor Margin="2"   
                 Grid.Row="6" 
-                Placeholder="Grade            " 
-                Text="{Binding Grade}"
+                Placeholder="City            " 
+                Text="{Binding City}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
+      
+        <Button Margin="2" 
+                Grid.Row="7" 
+                Text="Privacy Policy" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="15" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Clicked="PrivacyPolicy"/>
 
         <Button Margin="2" 
                 Grid.Row="7" 
-                Text="Next" CornerRadius="10" 
+                Text="Terms and Conditions" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="15" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Clicked="TermsAndConditions"
+                Grid.Column="1"/>
+
+        <CheckBox Grid.Row="8"
+                  Grid.Column="1"
+                  HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="EndAndExpand"/>
+
+        <Label Text=" I have read and agreed to the terms and conditions and privacy policy" 
+               TextColor="LightSlateGray" 
+               FontSize="16" 
+               Grid.Column="0" 
+               Grid.Row="8"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"/>
+
+        <Label Text="*When creating this account it will be public, you can change account privacy in settings. Public members are available to all searching teams. Private members will only be able to search teams, but will not be searchable." 
+               TextColor="LightSlateGray" 
+               FontSize="14" 
+               Grid.Row="9"
+               Grid.ColumnSpan="2"/>
+
+        <Button Margin="2" 
+                Grid.Row="10" 
+                Text="Create account" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveCommand}"/>
+                Command ="{Binding SaveUserCommand}"
+                Grid.ColumnSpan="2"/>
 
     </Grid>
 

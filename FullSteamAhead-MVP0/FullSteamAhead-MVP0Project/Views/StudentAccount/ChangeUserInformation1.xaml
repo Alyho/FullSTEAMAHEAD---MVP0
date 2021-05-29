@@ -4,14 +4,13 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.CreateStudentAccount2"
+             x:Class="FullSteamAheadMVP0Project.Views.ChangeUserInformation1"
              BackgroundColor="AliceBlue">
-    
-    <!--Delete this page if everything works -->
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="350*"/>
+            <RowDefinition Height="400*"/>
+            <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
@@ -34,43 +33,37 @@
                Grid.Column="0" 
                Grid.Row="0"/>
 
-        <Picker x:Name="State"
-                Title="State"
-                TitleColor="LightSlateGray"
-                Margin="2"   
+        <Editor Margin="2"   
                 Grid.Row="1" 
-                SelectedItem="{Binding State}">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Alabama</x:String>
-                    <x:String>Alaska</x:String>
-                    <x:String>Arizona</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
+                Placeholder="Email            " 
+                Text="{Binding Email}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center"/>
 
         <Editor Margin="2"   
                 Grid.Row="2" 
-                Placeholder="City            " 
-                Text="{Binding City}"
+                Placeholder="Nickname            " 
+                Text="{Binding Nickname}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White"  
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2"   
+                Grid.Row="3" 
+                Placeholder="Username            " 
+                Text="{Binding Username}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"/>
 
         <Editor Margin="2" 
-                Grid.Row="3" 
-                Placeholder="Zip code            " 
-                Text="{Binding Zipcode}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
-
-        <Editor Margin="2" 
                 Grid.Row="4" 
-                Placeholder="Phone Number         " 
-                Text="{Binding PhoneNumber}"
+                Placeholder="Password            " 
+                Text="{Binding Password}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
@@ -78,21 +71,31 @@
 
         <Editor Margin="2" 
                 Grid.Row="5" 
-                Placeholder="Bio            " 
-                Text="{Binding Bio}"
+                Placeholder="Age            " 
+                Text="{Binding Age}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"/>
+
+        <Editor Margin="2" 
+                Grid.Row="6" 
+                Placeholder="Grade            " 
+                Text="{Binding Grade}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
 
         <Button Margin="2" 
-                Grid.Row="6" 
+                Grid.Row="7" 
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding NextCommand}"/>
+                Command ="{Binding SaveCommand}"/>
 
     </Grid>
+
 </ContentPage>

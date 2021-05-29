@@ -4,11 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.CreateStudentAccount3"
+             x:Class="FullSteamAheadMVP0Project.Views.ChangeUserInformation3"
              BackgroundColor="AliceBlue">
-
-    <!--Delete this page if everything works -->
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200*"/>
@@ -149,7 +146,7 @@
 
         <Button Margin="2" 
                 Grid.Row="8" 
-                Text="Create account" CornerRadius="10" 
+                Text="Save changes" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 

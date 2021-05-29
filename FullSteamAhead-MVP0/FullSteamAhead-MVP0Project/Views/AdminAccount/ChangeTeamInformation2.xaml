@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.CreateTeamAccount2"
+             x:Class="FullSteamAheadMVP0Project.Views.ChangeTeamInformation2"
              BackgroundColor="AliceBlue">
 
     <Grid>
@@ -56,9 +56,9 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"/>
-        
+
         <!--Add "MaxAge" and "MinAge" boxes for Age range required to join a team-->
-        <!-- <Editor Margin="2" 
+        <Editor Margin="2" 
                 Grid.Row="3" 
                 Placeholder="Max age            " 
                 Text="{Binding MaxAge}"
@@ -77,7 +77,7 @@
                 FontSize="17" 
                 Grid.ColumnSpan="2"
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/> -->
+                HorizontalOptions="Center"/>
 
         <Picker x:Name="State"
                 Title="State"
@@ -152,16 +152,16 @@
                Grid.Row="8"
                Grid.ColumnSpan="3"/>
 
-        <!-- <Editor Margin="2" 
+        <Editor Margin="2" 
                 Grid.Row="9" 
                 Placeholder="Bio                 " 
                 Text="{Binding Bio}"
                 TextColor="LightSlateGray" 
                 FontSize="17" 
                 BackgroundColor="White" 
-                Grid.ColumnSpan="4"/> -->
+                Grid.ColumnSpan="4"/>
 
-        <!--<Editor Margin="2" 
+        <Editor Margin="2" 
                 Grid.Row="10" 
                 Placeholder="Schedule            " 
                 Text="{Binding Schedule}"
@@ -169,8 +169,8 @@
                 FontSize="17" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/> -->
-         
+                Grid.ColumnSpan="4"/>
+
         <Button Margin="2" 
                 Grid.Row="11" 
                 Text="Next" CornerRadius="11" 

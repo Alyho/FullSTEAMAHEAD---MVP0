@@ -31,6 +31,11 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new MyTeams_Chat());
         }
 
+        private async void ChangeTeamAccountInfo_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ChangeTeamInformation1());
+        }
+
     }
 
 }

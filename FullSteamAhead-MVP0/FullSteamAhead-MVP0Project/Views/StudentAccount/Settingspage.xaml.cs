@@ -35,6 +35,11 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new Settingspage());
         }
 
+        private async void ChangeAccountInfo_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ChangeUserInformation1());
+        }
+
         private async void Notifications_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Notifications());
