@@ -324,9 +324,29 @@ namespace FullSteamAheadMVP0Project.Models
             }
         }
 
+        public async Task RemoveUser(Team team, User account) // removes User from Team, either in Mentors list or Members list
+        {
+            if (account.Information.Role == "Mentor")
+            {
+                team.Mentors.Remove(account.Username);
+                await UpdateTeamMentors(team);
+            }
+            else if (account.Information.Role == "Student")
+            {
+                team.Members.Remove(account.Username);
+                await UpdateTeamMembers(team);
+            }
+        }
+
         public async Task AddTeamAdmin(Team team, Admin admin) // adds Admin to Team, through the Team_Admins list
         {
             team.Team_Admins.Add(admin.Username, admin);
+            await UpdateTeamAdmins(team);
+        }
+
+        public async Task RemoveTeamAdmin(Team team, Admin admin) // removes Admin from Team, through the Team_Admins list
+        {
+            team.Team_Admins.Remove(admin.Username);
             await UpdateTeamAdmins(team);
         }
 

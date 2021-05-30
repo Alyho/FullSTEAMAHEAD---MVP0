@@ -34,7 +34,9 @@ namespace FullSteamAheadMVP0Project.Models
         Task<List<Team>> GetTeamsAsync();                                 // returns list of all Teams in database
         Task SaveTeamAsync(Team team);                                    // saves Team to database
         Task AddUser(Team team, User account);                            // adds User to Team, either in Mentors list or Members list
+        Task RemoveUser(Team team, User account);                         // removes User from Team, either in Mentors list or Members list
         Task AddTeamAdmin(Team team, Admin admin);                        // adds Admin to Team, through the Team_Admins list
+        Task RemoveTeamAdmin(Team team, Admin admin);                     // removes Admin from Team, through the Team_Admins list
         Task UpdateTeamMembers(Team team);                                // updates Members list in database
         Task UpdateTeamMentors(Team team);                                // updates Mentors list in database
         Task UpdateTeamAdmins(Team team);                                 // updates Team_Admins list in database
