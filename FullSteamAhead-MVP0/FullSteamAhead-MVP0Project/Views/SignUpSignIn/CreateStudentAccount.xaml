@@ -148,7 +148,7 @@
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveUserCommand}"
+                Command ="{Binding SaveCommand}"
                 Grid.ColumnSpan="2"/>
 
     </Grid>

@@ -132,7 +132,15 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                 await App.Database.SaveTeamAsync(Global.TeamSignedIn);
 
-                await _navigation.PushAsync(new CreateAdminAccount());
+                if (Global.AdminSignedIn != null)
+                {
+                    await _navigation.PushAsync(new TeamSettingspage());
+                }
+                else
+                {
+                    await _navigation.PushAsync(new CreateAdminAccount());
+                } 
+                
             });
 
         }

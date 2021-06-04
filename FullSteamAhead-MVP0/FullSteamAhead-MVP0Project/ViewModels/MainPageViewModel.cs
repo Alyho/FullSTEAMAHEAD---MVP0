@@ -83,8 +83,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                     _userCreated = true;
                     Global.UserSignedIn = _user;
-                    Global.UserSignedIn.Information.Age = Age_;
-                    Global.UserSignedIn.Information.Grade = Grade_;
+                    Global.UserSignedIn.Information.State = State_;
+                    Global.UserSignedIn.Information.City = City_;
+                    //Global.UserSignedIn.Information.Age = Age_;
+                    //Global.UserSignedIn.Information.Grade = Grade_;
+                    await App.Database.SaveAccountAsync(Global.UserSignedIn);
                 }
 
                 //Raise the Property Changed Event to notify the MainPage
@@ -105,7 +108,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 Global.UserSignedIn.Information.Phone_Number = PhoneNumber_;
                 Global.UserSignedIn.Information.Bio = Bio_;
 
-                await _navigation.PushAsync(new CreateStudentAccount3());
+                await _navigation.PushAsync(new ChangeUserInformation3());
             });
 
             SaveUserCommand = new Command(async () =>
@@ -117,7 +120,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                await App.Database.SaveAccountAsync(Global.UserSignedIn);
 
-               await _navigation.PushAsync(new Homepage());
+               await _navigation.PushAsync(new Settingspage());
            });
 
             CheckUserCommand = new Command(async () =>

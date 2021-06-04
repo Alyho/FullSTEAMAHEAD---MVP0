@@ -75,7 +75,11 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
                 {
                     list.Add(team);
                 }
-                TeamListView = list;
+
+                if (list != null)
+                {
+                    TeamListView = list;
+                }
 
             }));
             
@@ -93,7 +97,11 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
                 {
                     list.Add(team);
                 }
-                TeamListView = list;
+
+                if (list != null)
+                {
+                    TeamListView = list;
+                }           
 
             }));
         }

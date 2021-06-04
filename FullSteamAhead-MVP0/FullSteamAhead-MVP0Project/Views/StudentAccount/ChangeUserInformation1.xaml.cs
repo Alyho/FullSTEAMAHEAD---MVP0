@@ -26,9 +26,20 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (e.PropertyName == "UserCreated")
+            {
+                if (mainPageViewModel.UserCreated)
+                {
+                    await Navigation.PushAsync(new ChangeUserInformation2());
+                }
 
-            await Navigation.PushAsync(new ChangeUserInformation2());
+                else
+                {
+                    await DisplayAlert("Error", "This Username is already taken", "OK");
+                }
 
+            }
+            
         }
 
     }
