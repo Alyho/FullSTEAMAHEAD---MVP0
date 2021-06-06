@@ -27,7 +27,8 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding NotificationsListView}"
                   HorizontalOptions="Center"
-                  HasUnevenRows="True">
+                  HasUnevenRows="True"
+                  ItemTapped="Notifications_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -53,6 +54,18 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
+                            <Button Text="Accept"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    FontSize="15">
+                                <!--Command="AcceptCommand"-->
+                            </Button>
+                            <Button Text="Decline"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    FontSize="15">
+                                <!--Command="DeclineCommand"-->
+                            </Button>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

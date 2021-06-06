@@ -31,6 +31,22 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new Settingspage());
         }
 
+        private async void Notifications_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+                if (Global.UserSignedIn != null)
+                {
+                    var selectedItem = e.Item as Team;
+                    await Navigation.PushAsync(new DisplayTeamInformation(selectedItem));
+                }
 
-    }
+                else if (Global.TeamSignedIn != null)
+                {
+                    var selectedItem2 = e.Item as User;
+                    await Navigation.PushAsync(new DisplayUserPage(selectedItem2));
+                }
+
+        }
+
+        }
+    
 }

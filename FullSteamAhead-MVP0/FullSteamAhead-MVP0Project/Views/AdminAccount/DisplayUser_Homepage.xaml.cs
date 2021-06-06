@@ -37,5 +37,6 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new TeamSettingspage());
         }
 
+
     }
 }
