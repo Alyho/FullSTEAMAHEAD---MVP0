@@ -36,12 +36,14 @@ namespace FullSteamAheadMVP0Project.Views
                 if (Global.UserSignedIn != null)
                 {
                     var selectedItem = e.Item as Team;
-                    await Navigation.PushAsync(new DisplayTeamInformation(selectedItem));
+                    var _selectedItem = await App.Database.GetTeamAsync(selectedItem.Team_Username);
+                    await Navigation.PushAsync(new DisplayTeamInformation(_selectedItem));
                 }
 
                 else if (Global.TeamSignedIn != null)
                 {
                     var selectedItem2 = e.Item as User;
+                    var _selectedItem2 = await App.Database.GetAccountAsync(selectedItem2.Username);
                     await Navigation.PushAsync(new DisplayUserPage(selectedItem2));
                 }
 

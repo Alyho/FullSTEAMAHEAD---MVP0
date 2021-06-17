@@ -37,16 +37,5 @@ namespace FullSteamAheadMVP0Project.Views
         {
             await Navigation.PushAsync(new MyTeamsPage());
         }
-
-        private async void DeleteAnnouncement_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var delete = await this.DisplayAlert("Would you like to delete this announcement?", "", "Yes", "No");
-
-            if (delete == true)
-            {
-
-            }
-
-        }
     }
 }

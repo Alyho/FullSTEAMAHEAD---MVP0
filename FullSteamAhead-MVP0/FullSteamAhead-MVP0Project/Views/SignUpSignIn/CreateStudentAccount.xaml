@@ -14,6 +14,7 @@
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
             <RowDefinition Height="80*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
@@ -75,12 +76,22 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"/>
+        
+        <Editor Margin="2" 
+                Grid.Row="5" 
+                Placeholder="Age             " 
+                Text="{Binding Age}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Picker x:Name="State"
                 Title="State"
                 TitleColor="LightSlateGray"
                 Margin="2"   
-                Grid.Row="5" 
+                Grid.Row="6" 
                 SelectedItem="{Binding State}"
                 Grid.ColumnSpan="2">
             <Picker.ItemsSource>
@@ -93,7 +104,7 @@
         </Picker>
 
         <Editor Margin="2"   
-                Grid.Row="6" 
+                Grid.Row="7" 
                 Placeholder="City            " 
                 Text="{Binding City}"
                 TextColor="LightSlateGray" 
@@ -103,7 +114,7 @@
                 Grid.ColumnSpan="2"/>
       
         <Button Margin="2" 
-                Grid.Row="7" 
+                Grid.Row="8" 
                 Text="Privacy Policy" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="15" 
@@ -112,7 +123,7 @@
                 Clicked="PrivacyPolicy"/>
 
         <Button Margin="2" 
-                Grid.Row="7" 
+                Grid.Row="8" 
                 Text="Terms and Conditions" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="15" 
@@ -121,7 +132,7 @@
                 Clicked="TermsAndConditions"
                 Grid.Column="1"/>
 
-        <CheckBox Grid.Row="8"
+        <CheckBox Grid.Row="9"
                   Grid.Column="1"
                   HorizontalOptions="CenterAndExpand"
                   VerticalOptions="EndAndExpand"/>
@@ -130,7 +141,7 @@
                TextColor="LightSlateGray" 
                FontSize="16" 
                Grid.Column="0" 
-               Grid.Row="8"
+               Grid.Row="9"
                Grid.ColumnSpan="2"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
@@ -138,11 +149,11 @@
         <Label Text="*When creating this account it will be public, you can change account privacy in settings. Public members are available to all searching teams. Private members will only be able to search teams, but will not be searchable." 
                TextColor="LightSlateGray" 
                FontSize="14" 
-               Grid.Row="9"
+               Grid.Row="10"
                Grid.ColumnSpan="2"/>
 
         <Button Margin="2" 
-                Grid.Row="10" 
+                Grid.Row="11" 
                 Text="Create account" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
