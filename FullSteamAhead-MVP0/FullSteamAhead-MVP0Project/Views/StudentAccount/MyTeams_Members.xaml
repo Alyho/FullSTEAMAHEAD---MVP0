@@ -103,6 +103,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete2"
+                      CommandParameter="{Binding DeleteUser}"
+                      Text="Delete user" IsDestructive="True" />
+                        </ViewCell.ContextActions>
                         <StackLayout>
                             <Label>
                                 <Label.FormattedText>

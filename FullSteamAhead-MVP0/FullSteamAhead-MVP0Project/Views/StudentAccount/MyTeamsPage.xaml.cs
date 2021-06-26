@@ -52,5 +52,16 @@ namespace FullSteamAheadMVP0Project.Views
         {
             await Navigation.PushAsync(new Notifications());
         }
+
+        public void OnDelete(object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            DisplayAlert("Exit team", mi.CommandParameter + "Exit team", "OK");
+        }
+
+
+
     }
+
+
 }

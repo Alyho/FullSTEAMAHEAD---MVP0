@@ -42,6 +42,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete"
+                      CommandParameter="{Binding ExitTeam}"
+                      Text="Exit Team" IsDestructive="True" />
+                        </ViewCell.ContextActions>
                         <StackLayout>
                             <Label>
                                 <Label.FormattedText>

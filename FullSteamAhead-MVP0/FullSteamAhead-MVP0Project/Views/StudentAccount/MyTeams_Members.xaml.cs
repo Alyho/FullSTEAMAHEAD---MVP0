@@ -60,6 +60,17 @@ public partial class MyTeams_Members : ContentPage
             await Navigation.PushAsync(new MyTeams_Calendar());
         }
 
+        public void OnDelete2(object sender, EventArgs e)
+        {
+
+            if (Global.TeamSignedIn != null)
+            {
+                var mi = ((MenuItem)sender);
+                DisplayAlert("Delete user", mi.CommandParameter + "Delete user", "OK");
+            }
+            
+        }
+
     }
 
 }
