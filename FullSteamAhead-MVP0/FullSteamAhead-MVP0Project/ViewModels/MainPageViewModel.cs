@@ -86,6 +86,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     Global.UserSignedIn.Information.State = State_;
                     Global.UserSignedIn.Information.City = City_;
                     Global.UserSignedIn.Information.Age = Age_;
+                    Global.UserSignedIn.Information.Role = Role_;
                     Global.UserSignedIn.Information.Grade = Grade_;
                     await App.Database.SaveAccountAsync(Global.UserSignedIn);
                 }
