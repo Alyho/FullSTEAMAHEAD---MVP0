@@ -66,7 +66,24 @@ public partial class MyTeams_Members : ContentPage
             if (Global.TeamSignedIn != null)
             {
                 var mi = ((MenuItem)sender);
-                DisplayAlert("Delete user", mi.CommandParameter + "Delete user", "OK");
+                var user = mi.CommandParameter as User;
+
+                if (Global.TeamSignedIn != null)
+                {
+                    Task.Run(new System.Action(async () =>
+                    {
+                        await App.Database.RemoveUser(Global.TeamSignedIn, user);
+                    }));
+                }
+
+                else
+                {
+                    Task.Run(new System.Action(async () =>
+                    {
+                        await App.Database.RemoveUser(Global.SelectedTeam, user);
+                    }));
+                }
+                
             }
             
         }

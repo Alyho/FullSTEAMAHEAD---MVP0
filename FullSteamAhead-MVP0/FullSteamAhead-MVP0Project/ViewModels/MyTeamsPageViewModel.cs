@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace FullSteamAheadMVP0Project.ViewModels
 {
@@ -14,6 +15,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
         {
             get => Global.MyTeams;
             set { }
+        }
+
+        public MyTeamsPageViewModel()
+        {
+
         }
     }
 }

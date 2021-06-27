@@ -105,7 +105,7 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem Clicked="OnDelete2"
-                      CommandParameter="{Binding DeleteUser}"
+                      CommandParameter="{Binding .}"
                       Text="Delete user" IsDestructive="True" />
                         </ViewCell.ContextActions>
                         <StackLayout>

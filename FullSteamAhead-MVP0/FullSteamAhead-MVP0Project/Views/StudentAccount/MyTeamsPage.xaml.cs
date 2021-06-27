@@ -56,7 +56,11 @@ namespace FullSteamAheadMVP0Project.Views
         public void OnDelete(object sender, EventArgs e)
         {
             var mi = ((MenuItem)sender);
-            DisplayAlert("Exit team", mi.CommandParameter + "Exit team", "OK");
+            var team = mi.CommandParameter as Team;
+            Task.Run(new System.Action(async () =>
+            {
+                await App.Database.RemoveUser(team, Global.UserSignedIn);
+            }));
         }
 
 

@@ -44,7 +44,7 @@
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem Clicked="OnDelete"
-                      CommandParameter="{Binding ExitTeam}"
+                      CommandParameter="{Binding .}"
                       Text="Exit Team" IsDestructive="True" />
                         </ViewCell.ContextActions>
                         <StackLayout>
