@@ -9,18 +9,18 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="105*"/>
             <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="200*"/>
             <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="110*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -32,7 +32,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="30" 
+               FontSize="29" 
                Grid.Column="0" 
                Grid.Row="0"
                Grid.ColumnSpan="2"/>
@@ -112,9 +112,31 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"/>
-      
-        <Button Margin="2" 
+
+        <Picker x:Name="Role"
+                Title="Role"
+                TitleColor="LightSlateGray"
                 Grid.Row="8" 
+                Grid.Column="0"
+                SelectedItem="{Binding Role}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Student</x:String>
+                    <x:String>Mentor</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Label Text="Chose to be a student or mentor. Mentors are expected to already have more than adequate experience, but will have the same features as students."   
+               TextColor="LightSlateGray" 
+               FontSize="14" 
+               Grid.Column="1" 
+               Grid.Row="8"/>
+            
+            <!-- They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed" -->
+
+            <Button Margin="2" 
+                Grid.Row="9" 
                 Text="Privacy Policy" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="15" 
@@ -123,7 +145,7 @@
                 Clicked="PrivacyPolicy"/>
 
         <Button Margin="2" 
-                Grid.Row="8" 
+                Grid.Row="9" 
                 Text="Terms and Conditions" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="15" 
@@ -132,25 +154,26 @@
                 Clicked="TermsAndConditions"
                 Grid.Column="1"/>
 
-        <CheckBox Grid.Row="9"
+        <CheckBox Grid.Row="10"
                   Grid.Column="1"
                   HorizontalOptions="CenterAndExpand"
                   VerticalOptions="EndAndExpand"/>
 
         <Label Text=" I have read and agreed to the terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
-               FontSize="16" 
+               FontSize="13" 
                Grid.Column="0" 
-               Grid.Row="9"
+               Grid.Row="10"
                Grid.ColumnSpan="2"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
 
+        <!--
         <Label Text="*When creating this account it will be public, you can change account privacy in settings. Public members are available to all searching teams. Private members will only be able to search teams, but will not be searchable." 
                TextColor="LightSlateGray" 
                FontSize="14" 
-               Grid.Row="10"
-               Grid.ColumnSpan="2"/>
+               Grid.Row="11"
+               Grid.ColumnSpan="2"/> -->
 
         <Button Margin="2" 
                 Grid.Row="11" 
@@ -161,7 +184,6 @@
                 HorizontalOptions="Center"
                 Command ="{Binding SaveCommand}"
                 Grid.ColumnSpan="2"/>
-
     </Grid>
 
 </ContentPage>
