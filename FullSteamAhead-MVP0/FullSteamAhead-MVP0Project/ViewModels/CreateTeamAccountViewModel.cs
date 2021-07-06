@@ -120,28 +120,36 @@ namespace FullSteamAheadMVP0Project.ViewModels
             {
                 Global.TeamSignedIn.Team_Nickname = TeamNickname_;
                 Global.TeamSignedIn.Team_Information.Team_Email = TeamEmail_;
-                Global.TeamSignedIn.Team_Information.Min_Age = TeamMinAge_;
-                Global.TeamSignedIn.Team_Information.Max_Age = TeamMaxAge_;
                 Global.TeamSignedIn.Team_Information.State = TeamState_;
                 Global.TeamSignedIn.Team_Information.City = TeamCity_;
                 Global.TeamSignedIn.Team_Information.Zip_Code= TeamZipcode_;
                 Global.TeamSignedIn.Team_Information.Gender = TeamGender_;
                 Global.TeamSignedIn.Team_Information.Privacy = TeamPrivacy_;
-                Global.TeamSignedIn.Team_Information.Bio = TeamBio_;
-                Global.TeamSignedIn.Team_Information.Schedule= TeamSchedule_;
-
-                await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+              
+                
 
                 if (Global.AdminSignedIn != null)
-                {
+                { 
+                    Global.TeamSignedIn.Team_Information.Min_Age = TeamMinAge_;
+                    Global.TeamSignedIn.Team_Information.Max_Age = TeamMaxAge_;
+                    Global.TeamSignedIn.Team_Information.Bio = TeamBio_;
+                    Global.TeamSignedIn.Team_Information.Schedule = TeamSchedule_;
+
+                    await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+
                     await _navigation.PushAsync(new TeamSettingspage());
                 }
                 else
                 {
+                    await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+
                     await _navigation.PushAsync(new CreateAdminAccount());
                 } 
                 
             });
+
+           
+
 
         }
 

@@ -78,14 +78,6 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
 
-        <Editor Margin="2" 
-                Grid.Row="6" 
-                Placeholder="Grade            " 
-                Text="{Binding Grade}"
-                TextColor="LightSlateGray" 
-                FontSize="20" 
-                BackgroundColor="White" 
-                HorizontalOptions="Center"/>
 
         <Button Margin="2" 
                 Grid.Row="7" 

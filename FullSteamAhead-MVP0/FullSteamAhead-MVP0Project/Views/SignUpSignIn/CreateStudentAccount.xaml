@@ -154,7 +154,8 @@
                 Clicked="TermsAndConditions"
                 Grid.Column="1"/>
 
-        <CheckBox Grid.Row="10"
+        <CheckBox x:Name ="cb"
+                  Grid.Row="10"
                   Grid.Column="1"
                   HorizontalOptions="CenterAndExpand"
                   VerticalOptions="EndAndExpand"/>

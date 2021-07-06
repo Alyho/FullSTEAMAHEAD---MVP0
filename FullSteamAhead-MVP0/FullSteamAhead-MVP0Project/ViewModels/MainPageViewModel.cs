@@ -87,7 +87,6 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     Global.UserSignedIn.Information.City = City_;
                     Global.UserSignedIn.Information.Age = Age_;
                     Global.UserSignedIn.Information.Role = Role_;
-                    Global.UserSignedIn.Information.Grade = Grade_;
                     await App.Database.SaveAccountAsync(Global.UserSignedIn);
                 }
 
@@ -108,6 +107,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 Global.UserSignedIn.Information.Zip_Code = Zipcode_;
                 Global.UserSignedIn.Information.Phone_Number = PhoneNumber_;
                 Global.UserSignedIn.Information.Bio = Bio_;
+                Global.UserSignedIn.Information.Grade = Grade_;
 
                 await _navigation.PushAsync(new ChangeUserInformation3());
             });

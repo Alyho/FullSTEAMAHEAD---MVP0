@@ -31,6 +31,7 @@ public partial class CreateStudentAccount : ContentPage
             {
                 if (mainPageViewModel.UserCreated)
                 {
+                    //if checkbox is checked:  
                     await Navigation.PushAsync(new Homepage());
                 }
 
