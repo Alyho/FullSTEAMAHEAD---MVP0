@@ -114,7 +114,8 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task UpdateTeamRequests(User user)
         {
-            await firebase.Child(Users).Child(user.Username).Child(Team_Requests).PatchAsync(user.Team_Requests);
+            await firebase.Child(Users).Child(user.Username).Child(Team_Requests).DeleteAsync();
+            await firebase.Child(Users).Child(user.Username).Child(Team_Requests).PutAsync(user.Team_Requests);
         }
 
 
@@ -352,17 +353,20 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task UpdateTeamMembers(Team team) // updates Members list in database
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).PatchAsync(team.Members);
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).DeleteAsync();
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).PutAsync(team.Members);
         }
 
         public async Task UpdateTeamMentors(Team team) // updates Mentors list in database
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).PatchAsync(team.Mentors);
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).DeleteAsync();
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).PutAsync(team.Mentors);
         }
 
         public async Task UpdateTeamAdmins(Team team) // updates Team_Admins list in database
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Team_Admins).PatchAsync(team.Team_Admins);
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Team_Admins).DeleteAsync();
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Team_Admins).PutAsync(team.Team_Admins);
         }
 
         public async Task<Team> IsTeamValid(Team team, Admin admin) // returns Team if it exists in database + password matches + admin user and password matches, otherwise returns null
@@ -460,7 +464,8 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task UpdateAnnouncements(Team team)
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Announcements).PatchAsync(team.Announcements);
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Announcements).DeleteAsync();
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Announcements).PutAsync(team.Announcements);
         }
 
         public async Task AddUserRequest(Team team, string username)
@@ -484,8 +489,9 @@ namespace FullSteamAheadMVP0Project.Models
         }
 
         public async Task UpdateUserRequests(Team team)
-        {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).PatchAsync(team.User_Requests);
+        { 
+            await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).DeleteAsync();
+            await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).PutAsync(team.User_Requests);
         }
 
 
