@@ -40,7 +40,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         public MembersViewModel()
         {
             Dictionary<string, Admin> AdminDict = new Dictionary<string, Admin>();
-            Dictionary<string, User> MemberDict = new Dictionary<string, User>();
+            Dictionary<string, User> StudentDict = new Dictionary<string, User>();
             Dictionary<string, User> MentorDict = new Dictionary<string, User>();
 
             List<Admin> AdminList = new List<Admin>();
@@ -50,14 +50,14 @@ namespace FullSteamAheadMVP0Project.ViewModels
             if (Global.SelectedTeam != null)
             {
                 AdminDict = Global.SelectedTeam.Team_Admins;
-                MemberDict = Global.SelectedTeam.Members;               
+                StudentDict = Global.SelectedTeam.Students;               
                 MentorDict = Global.SelectedTeam.Mentors;
             }
 
             if (Global.TeamSignedIn != null)
             {
                 AdminDict = Global.TeamSignedIn.Team_Admins;
-                MemberDict = Global.TeamSignedIn.Members;
+                StudentDict = Global.TeamSignedIn.Students;
                 MentorDict = Global.TeamSignedIn.Mentors;
             }
             
@@ -74,7 +74,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             i = 0;
 
-            foreach (KeyValuePair<string, User> entry in MemberDict)
+            foreach (KeyValuePair<string, User> entry in StudentDict)
             {
                 UserList.Add(entry.Value);
                 UserList[i].Username = entry.Key;

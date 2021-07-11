@@ -8,7 +8,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             User_Requests = new Dictionary<string, User>();
             Announcements = new Dictionary<string, string>();
-            Members = new Dictionary<string, User>();
+            Students = new Dictionary<string, User>();
             Mentors = new Dictionary<string, User>();
             Team_Admins = new Dictionary<string, Admin>();
             Team_Username = "";
@@ -19,7 +19,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public Dictionary<string, User> User_Requests { get; set; }
         public Dictionary<string, string> Announcements { get; set; }
-        public Dictionary<string, User> Members { get; set; }
+        public Dictionary<string, User> Students { get; set; }
         public Dictionary<string, User> Mentors { get; set; }
         public Dictionary<string, Admin> Team_Admins { get; set; }
         public string Team_Username { get; set; }

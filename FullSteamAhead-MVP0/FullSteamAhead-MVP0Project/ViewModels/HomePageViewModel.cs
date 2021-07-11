@@ -113,7 +113,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
             myList.Clear();
             foreach (var team in myTeams)
             {
-                if (team.Members.ContainsKey(Global.UserSignedIn.Username))
+                if (team.Students.ContainsKey(Global.UserSignedIn.Username))
                 {
                     myList.Add(team);
                 }

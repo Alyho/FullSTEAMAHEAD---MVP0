@@ -13,7 +13,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         private readonly string Users = "Users";
         private readonly string Teams = "Teams";
-        private readonly string Members = "Members";
+        private readonly string Students = "Students";
         private readonly string Mentors = "Mentors";
         private readonly string Team_Admins = "Team_Admins";
         private readonly string Announcements = "Announcements";
@@ -46,7 +46,7 @@ namespace FullSteamAheadMVP0Project.Models
 
 
 
-        // Account methods
+        // User methods
 
         public async Task<User> GetAccountAsync(string username) // returns the User that matches with the username
         {
@@ -72,20 +72,20 @@ namespace FullSteamAheadMVP0Project.Models
                 }).ToList();
         }
 
-        public async Task SaveAccountAsync(User account) // saves User to database
+        public async Task SaveAccountAsync(User user) // saves User to database
         {
-            await firebase.Child(Users).Child(account.Username).PutAsync(account);
+            await firebase.Child(Users).Child(user.Username).PutAsync(user);
         }
 
-        public async Task UpdateAccount(User account) // updates User in database
+        public async Task UpdateAccount(User user) // updates User in database
         {
-            await firebase.Child(Users).Child(account.Username).PatchAsync(account);
+            await firebase.Child(Users).Child(user.Username).PatchAsync(user);
         }
 
-        public async Task<bool> IsAccountValid(User account) // returns if User has created an account and if the password matches
+        public async Task<bool> IsAccountValid(User user) // returns if User has created an account and if the password matches
         {
-            User account2 = await GetAccountAsync(account.Username);
-            if (account2 == null || account2.Password != account.Password)
+            User user2 = await GetAccountAsync(user.Username);
+            if (user2 == null || user2.Password != user.Password)
             {
                 return false;
             }
@@ -108,8 +108,8 @@ namespace FullSteamAheadMVP0Project.Models
         public async Task<Dictionary<string, Team>> GetTeamRequests(User user)
         {
             var allPersons = await GetAccountsAsync();
-            User account2 = allPersons.FirstOrDefault(a => a.Username == user.Username);
-            return account2.Team_Requests;
+            User user2 = allPersons.FirstOrDefault(a => a.Username == user.Username);
+            return user2.Team_Requests;
         }
 
         public async Task UpdateTeamRequests(User user)
@@ -135,7 +135,7 @@ namespace FullSteamAheadMVP0Project.Models
 
 
 
-        // Account searching and filtering methods
+        // User searching and filtering methods
 
         public async Task<List<User>> AccountSearch(string name) // returns list of Users that match the name (either username or nickname)
         {
@@ -229,7 +229,7 @@ namespace FullSteamAheadMVP0Project.Models
         }
 
         // Note: this is the only method not called in FilterBestAccountResults()
-        public List<User> FilterAccountRole(List<User> users, string role) // cleans out users based on role (member / mentor)
+        public List<User> FilterAccountRole(List<User> users, string role) // cleans out users based on role (student / mentor)
         {
             for (int i = 0; i < users.Count; i++)
             {
@@ -299,7 +299,7 @@ namespace FullSteamAheadMVP0Project.Models
                     Team_Nickname = item.Object.Team_Nickname,
                     Team_Information = item.Object.Team_Information,
                     Team_Admins = item.Object.Team_Admins,
-                    Members = item.Object.Members,
+                    Students = item.Object.Students,
                     Mentors = item.Object.Mentors,
                     Announcements = item.Object.Announcements,
                     User_Requests = item.Object.User_Requests
@@ -311,31 +311,31 @@ namespace FullSteamAheadMVP0Project.Models
             await firebase.Child(Teams).Child(team.Team_Username).PutAsync(team);
         }
 
-        public async Task AddUser(Team team, User account) // adds User to Team, either in Mentors list or Members list
+        public async Task AddUser(Team team, User user) // adds User to Team, either in Mentors list or Students list
         {
-            if (account.Information.Role == "Mentor")
+            if (user.Information.Role == "Mentor")
             {
-                team.Mentors.Add(account.Username, account);
+                team.Mentors.Add(user.Username, user);
                 await UpdateTeamMentors(team);
             }
-            else if (account.Information.Role == "Student")
+            else if (user.Information.Role == "Student")
             {
-                team.Members.Add(account.Username, account);
-                await UpdateTeamMembers(team);
+                team.Students.Add(user.Username, user);
+                await UpdateTeamStudents(team);
             }
         }
 
-        public async Task RemoveUser(Team team, User account) // removes User from Team, either in Mentors list or Members list
+        public async Task RemoveUser(Team team, User user) // removes User from Team, either in Mentors list or Students list
         {
-            if (account.Information.Role == "Mentor")
+            if (user.Information.Role == "Mentor")
             {
-                team.Mentors.Remove(account.Username);
+                team.Mentors.Remove(user.Username);
                 await UpdateTeamMentors(team);
             }
-            else if (account.Information.Role == "Student")
+            else if (user.Information.Role == "Student")
             {
-                team.Members.Remove(account.Username);
-                await UpdateTeamMembers(team);
+                team.Students.Remove(user.Username);
+                await UpdateTeamStudents(team);
             }
         }
 
@@ -351,10 +351,10 @@ namespace FullSteamAheadMVP0Project.Models
             await UpdateTeamAdmins(team);
         }
 
-        public async Task UpdateTeamMembers(Team team) // updates Members list in database
+        public async Task UpdateTeamStudents(Team team) // updates Students list in database
         {
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).DeleteAsync();
-            await firebase.Child(Teams).Child(team.Team_Username).Child(Members).PutAsync(team.Members);
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Students).DeleteAsync();
+            await firebase.Child(Teams).Child(team.Team_Username).Child(Students).PutAsync(team.Students);
         }
 
         public async Task UpdateTeamMentors(Team team) // updates Mentors list in database
@@ -418,6 +418,29 @@ namespace FullSteamAheadMVP0Project.Models
             foreach (KeyValuePair<string, Admin> entry in allAdmins)
             {
                 if (entry.Key == admin.Username)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public async Task<bool> TeamUserExists(Team team, User user) // returns if User username already exists within Team
+        {
+            var allPersons = await GetTeamsAsync();
+            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            Dictionary<string, User> allMentors = team2.Mentors;
+            foreach (KeyValuePair<string, User> entry in allMentors)
+            {
+                if (entry.Key == user.Username)
+                {
+                    return true;
+                }
+            }
+            Dictionary<string, User> allStudents = team2.Students;
+            foreach (KeyValuePair<string, User> entry in allStudents)
+            {
+                if (entry.Key == user.Username)
                 {
                     return true;
                 }
