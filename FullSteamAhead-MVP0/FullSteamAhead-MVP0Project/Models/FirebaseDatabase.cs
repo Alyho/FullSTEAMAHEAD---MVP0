@@ -107,8 +107,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<Dictionary<string, Team>> GetTeamRequests(User user)
         {
-            var allPersons = await GetAccountsAsync();
-            User user2 = allPersons.FirstOrDefault(a => a.Username == user.Username);
+            User user2 = await GetAccountAsync(user.Username);
             return user2.Team_Requests;
         }
 
@@ -116,6 +115,20 @@ namespace FullSteamAheadMVP0Project.Models
         {
             await firebase.Child(Users).Child(user.Username).Child(Team_Requests).DeleteAsync();
             await firebase.Child(Users).Child(user.Username).Child(Team_Requests).PutAsync(user.Team_Requests);
+        }
+
+        public async Task<bool> TeamRequestExists(User user, Team team)
+        {
+            var user2 = await GetAccountAsync(user.Username);
+            Dictionary<string, Team> allTeamRequests = user2.Team_Requests;
+            foreach (KeyValuePair<string, Team> entry in allTeamRequests)
+            {
+                if (entry.Key == team.Team_Username)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 
@@ -140,7 +153,7 @@ namespace FullSteamAheadMVP0Project.Models
         public async Task<List<User>> AccountSearch(string name) // returns list of Users that match the name (either username or nickname)
         {
             var allPersons = await GetAccountsAsync();
-            // nickname or username: null issues
+            name = name.ToLower();
             List<User> users = allPersons.Where(a => (a.Username != null && a.Username.ToLower() == name) || (a.Nickname != null && a.Nickname.ToLower() == name)).ToList();
             return users;
         }
@@ -371,9 +384,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<Team> IsTeamValid(Team team, Admin admin) // returns Team if it exists in database + password matches + admin user and password matches, otherwise returns null
         {
-            var allPersons = await GetTeamsAsync();
-
-            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            Team team2 = await GetTeamAsync(team.Team_Username);
             if (team2 == null || team2.Team_Password != team.Team_Password)
             {
                 return null;
@@ -397,8 +408,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<int> TeamExists(Team team) // returns an integer - given a Team, checks with database: (0) username & password matches / (1) username matches / (2) neither
         {
-            var allPersons = await GetTeamsAsync();
-            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            Team team2 = await GetTeamAsync(team.Team_Username);
             if (team2 == null)
             {
                 return 2;
@@ -412,8 +422,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<bool> TeamAdminExists(Team team, Admin admin) // returns if Admin username already exists within Team
         {
-            var allPersons = await GetTeamsAsync();
-            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            Team team2 = await GetTeamAsync(team.Team_Username);
             Dictionary<string, Admin> allAdmins = team2.Team_Admins;
             foreach (KeyValuePair<string, Admin> entry in allAdmins)
             {
@@ -427,8 +436,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<bool> TeamUserExists(Team team, User user) // returns if User username already exists within Team
         {
-            var allPersons = await GetTeamsAsync();
-            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            Team team2 = await GetTeamAsync(team.Team_Username);
             Dictionary<string, User> allMentors = team2.Mentors;
             foreach (KeyValuePair<string, User> entry in allMentors)
             {
@@ -450,8 +458,9 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task AddAnnouncement(Team team, string announcement)
         {
+            Team team2 = await GetTeamAsync(team.Team_Username);
             int maxIndex = 0;
-            foreach (KeyValuePair<string, string> entry in team.Announcements)
+            foreach (KeyValuePair<string, string> entry in team2.Announcements)
             {
                 int cur = Int32.Parse(entry.Key);
                 if (cur > maxIndex)
@@ -459,19 +468,20 @@ namespace FullSteamAheadMVP0Project.Models
                     maxIndex = cur;
                 }
             }
-            team.Announcements.Add((maxIndex+1) + "", announcement);
-            await UpdateAnnouncements(team);
+            team2.Announcements.Add((maxIndex+1) + "", announcement);
+            await UpdateAnnouncements(team2);
         }
 
         public async Task RemoveAnnouncement(Team team, int index)
         {
+            Team team2 = await GetTeamAsync(team.Team_Username);
             int curInd = 0;
-            foreach (KeyValuePair<string, string> entry in team.Announcements)
+            foreach (KeyValuePair<string, string> entry in team2.Announcements)
             {
                 if (index == curInd)
                 {
-                    team.Announcements.Remove(entry.Key);
-                    await UpdateAnnouncements(team);
+                    team2.Announcements.Remove(entry.Key);
+                    await UpdateAnnouncements(team2);
                     return;
                 }
                 curInd++;
@@ -480,8 +490,7 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<Dictionary<string, string>> GetAnnouncements(Team team)
         {
-            var allPersons = await GetTeamsAsync();
-            Team team2 = allPersons.FirstOrDefault(a => a.Team_Username == team.Team_Username);
+            Team team2 = await GetTeamAsync(team.Team_Username);
             return team2.Announcements;
         }
 
@@ -517,6 +526,20 @@ namespace FullSteamAheadMVP0Project.Models
             await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).PutAsync(team.User_Requests);
         }
 
+        public async Task<bool> UserRequestExists(Team team, User user)
+        {
+            Team team2 = await GetTeamAsync(team.Team_Username);
+            Dictionary<string, User> allUserRequests = team2.User_Requests;
+            foreach (KeyValuePair<string, User> entry in allUserRequests)
+            {
+                if (entry.Key == user.Username)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
 
 
@@ -539,7 +562,7 @@ namespace FullSteamAheadMVP0Project.Models
         public async Task<List<Team>> TeamSearch(string name) // returns list of Teams that match the name (either username or nickname)
         {
             var allPersons = await GetTeamsAsync();
-            // nickname or username
+            name = name.ToLower();
             List<Team> teams = allPersons.Where(a => (a.Team_Nickname != null && a.Team_Nickname.ToLower() == name) || a.Team_Username.ToLower() == name).ToList();
             return teams;
         }
