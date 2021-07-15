@@ -2,6 +2,7 @@
 using FullSteamAheadMVP0Project.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,25 @@ namespace FullSteamAheadMVP0Project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DisplayTeamInformation : ContentPage
     {
-
+        public DisplayTeamInformationViewModel displayTeamInformation { get; set; }
         public DisplayTeamInformation(Team team)
         {
             InitializeComponent();
-            BindingContext = new DisplayTeamInformationViewModel(team);
+            displayTeamInformation = new DisplayTeamInformationViewModel(team);
+            displayTeamInformation.PropertyChanged += DisplayTeamInformationViewModel_PropertyChanged;
+            this.BindingContext = displayTeamInformation;
+        }
+
+        private async void DisplayTeamInformationViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "UserRequestExists")
+            {
+                if (displayTeamInformation.UserRequestExists)
+                {
+                    await DisplayAlert("Sorry", "You have already requested to join this team", "OK");
+                }
+
+            }
         }
 
         private async void HomePage_Button_Clicked(object sender, EventArgs e)

@@ -26,16 +26,6 @@ namespace FullSteamAheadMVP0Project.Views
             Global.SelectedTeam = selectedItem;
             await Navigation.PushAsync(new MyTeams_Chat());
 
-            /*  if (Global.AdminSignedIn != null)
-            {
-                await Navigation.PushAsync(new MyTeams_Chat());
-            }
-
-            if (Global.UserSignedIn != null)
-            {
-                await Navigation.PushAsync(new MyTeams_Chat());
-            }*/
-
         }
 
         private async void HomePage_Button_Clicked(object sender, EventArgs e)
@@ -55,15 +45,26 @@ namespace FullSteamAheadMVP0Project.Views
 
         public void OnDelete(object sender, EventArgs e)
         {
-            var mi = ((MenuItem)sender);
-            var team = mi.CommandParameter as Team;
-            Task.Run(new System.Action(async () =>
+
+            if (Global.UserSignedIn != null)
             {
-                await App.Database.RemoveUser(team, Global.UserSignedIn);
-            }));
+                var mi = ((MenuItem)sender);
+                var team = mi.CommandParameter as Team;
+
+                if (Global.UserSignedIn != null)
+                {
+                    Task.Run(new System.Action(async () =>
+                    {
+                        await App.Database.RemoveUser(team, Global.UserSignedIn);
+                    }));
+                }
+
+                Task.Run(new System.Action(async () =>
+                {
+                    await Navigation.PushAsync(new MyTeamsPage());
+                }));
+            }
         }
-
-
 
     }
 

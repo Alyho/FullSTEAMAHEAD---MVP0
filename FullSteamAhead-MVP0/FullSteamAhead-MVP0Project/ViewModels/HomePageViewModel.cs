@@ -105,24 +105,6 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 
             }));
         }
-        
-        MyTeamsCommand = new Command(async () =>
-        {
-            var myTeams = await App.Database.GetTeamsAsync();
-
-            myList.Clear();
-            foreach (var team in myTeams)
-            {
-                if (team.Students.ContainsKey(Global.UserSignedIn.Username))
-                {
-                    myList.Add(team);
-                }
-            }
-
-            Global.MyTeams = myList;
-            await _navigation.PushAsync(new MyTeamsPage());
-
-        });
 
     }
 
