@@ -462,13 +462,13 @@ namespace FullSteamAheadMVP0Project.Models
             int maxIndex = 0;
             foreach (KeyValuePair<string, string> entry in team2.Announcements)
             {
-                int cur = Int32.Parse(entry.Key);
+                int cur = Int32.Parse(entry.Key.Substring(0, entry.Key.Length-1));
                 if (cur > maxIndex)
                 {
                     maxIndex = cur;
                 }
             }
-            team2.Announcements.Add((maxIndex+1) + "", announcement);
+            team2.Announcements.Add((maxIndex+1) + "_", announcement);
             await UpdateAnnouncements(team2);
         }
 
