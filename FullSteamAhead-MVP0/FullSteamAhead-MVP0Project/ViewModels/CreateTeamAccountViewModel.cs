@@ -40,6 +40,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         private int _teamCreated;
         private bool _adminExists;
+        private bool _unfilled;
 
         public int TeamCreated
         {
@@ -49,6 +50,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
         public bool AdminExists
         {
             get { return _adminExists; }
+        }
+
+        public bool Unfilled
+        {
+            get { return _unfilled; }
         }
 
 
@@ -84,10 +90,6 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 var ar = new PropertyChangedEventArgs(nameof(TeamCreated));
                 PropertyChanged?.Invoke(this, ar);
 
-                //clear the textboxes
-                TeamUsername = string.Empty;
-                TeamPassword = string.Empty;
-
             });
 
             SaveAdminCommand = new Command(async () =>
@@ -103,16 +105,13 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                 if (_adminExists == false)
                 {
+                   
                     await App.Database.AddTeamAdmin(Global.TeamSignedIn, _admin);
                     Global.AdminSignedIn = _admin;
                 }
 
                 var ar = new PropertyChangedEventArgs(nameof(AdminExists));
                 PropertyChanged?.Invoke(this, ar);
-
-                //clear the textboxes
-                TeamAdminUsername = string.Empty;
-                TeamAdminPassword = string.Empty;
 
             });
 
@@ -126,25 +125,35 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 Global.TeamSignedIn.Team_Information.Gender = TeamGender_;
                 Global.TeamSignedIn.Team_Information.Privacy = TeamPrivacy_;
               
-                
-
-                if (Global.AdminSignedIn != null)
-                { 
-                    Global.TeamSignedIn.Team_Information.Min_Age = TeamMinAge_;
-                    Global.TeamSignedIn.Team_Information.Max_Age = TeamMaxAge_;
-                    Global.TeamSignedIn.Team_Information.Bio = TeamBio_;
-                    Global.TeamSignedIn.Team_Information.Schedule = TeamSchedule_;
-
-                    await App.Database.SaveTeamAsync(Global.TeamSignedIn);
-
-                    await _navigation.PushAsync(new TeamSettingspage());
+                if (Global.TeamSignedIn.Team_Nickname == "" || Global.TeamSignedIn.Team_Information.Team_Email == "" ||
+                Global.TeamSignedIn.Team_Information.State == "" || Global.TeamSignedIn.Team_Information.City == "" ||
+                Global.TeamSignedIn.Team_Information.Zip_Code == "" || Global.TeamSignedIn.Team_Information.Gender == null ||
+                Global.TeamSignedIn.Team_Information.Privacy == null)
+                {
+                    _unfilled = true;
+                    var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                    PropertyChanged?.Invoke(this, ar);
                 }
+
                 else
                 {
-                    await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+                    if (Global.AdminSignedIn != null)
+                    { 
+                        Global.TeamSignedIn.Team_Information.Min_Age = TeamMinAge_;
+                        Global.TeamSignedIn.Team_Information.Max_Age = TeamMaxAge_;
+                        Global.TeamSignedIn.Team_Information.Bio = TeamBio_;
+                        Global.TeamSignedIn.Team_Information.Schedule = TeamSchedule_;
 
-                    await _navigation.PushAsync(new CreateAdminAccount());
-                } 
+                        await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+
+                        await _navigation.PushAsync(new TeamSettingspage());
+                    }
+                    else
+                    {
+                        await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+                        await _navigation.PushAsync(new CreateAdminAccount());
+                    } 
+                }
                 
             });
 

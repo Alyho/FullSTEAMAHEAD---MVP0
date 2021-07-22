@@ -41,6 +41,14 @@ public partial class CreateStudentAccount : ContentPage
                 }
                     
             }
+
+            if (e.PropertyName == "Unfilled")
+            {
+                if (mainPageViewModel.Unfilled)
+                {
+                    await DisplayAlert("Error", "One or more questions unanswered", "OK");
+                }
+            }
         }
 
         protected void PrivacyPolicy(object sender, EventArgs e)

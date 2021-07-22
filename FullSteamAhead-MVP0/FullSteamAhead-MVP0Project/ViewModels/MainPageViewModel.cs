@@ -43,11 +43,17 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         private bool _userCreated;
         private bool _userExists;
+        private bool _unfilled;
 
         public bool UserCreated
         {
             get { return _userCreated; }
         }
+        public bool Unfilled
+        {
+            get { return _unfilled; }
+        }
+
 
         public bool UserExists
         {
@@ -77,26 +83,35 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     //user already exists
                     _userCreated = false;
+                    var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                    PropertyChanged?.Invoke(this, ar);
                 }
+                
                 else
                 {
-
-                    _userCreated = true;
                     Global.UserSignedIn = _user;
                     Global.UserSignedIn.Information.State = State_;
                     Global.UserSignedIn.Information.City = City_;
                     Global.UserSignedIn.Information.Age = Age_;
                     Global.UserSignedIn.Information.Role = Role_;
-                    await App.Database.SaveAccountAsync(Global.UserSignedIn);
+
+                    if (Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.State == "" || 
+                    Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age== "")
+                    {
+                        _unfilled = true;
+
+                        var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                        PropertyChanged?.Invoke(this, ar);
+                    }
+                    else
+                    {
+                        _userCreated = true;
+                        await App.Database.SaveAccountAsync(Global.UserSignedIn);
+                        var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                        PropertyChanged?.Invoke(this, ar);
+                    }
+                   
                 }
-
-                //Raise the Property Changed Event to notify the MainPage
-                var ar = new PropertyChangedEventArgs(nameof(UserCreated));
-                PropertyChanged?.Invoke(this, ar);
-
-                //clear the textboxes
-                Username = string.Empty;
-                Password = string.Empty;
                 
             });
 
