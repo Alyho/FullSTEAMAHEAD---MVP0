@@ -2,6 +2,7 @@
 using FullSteamAheadMVP0Project.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,8 @@ namespace FullSteamAheadMVP0Project.Views
         public Notifications()
         {
             InitializeComponent();
-            BindingContext = new NotificationsViewModel();
+        
+            BindingContext = new NotificationsViewModel(this.Navigation);
 
         }
 

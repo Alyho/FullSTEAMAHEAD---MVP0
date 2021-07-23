@@ -10,8 +10,14 @@ namespace FullSteamAheadMVP0Project.ViewModels
     public class DisplayTeamInformationViewModel : INotifyPropertyChanged
     {
         private Team _team;
+        private bool _userRequestExists;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool UserRequestExists
+        {
+            get { return _userRequestExists; }
+        }
 
         public string Team_Username
         {
@@ -51,7 +57,17 @@ namespace FullSteamAheadMVP0Project.ViewModels
             
             RequestToJoinTeamCommand = new Command(async () =>
             {
-                await App.Database.AddUserRequest(_team, Global.UserSignedIn.Username);
+                if (await App.Database.UserRequestExists(_team, Global.UserSignedIn) == false)
+                {
+                    await App.Database.AddUserRequest(_team, Global.UserSignedIn.Username);
+                }
+                else
+                {
+                    _userRequestExists = true;
+                    var ar = new PropertyChangedEventArgs(nameof(UserRequestExists));
+                    PropertyChanged?.Invoke(this, ar);
+                }
+           
             });
         }
     }

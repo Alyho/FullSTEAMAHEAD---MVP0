@@ -76,16 +76,12 @@ public partial class MyTeams_Members : ContentPage
                     }));
                 }
 
-                else
+                Task.Run(new System.Action(async () =>
                 {
-                    Task.Run(new System.Action(async () =>
-                    {
-                        await App.Database.RemoveUser(Global.SelectedTeam, user);
-                    }));
-                }
-                
-            }
-            
+                    await Navigation.PushAsync(new MyTeams_Members());
+                }));
+            } 
+           
         }
 
     }

@@ -10,8 +10,14 @@ namespace FullSteamAheadMVP0Project.ViewModels
     public class DisplayUserPageViewModel : INotifyPropertyChanged
     {
         private User _user;
+        private bool _teamRequestExists;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool TeamRequestExists
+        {
+            get { return _teamRequestExists; }
+        }
 
         public Command InviteUserCommand { get; }
 
@@ -39,7 +45,16 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             InviteUserCommand = new Command(async () =>
             {
-                await App.Database.AddTeamRequest(_user, Global.TeamSignedIn.Team_Username);
+                if (await App.Database.TeamRequestExists(_user, Global.TeamSignedIn) ==false)
+                {
+                    await App.Database.AddTeamRequest(_user, Global.TeamSignedIn.Team_Username);
+                }
+                else
+                {
+                    _teamRequestExists = true;
+                    var ar = new PropertyChangedEventArgs(nameof(TeamRequestExists));
+                    PropertyChanged?.Invoke(this, ar);
+                }
             });
         }
     }

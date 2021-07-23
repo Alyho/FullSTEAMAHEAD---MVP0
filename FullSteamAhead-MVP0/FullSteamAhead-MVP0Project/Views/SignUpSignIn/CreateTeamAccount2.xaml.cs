@@ -20,8 +20,20 @@ namespace FullSteamAheadMVP0Project.Views
             InitializeComponent();
 
             createTeamAccountViewModel = new CreateTeamAccountViewModel(this.Navigation);
+            createTeamAccountViewModel.PropertyChanged += CreateTeamAccountViewModel_PropertyChanged;
             this.BindingContext = createTeamAccountViewModel;
         }
 
+        private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Unfilled")
+            {
+                if (createTeamAccountViewModel.Unfilled)
+                {
+                    await DisplayAlert("Error", "One or more questions unanswered.", "OK");
+                }
+            }
+
+        }
     }
 }

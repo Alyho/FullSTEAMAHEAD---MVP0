@@ -16,6 +16,7 @@ namespace FullSteamAheadMVP0Project.Models
         Task RemoveTeamRequest(User user, string username);            // removes team request from user
         Task<Dictionary<string, Team>> GetTeamRequests(User user);     // returns team requests
         Task UpdateTeamRequests(User user);                            // updates Team_Requests list in database
+        Task<bool> TeamRequestExists(User user, Team team);            // returns if Team username already exists in Team_Requests for a specific User
 
         // User searching and filtering methods
         Task<List<User>> AccountSearch(string name);                                          // returns list of Users that match the name (either username or nickname)
@@ -52,6 +53,7 @@ namespace FullSteamAheadMVP0Project.Models
         Task RemoveUserRequest(Team team, string username);               // removes user request from team
         Task<Dictionary<string, User>> GetUserRequests(Team team);        // returns user requests
         Task UpdateUserRequests(Team team);                               // updates User_Requests list in database
+        Task<bool> UserRequestExists(Team team, User user);               // returns if User username already exists in User_Requests for a specific Team
 
         // Team searching and filtering methods
         Task<List<Team>> TeamSearch(string name);                                // returns list of Teams that match the name (either username or nickname)
