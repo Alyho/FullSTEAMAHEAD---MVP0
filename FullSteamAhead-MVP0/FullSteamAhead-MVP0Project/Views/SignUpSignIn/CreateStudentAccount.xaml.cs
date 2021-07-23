@@ -15,6 +15,8 @@ namespace FullSteamAheadMVP0Project.Views
 public partial class CreateStudentAccount : ContentPage
 {
         public MainPageViewModel mainPageViewModel { get; set; }
+        public Xamarin.Forms.EditorAutoSizeOption AutoSize { get; set; }
+
 
         public CreateStudentAccount()
         {
@@ -23,6 +25,8 @@ public partial class CreateStudentAccount : ContentPage
             mainPageViewModel = new MainPageViewModel(this.Navigation);
             mainPageViewModel.PropertyChanged += MainPageViewModel_PropertyChanged;
             this.BindingContext = mainPageViewModel;
+
+
         }
 
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

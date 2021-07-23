@@ -70,12 +70,6 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
