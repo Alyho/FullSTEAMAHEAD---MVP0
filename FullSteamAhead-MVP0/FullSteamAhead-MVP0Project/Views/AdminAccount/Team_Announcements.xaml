@@ -45,7 +45,7 @@
                 HorizontalOptions="End"
                 Command ="{Binding SendCommand}"/>
 
-        <ListView x:Name="MyTeams"
+        <ListView x:Name="Teams"
                   Grid.Column="0" 
                   Grid.Row="2" 
                   Grid.ColumnSpan="4"
@@ -56,6 +56,35 @@
                   BackgroundColor="SkyBlue"
                   HasUnevenRows="True"
                   ItemTapped="DeleteAnnouncement_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Announcements}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="MyTeams"
+                  Grid.Column="0" 
+                  Grid.Row="1" 
+                  Grid.ColumnSpan="4"
+                  HasUnevenRows="True"
+                  ItemsSource="{Binding AnnouncementsListView}"
+                  HorizontalOptions="Center"
+                  BackgroundColor="SkyBlue"
+                  VerticalOptions="FillAndExpand">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

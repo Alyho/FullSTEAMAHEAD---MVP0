@@ -54,7 +54,7 @@ namespace FullSteamAheadMVP0Project.Views
                     {
                         int Key = int.Parse(entry.Key.Substring(0, entry.Key.Length-1));
                         await App.Database.RemoveAnnouncement(Global.TeamSignedIn, Key);
-                        MyTeams.ItemsSource = Global.TeamSignedIn.Announcements;
+                        Teams.ItemsSource = Global.TeamSignedIn.Announcements;
                         break;
                     }
                 }

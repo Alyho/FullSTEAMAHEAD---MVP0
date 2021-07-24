@@ -10,17 +10,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="90*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="82*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="74*"/>
-            <RowDefinition Height="92*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
             <RowDefinition Height="140*"/>
-            <RowDefinition Height="82*"/>
-            <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -45,7 +43,8 @@
                 FontSize="17" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"
+                WidthRequest="230"/>
 
         <Editor Margin="2"   
                 Grid.Row="2" 
@@ -55,7 +54,8 @@
                 FontSize="17" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"
+                WidthRequest="230"/>
         
         <!--Add "MaxAge" and "MinAge" boxes for Age range required to join a team-->
         <!-- <Editor Margin="2" 
@@ -85,6 +85,7 @@
                 Margin="2"   
                 Grid.Row="4" 
                 Grid.ColumnSpan="4"
+                WidthRequest="230"
                 SelectedItem="{Binding State}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -149,6 +150,7 @@
                 TextColor="LightSlateGray" 
                 FontSize="17" 
                 BackgroundColor="White" 
+                WidthRequest="230"
                 Grid.ColumnSpan="4"
                 HorizontalOptions="Center"/>
 
@@ -158,6 +160,7 @@
                 Text="{Binding Zipcode}"
                 TextColor="LightSlateGray" 
                 FontSize="17" 
+                WidthRequest="230"
                 Grid.ColumnSpan="4"
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
@@ -219,7 +222,7 @@
                 Grid.ColumnSpan="4"/> -->
          
         <Button Margin="2" 
-                Grid.Row="11" 
+                Grid.Row="9" 
                 Text="Next" CornerRadius="11" 
                 TextColor="LightSlateGray" 
                 FontSize="17" 

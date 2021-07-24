@@ -33,6 +33,11 @@ namespace FullSteamAheadMVP0Project.Views
                     await DisplayAlert("Sorry", "You have already requested to join this team", "OK");
                 }
 
+                else 
+                {
+                    await DisplayAlert("Request was successful", "You have requested to join this team", "OK");
+                }
+
             }
         }
 

@@ -43,5 +43,10 @@ public partial class MyTeams_Calendar : ContentPage
             await Navigation.PushAsync(new MyTeams_Members());
         }
 
+    private async void Back_Button_MyTeams(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeamsPage());
+        }
+
     }
 }

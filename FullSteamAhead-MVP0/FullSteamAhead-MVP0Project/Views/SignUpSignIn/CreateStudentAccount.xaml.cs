@@ -31,10 +31,11 @@ public partial class CreateStudentAccount : ContentPage
 
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "UserCreated")
+            if (e.PropertyName == "UserCreated") 
             {
                 if (mainPageViewModel.UserCreated)
                 {
+                    
                     //if checkbox is checked:  
                     await Navigation.PushAsync(new Homepage());
                 }
@@ -53,6 +54,11 @@ public partial class CreateStudentAccount : ContentPage
                     await DisplayAlert("Error", "One or more questions unanswered", "OK");
                 }
             }
+        }
+
+        void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            
         }
 
         protected void PrivacyPolicy(object sender, EventArgs e)

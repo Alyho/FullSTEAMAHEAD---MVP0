@@ -3,26 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FullSteamAheadMVP0Project.Views.MyTeams_Chat"
              BackgroundImageSource="MyTeams_Chat">
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height=".3*"/>
-            <RowDefinition Height=".3*"/>
-            <RowDefinition Height=".3*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".2*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width=".3*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="3" Grid.Row="0" Text="Calendar" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
-        <Button Grid.Column="3" Grid.Row="1" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="7" Clicked="Announcements_Button_CLicked"/>
-        <Button Grid.Column="3" Grid.Row="2" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Members_Button_CLicked"/>
+        <Button Grid.Column="0" Grid.Row="3" Text="Calendar" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="7" Clicked="Announcements_Button_CLicked"/>
+        <Button Grid.Column="2" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Members_Button_CLicked"/>
+        <Button Grid.Column="3" Grid.Row="3" Text="Back" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Back_Button_MyTeams"/>
 
     </Grid>
     

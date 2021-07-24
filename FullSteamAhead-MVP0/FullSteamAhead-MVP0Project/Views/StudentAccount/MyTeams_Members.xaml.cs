@@ -84,6 +84,11 @@ public partial class MyTeams_Members : ContentPage
            
         }
 
+        private async void Back_Button_MyTeams(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeamsPage());
+        }
+
     }
 
 }

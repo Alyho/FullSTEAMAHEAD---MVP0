@@ -36,7 +36,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                WidthRequest="230"/>
         
         <Editor Margin="2" 
                 Grid.Row="2" 
@@ -46,7 +47,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                WidthRequest="230"/>
 
         <Button Margin="2" 
                 Grid.Row="3" 
