@@ -29,7 +29,6 @@ namespace FullSteamAheadMVP0Project.ViewModels
         public MyTeamsPageViewModel()
         {
             List<Team> myList = new List<Team>();
-            myList.Clear();
 
             Task.Run(new System.Action(async () =>
             {

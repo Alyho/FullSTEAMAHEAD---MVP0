@@ -39,13 +39,14 @@ namespace FullSteamAheadMVP0Project.Views
                     await DisplayAlert("Invite was successful", "You have invited this user to join this team", "OK");
                 }
             }
+            
+            
         }
 
         private async void TeamSettings_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TeamSettingspage());
         }
-
 
     }
 

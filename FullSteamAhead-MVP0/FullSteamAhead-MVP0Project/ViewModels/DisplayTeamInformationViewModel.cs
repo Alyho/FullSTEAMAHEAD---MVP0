@@ -60,14 +60,17 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 if (await App.Database.UserRequestExists(_team, Global.UserSignedIn) == false)
                 {
                     await App.Database.AddUserRequest(_team, Global.UserSignedIn.Username);
+                    _userRequestExists = false;
                 }
                 else
                 {
                     _userRequestExists = true;
-                    var ar = new PropertyChangedEventArgs(nameof(UserRequestExists));
-                    PropertyChanged?.Invoke(this, ar);
+                    
                 }
-           
+
+                var ar = new PropertyChangedEventArgs(nameof(UserRequestExists));
+                PropertyChanged?.Invoke(this, ar);
+
             });
         }
     }

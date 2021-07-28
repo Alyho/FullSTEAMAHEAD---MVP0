@@ -46,24 +46,20 @@ namespace FullSteamAheadMVP0Project.Views
         public void OnDelete(object sender, EventArgs e)
         {
 
-            if (Global.UserSignedIn != null)
-            {
                 var mi = ((MenuItem)sender);
                 var team = mi.CommandParameter as Team;
 
-                if (Global.UserSignedIn != null)
-                {
                     Task.Run(new System.Action(async () =>
                     {
                         await App.Database.RemoveUser(team, Global.UserSignedIn);
                     }));
-                }
+                
 
                 Task.Run(new System.Action(async () =>
                 {
                     await Navigation.PushAsync(new MyTeamsPage());
                 }));
-            }
+            
         }
 
     }
