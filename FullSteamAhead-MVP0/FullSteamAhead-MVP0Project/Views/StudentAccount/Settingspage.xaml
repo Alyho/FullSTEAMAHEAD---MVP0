@@ -11,9 +11,10 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height=".3*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".7*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -29,7 +30,7 @@
                Grid.ColumnSpan="4"/>
 
         <Button Text="Log out"
-                Grid.Row="2"
+                Grid.Row="4"
                 Grid.ColumnSpan="4"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
@@ -37,6 +38,30 @@
                 FontSize="20"
                 TextColor="LightSlateGray"
                 Clicked="MainPage_Button_Clicked"
+                WidthRequest="230"
+                HeightRequest="80"/>
+
+        <Button Text="Help"
+                Grid.Row="2"
+                Grid.ColumnSpan="4"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                CornerRadius="10"
+                FontSize="20"
+                TextColor="LightSlateGray"
+                Clicked="Help_Button_Clicked"
+                WidthRequest="230"
+                HeightRequest="80"/>
+
+        <Button Text="FAQs"
+                Grid.Row="3"
+                Grid.ColumnSpan="4"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                CornerRadius="10"
+                FontSize="20"
+                TextColor="LightSlateGray"
+                Clicked="FAQs_Button_Clicked"
                 WidthRequest="230"
                 HeightRequest="80"/>
 
@@ -52,10 +77,10 @@
                 WidthRequest="230"
                 HeightRequest="80"/>
 
-        <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsCommand}"/>
-        <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding UserNotificationsCommand}"/>
-        <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
+        <Button Grid.Column="0" Grid.Row="5" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
+        <Button Grid.Column="1" Grid.Row="5" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsCommand}"/>
+        <Button Grid.Column="2" Grid.Row="5" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding UserNotificationsCommand}"/>
+        <Button Grid.Column="3" Grid.Row="5" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
 
     </Grid>
 

@@ -20,14 +20,22 @@ public partial class TeamNotifications : ContentPage
         /*BindingContext = new NotificationsViewModel();*/
     }
 
-    private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
+    private async void TeamChat_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Chat());
+            await Navigation.PushAsync(new Team_Chat());
         }
 
-    private async void TeamSettings_Button_Clicked(object sender, EventArgs e)
+    private async void TeamSettings2_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new TeamSettingspage());
         }
+
+
+    private async void Search2_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DisplayUser_Homepage());
+        }
     }
+
+
 }

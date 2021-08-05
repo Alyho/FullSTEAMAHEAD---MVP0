@@ -73,18 +73,17 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Clicked="TermsAndConditions"
-                Grid.ColumnSpan="4"
-                WidthRequest="230"/>
+                Grid.ColumnSpan="4"/>
 
-        <CheckBox Grid.Row="5"
+        <!-- <CheckBox Grid.Row="5"
                   Grid.Column="1"
                   Grid.ColumnSpan="2"
                   HorizontalOptions="CenterAndExpand"
-                  VerticalOptions="EndAndExpand"/>
+                  VerticalOptions="EndAndExpand"/> -->
 
-        <Label Text=" I have read and agreed to the terms and conditions and privacy policy" 
+        <Label Text="By clicking Next, you agree to our terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
-               FontSize="16" 
+               FontSize="15" 
                Grid.Column="0" 
                Grid.Row="5"
                Grid.ColumnSpan="4"

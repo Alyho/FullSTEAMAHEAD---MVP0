@@ -9,8 +9,7 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="1.2*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="12*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -48,6 +47,17 @@
                                    VerticalOptions="FillAndExpand">
                                     <Label.FormattedText>
                                         <FormattedString>
+                                            <Span Text="Role: " />
+                                            <Span Text="{Binding Role}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
                                             <Span Text="{Binding Date}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -58,10 +68,10 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
-            <Button Grid.Column="1" Grid.Row="3" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="MyTeam_Calendar_Button_Clicked"/>
+            <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search2_Button_Clicked"/>
+            <Button Grid.Column="1" Grid.Row="3" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamChat_Button_Clicked"/>
             <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding TeamNotificationsCommand}"/>
-            <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
+            <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings2_Button_Clicked"/>
             
         </Grid>
 

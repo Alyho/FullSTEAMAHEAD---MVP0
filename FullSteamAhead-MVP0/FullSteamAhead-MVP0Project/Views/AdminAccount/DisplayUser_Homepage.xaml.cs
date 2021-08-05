@@ -29,7 +29,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Chat());
+            await Navigation.PushAsync(new Team_Chat());
         }
 
         private async void TeamSettings_Button_Clicked(object sender, EventArgs e)

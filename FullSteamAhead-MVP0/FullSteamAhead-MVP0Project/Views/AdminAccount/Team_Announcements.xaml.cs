@@ -24,17 +24,17 @@ namespace FullSteamAheadMVP0Project.Views
         }
         private async void Chat_Button_CLicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Chat());
+            await Navigation.PushAsync(new Team_Chat());
         }
 
         private async void Calendar_Button_CLicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Calendar());
+            await Navigation.PushAsync(new Team_Calendar());
         }
 
         private async void Members_Button_CLicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Members());
+            await Navigation.PushAsync(new Team_Members());
         }
 
         private async void Back_Button_MyTeam(object sender, EventArgs e)

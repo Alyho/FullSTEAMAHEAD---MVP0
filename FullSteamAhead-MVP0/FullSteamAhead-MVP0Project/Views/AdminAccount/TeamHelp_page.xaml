@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FullSteamAheadMVP0Project.Views.TeamHelp_page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Help" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       TextColor="LightSlateGray" 
+                       FontSize="32" />
+            <ScrollView>
+                <StackLayout>
+                    <Label Text="How to Navigate the App for Teams"  
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="22" />
+                    <Label Text="Sign Up" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="Although the sign-up process may seem quite tedious, the information is necessary to provide the best experience for users. Specific qualities of a user's account will help narrow down the search process for nearby teams. " />
+                    <Label Text="Searching for and Joining Teams" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18"/>
+                    <Label Text="Immediately upon entering the app, you will find yourself on the search page. Simply search for a user or mentor by their username or nickname, and the algorithm will provide users and mentors that are the best fit. Distance, age ranges, gender, and other preferences account for the members found.  Members that are private will not be able to be found by search. For the public members that you see, you can click on their team profile and invite them to join your team." />
+                    <Label Text="Notifications" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="Currently on the notifications page, you can find a list of members that have requested to join your team. You can choose to accept or decline their request. " />
+                    <Label Text="My Team" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="Immediately, when clicking on this, you will be navigated to the chat of the team menu page." />
+                    <Label Text="Team Menu: Chat, Calendar, Members, Announcement" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="To navigate between the menu options, swipe from the very left of the screen to the right. A menu bar will appear that allows you to navigate between the chat, calendar, members page, and announcements page. View all the members of a team on the members page. You can remove a member here as well by swiping from the right side of a specific member and removing them like that. Post an announcement for all of your team to see on the announcement page." />
+                    <Label Text="Settings" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="On the settings page holds many additional information that you may find helpful. You are able to change your account information as well." />
+                    <Button Text="Back"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                CornerRadius="10"
+                FontSize="20"
+                TextColor="LightSlateGray"
+                Clicked="BackToTeamSettings_Button_Clicked"
+                WidthRequest="200"
+                HeightRequest="60"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

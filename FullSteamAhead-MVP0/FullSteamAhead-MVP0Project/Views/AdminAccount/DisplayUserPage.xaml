@@ -62,6 +62,18 @@
                 WidthRequest="400"
                 Command="{Binding InviteUserCommand}"/>
 
+        <Button Margin=".2"  
+                Grid.Row="4" 
+                Grid.Column="2"
+                Text="Back" 
+                CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="17" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center" 
+                WidthRequest="400"
+                Clicked="TeamBackToSearch_Button_Clicked"/>
+
         <Button Grid.Column="0" Grid.Row="5" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
         <Button Grid.Column="1" Grid.Row="5" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
         <Button Grid.Column="2" Grid.Row="5" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding UserNotificationsCommand}"/>

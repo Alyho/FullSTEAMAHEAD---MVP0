@@ -52,6 +52,11 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new Settingspage());
         }
 
+        private async void BackToSearch_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Homepage());
+        }
+
     }
 
 }

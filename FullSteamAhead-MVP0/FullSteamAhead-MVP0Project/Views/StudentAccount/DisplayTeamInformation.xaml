@@ -67,7 +67,7 @@
                Grid.Row="6" 
                Grid.ColumnSpan="3"/>
 
-        <Button Margin=".2"  
+        <!-- <Button Margin=".2"  
                 Grid.Row="7" 
                 Grid.Column="1"
                 Text="E-mail" 
@@ -77,7 +77,19 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center" 
                 WidthRequest="400"
-                Command="{Binding TeamEmailCommand}"/>
+                Command="{Binding TeamEmailCommand}"/> -->
+
+        <Button Margin=".2"  
+                Grid.Row="7" 
+                Grid.Column="1"
+                Text="Back" 
+                CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="17" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center" 
+                WidthRequest="400"
+                Clicked="BackToSearch_Button_Clicked"/>
 
         <Button Margin=".2"  
                 Grid.Row="7" 

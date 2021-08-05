@@ -26,16 +26,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void Announcements_Button_CLicked(object sender, EventArgs e)
         {
-            if (Global.TeamSignedIn != null)
-            {
-                await Navigation.PushAsync(new Team_Announcements());
-            }
-
-            else if (Global.UserSignedIn != null)
-            {
-                await Navigation.PushAsync(new MyTeams_Announcements());
-
-            }
+            await Navigation.PushAsync(new MyTeams_Announcements());
         }
 
         private async void Members_Button_CLicked(object sender, EventArgs e)

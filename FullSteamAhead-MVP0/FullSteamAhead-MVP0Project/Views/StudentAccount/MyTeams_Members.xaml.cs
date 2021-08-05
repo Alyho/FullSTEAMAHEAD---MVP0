@@ -43,45 +43,12 @@ public partial class MyTeams_Members : ContentPage
 
     private async void Announcements_Button_CLicked(object sender, EventArgs e)
         {
-            if (Global.TeamSignedIn != null)
-            {
-                await Navigation.PushAsync(new Team_Announcements());
-            }
-
-            else if (Global.UserSignedIn != null)
-            {
-                await Navigation.PushAsync(new MyTeams_Announcements());
-
-            }
+            await Navigation.PushAsync(new MyTeams_Announcements());
         }
 
         private async void Calendar_Button_CLicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MyTeams_Calendar());
-        }
-
-        public void OnDelete2(object sender, EventArgs e)
-        {
-
-            if (Global.TeamSignedIn != null)
-            {
-                var mi = ((MenuItem)sender);
-                var user = mi.CommandParameter as User;
-
-                if (Global.TeamSignedIn != null)
-                {
-                    Task.Run(new System.Action(async () =>
-                    {
-                        await App.Database.RemoveUser(Global.TeamSignedIn, user);
-                    }));
-                }
-
-                Task.Run(new System.Action(async () =>
-                {
-                    await Navigation.PushAsync(new MyTeams_Members());
-                }));
-            } 
-           
         }
 
         private async void Back_Button_MyTeams(object sender, EventArgs e)

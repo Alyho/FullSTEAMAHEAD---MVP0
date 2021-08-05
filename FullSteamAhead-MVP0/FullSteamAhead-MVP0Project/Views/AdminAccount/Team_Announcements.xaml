@@ -6,7 +6,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height=".2*"/>
             <RowDefinition Height=".2*"/>
-            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height=".2*"/>
         </Grid.RowDefinitions>
 
@@ -24,7 +24,7 @@
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
 
-        <Editor Margin="2" 
+        <!-- <Editor Margin="2" 
                 Grid.Row="1" 
                 Grid.Column="0"
                 Placeholder="Type announcement     " 
@@ -33,9 +33,20 @@
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"/> -->
 
-        <Button Margin="2" 
+        <Entry Margin="2" 
+               Grid.Row="1" 
+               Grid.Column="0"
+               Placeholder="Type announcement     " 
+               ReturnCommand="{Binding SendCommand}"
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               BackgroundColor="White" 
+               HorizontalOptions="Center"
+               Grid.ColumnSpan="4"/>
+
+        <!-- <Button Margin="2" 
                 Grid.Row="1"
                 Grid.Column="3"
                 Text="Create" CornerRadius="10" 
@@ -43,7 +54,7 @@
                 FontSize="18" 
                 BackgroundColor="White" 
                 HorizontalOptions="End"
-                Command ="{Binding SendCommand}"/>
+                Command ="{Binding SendCommand}"/> -->
 
         <ListView x:Name="Teams"
                   Grid.Column="0" 
@@ -76,7 +87,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView x:Name="MyTeams"
+       <!-- <ListView x:Name="MyTeams"
                   Grid.Column="0" 
                   Grid.Row="1" 
                   Grid.ColumnSpan="4"
@@ -103,7 +114,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView> -->
 
 
         <Button Grid.Column="0" Grid.Row="3" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>

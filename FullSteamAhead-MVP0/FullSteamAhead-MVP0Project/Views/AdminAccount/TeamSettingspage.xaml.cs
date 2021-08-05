@@ -26,14 +26,34 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new MainPage());
         }
 
-        private async void MyTeam_Calendar_Button_Clicked(object sender, EventArgs e)
+        private async void TeamChat2_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Chat());
+            await Navigation.PushAsync(new Team_Chat());
+        }
+
+        private async void Search_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DisplayUser_Homepage());
         }
 
         private async void ChangeTeamAccountInfo_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ChangeTeamInformation1());
+        }
+
+        private async void Help2_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TeamHelp_page());
+        }
+
+        private async void FAQs2_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new TeamFAQ_page());
+        }
+
+        private async void Notifications2_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Notifications());
         }
 
     }

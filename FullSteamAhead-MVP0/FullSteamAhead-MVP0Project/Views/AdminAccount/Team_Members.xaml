@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.MyTeams_Members"
+             x:Class="FullSteamAheadMVP0Project.Views.Team_Members"
              BackgroundColor="AliceBlue">
 
     <Grid>
@@ -52,6 +52,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete3"
+                      CommandParameter="{Binding .}"
+                      Text="Delete admin" IsDestructive="True" />
+                        </ViewCell.ContextActions>
                         <StackLayout>
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
@@ -80,7 +85,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView> 
+        </ListView>
 
         <Label Text="Mentors and members" 
                HorizontalTextAlignment="Center" 
@@ -103,6 +108,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="OnDelete2"
+                      CommandParameter="{Binding .}"
+                      Text="Delete user" IsDestructive="True" />
+                        </ViewCell.ContextActions>
                         <StackLayout>
                             <Label>
                                 <Label.FormattedText>
@@ -125,7 +135,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView> 
+        </ListView>
 
         <Button Grid.Column="0" Grid.Row="5" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
         <Button Grid.Column="1" Grid.Row="5" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Announcements_Button_CLicked"/>

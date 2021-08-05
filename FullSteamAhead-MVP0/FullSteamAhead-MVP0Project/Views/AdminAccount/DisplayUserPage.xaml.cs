@@ -48,6 +48,11 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new TeamSettingspage());
         }
 
+        private async void TeamBackToSearch_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new DisplayUser_Homepage());
+        }
+
     }
 
 }

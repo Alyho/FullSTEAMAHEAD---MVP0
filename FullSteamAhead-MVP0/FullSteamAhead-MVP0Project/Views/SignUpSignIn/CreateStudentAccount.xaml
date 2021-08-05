@@ -17,10 +17,10 @@
             <RowDefinition Height="105*"/>
             <RowDefinition Height="105*"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="200*"/>
+            <RowDefinition Height="230*"/>
             <RowDefinition Height="90*"/>
-            <RowDefinition Height="60*"/>
-            <RowDefinition Height="110*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="105*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -211,16 +211,16 @@
                 Clicked="TermsAndConditions"
                 Grid.Column="1"/>
 
-        <CheckBox x:Name ="cb"
+        <!-- <CheckBox x:Name ="cb"
                   Grid.Row="10"
                   Grid.Column="2"
                   VerticalOptions="EndAndExpand"
                   HorizontalOptions="End"
-                  CheckedChanged="OnCheckBoxCheckedChanged"/>
+                  CheckedChanged="OnCheckBoxCheckedChanged"/> -->
 
-        <Label Text=" I have read and agreed to the terms and conditions and privacy policy" 
+        <Label Text="By clicking Create Account, you agree to our terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
-               FontSize="12" 
+               FontSize="10" 
                Grid.Column="0" 
                Grid.Row="10"
                Grid.ColumnSpan="2"

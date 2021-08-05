@@ -10,14 +10,14 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="1.2*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="12*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
 
         <!--Button Grid.Column="0" Grid.Row="0" Text="Requests" CornerRadius="5" FontSize="15" Command="{Binding UserRequestCommand}"/--> 
 
@@ -40,7 +40,29 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
+                                        <Span Text="{Binding Nickname}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Username: " />
                                         <Span Text="{Binding Username}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Role: " />
+                                        <Span Text="{Binding Role}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

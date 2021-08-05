@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FullSteamAheadMVP0Project.Views.Help_page">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Help" 
+                       HorizontalTextAlignment="Center" 
+                       VerticalTextAlignment="Center" 
+                       TextColor="LightSlateGray" 
+                       FontSize="32" />
+            <ScrollView>
+                <StackLayout>
+                    <Label Text="How to Navigate the App for Users"  
+                           HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="22" />
+                    <Label Text="Sign Up" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="Although the sign-up process may seem quite tedious, the information is necessary to provide the best experience for users. Specific qualities of a user's account will help narrow down the search process for nearby teams. " />
+                    <Label Text="Searching for and Joining Teams" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18"/>
+                    <Label Text="Immediately upon entering the app, you will find yourself on the search page. Simply search for a team by their username or nickname, and the algorithm will provide teams that are the best fit. Distance, age ranges, gender, and other preferences account for the teams found.  Teams that are private will not be able to be found by search. They will have to invite you. For the public teams that you see, you can click on their team profile and request to join their team. The team can then choose to accept or decline. " />
+                    <Label Text="Notifications" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="Currently on the notifications page, you can find a list of teams that have invited you to their team. You can choose to accept or decline their invite. " />
+                    <Label Text="My Teams" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="Find all the teams that you are a part of. Click on each individual team, and you will be navigated to the team menu page. If you want to remove yourself from a specific team, simply swipe the team from the right side to have the option to remove it. " />
+                    <Label Text="Team Menu: Chat, Calendar, Members, Announcement" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="To navigate between the menu options, swipe from the very left of the screen to the right. A menu bar will appear that allows you to navigate between the chat, calendar, members page, and announcements page. View all the members of a team on the members page. See the announcements that your team admins have posted on the announcements page. " />
+                    <Label Text="Settings" HorizontalTextAlignment="Center" 
+                           VerticalTextAlignment="Center" 
+                           FontSize="18" />
+                    <Label Text="On the settings page holds many additional information that you may find helpful. You are able to change your account information as well." />
+                    <Button Text="Back"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                CornerRadius="10"
+                FontSize="20"
+                TextColor="LightSlateGray"
+                Clicked="BackToSettings_Button_Clicked"
+                WidthRequest="200"
+                HeightRequest="60"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

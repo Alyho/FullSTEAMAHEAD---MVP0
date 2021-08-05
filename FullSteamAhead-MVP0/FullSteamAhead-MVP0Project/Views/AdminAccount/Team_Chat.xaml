@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FullSteamAheadMVP0Project.Views.Team_Chat"
+             BackgroundImageSource="MyTeams_Chat">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="3" Text="Calendar" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="TeamCalendar_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="7" Clicked="TeamAnnouncements_Button_CLicked"/>
+        <Button Grid.Column="2" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="TeamMembers_Button_CLicked"/>
+        <Button Grid.Column="3" Grid.Row="3" Text="Back" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Back_Button_Team"/>
+
+    </Grid>
+
+
+</ContentPage>
