@@ -25,7 +25,7 @@
                    Grid.ColumnSpan="4" 
                    TextColor="Black" 
                    BackgroundColor="LightCyan" 
-                   Placeholder="Search..."
+                   Placeholder="Search for teams..."
                    CancelButtonColor="LightGray"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>

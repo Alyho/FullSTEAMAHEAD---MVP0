@@ -20,11 +20,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Text="Create Team Account" 
+        <Label Text="Change Team Account Information" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="36" 
+               FontSize="26" 
                Grid.Column="0" 
                Grid.Row="0"/>
 

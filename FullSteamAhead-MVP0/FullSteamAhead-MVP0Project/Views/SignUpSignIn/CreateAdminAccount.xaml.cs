@@ -32,12 +32,12 @@ namespace FullSteamAheadMVP0Project.Views
                 {
                     await DisplayAlert("Error", "This Username is already taken", "OK");
                 }
-                
+
                 else 
                 {
                     await DisplayAlert("Success", "New Admin Created", "OK");
                     await Navigation.PushAsync(new DisplayUser_Homepage());
-               }
+                }
             }
 
         }

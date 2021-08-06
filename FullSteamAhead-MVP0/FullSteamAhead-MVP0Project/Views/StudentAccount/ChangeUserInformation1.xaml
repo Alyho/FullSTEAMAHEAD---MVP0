@@ -25,11 +25,11 @@
 
         </Grid.ColumnDefinitions>
 
-        <Label Text="Create Student Account" 
+        <Label Text="Change Account Information" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="36" 
+               FontSize="28" 
                Grid.Column="0" 
                Grid.Row="0"/>
 
