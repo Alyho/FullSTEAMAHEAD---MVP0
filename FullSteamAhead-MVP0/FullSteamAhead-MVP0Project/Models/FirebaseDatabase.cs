@@ -160,10 +160,73 @@ namespace FullSteamAheadMVP0Project.Models
 
         public List<User> FilterBestAccountResults(List<User> users, Team team) // cleans out users for best results that match with the team variable
         {
-            users = FilterAccountGender(users, team.Team_Information.Gender);
             users = FilterAccountCity(users, team.Team_Information.City, team.Team_Information.State);
             users = FilterAccountPrivacy(users);
             users = FilterAccountAge(users, team.Team_Information.Min_Age, team.Team_Information.Max_Age);
+
+            Dictionary<User, int> matches = new Dictionary<User, int>();
+            int max = 0;
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                int count = 0;
+
+                // gender
+                string userGender = users[i].Information.Preferences.Gender.ToLower();
+                string gender = team.Team_Information.Gender.ToLower();
+                if (!(userGender == gender || userGender == "all genders"))
+                {
+                    count++;
+                }
+
+                // city
+                string userCity = users[i].Information.City.ToLower();
+                string city = team.Team_Information.City.ToLower();
+                string userState = users[i].Information.State.ToLower();
+                string state = team.Team_Information.State.ToLower();
+                if (userCity != city || userState != state)
+                {
+                    count++;
+                }
+
+                // privacy
+                string privacy = users[i].Information.Preferences.Privacy.ToLower();
+                if (privacy == "private")
+                {
+                    count++;
+                }
+
+                // age
+                string teamMinAge = team.Team_Information.Min_Age;
+                string teamMaxAge = team.Team_Information.Max_Age;
+                if (!(string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge)))
+                {
+                    int minAge = Int32.Parse(teamMinAge);
+                    int maxAge = Int32.Parse(teamMaxAge);
+                    int userAge = Int32.Parse(users[i].Information.Age);
+                    if (userAge < minAge || userAge > maxAge)
+                    {
+                        count++;
+                    }
+                }
+
+                max = Math.Max(count, max);
+                matches.Add(users[i], count);
+            }
+
+            List<User> newUsers = new List<User>();
+            for (int i = max; i > 0; i--)
+            {
+                for (int j = 0; j < users.Count; j++)
+                {
+                    if (matches[users[j]] == i)
+                    {
+                        newUsers.Add(users[i]);
+                    }
+                }
+            }
+
+            users = newUsers;
             return users;
         }
 
@@ -171,7 +234,9 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < users.Count; i++)
             {
-                if (!(users[i].Information.Preferences.Gender == gender || users[i].Information.Preferences.Gender == "All Genders"))
+                string userGender = users[i].Information.Preferences.Gender.ToLower();
+                gender = gender.ToLower();
+                if (!(userGender == gender || userGender == "all genders"))
                 {
                     users.RemoveAt(i);
                     i--;
@@ -184,7 +249,11 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < users.Count; i++)
             {
-                if (users[i].Information.City != city || users[i].Information.State != state)
+                string userCity = users[i].Information.City.ToLower();
+                city = city.ToLower();
+                string userState = users[i].Information.State.ToLower();
+                state = state.ToLower();
+                if (userCity != city || userState != state)
                 {
                     users.RemoveAt(i);
                     i--;
@@ -210,7 +279,8 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < users.Count; i++)
             {
-                if (users[i].Information.Preferences.Privacy == "Private")
+                string privacy = users[i].Information.Preferences.Privacy.ToLower();
+                if (privacy == "private")
                 {
                     users.RemoveAt(i);
                     i--;
