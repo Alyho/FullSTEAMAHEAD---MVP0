@@ -23,6 +23,8 @@ namespace FullSteamAheadMVP0Project.Views
             this.BindingContext = mainPageViewModel;
         }
 
+        
+
     }
 
 }

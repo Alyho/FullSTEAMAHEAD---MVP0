@@ -64,53 +64,148 @@ namespace FullSteamAheadMVP0Project.ViewModels
         {
             _navigation = Navigation;
 
+            if (Global.UserSignedIn != null)
+            {
+                Username = Global.UserSignedIn.Username;
+                Password = Global.UserSignedIn.Password;
+                Nickname = Global.UserSignedIn.Nickname;
+                Email = Global.UserSignedIn.Email;
+                Age = Global.UserSignedIn.Information.Age;
+                Grade = Global.UserSignedIn.Information.Grade;
+                City = Global.UserSignedIn.Information.City;
+                Zipcode = Global.UserSignedIn.Information.Zip_Code;
+                State = Global.UserSignedIn.Information.State;
+                PhoneNumber = Global.UserSignedIn.Information.Phone_Number;
+                Bio = Global.UserSignedIn.Information.Bio;
+            }
+
+
             SaveCommand = new Command(async () =>
             {
-            
-                var _user = new User
+                if (Global.UserSignedIn != null)
                 {
-                    Username = Username_,
-                    Password = Password_,
-                    Nickname = Nickname_,
-                    Email = Email_,
-                    Information = new Information()
-                };
+                    if (Username_ != Global.UserSignedIn.Username)
+                    {
+                        var _user = new User
+                        {
+                            Username = Username_,
+                            Password = Password_,
+                            Nickname = Nickname_,
+                            Email = Email_,
+                            Information = new Information()
+                        };
 
-                //call the database to find any users
-                var found = await App.Database.GetAccountAsync(_user.Username);
-                
-                if (found != null) 
-                {
-                    //user already exists
-                    _userCreated = false;
-                    var ar = new PropertyChangedEventArgs(nameof(UserCreated));
-                    PropertyChanged?.Invoke(this, ar);
-                }
+                        //call the database to find any users
+                        var found = await App.Database.GetAccountAsync(_user.Username);
+
+                        if (found != null)
+                        {
+                            //user already exists
+                            _userCreated = false;
+                            var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
+
+                        else
+                        {
+                            Global.UserSignedIn = _user;
+                            Global.UserSignedIn.Information.Age = Age_;
+
+                            //await App.Database.UpdateUsername(Global.UserSignedIn);
+
+                            if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
+                             Global.UserSignedIn.Information.Age == "")
+                            {
+                                _unfilled = true;
+
+                                var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                                PropertyChanged?.Invoke(this, ar);
+                            }
+                            else
+                            {
+                                _userCreated = true;
+                                await App.Database.UpdateAccount(Global.UserSignedIn); 
+                                var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                                PropertyChanged?.Invoke(this, ar);
+                            }
+                        }
+                    }
+
+                    else
+                    {
+
+                        Global.UserSignedIn.Password = Password_;
+                        Global.UserSignedIn.Information.Age = Age_;
+                        Global.UserSignedIn.Nickname = Nickname_;
+                        Global.UserSignedIn.Email = Email_;
+
+                        if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
+                         Global.UserSignedIn.Information.Age == "")
+                        {
+                            _unfilled = true;
+
+                            var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
+                        else
+                        {
+                            _userCreated = true;
+                            await App.Database.UpdateAccount(Global.UserSignedIn);
+                            var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
+                    }
+
+                } 
                 
                 else
                 {
-                    Global.UserSignedIn = _user;
-                    Global.UserSignedIn.Information.State = State_;
-                    Global.UserSignedIn.Information.City = City_;
-                    Global.UserSignedIn.Information.Age = Age_;
-                    Global.UserSignedIn.Information.Role = Role_;
-
-                    if (Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.State == "" || 
-                    Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age== "")
+                    var _user = new User
                     {
-                        _unfilled = true;
+                        Username = Username_,
+                        Password = Password_,
+                        Nickname = Nickname_,
+                        Email = Email_,
+                        Information = new Information()
+                    };
 
-                        var ar = new PropertyChangedEventArgs(nameof(Unfilled));
-                        PropertyChanged?.Invoke(this, ar);
-                    }
-                    else
+                    //call the database to find any users
+                    var found = await App.Database.GetAccountAsync(_user.Username);
+
+                    if (found != null)
                     {
-                        _userCreated = true;
-                        await App.Database.SaveAccountAsync(Global.UserSignedIn);
+                        //user already exists
+                        _userCreated = false;
                         var ar = new PropertyChangedEventArgs(nameof(UserCreated));
                         PropertyChanged?.Invoke(this, ar);
                     }
-                   
+
+                    else
+                    {
+                        Global.UserSignedIn = _user;
+                        Global.UserSignedIn.Information.State = State_;
+                        Global.UserSignedIn.Information.City = City_;
+                        Global.UserSignedIn.Information.Age = Age_;
+                        Global.UserSignedIn.Information.Role = Role_;
+
+                        if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
+                        Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.State == "" ||
+                        Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age == "")
+                        {
+                            _unfilled = true;
+
+                            var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
+                        else
+                        {
+                            _userCreated = true;
+                            await App.Database.SaveAccountAsync(Global.UserSignedIn);
+                            var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
+
+                    }
                 }
                 
             });
@@ -123,8 +218,20 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 Global.UserSignedIn.Information.Phone_Number = PhoneNumber_;
                 Global.UserSignedIn.Information.Bio = Bio_;
                 Global.UserSignedIn.Information.Grade = Grade_;
+                
+                if (Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.State == "")
+                {
+                    _unfilled = true;
 
-                await _navigation.PushAsync(new ChangeUserInformation3());
+                    var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                    PropertyChanged?.Invoke(this, ar);
+                }
+                else
+                {
+                    await App.Database.UpdateAccount(Global.UserSignedIn);
+                    await _navigation.PushAsync(new ChangeUserInformation3());
+                }
+               
             });
 
             SaveUserCommand = new Command(async () =>
@@ -134,9 +241,20 @@ namespace FullSteamAheadMVP0Project.ViewModels
                Global.UserSignedIn.Information.Preferences.Gender = Gender_;
                Global.UserSignedIn.Information.Preferences.Privacy = Privacy_;
 
-               await App.Database.SaveAccountAsync(Global.UserSignedIn);
+               if (Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.Preferences.Distance == null || Global.UserSignedIn.Information.Preferences.Gender == null ||
+               Global.UserSignedIn.Information.Preferences.Privacy == null)
+               {
+                   _unfilled = true;
 
-               await _navigation.PushAsync(new Settingspage());
+                   var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                   PropertyChanged?.Invoke(this, ar);
+               }
+               else
+               {
+                   await App.Database.UpdateAccount(Global.UserSignedIn);
+                   await _navigation.PushAsync(new Settingspage());
+               }
+
            });
 
             CheckUserCommand = new Command(async () =>

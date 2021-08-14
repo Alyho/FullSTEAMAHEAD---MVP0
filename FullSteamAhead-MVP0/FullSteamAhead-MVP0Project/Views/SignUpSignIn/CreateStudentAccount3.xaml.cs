@@ -24,6 +24,7 @@ namespace FullSteamAheadMVP0Project.Views
             this.BindingContext = mainPageViewModel;
         }
 
+        
         protected void PrivacyPolicy(object sender, EventArgs e)
         {
             Launcher.OpenAsync(new Uri("https://www.privacypolicies.com/live/e9b6a4c7-b65e-462a-8a44-91d78e8b99c7"));

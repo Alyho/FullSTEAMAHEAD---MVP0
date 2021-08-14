@@ -21,8 +21,22 @@ namespace FullSteamAheadMVP0Project.Views
             InitializeComponent();
 
             mainPageViewModel = new MainPageViewModel(this.Navigation);
+            mainPageViewModel.PropertyChanged += MainPageViewModel_PropertyChanged;
             this.BindingContext = mainPageViewModel;
         }
+
+        private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
+            if (e.PropertyName == "Unfilled")
+            {
+                if (mainPageViewModel.Unfilled)
+                {
+                    await DisplayAlert("Error", "One or more answers unselected", "OK");
+                }
+            }
+        }
+
 
         protected void PrivacyPolicy(object sender, EventArgs e)
         {
