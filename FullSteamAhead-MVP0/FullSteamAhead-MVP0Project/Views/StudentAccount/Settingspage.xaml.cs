@@ -25,14 +25,9 @@ namespace FullSteamAheadMVP0Project.Views
             Global.UserSignedIn = null;
             await Navigation.PushAsync(new MainPage());
         }
-        private async void HomePage_Button_Clicked(object sender, EventArgs e)
+        private async void AHomePage_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Homepage());
-        }
-
-        private async void Settings_Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Settingspage());
         }
 
         private async void ChangeAccountInfo_Button_Clicked(object sender, EventArgs e)
@@ -53,6 +48,18 @@ namespace FullSteamAheadMVP0Project.Views
         private async void FAQs_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FAQ_page());
+        }
+
+        private async void Notifications_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Notifications());
+
+        }
+
+        private async void MyTeams_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MyTeamsPage());
+
         }
 
 

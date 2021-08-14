@@ -18,6 +18,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Change Team Account Information" 
@@ -30,6 +31,7 @@
 
         <Editor Margin="2"   
                 Grid.Row="1" 
+                Grid.ColumnSpan="2"
                 Placeholder="Team Username            " 
                 Text="{Binding TeamUsername}"
                 TextColor="LightSlateGray" 
@@ -39,6 +41,7 @@
 
         <Editor Margin="2" 
                 Grid.Row="2" 
+                Grid.ColumnSpan="2"
                 Placeholder="Team Password            " 
                 Text="{Binding TeamPassword}"
                 TextColor="LightSlateGray" 
@@ -48,12 +51,23 @@
 
         <Button Margin="2" 
                 Grid.Row="3" 
+                Grid.Column="1"
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding CreateTeamCommand}"/>
+
+        <Button Margin="2" 
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="Back" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Clicked="Back1"/>
 
     </Grid>
 

@@ -21,17 +21,17 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-
-
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Text="Create Student Account" 
+        <Label Text="Change Account Information" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="36" 
+               FontSize="28" 
                Grid.Column="0" 
-               Grid.Row="0"/>
+               Grid.Row="0"
+               Grid.ColumnSpan="2"/>
 
         <Editor Margin="2" 
                 Grid.Row="1" 
@@ -40,12 +40,14 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Picker x:Name="State"
                 Title="State"
                 TitleColor="LightSlateGray"
                 Margin="2"   
+                Grid.ColumnSpan="2"
                 Grid.Row="2" 
                 SelectedItem="{Binding State}">
             <Picker.ItemsSource>
@@ -64,7 +66,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White"  
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Editor Margin="2" 
                 Grid.Row="4" 
@@ -73,7 +76,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Editor Margin="2" 
                 Grid.Row="5" 
@@ -82,7 +86,8 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Editor Margin="2" 
                 Grid.Row="6" 
@@ -91,16 +96,28 @@
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="2"/>
 
         <Button Margin="2" 
                 Grid.Row="7" 
+                Grid.Column="1"
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding NextCommand}"/>
+
+        <Button Margin="2" 
+                Grid.Column="0"
+                Grid.Row="7" 
+                Text="Back" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Clicked="Back2"/>
 
     </Grid>
 </ContentPage>

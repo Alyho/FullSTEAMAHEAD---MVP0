@@ -49,6 +49,16 @@
                Grid.Row="3" 
                Grid.ColumnSpan="4"/>
 
+        <Button Margin="2" 
+                Grid.Row="4" 
+                Text="Back" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Clicked="Back"
+                Grid.Column="0"/>
+
     </Grid>
 
 </ContentPage>

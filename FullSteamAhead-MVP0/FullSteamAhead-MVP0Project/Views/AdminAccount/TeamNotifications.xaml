@@ -76,10 +76,10 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search2_Button_Clicked"/>
+            <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search_Button_Clicked"/>
             <Button Grid.Column="1" Grid.Row="3" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamChat_Button_Clicked"/>
-            <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding TeamNotificationsCommand}"/>
-            <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings2_Button_Clicked"/>
+            <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
+            <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
             
         </Grid>
 

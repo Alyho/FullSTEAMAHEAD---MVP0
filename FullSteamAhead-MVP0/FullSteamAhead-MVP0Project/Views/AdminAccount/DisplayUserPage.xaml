@@ -35,19 +35,20 @@
         <Label Text="{Binding User_Username}"
                Grid.Column="1" 
                Grid.Row="1" 
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3"
+               FontSize="25"/>
 
         <Label Text="{Binding User_Nickname}"
                Grid.Column="1" 
                Grid.Row="2" 
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3" FontSize="18"/>
 
         <Label Text="{Binding User_Bio}"
                LineBreakMode="WordWrap"
                MaxLines="10"
                Grid.Column="0" 
                Grid.Row="3" 
-               Grid.ColumnSpan="4"/>
+               Grid.ColumnSpan="4" FontSize="18"/>
 
         <Button Margin=".2"  
                 Grid.Row="4" 

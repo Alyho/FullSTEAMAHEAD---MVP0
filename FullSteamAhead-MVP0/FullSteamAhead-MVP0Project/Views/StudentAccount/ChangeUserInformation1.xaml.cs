@@ -24,6 +24,11 @@ namespace FullSteamAheadMVP0Project.Views
             this.BindingContext = mainPageViewModel;
         }
 
+        private async void Back(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Settingspage());
+        }
+
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "UserCreated")

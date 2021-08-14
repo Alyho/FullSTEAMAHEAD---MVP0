@@ -219,14 +219,24 @@
                 Grid.ColumnSpan="4"/>
 
         <Button Margin="2" 
-                Grid.Row="11" 
+                Grid.Row="11"                
+                Grid.Column="1"
                 Text="Next" CornerRadius="11" 
                 TextColor="LightSlateGray" 
                 FontSize="17" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveTeamCommand}"
-                Grid.ColumnSpan="4"/>
+                Command ="{Binding SaveTeamCommand}"/>
+
+        <Button Margin="2" 
+                Grid.Row="11" 
+                Grid.Column="0"
+                Text="Back" CornerRadius="11" 
+                TextColor="LightSlateGray" 
+                FontSize="17" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Clicked="Back2"/>
 
     </Grid>
 

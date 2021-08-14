@@ -24,6 +24,19 @@ namespace FullSteamAheadMVP0Project.Views
             BindingContext = new DisplayUserPageViewModel(user);
         }
 
+        private async void Back(object sender, EventArgs e)
+        {
+            if (Global.TeamSignedIn != null)
+            {
+                await Navigation.PushAsync(new MyTeams_Members());
+            }
+
+            else if (Global.UserSignedIn != null)
+            {
+                await Navigation.PushAsync(new Team_Members());
+            }
+        }
+
     }
 
 }
