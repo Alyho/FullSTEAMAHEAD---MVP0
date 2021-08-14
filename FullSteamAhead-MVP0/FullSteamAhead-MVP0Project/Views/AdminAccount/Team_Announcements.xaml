@@ -24,7 +24,7 @@
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
 
-        <!-- <Editor Margin="2" 
+        <Editor Margin="2" 
                 Grid.Row="1" 
                 Grid.Column="0"
                 Placeholder="Type announcement     " 
@@ -33,20 +33,21 @@
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/> -->
+                Grid.ColumnSpan="4"/>
 
-        <Entry Margin="2" 
+        <!--  <Entry Margin="2" 
                Grid.Row="1" 
                Grid.Column="0"
                Placeholder="Type announcement     " 
                ReturnCommand="{Binding SendCommand}"
+               Text="{Binding Announcements}"
                TextColor="LightSlateGray" 
                FontSize="20" 
                BackgroundColor="White" 
                HorizontalOptions="Center"
-               Grid.ColumnSpan="4"/>
+               Grid.ColumnSpan="4"/> -->
 
-        <!-- <Button Margin="2" 
+        <Button Margin="2" 
                 Grid.Row="1"
                 Grid.Column="3"
                 Text="Create" CornerRadius="10" 
@@ -54,7 +55,7 @@
                 FontSize="18" 
                 BackgroundColor="White" 
                 HorizontalOptions="End"
-                Command ="{Binding SendCommand}"/> -->
+                Command ="{Binding SendCommand}"/>
 
         <ListView x:Name="Teams"
                   Grid.Column="0" 
@@ -63,7 +64,6 @@
                   ItemsSource="{Binding AnnouncementsListView}"
                   SelectedItem ="{Binding Item}"
                   HorizontalOptions="Center"
-                  VerticalOptions="FillAndExpand"
                   BackgroundColor="SkyBlue"
                   HasUnevenRows="True"
                   ItemTapped="DeleteAnnouncement_ItemTapped">
@@ -73,11 +73,13 @@
                         <StackLayout>
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
+                                   HeightRequest="20"
                                    HorizontalOptions="FillAndExpand"
                                    VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Announcements}"/>
+                                        <Span Text="{Binding Announcements}"
+                                              FontSize="10"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
