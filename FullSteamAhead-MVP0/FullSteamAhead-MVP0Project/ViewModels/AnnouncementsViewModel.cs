@@ -1,4 +1,5 @@
 ﻿using FullSteamAheadMVP0Project.Models;
+using FullSteamAheadMVP0Project.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +13,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        private INavigation _navigation;
         private string Announcement_;
         private string Item_;
         public Command SendCommand { get; }
@@ -62,6 +63,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 await App.Database.AddAnnouncement(Global.TeamSignedIn, Announcement_);
                 AnnouncementList.Add(Announcement_);
                 AnnouncementsListView = AnnouncementList;
+                await _navigation.PushAsync(new Team_Announcements());
 
             });
         }
