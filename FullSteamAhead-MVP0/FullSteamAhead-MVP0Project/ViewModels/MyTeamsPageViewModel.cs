@@ -13,8 +13,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
        
-        private IList<Team> _TeamListView;
-        public IList <Team> MyTeamsListView
+        private ObservableCollection<Team> _TeamListView;
+        public ObservableCollection<Team> MyTeamsListView
         {
             get
             {
@@ -22,13 +22,18 @@ namespace FullSteamAheadMVP0Project.ViewModels
             }
             set
             {
-                _TeamListView = value;
+                if (_TeamListView != value)
+                {
+                    _TeamListView = value;
+                    var args = new PropertyChangedEventArgs(nameof(MyTeamsListView));
+                    PropertyChanged?.Invoke(this, args);
+                }
             }
         }
 
         public MyTeamsPageViewModel()
         {
-            List<Team> myList = new List<Team>();
+            ObservableCollection<Team> myList = new ObservableCollection<Team>();
 
             Task.Run(new System.Action(async () =>
             {
@@ -47,7 +52,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     }
                 }
 
-                _TeamListView = myList;
+                MyTeamsListView = myList;
             }));
 
         }

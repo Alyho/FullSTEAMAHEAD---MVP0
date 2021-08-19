@@ -69,7 +69,7 @@
                   BackgroundColor="SkyBlue"
                   HasUnevenRows="True"
                   ItemTapped="DeleteAnnouncement_ItemTapped">
-            <ListView.ItemTemplate>
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
@@ -88,7 +88,7 @@
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
 
        <!-- <ListView x:Name="MyTeams"

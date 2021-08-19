@@ -14,10 +14,12 @@ namespace FullSteamAheadMVP0Project.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyTeamsPage : ContentPage
     {
+        private MyTeamsPageViewModel _viewModel;
         public MyTeamsPage()
         {
             InitializeComponent();
-            BindingContext = new MyTeamsPageViewModel();
+            _viewModel = new MyTeamsPageViewModel();
+            BindingContext = _viewModel;
         }
 
         private async void MyTeams_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -53,12 +55,13 @@ namespace FullSteamAheadMVP0Project.Views
                     {
                         await App.Database.RemoveUser(team, Global.UserSignedIn);
                     }));
-                
 
-                Task.Run(new System.Action(async () =>
-                {
-                    await Navigation.PushAsync(new MyTeamsPage());
-                }));
+                    _viewModel.MyTeamsListView.Remove(team);
+
+                //Task.Run(new System.Action(async () =>
+                //{
+                //    await Navigation.PushAsync(new MyTeamsPage());
+                //}));
             
         }
 

@@ -34,7 +34,7 @@
                   HorizontalOptions="Center"
                   BackgroundColor="SkyBlue"
                   VerticalOptions="FillAndExpand">
-            <ListView.ItemTemplate>
+            <!--<ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
@@ -51,7 +51,7 @@
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.ItemTemplate>-->
         </ListView>
 
 

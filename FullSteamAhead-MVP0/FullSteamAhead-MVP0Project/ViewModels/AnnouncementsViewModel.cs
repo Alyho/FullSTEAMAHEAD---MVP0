@@ -13,13 +13,12 @@ namespace FullSteamAheadMVP0Project.ViewModels
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private INavigation _navigation;
         private string Announcement_;
         private string Item_;
         public Command SendCommand { get; }
 
-        private IList<string> _AnnouncementsListView;
-        public IList<string> AnnouncementsListView
+        private ObservableCollection<string> _AnnouncementsListView;
+        public ObservableCollection<string> AnnouncementsListView
         {
             get
             {
@@ -27,14 +26,19 @@ namespace FullSteamAheadMVP0Project.ViewModels
             }
             set
             {
-                _AnnouncementsListView = value;
+                if (_AnnouncementsListView != value)
+                {
+                    _AnnouncementsListView = value;
+                    var args = new PropertyChangedEventArgs(nameof(AnnouncementsListView));
+                    PropertyChanged?.Invoke(this, args);
+                }
             }
         }
 
         public AnnouncementsViewModel()
         {
             Dictionary<string, string> AnnouncementDict = new Dictionary<string, string>();
-            List<string> AnnouncementList = new List<string>();
+            ObservableCollection<string> AnnouncementList = new ObservableCollection<string>();
 
             if (Global.UserSignedIn != null)
             {
@@ -54,17 +58,16 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 foreach (KeyValuePair<string, string> entry in AnnouncementDict)
                 {
                     AnnouncementList.Add(entry.Value);
-                    AnnouncementsListView = AnnouncementList;
                 }
+                AnnouncementsListView = AnnouncementList;
             }
 
             SendCommand = new Command(async () =>
             {
                 await App.Database.AddAnnouncement(Global.TeamSignedIn, Announcement_);
                 AnnouncementList.Add(Announcement_);
-                AnnouncementsListView = AnnouncementList;
-                await _navigation.PushAsync(new Team_Announcements());
-
+                //AnnouncementsListView = AnnouncementList;
+                
             });
         }
 
