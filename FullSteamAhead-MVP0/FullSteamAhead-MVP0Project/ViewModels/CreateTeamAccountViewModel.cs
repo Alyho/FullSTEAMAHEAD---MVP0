@@ -41,6 +41,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private int _teamCreated;
         private bool _adminExists;
         private bool _unfilled;
+        private bool _noIntAge;
 
         public int TeamCreated
         {
@@ -57,6 +58,10 @@ namespace FullSteamAheadMVP0Project.ViewModels
             get { return _unfilled; }
         }
 
+        public bool NoIntAge
+        {
+            get { return _noIntAge; }
+        }
 
 
         public CreateTeamAccountViewModel(INavigation Navigation)
@@ -64,32 +69,109 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             _navigation = Navigation;
 
+            if (Global.TeamSignedIn != null)
+            {
+                TeamUsername = Global.TeamSignedIn.Team_Username;
+                TeamPassword = Global.TeamSignedIn.Team_Password;
+                TeamNickname = Global.TeamSignedIn.Team_Nickname;
+                TeamEmail = Global.TeamSignedIn.Team_Information.Team_Email;
+                MinAge = Global.TeamSignedIn.Team_Information.Min_Age;
+                MaxAge = Global.TeamSignedIn.Team_Information.Max_Age;
+                City = Global.TeamSignedIn.Team_Information.City;
+                Zipcode = Global.TeamSignedIn.Team_Information.Zip_Code;
+                State = Global.TeamSignedIn.Team_Information.State;
+                Bio = Global.TeamSignedIn.Team_Information.Bio;
+                Gender = Global.TeamSignedIn.Team_Information.Gender;
+                Privacy = Global.TeamSignedIn.Team_Information.Privacy;
+                Schedule = Global.TeamSignedIn.Team_Information.Schedule;
+                TeamAdminPassword = Global.AdminSignedIn.Password;
+                TeamAdminUsername = Global.AdminSignedIn.Username;
+            }
+
             CreateTeamCommand = new Command(async () =>
             {
-                var _team = new Team
-                {
-                    Team_Username = TeamUsername_,
-                    Team_Password = TeamPassword_,
-                    Team_Information = new TeamInformation()
-                };
 
-                //call the database to find teams
-                _teamCreated = await App.Database.TeamExists(_team);
-
-                if (_teamCreated == 0)
+                if (Global.TeamSignedIn != null)
                 {
-                    Global.TeamSignedIn = _team;
+                    if (TeamUsername_ != Global.TeamSignedIn.Team_Username)
+                    {
+
+                        var _team = new Team
+                        {
+                            Team_Username = TeamUsername_,
+                            Team_Password = TeamPassword_,
+                            Team_Information = new TeamInformation()
+                        };
+
+                        if (_team.Team_Username != "" || _team.Team_Password != "")
+                        {
+                            //call the database to find teams
+                            _teamCreated = await App.Database.TeamExists(_team);
+
+                            if (_teamCreated == 2)
+                            {
+                                //await App.Database.UpdateTeamUsername(Global.TeamSignedIn, _team.Team_Username);
+                                Global.TeamSignedIn.Team_Username = _team.Team_Username;
+                                Global.TeamSignedIn.Team_Password = _team.Team_Password;
+                                await App.Database.UpdateTeam(Global.TeamSignedIn);
+                                
+                            }
+
+                            var ar = new PropertyChangedEventArgs(nameof(TeamCreated));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
+
+                        else
+                        {
+                            _unfilled = true;
+                            var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
+
+                        
+                    }
+
+                    Global.TeamSignedIn.Team_Password = TeamPassword_;
+                    await App.Database.UpdateTeam(Global.TeamSignedIn);
+                    await _navigation.PushAsync(new ChangeTeamInformation2());
                 }
 
-                else if (_teamCreated == 2)
+                else
                 {
-                    Global.TeamSignedIn = _team;
+
+                    var _team = new Team
+                    {
+                        Team_Username = TeamUsername_,
+                        Team_Password = TeamPassword_,
+                        Team_Information = new TeamInformation()
+                    };
+
+                    if (_team.Team_Username != "" || _team.Team_Password != "")
+                    {
+                        //call the database to find teams
+                        _teamCreated = await App.Database.TeamExists(_team);
+
+                        if (_teamCreated == 0)
+                        {
+                            Global.TeamSignedIn = _team;
+                        }
+
+                        else if (_teamCreated == 2)
+                        {
+                            Global.TeamSignedIn = _team;
+                        }
+
+                        var ar = new PropertyChangedEventArgs(nameof(TeamCreated));
+                        PropertyChanged?.Invoke(this, ar);
+                    }
+
+                    else
+                    {
+                        _unfilled = true;
+                        var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                        PropertyChanged?.Invoke(this, ar);
+                    }
                 }
-
-             
-                var ar = new PropertyChangedEventArgs(nameof(TeamCreated));
-                PropertyChanged?.Invoke(this, ar);
-
             });
 
             SaveAdminCommand = new Command(async () =>
@@ -101,17 +183,27 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     Password = TeamAdminPassword_
                 };
 
-                _adminExists = await App.Database.TeamAdminExists(Global.TeamSignedIn, _admin);
-
-                if (_adminExists == false)
+                if (_admin.Username != null || _admin.Password != null)
                 {
-                   
-                    await App.Database.AddTeamAdmin(Global.TeamSignedIn, _admin);
-                    Global.AdminSignedIn = _admin;
-                }
+                    _adminExists = await App.Database.TeamAdminExists(Global.TeamSignedIn, _admin);
 
-                var ar = new PropertyChangedEventArgs(nameof(AdminExists));
-                PropertyChanged?.Invoke(this, ar);
+                    if (_adminExists == false)
+                    {
+
+                        await App.Database.AddTeamAdmin(Global.TeamSignedIn, _admin);
+                        Global.AdminSignedIn = _admin;
+                    }
+
+                    var ar = new PropertyChangedEventArgs(nameof(AdminExists));
+                    PropertyChanged?.Invoke(this, ar);
+                } 
+
+                else 
+                {
+                    _unfilled = true;
+                    var ar = new PropertyChangedEventArgs(nameof(Unfilled));
+                    PropertyChanged?.Invoke(this, ar);
+                }
 
             });
 
@@ -126,7 +218,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 Global.TeamSignedIn.Team_Information.Privacy = TeamPrivacy_;
               
                 if (Global.TeamSignedIn.Team_Nickname == "" || Global.TeamSignedIn.Team_Information.Team_Email == "" ||
-                Global.TeamSignedIn.Team_Information.State == "" || Global.TeamSignedIn.Team_Information.City == "" ||
+                Global.TeamSignedIn.Team_Information.State == null || Global.TeamSignedIn.Team_Information.City == "" ||
                 Global.TeamSignedIn.Team_Information.Zip_Code == "" || Global.TeamSignedIn.Team_Information.Gender == null ||
                 Global.TeamSignedIn.Team_Information.Privacy == null)
                 {
@@ -144,9 +236,18 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         Global.TeamSignedIn.Team_Information.Bio = TeamBio_;
                         Global.TeamSignedIn.Team_Information.Schedule = TeamSchedule_;
 
-                        await App.Database.SaveTeamAsync(Global.TeamSignedIn);
-
-                        await _navigation.PushAsync(new TeamSettingspage());
+                        int value;
+                        if (int.TryParse(Global.TeamSignedIn.Team_Information.Min_Age, out value) && int.TryParse(Global.TeamSignedIn.Team_Information.Max_Age, out value))
+                        {
+                            await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+                            await _navigation.PushAsync(new TeamSettingspage());
+                        }
+                        else
+                        {
+                            _noIntAge = true;
+                            var ar = new PropertyChangedEventArgs(nameof(NoIntAge));
+                            PropertyChanged?.Invoke(this, ar);
+                        }
                     }
                     else
                     {

@@ -20,6 +20,7 @@ namespace FullSteamAheadMVP0Project.Views
             InitializeComponent();
 
             createTeamAccountViewModel = new CreateTeamAccountViewModel(this.Navigation);
+            createTeamAccountViewModel.PropertyChanged += CreateTeamAccountViewModel_PropertyChanged;
             this.BindingContext = createTeamAccountViewModel;
         }
 
@@ -27,5 +28,26 @@ namespace FullSteamAheadMVP0Project.Views
         {
             await Navigation.PushAsync(new ChangeTeamInformation1());
         }
+
+        private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
+            if (e.PropertyName == "Unfilled")
+            {
+                if (createTeamAccountViewModel.Unfilled)
+                {
+                    await DisplayAlert("Error", "One or more questions unanswered.", "OK");
+                }
+            }
+
+            if (e.PropertyName == "NoIntAge")
+            {
+                if (createTeamAccountViewModel.NoIntAge)
+                {
+                    await DisplayAlert("Error", "Age must be a number", "OK");
+                }
+            }
+        }
+
     }
 }

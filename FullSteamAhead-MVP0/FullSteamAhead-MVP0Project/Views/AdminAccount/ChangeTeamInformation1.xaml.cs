@@ -31,9 +31,30 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            await Navigation.PushAsync(new ChangeTeamInformation2());
 
+            if (e.PropertyName == "TeamCreated")
+            {
 
+                if (createTeamAccountViewModel.TeamCreated == 1)
+                {
+                    await DisplayAlert("Try Again", "This Username is already taken", "OK");
+                }
+
+                else if (createTeamAccountViewModel.TeamCreated == 2)
+                {
+                    await DisplayAlert("New Team", "New team account created", "OK");
+                    await Navigation.PushAsync(new ChangeTeamInformation2());
+                }
+
+            }
+
+            if (e.PropertyName == "Unfilled")
+            {
+                if (createTeamAccountViewModel.Unfilled)
+                {
+                    await DisplayAlert("Error", "One or more questions unanswered.", "OK");
+                }
+            }
         }
 
 

@@ -31,6 +31,8 @@ namespace FullSteamAheadMVP0Project.Models
 
         // Team methods
         Task<Team> GetTeamAsync(string username);                         // returns the Team that matches with the username
+
+        Task UpdateTeam(Team team);
         Task<Admin> GetAdminAsync(string username);                       // returns the Admin that matches with the username
         Task<List<Team>> GetTeamsAsync();                                 // returns list of all Teams in database
         Task SaveTeamAsync(Team team);                                    // saves Team to database

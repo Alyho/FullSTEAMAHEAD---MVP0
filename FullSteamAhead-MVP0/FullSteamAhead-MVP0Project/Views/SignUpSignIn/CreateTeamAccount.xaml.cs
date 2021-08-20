@@ -47,6 +47,15 @@ namespace FullSteamAheadMVP0Project.Views
 
             }
 
+            if (e.PropertyName == "Unfilled")
+            {
+                if (createTeamAccountViewModel.Unfilled)
+                {
+                    await DisplayAlert("Error", "One or more questions unanswered.", "OK");
+                }
+            }
+
+
         }
 
 

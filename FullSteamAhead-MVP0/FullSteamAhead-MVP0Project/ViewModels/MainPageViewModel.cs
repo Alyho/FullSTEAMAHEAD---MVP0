@@ -44,6 +44,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private bool _userCreated;
         private bool _userExists;
         private bool _unfilled;
+        private bool _noIntAge;
 
         public bool UserCreated
         {
@@ -52,6 +53,10 @@ namespace FullSteamAheadMVP0Project.ViewModels
         public bool Unfilled
         {
             get { return _unfilled; }
+        }
+        public bool NoIntAge
+        {
+            get { return _noIntAge; }
         }
 
 
@@ -108,13 +113,17 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                         else
                         {
-                            Global.UserSignedIn = _user;
+
+                            Global.UserSignedIn.Username = _user.Username;
+                            Global.UserSignedIn.Password = _user.Password;
+                            Global.UserSignedIn.Nickname = _user.Nickname;
+                            Global.UserSignedIn.Email = _user.Email;
                             Global.UserSignedIn.Information.Age = Age_;
 
-                            //await App.Database.UpdateUsername(Global.UserSignedIn);
+                          
 
                             if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
-                             Global.UserSignedIn.Information.Age == "")
+                             Global.UserSignedIn.Information.Age == null)
                             {
                                 _unfilled = true;
 
@@ -123,10 +132,19 @@ namespace FullSteamAheadMVP0Project.ViewModels
                             }
                             else
                             {
-                                _userCreated = true;
-                                await App.Database.UpdateAccount(Global.UserSignedIn); 
-                                var ar = new PropertyChangedEventArgs(nameof(UserCreated));
-                                PropertyChanged?.Invoke(this, ar);
+                                int value;
+                                if (int.TryParse(Global.UserSignedIn.Information.Age, out value))
+                                {
+                                    _userCreated = true;
+                                    await App.Database.UpdateAccount(Global.UserSignedIn);
+                                    var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                                    PropertyChanged?.Invoke(this, ar);
+                                } else
+                                {
+                                    _noIntAge = true;
+                                    var ar = new PropertyChangedEventArgs(nameof(NoIntAge));
+                                    PropertyChanged?.Invoke(this, ar);
+                                }
                             }
                         }
                     }
@@ -140,7 +158,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         Global.UserSignedIn.Email = Email_;
 
                         if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
-                         Global.UserSignedIn.Information.Age == "")
+                         Global.UserSignedIn.Information.Age == null)
                         {
                             _unfilled = true;
 
@@ -149,10 +167,20 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         }
                         else
                         {
-                            _userCreated = true;
-                            await App.Database.UpdateAccount(Global.UserSignedIn);
-                            var ar = new PropertyChangedEventArgs(nameof(UserCreated));
-                            PropertyChanged?.Invoke(this, ar);
+                            int value;
+                            if (int.TryParse(Global.UserSignedIn.Information.Age, out value))
+                            {
+                                _userCreated = true;
+                                await App.Database.UpdateAccount(Global.UserSignedIn);
+                                var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                                PropertyChanged?.Invoke(this, ar);
+                            }
+                            else
+                            {
+                                _noIntAge = true;
+                                var ar = new PropertyChangedEventArgs(nameof(NoIntAge));
+                                PropertyChanged?.Invoke(this, ar);
+                            }
                         }
                     }
 
@@ -188,21 +216,32 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         Global.UserSignedIn.Information.Age = Age_;
                         Global.UserSignedIn.Information.Role = Role_;
 
-                        if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
-                        Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.State == "" ||
-                        Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age == "")
+                        if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Username == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
+                        Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.State == null ||
+                        Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age == null)
                         {
                             _unfilled = true;
 
                             var ar = new PropertyChangedEventArgs(nameof(Unfilled));
                             PropertyChanged?.Invoke(this, ar);
+                            Global.UserSignedIn = null;
                         }
                         else
                         {
-                            _userCreated = true;
-                            await App.Database.SaveAccountAsync(Global.UserSignedIn);
-                            var ar = new PropertyChangedEventArgs(nameof(UserCreated));
-                            PropertyChanged?.Invoke(this, ar);
+                            int value;
+                            if (int.TryParse(Global.UserSignedIn.Information.Age, out value))
+                            {
+                                _userCreated = true;
+                                await App.Database.UpdateAccount(Global.UserSignedIn);
+                                var ar = new PropertyChangedEventArgs(nameof(UserCreated));
+                                PropertyChanged?.Invoke(this, ar);
+                            }
+                            else
+                            {
+                                _noIntAge = true;
+                                var ar = new PropertyChangedEventArgs(nameof(NoIntAge));
+                                PropertyChanged?.Invoke(this, ar);
+                            }
                         }
 
                     }
@@ -219,7 +258,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 Global.UserSignedIn.Information.Bio = Bio_;
                 Global.UserSignedIn.Information.Grade = Grade_;
                 
-                if (Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.State == "")
+                if (Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.State == null)
                 {
                     _unfilled = true;
 

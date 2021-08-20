@@ -53,6 +53,14 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
+            if (e.PropertyName == "NoIntAge")
+            {
+                if (mainPageViewModel.NoIntAge)
+                {
+                    await DisplayAlert("Error", "Age must be a number", "OK");
+                }
+            }
+
         }
 
     }

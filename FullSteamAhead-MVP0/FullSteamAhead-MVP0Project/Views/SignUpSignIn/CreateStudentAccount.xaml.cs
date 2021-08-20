@@ -54,6 +54,14 @@ public partial class CreateStudentAccount : ContentPage
                     await DisplayAlert("Error", "One or more questions unanswered", "OK");
                 }
             }
+
+            if (e.PropertyName == "NoIntAge")
+            {
+                if (mainPageViewModel.NoIntAge)
+                {
+                    await DisplayAlert("Error", "Age must be a number", "OK");
+                }
+            }
         }
 
         void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)

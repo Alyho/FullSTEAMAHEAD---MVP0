@@ -353,6 +353,11 @@ namespace FullSteamAheadMVP0Project.Models
             return teams.FirstOrDefault(a => a.Team_Username == username);
         }
 
+        public async Task UpdateTeam(Team team) // updates User in database
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).PatchAsync(team);
+        }
+
         public async Task<Admin> GetAdminAsync(string username) // returns the Admin that matches with the username
         {
             List<Team> teams = await GetTeamsAsync();
