@@ -11,6 +11,7 @@ namespace FullSteamAheadMVP0Project.Models
         Task<List<User>> GetAccountsAsync();                           // returns list of all Users in database
         Task SaveAccountAsync(User account);                           // saves User to database
         Task UpdateAccount(User account);                              // updates User in database
+        Task UpdateUsername(User user, string username);               // updates User's username in database, deleting the old copy
         Task<bool> IsAccountValid(User account);                       // returns if User has created an account and if the password matches
         Task AddTeamRequest(User user, string username);               // adds team request to user
         Task RemoveTeamRequest(User user, string username);            // removes team request from user
@@ -36,6 +37,7 @@ namespace FullSteamAheadMVP0Project.Models
         Task<Admin> GetAdminAsync(string username);                       // returns the Admin that matches with the username
         Task<List<Team>> GetTeamsAsync();                                 // returns list of all Teams in database
         Task SaveTeamAsync(Team team);                                    // saves Team to database
+        Task UpdateTeamUsername(Team team, string username);              // updates Team's username in database, deleting the old copy
         Task AddUser(Team team, User account);                            // adds User to Team, either in Mentors list or Students list
         Task RemoveUser(Team team, User account);                         // removes User from Team, either in Mentors list or Students list
         Task AddTeamAdmin(Team team, Admin admin);                        // adds Admin to Team, through the Team_Admins list
