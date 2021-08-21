@@ -39,7 +39,8 @@
                Grid.Column="1" 
                Grid.Row="1" 
                Grid.ColumnSpan="3"
-               FontSize="25"/>
+               FontSize="25"
+               FontAttributes="Italic"/>
 
         <Label Text="{Binding Team_Nickname}"
                Grid.Column="1" 
@@ -48,24 +49,24 @@
                FontSize="18"/>
 
         <Label Text="{Binding Team_Location}"
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="3" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
         <Label Text="{Binding Team_Gender}" 
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="4" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
         <Label Text="{Binding Team_Email}"
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="5" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
         <Label Text="{Binding Team_Bio}"
                LineBreakMode="WordWrap"
                MaxLines="10"
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="6" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
@@ -96,7 +97,7 @@
         <Button Margin=".2"  
                 Grid.Row="7" 
                 Grid.Column="2"
-                Text="Request" 
+                Text="Request to join" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="17" 

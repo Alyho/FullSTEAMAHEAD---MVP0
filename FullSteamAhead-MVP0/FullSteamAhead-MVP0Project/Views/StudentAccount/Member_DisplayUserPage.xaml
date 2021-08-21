@@ -14,7 +14,7 @@
             <RowDefinition Height=".7*"/>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height="1.4*"/>
-            <RowDefinition Height=".8*"/>
+            <RowDefinition Height="1.2*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -35,23 +35,27 @@
         <Label Text="{Binding User_Username}"
                Grid.Column="1" 
                Grid.Row="1" 
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3"
+               FontSize="16"/>
 
         <Label Text="{Binding User_Nickname}"
                Grid.Column="1" 
                Grid.Row="2" 
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3"
+               FontSize="16"/>
 
         <Label Text="{Binding User_Bio}"
                LineBreakMode="WordWrap"
                MaxLines="10"
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="3" 
-               Grid.ColumnSpan="4"/>
+               Grid.ColumnSpan="4"
+               FontSize="16"/>
 
-        <Button Margin="2" 
+        <Button Margin="1" 
                 Grid.Row="4" 
-                Text="Back" CornerRadius="10" 
+                Text="Back" 
+                CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 

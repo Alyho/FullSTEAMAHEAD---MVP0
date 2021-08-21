@@ -10,7 +10,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="480*"/>
+            <RowDefinition Height="420*"/>
+            <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
@@ -21,16 +22,27 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Text="Sign In" 
+        <Label Text="Full STEAM Ahead" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
                FontSize="36" 
                Grid.Column="0" 
-               Grid.Row="0"/>
+               Grid.Row="0"
+               FontAttributes="Italic"
+               TextDecorations="None"/>
+
+
+        <Label Text="Sign In" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="30" 
+               Grid.Column="0" 
+               Grid.Row="1"/>
 
         <Button Margin="2"  
-                Grid.Row="1" 
+                Grid.Row="2" 
                 Text="Team Member" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
@@ -41,7 +53,7 @@
                 Clicked="TeamMember_Button_Clicked"/>
         
         <Button Margin="2" 
-                Grid.Row="2" 
+                Grid.Row="3" 
                 Text="Team Admin" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
@@ -52,7 +64,7 @@
                 Clicked="TeamAdmin_Button_Clicked"/>
 
         <Button Margin="2" 
-                Grid.Row="3" 
+                Grid.Row="4" 
                 Text="Create an account" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 

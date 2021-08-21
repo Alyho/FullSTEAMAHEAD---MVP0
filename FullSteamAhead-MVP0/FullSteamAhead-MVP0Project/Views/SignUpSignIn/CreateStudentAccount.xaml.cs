@@ -79,6 +79,12 @@ public partial class CreateStudentAccount : ContentPage
             Launcher.OpenAsync(new Uri("https://www.privacypolicies.com/live/a7b55c2a-bd8b-45c1-9a62-86a16b1714b3"));
         }
 
+        async void OnDisplayAlertButtonClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Role", "Chose to be a student or mentor. Mentors are expected to already have more than adequate experience, but will have the same features as students. They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed.", "OK");
+        }
+
+
     }
 
 }

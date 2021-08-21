@@ -50,7 +50,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
@@ -61,7 +61,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
@@ -72,7 +72,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Location: " />
@@ -83,7 +83,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Bio: " />

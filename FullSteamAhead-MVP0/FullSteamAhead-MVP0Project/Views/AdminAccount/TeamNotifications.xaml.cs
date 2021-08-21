@@ -17,7 +17,7 @@ namespace FullSteamAheadMVP0Project.Views
         public TeamNotifications()
         {
             InitializeComponent();
-            /*BindingContext = new NotificationsViewModel();*/
+            BindingContext = new NotificationsViewModel(this.Navigation);
         }
 
         private async void TeamChat_Button_Clicked(object sender, EventArgs e)

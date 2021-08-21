@@ -46,7 +46,6 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding AdminsListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="LightPink"
                   HasUnevenRows="True"                                    
                   ItemTapped="Admins_ItemTapped">
             <ListView.ItemTemplate>
@@ -97,7 +96,6 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue"
                   HasUnevenRows="True"
                   ItemTapped="Members_ItemTapped">
             <ListView.ItemTemplate>

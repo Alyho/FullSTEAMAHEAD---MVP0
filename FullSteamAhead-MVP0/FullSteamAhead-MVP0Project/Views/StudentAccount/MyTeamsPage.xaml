@@ -26,9 +26,9 @@
                 Grid.Row="0" 
                 Grid.ColumnSpan="4"
                 HorizontalOptions="Center"
-                FontSize="25"
+                FontSize="26"
                 TextColor="LightSlateGray"
-                Text="My Teams"/>
+                Text="My teams"/>
         
         <ListView x:Name="MyTeams"
                   Grid.Column="0" 
@@ -36,7 +36,6 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding MyTeamsListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue"
                   HasUnevenRows="True"
                   ItemTapped="MyTeams_ItemTapped">
             <ListView.ItemTemplate>
@@ -48,10 +47,10 @@
                       Text="Exit Team" IsDestructive="True" />
                         </ViewCell.ContextActions>
                         <StackLayout>
-                            <Label>
+                            <Label FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Team name: " />
+                                        <Span Text="Team name: " FontSize="16"/>
                                         <Span Text="{Binding Team_Username}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -59,7 +58,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Bio: " />
