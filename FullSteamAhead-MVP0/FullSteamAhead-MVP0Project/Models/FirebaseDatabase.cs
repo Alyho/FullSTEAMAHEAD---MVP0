@@ -167,9 +167,6 @@ namespace FullSteamAheadMVP0Project.Models
 
         public List<User> FilterBestAccountResults(List<User> users, Team team) // cleans out users for best results that match with the team variable
         {
-            users = FilterAccountCity(users, team.Team_Information.City, team.Team_Information.State);
-            users = FilterAccountPrivacy(users);
-            users = FilterAccountAge(users, team.Team_Information.Min_Age, team.Team_Information.Max_Age);
 
             Dictionary<User, int> matches = new Dictionary<User, int>();
             int max = 0;
@@ -228,7 +225,7 @@ namespace FullSteamAheadMVP0Project.Models
                 {
                     if (matches[users[j]] == i)
                     {
-                        newUsers.Add(users[i]);
+                        newUsers.Add(users[j]);
                     }
                 }
             }
