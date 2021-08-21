@@ -46,7 +46,6 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding AdminsListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="LightPink"
                   HasUnevenRows="True"                                    
                   ItemTapped="Admins_ItemTapped">
             <ListView.ItemTemplate>
@@ -61,7 +60,8 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand"
+                                   FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
@@ -72,7 +72,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
@@ -102,7 +102,6 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue"
                   HasUnevenRows="True"
                   ItemTapped="Members_ItemTapped">
             <ListView.ItemTemplate>
@@ -114,7 +113,7 @@
                       Text="Delete user" IsDestructive="True" />
                         </ViewCell.ContextActions>
                         <StackLayout>
-                            <Label>
+                            <Label FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
@@ -122,7 +121,7 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label>
+                            <Label FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />

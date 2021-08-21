@@ -42,7 +42,6 @@
                   ItemsSource="{Binding TeamListView}"
                   HorizontalOptions="Center"
                   HasUnevenRows="True"                  
-                  BackgroundColor="SkyBlue"
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -51,7 +50,8 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand"
+                                   FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
@@ -62,7 +62,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   FontSize="16" VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Bio: " />
@@ -73,7 +73,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Gender: " />
@@ -84,7 +84,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="City: " />
@@ -99,7 +99,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="State: " />
-                                        <Span Text="{Binding Team_Information.State}"/>
+                                        <Span Text="{Binding Team_Information.State}" FontSize="16"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

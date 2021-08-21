@@ -19,7 +19,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="27" 
+               FontSize="26" 
                Grid.Column="0" 
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
@@ -66,7 +66,6 @@
                   ItemsSource="{Binding AnnouncementsListView}"
                   SelectedItem ="{Binding Item}"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue"
                   HasUnevenRows="True"
                   ItemTapped="DeleteAnnouncement_ItemTapped">
             <!--<ListView.ItemTemplate>

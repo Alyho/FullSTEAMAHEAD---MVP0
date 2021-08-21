@@ -32,7 +32,6 @@
                   HasUnevenRows="True"
                   ItemsSource="{Binding AnnouncementsListView}"
                   HorizontalOptions="Center"
-                  BackgroundColor="SkyBlue"
                   VerticalOptions="FillAndExpand">
             <!--<ListView.ItemTemplate>
                 <DataTemplate>

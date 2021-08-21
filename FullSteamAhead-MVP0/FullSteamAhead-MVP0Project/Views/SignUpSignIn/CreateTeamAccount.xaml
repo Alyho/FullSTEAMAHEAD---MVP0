@@ -24,11 +24,12 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="36" 
+               FontSize="32" 
                Grid.Column="0" 
-               Grid.Row="0"/>
+               Grid.Row="0"
+               FontAttributes="Italic"/>
 
-        <Editor Margin="2"   
+        <Entry Margin="2"   
                 Grid.Row="1" 
                 Placeholder="Team Username            " 
                 Text="{Binding TeamUsername}"
@@ -38,7 +39,7 @@
                 HorizontalOptions="Center"
                 WidthRequest="230"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="2" 
                 Placeholder="Team Password            " 
                 Text="{Binding TeamPassword}"

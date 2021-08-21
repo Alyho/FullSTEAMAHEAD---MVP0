@@ -9,18 +9,18 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="107*"/>
             <RowDefinition Height="105*"/>
             <RowDefinition Height="105*"/>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="105*"/>
+            <RowDefinition Height="107*"/>
             <RowDefinition Height="105*"/>
             <RowDefinition Height="105*"/>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="230*"/>
+            <RowDefinition Height="105*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="40*"/>
-            <RowDefinition Height="105*"/>
+            <RowDefinition Height="110*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -33,10 +33,11 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="25" 
+               FontSize="29" 
                Grid.Column="0" 
                Grid.Row="0"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="2"
+               FontAttributes="Italic"/>
 
         <Editor Margin="2"   
                 Grid.Row="1" 
@@ -184,13 +185,23 @@
             </Picker.ItemsSource>
         </Picker>
 
-        <Label Text="Chose to be a student or mentor. Mentors are expected to already have more than adequate experience, but will have the same features as students."   
+        <Button Margin="2" 
+                Grid.Row="8"
+                Grid.Column="1" 
+                Text="About role" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="13" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Clicked="OnDisplayAlertButtonClicked"/>
+
+        <!-- <Label Text="Chose to be a student or mentor. Mentors are expected to already have more than adequate experience, but will have the same features as students."   
                TextColor="LightSlateGray" 
                FontSize="14" 
                Grid.Column="1" 
                Grid.Row="8"/>
             
-            <!-- They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed" -->
+             They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed" -->
 
             <Button Margin="2" 
                 Grid.Row="9" 
@@ -220,7 +231,7 @@
 
         <Label Text="By clicking Create Account, you agree to our terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
-               FontSize="10" 
+               FontSize="11" 
                Grid.Column="0" 
                Grid.Row="10"
                Grid.ColumnSpan="2"

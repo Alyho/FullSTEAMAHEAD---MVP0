@@ -45,6 +45,17 @@
                                    VerticalOptions="FillAndExpand">
                                     <Label.FormattedText>
                                         <FormattedString>
+                                            <Span Text="Nickname: " />
+                                            <Span Text="{Binding Nickname}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand">
+                                    <Label.FormattedText>
+                                        <FormattedString>
                                             <Span Text="Username: " />
                                             <Span Text="{Binding Username}"/>
                                         </FormattedString>

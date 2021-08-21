@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FullSteamAheadMVP0Project.Views.Notifications">
+             x:Class="FullSteamAheadMVP0Project.Views.Notifications"
+             BackgroundColor="AliceBlue">
 
     <Grid>
 
@@ -12,6 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="12*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="1.3*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -25,7 +27,7 @@
                 Grid.Row="0" 
                 Grid.ColumnSpan="4"
                 HorizontalOptions="Center"
-                FontSize="25"
+                FontSize="26"
                 TextColor="LightSlateGray"
                 Text="Notifications"/>
 
@@ -44,7 +46,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
@@ -55,7 +57,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
@@ -66,18 +68,18 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Role: " />
-                                        <Span Text="{Binding Role}"/>
+                                        <Span Text="{Binding Role}" FontSize="16"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding Date}"/>
@@ -90,7 +92,7 @@
                                     FontSize="15"
                                     Command="{Binding AcceptCommand}">
                             </Button>
-                            <Button Text="Decline"
+                            <Button Text="Decline" 
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
                                     FontSize="15"

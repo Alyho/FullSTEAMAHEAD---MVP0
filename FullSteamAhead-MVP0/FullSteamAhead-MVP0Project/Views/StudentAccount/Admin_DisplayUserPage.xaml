@@ -35,19 +35,19 @@
         <Label Text="{Binding Admin_Username}"
                Grid.Column="1" 
                Grid.Row="1" 
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3" FontSize="16"/>
 
         <Label Text="{Binding Admin_Nickname}"
                Grid.Column="1" 
                Grid.Row="2" 
-               Grid.ColumnSpan="3"/>
+               Grid.ColumnSpan="3" FontSize="16"/>
 
         <Label Text="{Binding Admin_Email}"
                LineBreakMode="WordWrap"
                MaxLines="10"
                Grid.Column="0" 
                Grid.Row="3" 
-               Grid.ColumnSpan="4"/>
+               Grid.ColumnSpan="4" FontSize="16"/>
 
         <Button Margin="2" 
                 Grid.Row="4" 
