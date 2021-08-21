@@ -168,6 +168,8 @@ namespace FullSteamAheadMVP0Project.Models
         public List<User> FilterBestAccountResults(List<User> users, Team team) // cleans out users for best results that match with the team variable
         {
 
+            users = FilterAccountPrivacy(users);
+
             Dictionary<User, int> matches = new Dictionary<User, int>();
             int max = 0;
 
@@ -178,7 +180,7 @@ namespace FullSteamAheadMVP0Project.Models
                 // gender
                 string userGender = users[i].Information.Preferences.Gender.ToLower();
                 string gender = team.Team_Information.Gender.ToLower();
-                if (!(userGender == gender || userGender == "all genders"))
+                if (userGender == gender || userGender == "all genders")
                 {
                     count++;
                 }
@@ -188,14 +190,7 @@ namespace FullSteamAheadMVP0Project.Models
                 string city = team.Team_Information.City.ToLower();
                 string userState = users[i].Information.State.ToLower();
                 string state = team.Team_Information.State.ToLower();
-                if (userCity != city || userState != state)
-                {
-                    count++;
-                }
-
-                // privacy
-                string privacy = users[i].Information.Preferences.Privacy.ToLower();
-                if (privacy == "private")
+                if (userCity == city || userState == state)
                 {
                     count++;
                 }
@@ -208,7 +203,7 @@ namespace FullSteamAheadMVP0Project.Models
                     int minAge = Int32.Parse(teamMinAge);
                     int maxAge = Int32.Parse(teamMaxAge);
                     int userAge = Int32.Parse(users[i].Information.Age);
-                    if (userAge < minAge || userAge > maxAge)
+                    if (userAge >= minAge && userAge <= maxAge)
                     {
                         count++;
                     }
@@ -270,7 +265,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < users.Count; i++)
             {
-                if (users[i].Information.State != state)
+                if (users[i].Information.State.ToLower() != state.ToLower())
                 {
                     users.RemoveAt(i);
                     i--;
@@ -655,10 +650,66 @@ namespace FullSteamAheadMVP0Project.Models
 
         public List<Team> FilterBestTeamResults(List<Team> teams, User user) // cleans out teams for best results that match with the user variable
         {
-            teams = FilterTeamGender(teams, user.Information.Preferences.Gender);
-            teams = FilterTeamCity(teams, user.Information.City, user.Information.State);
             teams = FilterTeamPrivacy(teams);
-            teams = FilterTeamAge(teams, user.Information.Age);
+
+            Dictionary<Team, int> matches = new Dictionary<Team, int>();
+            int max = 0;
+            for (int i = 0; i < teams.Count; i++)
+            {
+                int count = 0;
+
+                // gender
+                string teamGender = teams[i].Team_Information.Gender.ToLower();
+                string gender = user.Information.Preferences.Gender.ToLower();
+                if (teamGender == gender || teamGender == "all genders")
+                {
+                    count++;
+                }
+
+
+                // city
+                string teamCity = teams[i].Team_Information.City.ToLower();
+                string city = user.Information.City.ToLower();
+                string teamState = teams[i].Team_Information.State.ToLower();
+                string state = user.Information.State.ToLower();
+                if (teamCity == city || teamState == state)
+                {
+                    count++;
+                }
+
+
+                // age
+                string teamMinAge = teams[i].Team_Information.Min_Age;
+                string teamMaxAge = teams[i].Team_Information.Max_Age;
+                if (!(string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge)))
+                {
+                    int minAge = Int32.Parse(teamMinAge);
+                    int maxAge = Int32.Parse(teamMaxAge);
+                    int userAge = Int32.Parse(user.Information.Age);
+                    if (userAge >= minAge && userAge <= maxAge)
+                    {
+                        count++;
+                    }
+                }
+
+
+                max = Math.Max(count, max);
+                matches.Add(teams[i], count);
+            }
+
+            List<Team> newTeams = new List<Team>();
+            for (int i = max; i > 0; i--)
+            {
+                for (int j = 0; j < teams.Count; j++)
+                {
+                    if (matches[teams[j]] == i)
+                    {
+                        newTeams.Add(teams[j]);
+                    }
+                }
+            }
+
+            teams = newTeams;
             return teams;
         }
 
@@ -666,7 +717,9 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < teams.Count; i++)
             {
-                if (!(teams[i].Team_Information.Gender == gender || teams[i].Team_Information.Gender == "All Genders"))
+                string teamGender = teams[i].Team_Information.Gender.ToLower();
+                gender = gender.ToLower();
+                if (!(teamGender == gender || teamGender == "all genders"))
                 {
                     teams.RemoveAt(i);
                     i--;
@@ -679,7 +732,11 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < teams.Count; i++)
             {
-                if (teams[i].Team_Information.City != city || teams[i].Team_Information.State != state)
+                string teamCity = teams[i].Team_Information.City.ToLower();
+                city = city.ToLower();
+                string teamState = teams[i].Team_Information.State.ToLower();
+                state = state.ToLower();
+                if (teamCity != city || teamState != state)
                 {
                     teams.RemoveAt(i);
                     i--;
@@ -692,7 +749,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < teams.Count; i++)
             {
-                if (teams[i].Team_Information.State != state)
+                if (teams[i].Team_Information.State.ToLower() != state.ToLower())
                 {
                     teams.RemoveAt(i);
                     i--;
@@ -705,7 +762,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < teams.Count; i++)
             {
-                if (teams[i].Team_Information.Privacy == "Private")
+                if (teams[i].Team_Information.Privacy.ToLower() == "private")
                 {
                     teams.RemoveAt(i);
                     i--;
@@ -720,12 +777,17 @@ namespace FullSteamAheadMVP0Project.Models
             int userAge = Int32.Parse(age);
             for (int i = 0; i < teams.Count; i++)
             {
-                minAge = Int32.Parse(teams[i].Team_Information.Min_Age);
-                maxAge = Int32.Parse(teams[i].Team_Information.Max_Age);
-                if (userAge < minAge || userAge > maxAge)
+                string teamMinAge = teams[i].Team_Information.Min_Age;
+                string teamMaxAge = teams[i].Team_Information.Max_Age;
+                if (!(string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge)))
                 {
-                    teams.RemoveAt(i);
-                    i--;
+                    minAge = Int32.Parse(teamMinAge);
+                    maxAge = Int32.Parse(teamMaxAge);
+                    if (userAge < minAge || userAge > maxAge)
+                    {
+                        teams.RemoveAt(i);
+                        i--;
+                    }
                 }
             }
             return teams;
