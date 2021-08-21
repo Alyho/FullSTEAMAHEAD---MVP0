@@ -82,6 +82,13 @@ namespace FullSteamAheadMVP0Project.Models
             await firebase.Child(Users).Child(user.Username).PatchAsync(user);
         }
 
+        public async Task UpdateUsername(User user, string username) // updates User's username in database, deleting the old copy
+        {
+            await firebase.Child(Users).Child(user.Username).DeleteAsync();
+            user.Username = username;
+            await SaveAccountAsync(user);
+        }
+
         public async Task<bool> IsAccountValid(User user) // returns if User has created an account and if the password matches
         {
             User user2 = await GetAccountAsync(user.Username);
@@ -353,9 +360,16 @@ namespace FullSteamAheadMVP0Project.Models
             return teams.FirstOrDefault(a => a.Team_Username == username);
         }
 
-        public async Task UpdateTeam(Team team) // updates User in database
+        public async Task UpdateTeam(Team team) // updates Team in database
         {
             await firebase.Child(Teams).Child(team.Team_Username).PatchAsync(team);
+        }
+
+        public async Task UpdateTeamUsername(Team team, string username) // updates Team's username in database, deleting the old copy
+        {
+            await firebase.Child(Teams).Child(team.Team_Username).DeleteAsync();
+            team.Team_Username = username;
+            await SaveTeamAsync(team);
         }
 
         public async Task<Admin> GetAdminAsync(string username) // returns the Admin that matches with the username
