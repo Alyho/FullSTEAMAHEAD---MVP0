@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FullSteamAheadMVP0Project.Views.ChangeAdminInformation"
+             BackgroundColor="AliceBlue">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="280*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="180*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Change Admin Information" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="32" 
+               Grid.Column="0" 
+               Grid.Row="0"
+               Grid.ColumnSpan="4"
+               FontAttributes="Italic"/>
+
+        <Editor Margin="2" 
+                Grid.Row="1" 
+                Grid.Column="0"
+                Placeholder="Admin Username     " 
+                Text="{Binding TeamAdminUsername}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="4"
+                WidthRequest="230"/>
+
+        <Editor Margin="2" 
+                Grid.Row="2" 
+                Grid.Column="0"
+                Placeholder="Team Admin Password       " 
+                Text="{Binding TeamAdminPassword}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="4"/>
+
+        <Editor Margin="2" 
+                Grid.Row="3" 
+                Grid.Column="0"
+                Placeholder="Admin email     " 
+                Text="{Binding TeamAdminEmail}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="4"
+                WidthRequest="230"/>
+
+        <Editor Margin="2" 
+                Grid.Row="4" 
+                Grid.Column="0"
+                Placeholder="Admin Nickname    " 
+                Text="{Binding TeamAdminNickname}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="4"
+                WidthRequest="230"/>
+
+        <Editor Margin="2" 
+                Grid.Row="5" 
+                Grid.Column="0"
+                Placeholder="Admin Phone Number     " 
+                Text="{Binding TeamAdminPhoneNumber}"
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center"
+                Grid.ColumnSpan="4"
+                WidthRequest="230"/>
+
+
+        <!-- <CheckBox Grid.Row="5"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="EndAndExpand"/> -->
+
+        <Button Margin="2" 
+                Grid.Row="6" 
+                Grid.Column="1"
+                Text="Next" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Command ="{Binding SaveAdminCommand}"
+                Grid.ColumnSpan="4"/>
+
+        <Button Margin="2" 
+                Grid.Row="6" 
+                Grid.Column="0"
+                Text="Back" CornerRadius="11" 
+                TextColor="LightSlateGray" 
+                FontSize="17" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Clicked="Back3"/>
+
+    </Grid>
+
+</ContentPage>

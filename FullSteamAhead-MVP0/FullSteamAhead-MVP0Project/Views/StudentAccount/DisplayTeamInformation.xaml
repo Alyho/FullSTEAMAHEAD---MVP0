@@ -16,6 +16,7 @@
             <RowDefinition Height=".29*"/>
             <RowDefinition Height=".29*"/>
             <RowDefinition Height=".29*"/>
+            <RowDefinition Height=".29*"/>
             <RowDefinition Height="1.4*"/>
             <RowDefinition Height=".8*"/>
         </Grid.RowDefinitions>
@@ -37,37 +38,37 @@
 
         <Label Text="{Binding Team_Username}"
                Grid.Column="1" 
-               Grid.Row="1" 
+               Grid.Row="2" 
                Grid.ColumnSpan="3"
                FontSize="25"
                FontAttributes="Italic"/>
 
         <Label Text="{Binding Team_Nickname}"
                Grid.Column="1" 
-               Grid.Row="2" 
+               Grid.Row="3" 
                Grid.ColumnSpan="3"
                FontSize="18"/>
 
         <Label Text="{Binding Team_Location}"
                Grid.Column="1" 
-               Grid.Row="3" 
+               Grid.Row="4" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
         <Label Text="{Binding Team_Gender}" 
                Grid.Column="1" 
-               Grid.Row="4" 
+               Grid.Row="5" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
         <Label Text="{Binding Team_Email}"
                Grid.Column="1" 
-               Grid.Row="5" 
+               Grid.Row="6" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
         <Label Text="{Binding Team_Bio}"
                LineBreakMode="WordWrap"
                MaxLines="10"
                Grid.Column="1" 
-               Grid.Row="6" 
+               Grid.Row="7" 
                Grid.ColumnSpan="3"  FontSize="18"/>
 
         <!-- <Button Margin=".2"  
@@ -83,7 +84,7 @@
                 Command="{Binding TeamEmailCommand}"/> -->
 
         <Button Margin=".2"  
-                Grid.Row="7" 
+                Grid.Row="8" 
                 Grid.Column="1"
                 Text="Back" 
                 CornerRadius="10" 
@@ -95,7 +96,7 @@
                 Clicked="BackToSearch_Button_Clicked"/>
 
         <Button Margin=".2"  
-                Grid.Row="7" 
+                Grid.Row="8" 
                 Grid.Column="2"
                 Text="Request to join" 
                 CornerRadius="10" 
@@ -106,10 +107,10 @@
                 WidthRequest="200"
                 Command="{Binding RequestToJoinTeamCommand}"/>
 
-        <Button Grid.Column="0" Grid.Row="8" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
-        <Button Grid.Column="1" Grid.Row="8" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsComand}"/>
-        <Button Grid.Column="2" Grid.Row="8" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
-        <Button Grid.Column="3" Grid.Row="8" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
+        <Button Grid.Column="0" Grid.Row="9" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
+        <Button Grid.Column="1" Grid.Row="9" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Command ="{Binding MyTeamsComand}"/>
+        <Button Grid.Column="2" Grid.Row="9" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
+        <Button Grid.Column="3" Grid.Row="9" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
 
 
     </Grid>

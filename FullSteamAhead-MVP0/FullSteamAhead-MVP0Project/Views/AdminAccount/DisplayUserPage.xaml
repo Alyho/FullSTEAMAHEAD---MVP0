@@ -13,6 +13,7 @@
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height=".8*"/>
         </Grid.RowDefinitions>
@@ -34,24 +35,24 @@
 
         <Label Text="{Binding User_Username}"
                Grid.Column="1" 
-               Grid.Row="1" 
+               Grid.Row="2" 
                Grid.ColumnSpan="3"
                FontSize="25"/>
 
         <Label Text="{Binding User_Nickname}"
                Grid.Column="1" 
-               Grid.Row="2" 
+               Grid.Row="3" 
                Grid.ColumnSpan="3" FontSize="18"/>
 
         <Label Text="{Binding User_Bio}"
                LineBreakMode="WordWrap"
                MaxLines="10"
                Grid.Column="0" 
-               Grid.Row="3" 
+               Grid.Row="4" 
                Grid.ColumnSpan="4" FontSize="18"/>
 
         <Button Margin=".2"  
-                Grid.Row="4" 
+                Grid.Row="5" 
                 Grid.Column="1"
                 Grid.ColumnSpan="1"
                 Text="Invite" 
@@ -64,7 +65,7 @@
                 Command="{Binding InviteUserCommand}"/>
 
         <Button Margin=".2"  
-                Grid.Row="4" 
+                Grid.Row="5" 
                 Grid.Column="2"
                 Text="Back" 
                 CornerRadius="10" 
@@ -75,10 +76,10 @@
                 WidthRequest="400"
                 Clicked="TeamBackToSearch_Button_Clicked"/>
 
-        <Button Grid.Column="0" Grid.Row="5" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
-        <Button Grid.Column="1" Grid.Row="5" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
-        <Button Grid.Column="2" Grid.Row="5" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding UserNotificationsCommand}"/>
-        <Button Grid.Column="3" Grid.Row="5" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
+        <Button Grid.Column="0" Grid.Row="6" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <Button Grid.Column="1" Grid.Row="6" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <Button Grid.Column="2" Grid.Row="6" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding UserNotificationsCommand}"/>
+        <Button Grid.Column="3" Grid.Row="6" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
     
     </Grid>
     

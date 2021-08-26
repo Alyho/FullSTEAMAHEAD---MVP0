@@ -41,6 +41,7 @@
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
+                  Grid.RowSpan="2"
                   HasUnevenRows="True"                                    
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>

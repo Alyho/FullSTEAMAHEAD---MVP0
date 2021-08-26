@@ -10,9 +10,9 @@
     <Grid>
         
         <Grid.RowDefinitions>
-            <RowDefinition Height=".5*"/>
-            <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -39,9 +39,10 @@
                   Grid.Column="0" 
                   Grid.Row="1" 
                   Grid.ColumnSpan="4"
+                  Grid.RowSpan="2"
                   ItemsSource="{Binding TeamListView}"
                   HorizontalOptions="Center"
-                  HasUnevenRows="True"                  
+                  HasUnevenRows="True"  
                   ItemTapped="searchResults_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
