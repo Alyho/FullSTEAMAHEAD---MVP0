@@ -67,7 +67,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 await App.Database.AddAnnouncement(Global.TeamSignedIn, Announcement_);
                 AnnouncementList.Add(Announcement_);
                 //AnnouncementsListView = AnnouncementList;
-                
+
+                Announcements = string.Empty;
             });
         }
 

@@ -42,7 +42,7 @@ namespace FullSteamAheadMVP0Project.Views
 
                 else if (createTeamAccountViewModel.TeamCreated == 2)
                 {
-                    await DisplayAlert("New Team", "Team account information changed", "OK");
+                    await DisplayAlert("Updated Team", "Team account information changed", "OK");
                     await Navigation.PushAsync(new ChangeTeamInformation2());
                 }
 

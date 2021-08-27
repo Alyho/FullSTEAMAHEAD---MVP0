@@ -47,12 +47,6 @@ namespace FullSteamAheadMVP0Project.Views
                     await DisplayAlert("Error", "Age must be a number", "OK");
                 }
             }
-
-            else
-            {
-                await DisplayAlert("Success", "Information changed", "OK");
-                await Navigation.PushAsync(new ChangeAdminInformation());
-            }
         }
 
     }

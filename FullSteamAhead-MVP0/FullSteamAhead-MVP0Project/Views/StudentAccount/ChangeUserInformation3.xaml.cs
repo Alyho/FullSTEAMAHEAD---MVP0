@@ -27,7 +27,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void Back3(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ChangeUserInformation1());
+            await Navigation.PushAsync(new ChangeUserInformation2());
         }
 
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

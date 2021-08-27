@@ -34,6 +34,14 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
+            if (e.PropertyName == "NoIntAge")
+            {
+                if (createTeamAccountViewModel.NoIntAge)
+                {
+                    await DisplayAlert("Error", "Age must be a number", "OK");
+                }
+            }
+
         }
 
         async void OnDisplayAlertButtonClicked2(object sender, EventArgs e)

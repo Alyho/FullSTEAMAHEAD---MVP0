@@ -113,7 +113,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                         else
                         {
-
+                            await App.Database.UpdateUsername(Global.UserSignedIn, _user.Username);
                             Global.UserSignedIn.Username = _user.Username;
                             Global.UserSignedIn.Password = _user.Password;
                             Global.UserSignedIn.Nickname = _user.Nickname;
