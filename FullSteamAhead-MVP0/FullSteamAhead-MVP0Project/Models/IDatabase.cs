@@ -15,9 +15,39 @@ namespace FullSteamAheadMVP0Project.Models
         Task<bool> IsAccountValid(User account);                       // returns if User has created an account and if the password matches
         Task AddTeamRequest(User user, string username);               // adds team request to user
         Task RemoveTeamRequest(User user, string username);            // removes team request from user
-        Task<Dictionary<string, Team>> GetTeamRequests(User user);     // returns team requests
-        Task UpdateTeamRequests(User user);                            // updates Team_Requests list in database
+        Task<List<string>> GetTeamRequests(User user);                 // returns team requests
         Task<bool> TeamRequestExists(User user, Team team);            // returns if Team username already exists in Team_Requests for a specific User
+
+  
+
+        // Team methods
+        Task<Team> GetTeamAsync(string username);                         // returns the Team that matches with the username
+        Task UpdateTeam(Team team);                                       // updates team in database
+        Task<Admin> GetAdminAsync(string username);                       // returns the Admin that matches with the username
+        Task<List<Team>> GetTeamsAsync();                                 // returns list of all Teams in database
+        Task SaveTeamAsync(Team team);                                    // saves Team to database
+        Task UpdateTeamUsername(Team team, string username);              // updates Team's username in database, deleting the old copy
+        Task AddUser(Team team, User account);                            // adds User to Team, either in Mentors list or Students list
+        Task RemoveUser(Team team, User account);                         // removes User from Team, either in Mentors list or Students list
+        Task<List<string>> GetMentors(Team team);                         // gets mentors in the team
+        Task<List<string>> GetStudents(Team team);                        // gets students in the team
+        Task AddTeamAdmin(Team team, Admin admin);                        // adds Admin to Team, through the Team_Admins list
+        Task RemoveTeamAdmin(Team team, Admin admin);                     // removes Admin from Team, through the Team_Admins list
+        Task UpdateTeamAdmins(Team team);                                 // updates Team_Admins list in database
+        Task<Team> IsTeamValid(Team team, Admin admin);                   // returns Team if it exists in database + password matches + admin user and password matches, otherwise returns null
+        Task<int> TeamExists(Team team);                                  // returns an integer - given a Team, checks with database: (0) username & password matches / (1) username matches / (2) neither
+        Task<bool> TeamAdminExists(Team team, Admin admin);               // returns if Admin username already exists within Team
+        Task<bool> TeamUserExists(Team team, string username);                  // returns if User username already exists within Team
+        Task AddAnnouncement(Team team, string announcement);             // adds announcement to beginning of list
+        Task RemoveAnnouncement(Team team, int index);                    // removes announcement based on index
+        Task<Dictionary<string, string>> GetAnnouncements(Team team);     // returns team announcements
+        Task UpdateAnnouncements(Team team);                              // updates Announcements list in database
+        Task AddUserRequest(Team team, string username);                  // adds user request to team
+        Task RemoveUserRequest(Team team, string username);               // removes user request from team
+        Task<List<string>> GetUserRequests(Team team);                    // returns user requests
+        Task<bool> UserRequestExists(Team team, User user);               // returns if User username already exists in User_Requests for a specific Team
+
+
 
         // User searching and filtering methods
         Task<List<User>> AccountSearch(string name);                                          // returns list of Users that match the name (either username or nickname)
@@ -30,34 +60,7 @@ namespace FullSteamAheadMVP0Project.Models
         // Note: this is the only method not called in FilterBestAccountResults()
         List<User> FilterAccountRole(List<User> users, string role);                          // cleans out users based on role (student / mentor)
 
-        // Team methods
-        Task<Team> GetTeamAsync(string username);                         // returns the Team that matches with the username
 
-        Task UpdateTeam(Team team);
-        Task<Admin> GetAdminAsync(string username);                       // returns the Admin that matches with the username
-        Task<List<Team>> GetTeamsAsync();                                 // returns list of all Teams in database
-        Task SaveTeamAsync(Team team);                                    // saves Team to database
-        Task UpdateTeamUsername(Team team, string username);              // updates Team's username in database, deleting the old copy
-        Task AddUser(Team team, User account);                            // adds User to Team, either in Mentors list or Students list
-        Task RemoveUser(Team team, User account);                         // removes User from Team, either in Mentors list or Students list
-        Task AddTeamAdmin(Team team, Admin admin);                        // adds Admin to Team, through the Team_Admins list
-        Task RemoveTeamAdmin(Team team, Admin admin);                     // removes Admin from Team, through the Team_Admins list
-        Task UpdateTeamStudents(Team team);                               // updates Students list in database
-        Task UpdateTeamMentors(Team team);                                // updates Mentors list in database
-        Task UpdateTeamAdmins(Team team);                                 // updates Team_Admins list in database
-        Task<Team> IsTeamValid(Team team, Admin admin);                   // returns Team if it exists in database + password matches + admin user and password matches, otherwise returns null
-        Task<int> TeamExists(Team team);                                  // returns an integer - given a Team, checks with database: (0) username & password matches / (1) username matches / (2) neither
-        Task<bool> TeamAdminExists(Team team, Admin admin);               // returns if Admin username already exists within Team
-        Task<bool> TeamUserExists(Team team, User user);                  // returns if User username already exists within Team
-        Task AddAnnouncement(Team team, string announcement);             // adds announcement to beginning of list
-        Task RemoveAnnouncement(Team team, int index);                    // removes announcement based on index
-        Task<Dictionary<string, string>> GetAnnouncements(Team team);     // returns team announcements
-        Task UpdateAnnouncements(Team team);                              // updates Announcements list in database
-        Task AddUserRequest(Team team, string username);                  // adds user request to team
-        Task RemoveUserRequest(Team team, string username);               // removes user request from team
-        Task<Dictionary<string, User>> GetUserRequests(Team team);        // returns user requests
-        Task UpdateUserRequests(Team team);                               // updates User_Requests list in database
-        Task<bool> UserRequestExists(Team team, User user);               // returns if User username already exists in User_Requests for a specific Team
 
         // Team searching and filtering methods
         Task<List<Team>> TeamSearch(string name);                                // returns list of Teams that match the name (either username or nickname)

@@ -41,12 +41,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                 foreach (var team in myTeams)
                 {
-                    if (team.Students.ContainsKey(Global.UserSignedIn.Username))
-                    {
-                        myList.Add(team);
-                    }
-
-                    if (team.Mentors.ContainsKey(Global.UserSignedIn.Username))
+                    if (await App.Database.TeamUserExists(team, Global.UserSignedIn.Username))
                     {
                         myList.Add(team); 
                     }
