@@ -34,9 +34,45 @@ namespace FullSteamAheadMVP0Project.ViewModels
             set { }
         }
 
+        public string User_Email
+        {
+            get => _user.Username;
+            set { }
+        }
+
+        public string User_Age
+        {
+            get => _user.Information.Age;
+            set { }
+        }
+
+        public string User_Grade
+        {
+            get => _user.Information.Grade;
+            set { }
+        }
+
         public string User_Bio
         {
             get => _user.Information.Bio;
+            set { }
+        }
+
+        public string User_State
+        {
+            get => _user.Information.State;
+            set { }
+        }
+
+        public string User_City
+        {
+            get => _user.Information.City;
+            set { }
+        }
+
+        public string User_Gender
+        {
+            get => _user.Information.Preferences.Gender;
             set { }
         }
 
