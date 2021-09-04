@@ -22,7 +22,12 @@ public partial class SignUpPage : ContentPage
             await Navigation.PushAsync(new CreateStudentAccount());
         }
 
-        private async void Admin_Button_Clicked(object sender, EventArgs e)
+        private async void Back_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
+    private async void Admin_Button_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CreateTeamAccount());
         }

@@ -51,7 +51,7 @@
                             <Label FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Team name: " FontSize="16"/>
+                                        <Span Text="Team: " FontSize="16"/>
                                         <Span Text="{Binding Team_Username}"/>
                                     </FormattedString>
                                 </Label.FormattedText>

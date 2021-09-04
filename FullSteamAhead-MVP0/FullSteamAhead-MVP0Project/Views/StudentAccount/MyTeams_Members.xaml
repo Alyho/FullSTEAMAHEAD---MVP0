@@ -58,7 +58,7 @@
                                    VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Nickname: " />
+                                        <Span Text="Name: " />
                                         <Span Text="{Binding Nickname}"/>
                                     </FormattedString>
                                 </Label.FormattedText>

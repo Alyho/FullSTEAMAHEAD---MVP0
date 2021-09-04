@@ -64,7 +64,7 @@
                                    FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Nickname: " />
+                                        <Span Text="Name: " />
                                         <Span Text="{Binding Nickname}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -116,7 +116,7 @@
                             <Label FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Nickname: " />
+                                        <Span Text="Name: " />
                                         <Span Text="{Binding Nickname}"/>
                                     </FormattedString>
                                 </Label.FormattedText>

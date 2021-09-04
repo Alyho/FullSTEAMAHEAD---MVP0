@@ -44,7 +44,7 @@
 
         <Editor Margin="2"   
                 Grid.Row="2" 
-                Placeholder="Nickname            " 
+                Placeholder="Name            " 
                 Text="{Binding Nickname}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 

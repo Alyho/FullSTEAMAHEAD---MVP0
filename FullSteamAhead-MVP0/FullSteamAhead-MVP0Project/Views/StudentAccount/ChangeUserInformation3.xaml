@@ -58,7 +58,7 @@
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Female</x:String>
                     <x:String>Male</x:String>
-                    <x:String>All genders</x:String>
+                    <x:String>Non binary</x:String>
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>

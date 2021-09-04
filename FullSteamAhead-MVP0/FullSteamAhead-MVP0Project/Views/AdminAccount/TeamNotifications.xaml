@@ -68,7 +68,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Role: " />
-                                            <Span Text="{Binding Role}"/>
+                                            <Span Text="{Binding UserRole}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

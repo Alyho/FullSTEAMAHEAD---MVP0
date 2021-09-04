@@ -24,6 +24,11 @@ namespace FullSteamAheadMVP0Project.Views
             this.BindingContext = createTeamAccountViewModel;
         }
 
+        private async void Back_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SignUpPage());
+        }
+
         private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "TeamCreated")

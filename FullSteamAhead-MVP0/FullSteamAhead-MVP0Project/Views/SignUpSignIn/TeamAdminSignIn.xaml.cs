@@ -24,6 +24,11 @@ public partial class TeamAdminSignIn : ContentPage
             this.BindingContext = teamAdminSignInViewModel;
         }
 
+        private async void Back_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
+
         private async void TeamAdminSignInViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "TeamExists")

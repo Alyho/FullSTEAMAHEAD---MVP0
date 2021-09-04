@@ -84,6 +84,11 @@ public partial class CreateStudentAccount : ContentPage
             await DisplayAlert("Role", "Chose to be a student or mentor. Mentors are expected to already have more than adequate experience, but will have the same features as students. They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed.", "OK");
         }
 
+        private async void Back_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SignUpPage());
+        }
+
 
     }
 

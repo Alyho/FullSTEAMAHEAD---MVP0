@@ -17,7 +17,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Team Member" 
@@ -53,7 +53,8 @@
                 IsPassword="True"/>
 
         <Button Margin="2" 
-                Grid.Row="3" 
+                Grid.Row="3"
+                Grid.Column="1"
                 Text="Sign In" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
@@ -61,6 +62,16 @@
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command="{Binding CheckUserCommand}"/>
+
+        <Button Margin="2" 
+                Grid.Row="3" 
+                Grid.Column="0"
+                Text="Back" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Clicked="Back_Button_Clicked"/>
 
     </Grid>
     

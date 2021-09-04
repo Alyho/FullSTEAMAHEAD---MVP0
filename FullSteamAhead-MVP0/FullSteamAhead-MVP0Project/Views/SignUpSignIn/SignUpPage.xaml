@@ -17,7 +17,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Sign Up" 
@@ -48,6 +48,17 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Clicked="Admin_Button_Clicked"/>
+
+
+        <Button Text="Back"
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                FontSize="20"
+                TextColor="LightSlateGray"
+                Clicked="Back_Button_Clicked"
+                WidthRequest="200"
+                HeightRequest="60"
+                Grid.Row="3" />
 
     </Grid>
 

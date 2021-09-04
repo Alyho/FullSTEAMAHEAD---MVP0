@@ -50,7 +50,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Nickname: " />
-                                        <Span Text="{Binding Nickname}"/>
+                                        <Span Text="{Binding Name}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

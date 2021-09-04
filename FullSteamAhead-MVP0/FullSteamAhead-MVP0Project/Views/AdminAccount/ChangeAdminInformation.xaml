@@ -71,7 +71,7 @@
         <Editor Margin="2" 
                 Grid.Row="4" 
                 Grid.Column="0"
-                Placeholder="Admin Nickname    " 
+                Placeholder="Admin Name    " 
                 Text="{Binding TeamAdminNickname}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 

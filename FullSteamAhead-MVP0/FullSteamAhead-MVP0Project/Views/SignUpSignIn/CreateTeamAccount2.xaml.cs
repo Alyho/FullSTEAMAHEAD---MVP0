@@ -48,5 +48,11 @@ namespace FullSteamAheadMVP0Project.Views
         {
             await DisplayAlert("Privacy", "Public teams are available to all searching members. Private teams will be invite only and will not be searchable.", "OK");
         }
+
+        private async void Back_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateTeamAccount());
+        }
+
     }
 }

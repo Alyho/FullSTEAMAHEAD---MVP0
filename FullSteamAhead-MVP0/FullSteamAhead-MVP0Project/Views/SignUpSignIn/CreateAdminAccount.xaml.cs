@@ -49,6 +49,11 @@ namespace FullSteamAheadMVP0Project.Views
             }
         }
 
+        private async void Back_Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateTeamAccount2());
+        }
+
         protected void PrivacyPolicy(object sender, EventArgs e)
         {
             Launcher.OpenAsync(new Uri("https://www.privacypolicies.com/live/e9b6a4c7-b65e-462a-8a44-91d78e8b99c7"));

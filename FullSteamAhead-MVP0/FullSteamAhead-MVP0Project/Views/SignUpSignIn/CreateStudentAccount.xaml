@@ -19,6 +19,7 @@
             <RowDefinition Height="45"/>
             <RowDefinition Height="105*"/>
             <RowDefinition Height="90*"/>
+            <RowDefinition Height="90*"/>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="110*"/>
         </Grid.RowDefinitions>
@@ -53,7 +54,7 @@
 
         <Editor Margin="2"   
                 Grid.Row="2" 
-                Placeholder="Nickname            " 
+                Placeholder="Name            " 
                 Text="{Binding Nickname}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
@@ -195,6 +196,22 @@
                 HorizontalOptions="Center"
                 Clicked="OnDisplayAlertButtonClicked"/>
 
+        <Picker x:Name="Gender"
+                Title="Gender"
+                TitleColor="LightSlateGray"
+                Grid.Row="9" 
+                Grid.Column="0"
+                WidthRequest="230"
+                SelectedItem="{Binding Gender}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Female</x:String>
+                    <x:String>Male</x:String>
+                    <x:String>Nonbinary</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
         <!-- <Label Text="Chose to be a student or mentor. Mentors are expected to already have more than adequate experience, but will have the same features as students."   
                TextColor="LightSlateGray" 
                FontSize="14" 
@@ -204,7 +221,7 @@
              They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed" -->
 
             <Button Margin="2" 
-                Grid.Row="9" 
+                Grid.Row="10" 
                 Text="Privacy Policy" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="13" 
@@ -216,7 +233,7 @@
                 Grid.Row="9" 
                 Text="Terms and Conditions" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="13" 
+                FontSize="10" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Clicked="TermsAndConditions"
@@ -233,7 +250,7 @@
                TextColor="LightSlateGray" 
                FontSize="11" 
                Grid.Column="0" 
-               Grid.Row="10"
+               Grid.Row="11"
                Grid.ColumnSpan="2"
                VerticalOptions="CenterAndExpand"/>
 
@@ -245,13 +262,23 @@
                Grid.ColumnSpan="2"/> -->
 
         <Button Margin="2" 
-                Grid.Row="11" 
+                Grid.Row="12" 
                 Text="Create account" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="AliceBlue" 
-                HorizontalOptions="Center"
                 Command ="{Binding SaveCommand}"
+                Grid.ColumnSpan="2"
+                Grid.Column="1"/>
+
+        <Button Text="Back"
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                FontSize="20"
+                TextColor="LightSlateGray"
+                Clicked="Back_Button_Clicked"
+                Grid.Row="12" 
+                Grid.Column="0"
                 Grid.ColumnSpan="2"/>
     </Grid>
 

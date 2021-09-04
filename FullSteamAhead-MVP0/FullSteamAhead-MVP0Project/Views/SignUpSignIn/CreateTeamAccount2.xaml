@@ -50,7 +50,7 @@
 
         <Editor Margin="2"   
                 Grid.Row="2" 
-                Placeholder="Team Nickname            " 
+                Placeholder="Team Name            " 
                 Text="{Binding TeamNickname}"
                 TextColor="LightSlateGray" 
                 FontSize="17" 
@@ -168,7 +168,7 @@
                 HorizontalOptions="Center"/>
 
         <Picker x:Name="Gender"
-                Title="Gender requirements that team members identify with"
+                Title="Gender requirements"
                 TitleColor="LightSlateGray"
                 Grid.Row="7" 
                 Grid.Column="0"
@@ -178,8 +178,8 @@
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Female</x:String>
                     <x:String>Male</x:String>
-                    <x:String>Other</x:String>
-                    <x:String>No specified gender</x:String>
+                    <x:String>All genders</x:String>
+                    <x:String>Female and non binary</x:String>
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
@@ -242,7 +242,16 @@
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveTeamCommand}"
-                Grid.ColumnSpan="4"/>
+                Grid.Column="1"/>
+
+        <Button Text="Back"
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                FontSize="20"
+                TextColor="LightSlateGray"
+                Clicked="Back_Button_Clicked"
+                Grid.Row="9" 
+                Grid.Column="0"/>
 
     </Grid>
 
