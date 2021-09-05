@@ -52,15 +52,15 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 if (Global.SelectedTeam != null)
                 {
                     AdminDict = Global.SelectedTeam.Team_Admins;
-                    StudentDict = await App.Database.GetStudents(Global.SelectedTeam);
-                    MentorDict = await App.Database.GetMentors(Global.SelectedTeam);
+                    StudentDict = await App.Database.GetTeamStudents(Global.SelectedTeam);
+                    MentorDict = await App.Database.GetTeamMentors(Global.SelectedTeam);
                 }
 
                 if (Global.TeamSignedIn != null)
                 {
                     AdminDict = Global.TeamSignedIn.Team_Admins;
-                    StudentDict = await App.Database.GetStudents(Global.TeamSignedIn);
-                    MentorDict = await App.Database.GetMentors(Global.TeamSignedIn);
+                    StudentDict = await App.Database.GetTeamStudents(Global.TeamSignedIn);
+                    MentorDict = await App.Database.GetTeamMentors(Global.TeamSignedIn);
                 }
             }));
             

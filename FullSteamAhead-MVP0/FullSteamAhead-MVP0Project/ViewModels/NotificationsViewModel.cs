@@ -113,7 +113,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     emails.Add(user.Email);
                     var message = new EmailMessage
                     {
-                        Subject = "Accpted to Team!",
+                        Subject = "Accepted to Team!",
                         Body = "Congrats! We have accepted your request to join our STEM team. On your Full STEAM Ahead app, go to My Teams page where you'll have access to our communications.",
                         To = emails
                     };
