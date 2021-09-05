@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace FullSteamAheadMVP0Project.ViewModels
 {
@@ -43,35 +44,41 @@ namespace FullSteamAheadMVP0Project.ViewModels
             if (Global.TeamSignedIn != null)
             {
 
-                UserRequestsDict = Global.TeamSignedIn.User_Requests;
-
-                foreach (KeyValuePair<string, User> entry in UserRequestsDict)
+                Task.Run(new System.Action(async () =>
                 {
-                    UserRequestList.Add(new Container(Navigation)
+                    UserRequestsDict = await App.Database.GetUserRequests(Global.TeamSignedIn);
+
+                    foreach (KeyValuePair<string, User> entry in UserRequestsDict)
                     {
-                        Username = entry.Value.Username
-                    });
+                        UserRequestList.Add(new Container(Navigation)
+                        {
+                            Username = entry.Value.Username
+                        });
 
-                }
+                    }
 
-                NotificationsListView = UserRequestList;
+                    NotificationsListView = UserRequestList;
+                }));
 
             }
             
             else
             {
-                TeamRequestsDict = Global.UserSignedIn.Team_Requests;
-
-                foreach (KeyValuePair<string, Team> entry in TeamRequestsDict)
+                Task.Run(new System.Action(async () =>
                 {
-                    TeamRequestList.Add(new Container(Navigation)
+                    TeamRequestsDict = await App.Database.GetTeamRequests(Global.UserSignedIn);
+
+                    foreach (KeyValuePair<string, Team> entry in TeamRequestsDict)
                     {
-                        Username = entry.Value.Team_Username
-                    });
+                        TeamRequestList.Add(new Container(Navigation)
+                        {
+                            Username = entry.Value.Team_Username
+                        });
 
-                }
+                    }
 
-                NotificationsListView = TeamRequestList;
+                    NotificationsListView = TeamRequestList;
+                }));
             }
 
         }

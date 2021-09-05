@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FullSteamAheadMVP0Project.ViewModels
 {
@@ -46,20 +47,22 @@ namespace FullSteamAheadMVP0Project.ViewModels
             List<Admin> AdminList = new List<Admin>();
             List<User> UserList = new List<User>();
 
-
-            if (Global.SelectedTeam != null)
+            Task.Run(new System.Action(async () =>
             {
-                AdminDict = Global.SelectedTeam.Team_Admins;
-                StudentDict = Global.SelectedTeam.Students;               
-                MentorDict = Global.SelectedTeam.Mentors;
-            }
+                if (Global.SelectedTeam != null)
+                {
+                    AdminDict = Global.SelectedTeam.Team_Admins;
+                    StudentDict = await App.Database.GetStudents(Global.SelectedTeam);
+                    MentorDict = await App.Database.GetMentors(Global.SelectedTeam);
+                }
 
-            if (Global.TeamSignedIn != null)
-            {
-                AdminDict = Global.TeamSignedIn.Team_Admins;
-                StudentDict = Global.TeamSignedIn.Students;
-                MentorDict = Global.TeamSignedIn.Mentors;
-            }
+                if (Global.TeamSignedIn != null)
+                {
+                    AdminDict = Global.TeamSignedIn.Team_Admins;
+                    StudentDict = await App.Database.GetStudents(Global.TeamSignedIn);
+                    MentorDict = await App.Database.GetMentors(Global.TeamSignedIn);
+                }
+            }));
             
             int i = 0;
 

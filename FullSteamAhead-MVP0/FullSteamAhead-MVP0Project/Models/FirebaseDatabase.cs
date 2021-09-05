@@ -108,15 +108,22 @@ namespace FullSteamAheadMVP0Project.Models
             await firebase.Child(Users).Child(user.Username).Child(Team_Requests).Child(username).DeleteAsync();
         }
 
-        public async Task<List<string>> GetTeamRequests(User user)
+        public async Task<Dictionary<string, Team>> GetTeamRequests(User user)
         {
-            return (await firebase.Child(Users).Child(user.Username).Child(Team_Requests).OnceAsync<string>()).Select(item => item.Key).ToList();
+            List<string> usernames = (await firebase.Child(Users).Child(user.Username).Child(Team_Requests).OnceAsync<string>()).Select(item => item.Key).ToList();
+            Dictionary<string, Team> teams = new Dictionary<string, Team>();
+            for (int i = 0; i < usernames.Count; i++)
+            {
+                string team = usernames[i];
+                teams.Add(team, await GetTeamAsync(team));
+            }
+            return teams;
         }
 
         public async Task<bool> TeamRequestExists(User user, Team team)
         {
-            List<string> allTeamRequests = await GetTeamRequests(user);
-            return allTeamRequests.Contains(team.Team_Username);
+            Dictionary<string, Team> allTeamRequests = await GetTeamRequests(user);
+            return allTeamRequests.ContainsKey(team.Team_Username);
         }
 
 
@@ -220,14 +227,28 @@ namespace FullSteamAheadMVP0Project.Models
             }
         }
 
-        public async Task<List<string>> GetMentors(Team team) // gets mentors in the team
+        public async Task<Dictionary<string, User>> GetMentors(Team team) // gets mentors in the team
         {
-            return (await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).OnceAsync<string>()).Select(item => item.Key).ToList();
+            List<string> mentornames = (await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).OnceAsync<string>()).Select(item => item.Key).ToList();
+            Dictionary<string, User> mentors = new Dictionary<string, User>();
+            for (int i = 0; i < mentornames.Count; i++)
+            {
+                string mentor = mentornames[i];
+                mentors.Add(mentor, await GetAccountAsync(mentor));
+            }
+            return mentors;
         }
 
-        public async Task<List<string>> GetStudents(Team team) // gets students in the team
+        public async Task<Dictionary<string, User>> GetStudents(Team team) // gets students in the team
         {
-            return (await firebase.Child(Teams).Child(team.Team_Username).Child(Students).OnceAsync<string>()).Select(item => item.Key).ToList();
+            List<string> studentnames = (await firebase.Child(Teams).Child(team.Team_Username).Child(Students).OnceAsync<string>()).Select(item => item.Key).ToList();
+            Dictionary<string, User> students = new Dictionary<string, User>();
+            for (int i = 0; i < studentnames.Count; i++)
+            {
+                string student = studentnames[i];
+                students.Add(student, await GetAccountAsync(student));
+            }
+            return students;
         }
 
         public async Task AddTeamAdmin(Team team, Admin admin) // adds Admin to Team, through the Team_Admins list
@@ -302,9 +323,9 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<bool> TeamUserExists(Team team, string username) // returns if User username already exists within Team
         {
-            List<string> allMentors = await GetMentors(team);
-            List<string> allStudents = await GetStudents(team);
-            return allMentors.Contains(username) || allStudents.Contains(username);
+            Dictionary<string, User> allMentors = await GetMentors(team);
+            Dictionary<string, User> allStudents = await GetStudents(team);
+            return allMentors.ContainsKey(username) || allStudents.ContainsKey(username);
         }
 
         public async Task AddAnnouncement(Team team, string announcement)
@@ -361,15 +382,22 @@ namespace FullSteamAheadMVP0Project.Models
             await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).Child(username).DeleteAsync();
         }
 
-        public async Task<List<string>> GetUserRequests(Team team)
+        public async Task<Dictionary<string, User>> GetUserRequests(Team team)
         {
-            return (await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).OnceAsync<string>()).Select(item => item.Key).ToList();
+            List<string> usernames = (await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).OnceAsync<string>()).Select(item => item.Key).ToList();
+            Dictionary<string, User> users = new Dictionary<string, User>();
+            for (int i = 0; i < usernames.Count; i++) 
+            {
+                string user = usernames[i];
+                users.Add(user, await GetAccountAsync(user));
+            }
+            return users;
         }
 
         public async Task<bool> UserRequestExists(Team team, User user)
         {
-            List<string> allUserRequests = await GetUserRequests(team);
-            return allUserRequests.Contains(user.Username);
+            Dictionary<string, User> allUserRequests = await GetUserRequests(team);
+            return allUserRequests.ContainsKey(user.Username);
         }
 
 
