@@ -12,12 +12,18 @@ namespace FullSteamAheadMVP0Project.ViewModels
     {
         private Team _team;
         private bool _userRequestExists;
+        private bool _noEmail;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public bool UserRequestExists
         {
             get { return _userRequestExists; }
+        }
+
+        public bool NoEmail
+        {
+            get { return _noEmail; }
         }
 
         public string Team_Username
@@ -86,18 +92,34 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     await App.Database.AddUserRequest(_team, Global.UserSignedIn.Username);
                     _userRequestExists = false;
-                    List<string> emails = new List<string>();
-                    emails.Add(_team.Team_Information.Team_Email);
-                    var message = new EmailMessage
+                    try
                     {
-                        Subject = "Request to Join Team",
-                        Body = "Hello! I found you on the app Full STEAM Ahead and I am interested in joining your team. Is there an application process?" +
-                        "If I qualify, you can accept my request on your Full STEAM Ahead app notifications page.",
-                        To = emails
-                    };
+                        List<string> emails = new List<string>();
+                        emails.Add(_team.Team_Information.Team_Email);
+                        var message = new EmailMessage
+                        {
+                            Subject = "Request to Join Team",
+                            Body = "Hello! I found you on the app Full STEAM Ahead and I am interested in joining your team. Is there an application process? " +
+                            "If I qualify, you can accept my request on your Full STEAM Ahead app notifications page.",
+                            To = emails
+                        };
 
-                    await Email.ComposeAsync(message);
+                        await Email.ComposeAsync(message);
+                    }
+                    catch (FeatureNotSupportedException fbsEx)
+                    {
+                        // Email is not supported on this device
+                        _noEmail = true; 
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Some other exception occurred
+                        _noEmail = true;
+                    }
                 }
+                
                 else
                 {
                     _userRequestExists = true;
@@ -106,6 +128,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                 var ar = new PropertyChangedEventArgs(nameof(UserRequestExists));
                 PropertyChanged?.Invoke(this, ar);
+                var br = new PropertyChangedEventArgs(nameof(NoEmail));
+                PropertyChanged?.Invoke(this, br);
 
             });
         }

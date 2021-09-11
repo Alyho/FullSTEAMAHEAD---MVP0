@@ -39,8 +39,16 @@ namespace FullSteamAheadMVP0Project.Views
                     await DisplayAlert("Invite was successful", "You have invited this user to join this team", "OK");
                 }
             }
-            
-            
+
+            if (e.PropertyName == "NoEmail")
+            {
+                if (displayUserPage.NoEmail)
+                {
+                    await DisplayAlert("Email Not Supported", "In order to notify the team you requested, send a direct email manually.", "OK");
+                }
+            }
+
+
         }
 
         private async void TeamSettings_Button_Clicked(object sender, EventArgs e)

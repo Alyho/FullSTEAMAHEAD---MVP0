@@ -14,6 +14,13 @@ namespace FullSteamAheadMVP0Project.ViewModels
     public class NotificationsViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool _noEmail;
+
+        public bool NoEmail
+        {
+            get { return _noEmail; }
+        }
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -34,8 +41,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
             }
         }
 
+
+
         public NotificationsViewModel(INavigation Navigation)
         {
+
             Dictionary<string, User> UserRequestsDict = new Dictionary<string, User>();
             List<Container> UserRequestList = new List<Container>();
 
@@ -81,16 +91,21 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     NotificationsListView = TeamRequestList;
                 }));
             }
-
         }
     }
 
-    public class Container
+    public class Container : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public string Username { get; set; }
         public string Date { get; set; }
         private INavigation _navigation;
+        private bool _noEmail;
+
+        public bool NoEmail
+        {
+            get { return _noEmail; }
+        }
 
         public Command AcceptCommand { get; set; }
         public Command DeclineCommand { get; set; }
@@ -109,16 +124,34 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     await App.Database.RemoveUserRequest(Global.TeamSignedIn, user.Username);
                     await App.Database.RemoveTeamRequest(user, Global.TeamSignedIn.Team_Username);
 
-                    List<string> emails = new List<string>();
-                    emails.Add(user.Email);
-                    var message = new EmailMessage
+                    try
                     {
-                        Subject = "Accepted to Team!",
-                        Body = "Congrats! We have accepted your request to join our STEM team. On your Full STEAM Ahead app, go to My Teams page where you'll have access to our communications.",
-                        To = emails
-                    };
+                        List<string> emails = new List<string>();
+                        emails.Add(user.Email);
+                        var message = new EmailMessage
+                        {
+                            Subject = "Accepted to Team!",
+                            Body = "Congrats! We have accepted your request to join our STEM team. On your Full STEAM Ahead app, go to My Teams page where you'll have access to our communications.",
+                            To = emails
+                        };
 
-                    await Email.ComposeAsync(message);
+                        await Email.ComposeAsync(message);
+                    }
+                    catch (FeatureNotSupportedException fbsEx)
+                    {
+                        // Email is not supported on this device
+                        _noEmail = true;
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Some other exception occurred
+                        _noEmail = true;
+                    }
+
+                    var br = new PropertyChangedEventArgs(nameof(NoEmail));
+                    PropertyChanged?.Invoke(this, br);
 
                     await _navigation.PushAsync(new TeamNotifications());
 
@@ -131,16 +164,34 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     await App.Database.RemoveTeamRequest(Global.UserSignedIn, team.Team_Username);
                     await App.Database.RemoveUserRequest(team, Global.UserSignedIn.Username);
 
-                    List<string> emails = new List<string>();
-                    emails.Add(team.Team_Information.Team_Email);
-                    var message = new EmailMessage
+                    try
                     {
-                        Subject = "A New User Has Joined Your Team",
-                        Body = "Hello! I have accepted your request to join your STEM team. On your Full STEAM Ahead app, go to your Members page to check if I am added.",
-                        To = emails
-                    };
+                        List<string> emails = new List<string>();
+                        emails.Add(team.Team_Information.Team_Email);
+                        var message = new EmailMessage
+                        {
+                            Subject = "A New User Has Joined Your Team",
+                            Body = "Hello! I have accepted your request to join your STEM team. On your Full STEAM Ahead app, go to your Members page to check if I am added.",
+                            To = emails
+                        };
 
-                    await Email.ComposeAsync(message);
+                        await Email.ComposeAsync(message);
+                    }
+                    catch (FeatureNotSupportedException fbsEx)
+                    {
+                        // Email is not supported on this device
+                        _noEmail = true;
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Some other exception occurred
+                        _noEmail = true;
+                    }
+
+                    var br = new PropertyChangedEventArgs(nameof(NoEmail));
+                    PropertyChanged?.Invoke(this, br);
 
                     await _navigation.PushAsync(new Notifications());
                 }    
@@ -155,6 +206,35 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     await App.Database.RemoveUserRequest(Global.TeamSignedIn, user.Username);
                     await App.Database.RemoveTeamRequest(user, Global.TeamSignedIn.Team_Username);
 
+                    try
+                    {
+                        List<string> emails = new List<string>();
+                        emails.Add(user.Email);
+                        var message = new EmailMessage
+                        {
+                            Subject = "Your User Request has been Denied",
+                            Body = "Thank you for your interest but unfortunately, we cannot accept you onto our team at this time.",
+                            To = emails
+                        };
+
+                        await Email.ComposeAsync(message);
+                    }
+                    catch (FeatureNotSupportedException fbsEx)
+                    {
+                        // Email is not supported on this device
+                        _noEmail = true;
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Some other exception occurred
+                        _noEmail = true;
+                    }
+
+                    var br = new PropertyChangedEventArgs(nameof(NoEmail));
+                    PropertyChanged?.Invoke(this, br);
+
                     await _navigation.PushAsync(new TeamNotifications());
 
                 }
@@ -164,6 +244,35 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     var team = await App.Database.GetTeamAsync(Username);
                     await App.Database.RemoveTeamRequest(Global.UserSignedIn, team.Team_Username);
                     await App.Database.RemoveUserRequest(team, Global.UserSignedIn.Username);
+
+                    try
+                    {
+                        List<string> emails = new List<string>();
+                        emails.Add(team.Team_Information.Team_Email);
+                        var message = new EmailMessage
+                        {
+                            Subject = "Your Team Request has been Denied",
+                            Body = "Thank you for your interest, but unfortunately, I cannot accept your invite at this time.",
+                            To = emails
+                        };
+
+                        await Email.ComposeAsync(message);
+                    }
+                    catch (FeatureNotSupportedException fbsEx)
+                    {
+                        // Email is not supported on this device
+                        _noEmail = true;
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        // Some other exception occurred
+                        _noEmail = true;
+                    }
+
+                    var br = new PropertyChangedEventArgs(nameof(NoEmail));
+                    PropertyChanged?.Invoke(this, br);
 
                     await _navigation.PushAsync(new Notifications());
                 }

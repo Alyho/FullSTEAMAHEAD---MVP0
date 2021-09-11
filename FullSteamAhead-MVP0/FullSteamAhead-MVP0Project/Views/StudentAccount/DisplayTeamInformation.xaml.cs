@@ -39,6 +39,14 @@ namespace FullSteamAheadMVP0Project.Views
                 }
 
             }
+
+            if (e.PropertyName == "NoEmail")
+            {
+                if (displayTeamInformation.NoEmail)
+                {
+                    await DisplayAlert("Email Not Supported", "In order to notify the team you requested, send a direct email manually.", "OK");
+                }
+            }
             
         }
 
