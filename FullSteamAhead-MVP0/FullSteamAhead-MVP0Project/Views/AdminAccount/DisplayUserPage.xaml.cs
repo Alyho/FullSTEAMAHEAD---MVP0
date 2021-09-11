@@ -68,7 +68,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void Notifications_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Notifications());
+            await Navigation.PushAsync(new TeamNotifications());
         }
 
         private async void Search_Button_Clicked(object sender, EventArgs e)
