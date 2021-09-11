@@ -14,8 +14,6 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="180*"/>
-            <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
@@ -30,7 +28,7 @@
                FontSize="32" 
                Grid.Column="0" 
                Grid.Row="0"
-               Grid.ColumnSpan="4"
+               Grid.ColumnSpan="2"
                FontAttributes="Italic"/>
 
         <Editor Margin="2" 
@@ -42,7 +40,7 @@
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"
+                Grid.ColumnSpan="2"
                 WidthRequest="230"/>
 
         <Editor Margin="2" 
@@ -54,29 +52,31 @@
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="2"/>
 
         <Button Margin="2" 
                 Grid.Row="3" 
                 Text="Privacy Policy" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="15" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"
                 Clicked="PrivacyPolicy"
-                Grid.ColumnSpan="4"
-                Grid.Column="0"/>
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                HeightRequest="180"/>
 
         <Button Margin="2" 
                 Grid.Row="3" 
                 Text="Terms and Conditions" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="15" 
                 BackgroundColor="White" 
-                HorizontalOptions="Center"
                 Clicked="TermsAndConditions"
-                Grid.ColumnSpan="4"
-                Grid.Column="1"/>
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                HeightRequest="180"/>
 
         <!-- <CheckBox Grid.Row="5"
                   Grid.Column="1"
@@ -89,7 +89,7 @@
                FontSize="15" 
                Grid.Column="0" 
                Grid.Row="4"
-               Grid.ColumnSpan="4"
+               Grid.ColumnSpan="2"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"/>
 
@@ -110,6 +110,7 @@
                 TextColor="LightSlateGray"
                 Clicked="Back_Button_Clicked"
                 Grid.Row="5" 
+                BackgroundColor="AliceBlue" 
                 Grid.Column="0"/>
 
     </Grid>

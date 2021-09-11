@@ -22,8 +22,14 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void MainPage_Button_Clicked(object sender, EventArgs e)
         {
-            Global.UserSignedIn = null;
-            await Navigation.PushAsync(new MainPage());
+
+            var action = await DisplayAlert("Log out", "Do you want to log out?", "Yes", "No");
+            if (action)
+            {
+                Global.UserSignedIn = null;
+                await Navigation.PushAsync(new MainPage());
+            }
+            
         }
         private async void AHomePage_Button_Clicked(object sender, EventArgs e)
         {

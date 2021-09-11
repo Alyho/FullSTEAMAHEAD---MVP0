@@ -22,9 +22,14 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void MainPage2_Button_Clicked(object sender, EventArgs e)
         {
-            Global.TeamSignedIn = null;
-            Global.AdminSignedIn = null;
-            await Navigation.PushAsync(new MainPage());
+            var logout = await DisplayAlert("Log out", "Do you want to log out?", "Yes", "No");
+            if (logout)
+            {
+                Global.TeamSignedIn = null;
+                Global.AdminSignedIn = null;
+                await Navigation.PushAsync(new MainPage());
+            }
+
         }
 
         private async void TeamChat2_Button_Clicked(object sender, EventArgs e)

@@ -78,6 +78,7 @@
                                    VerticalOptions="FillAndExpand">
                                     <Label.FormattedText>
                                         <FormattedString>
+                                            <Span Text="Date: " />
                                             <Span Text="{Binding Date}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
