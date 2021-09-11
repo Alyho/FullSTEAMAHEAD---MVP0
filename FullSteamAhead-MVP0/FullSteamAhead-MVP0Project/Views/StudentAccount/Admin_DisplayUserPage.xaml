@@ -22,7 +22,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding Admin_BackgroundPicture}"
+        <Image Source="BackgroundPicture"
                Grid.Column="0" 
                Grid.Row="0" 
                Grid.ColumnSpan="4"/>
@@ -38,7 +38,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Username:" FontSize="16"/>
+                    <Span Text="Username: " FontSize="16"/>
                     <Span Text="{Binding Admin_Username}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -49,7 +49,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Name:" FontSize="16"/>
+                    <Span Text="Name: " FontSize="16"/>
                     <Span Text="{Binding Admin_Nickname}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -60,7 +60,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Email:" FontSize="16"/>
+                    <Span Text="Email: " FontSize="16"/>
                     <Span Text="{Binding Admin_Email}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -71,7 +71,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Phone number:" FontSize="16"/>
+                    <Span Text="Phone number: " FontSize="16"/>
                     <Span Text="{Binding TeamTeamAdminPhoneNumber}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>

@@ -10,6 +10,7 @@
     <Grid>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
@@ -20,8 +21,7 @@
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
-            <RowDefinition Height=".5*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height=".8*"/>
         </Grid.RowDefinitions>
 
@@ -29,25 +29,23 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="{Binding User_BackgroundPicture}"
+        <Image Source="BackgroundPicture"
                Grid.Column="0" 
                Grid.Row="0" 
-               Grid.ColumnSpan="4"
-               BackgroundColor="LightPink"/>
+               Grid.ColumnSpan="4"/>
 
         <Image Source="{Binding User_ProfilePicture}"
                Grid.Column="0" 
                Grid.Row="1" 
                Grid.ColumnSpan="1"
-               Grid.RowSpan="2"
-               BackgroundColor="BlanchedAlmond"/>
+               Grid.RowSpan="2"/>
         
         <Label Grid.Row="2"
                Grid.Column="1" 
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Username:" FontSize="16"/>
+                    <Span Text="Username: " FontSize="16"/>
                     <Span Text="{Binding User_Username}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -58,7 +56,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Name:" FontSize="16"/>
+                    <Span Text="Name: " FontSize="16"/>
                     <Span Text="{Binding User_Nickname}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -69,7 +67,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Email:" FontSize="16"/>
+                    <Span Text="Email: " FontSize="16"/>
                     <Span Text="{Binding User_Email}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -80,7 +78,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Age:" FontSize="16"/>
+                    <Span Text="Age: " FontSize="16"/>
                     <Span Text="{Binding User_Age}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -91,7 +89,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Grade:" FontSize="16"/>
+                    <Span Text="Grade: " FontSize="16"/>
                     <Span Text="{Binding User_Grade}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -102,7 +100,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="State:" FontSize="16"/>
+                    <Span Text="State: " FontSize="16"/>
                     <Span Text="{Binding User_State}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -113,7 +111,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="City:" FontSize="16"/>
+                    <Span Text="City: " FontSize="16"/>
                     <Span Text="{Binding User_City}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -124,7 +122,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Gender:" FontSize="16"/>
+                    <Span Text="Gender: " FontSize="16"/>
                     <Span Text="{Binding User_Gender}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -135,7 +133,7 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Bio:" FontSize="16"/>
+                    <Span Text="Bio: " FontSize="16"/>
                     <Span Text="{Binding User_Bio}"  FontSize="16" />
                 </FormattedString>
             </Label.FormattedText>
@@ -166,9 +164,9 @@
                 WidthRequest="400"
                 Clicked="TeamBackToSearch_Button_Clicked"/>
 
-        <Button Grid.Column="0" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
-        <Button Grid.Column="1" Grid.Row="12" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
-        <Button Grid.Column="2" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Command ="{Binding UserNotificationsCommand}"/>
+        <Button Grid.Column="0" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search_Button_Clicked"/>
+        <Button Grid.Column="1" Grid.Row="12" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="MyTeam_Calendar_Button_Clicked"/>
+        <Button Grid.Column="2" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
         <Button Grid.Column="3" Grid.Row="12" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
     
     </Grid>

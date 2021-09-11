@@ -230,7 +230,7 @@
                 Clicked="PrivacyPolicy"/>
 
         <Button Margin="2" 
-                Grid.Row="9" 
+                Grid.Row="10" 
                 Text="Terms and Conditions" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="10" 
@@ -248,7 +248,7 @@
 
         <Label Text="By clicking Create Account, you agree to our terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
-               FontSize="11" 
+               FontSize="10" 
                Grid.Column="0" 
                Grid.Row="11"
                Grid.ColumnSpan="2"
@@ -279,7 +279,7 @@
                 Clicked="Back_Button_Clicked"
                 Grid.Row="12" 
                 Grid.Column="0"
-                Grid.ColumnSpan="2"/>
+                BackgroundColor="AliceBlue" />
     </Grid>
 
 </ContentPage>
