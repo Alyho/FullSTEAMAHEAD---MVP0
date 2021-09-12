@@ -467,6 +467,7 @@ namespace FullSteamAheadMVP0Project.Models
             var allPersons = await GetAccountsAsync();
             name = name.ToLower();
             List<User> users = allPersons.Where(a => (a.Username != null && a.Username.ToLower() == name) || (a.Nickname != null && a.Nickname.ToLower() == name)).ToList();
+            users = FilterAccountPrivacy(users);
             return users;
         }
 
@@ -643,6 +644,7 @@ namespace FullSteamAheadMVP0Project.Models
             var allPersons = await GetTeamsAsync();
             name = name.ToLower();
             List<Team> teams = allPersons.Where(a => (a.Team_Nickname != null && a.Team_Nickname.ToLower() == name) || a.Team_Username.ToLower() == name).ToList();
+            teams = FilterTeamPrivacy(teams);
             return teams;
         }
 
