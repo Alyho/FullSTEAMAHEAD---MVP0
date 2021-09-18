@@ -12,13 +12,13 @@ using Xamarin.Forms.Xaml;
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Admin_DisplayUserPage : ContentPage
+    public partial class TeamAdmin_DisplayUserPage : ContentPage
     {
-        public Admin_DisplayUserPage()
+        public TeamAdmin_DisplayUserPage()
         {
         }
 
-        public Admin_DisplayUserPage(Admin admin)
+        public TeamAdmin_DisplayUserPage(Admin admin)
         {
             InitializeComponent();
             BindingContext = new AdminDisplayViewModel(admin);
@@ -26,7 +26,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void Back(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyTeams_Members());
+            await Navigation.PushAsync(new Team_Members());
         }
 
     }

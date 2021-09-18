@@ -14,7 +14,6 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="180*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
@@ -33,7 +32,7 @@
                Grid.ColumnSpan="4"
                FontAttributes="Italic"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="1" 
                 Grid.Column="0"
                 Placeholder="Admin Username     " 
@@ -43,9 +42,10 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"
-                WidthRequest="230"/>
+                WidthRequest="230"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="2" 
                 Grid.Column="0"
                 Placeholder="Team Admin Password       " 
@@ -54,9 +54,11 @@
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"
+                WidthRequest="230"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="3" 
                 Grid.Column="0"
                 Placeholder="Admin email     " 
@@ -66,9 +68,10 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"
-                WidthRequest="230"/>
+                WidthRequest="230"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="4" 
                 Grid.Column="0"
                 Placeholder="Admin Name    " 
@@ -78,9 +81,10 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"
-                WidthRequest="230"/>
+                WidthRequest="230"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="5" 
                 Grid.Column="0"
                 Placeholder="Admin Phone Number     " 
@@ -90,7 +94,8 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"
-                WidthRequest="230"/>
+                WidthRequest="230"
+                ClearButtonVisibility="WhileEditing"/>
 
 
         <!-- <CheckBox Grid.Row="5"
@@ -102,13 +107,13 @@
         <Button Margin="2" 
                 Grid.Row="6" 
                 Grid.Column="1"
-                Text="Next" CornerRadius="10" 
+                Text="Save changes" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="17" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveAdminCommand}"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="3"/>
 
         <Button Margin="2" 
                 Grid.Row="6" 
@@ -118,7 +123,8 @@
                 FontSize="17" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Clicked="Back3"/>
+                Clicked="Back3"
+                Grid.ColumnSpan="2"/>
 
     </Grid>
 

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FullSteamAheadMVP0Project.Views.TeamAdmin_DisplayUserPage"
+             BackgroundColor="AliceBlue">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height=".8*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="BackgroundPicture"
+               Grid.Column="0" 
+               Grid.Row="0" 
+               Grid.ColumnSpan="4"/>
+
+        <Image Source="{Binding Admin_ProfilePicture}"
+               Grid.Column="0" 
+               Grid.Row="1" 
+               Grid.ColumnSpan="1"
+               Grid.RowSpan="2"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Username: " FontSize="16"/>
+                    <Span Text="{Binding Admin_Username}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="2"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Name: " FontSize="16"/>
+                    <Span Text="{Binding Admin_Nickname}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="3"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Email: " FontSize="16"/>
+                    <Span Text="{Binding Admin_Email}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="4"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Phone number: " FontSize="16"/>
+                    <Span Text="{Binding TeamTeamAdminPhoneNumber}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Button Margin="2" 
+                Grid.Row="5" 
+                Text="Back" CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="20" 
+                BackgroundColor="AliceBlue" 
+                HorizontalOptions="Center"
+                Clicked="Back"
+                Grid.Column="0"/>
+
+    </Grid>
+
+</ContentPage>

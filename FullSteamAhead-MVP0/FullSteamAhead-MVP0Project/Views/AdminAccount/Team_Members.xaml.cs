@@ -24,14 +24,14 @@ namespace FullSteamAheadMVP0Project.Views
         {
             var selectedItem = e.Item as User;
             var _selectedItem = await App.Database.GetAccountAsync(selectedItem.Username);
-            await Navigation.PushAsync(new Member_DisplayUserPage(_selectedItem));
+            await Navigation.PushAsync(new TeamMember_DisplayUserPage(_selectedItem));
 
         }
 
         private async void Admins_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as Admin;
-            await Navigation.PushAsync(new Admin_DisplayUserPage(selectedItem));
+            await Navigation.PushAsync(new TeamAdmin_DisplayUserPage(selectedItem));
 
         }
 

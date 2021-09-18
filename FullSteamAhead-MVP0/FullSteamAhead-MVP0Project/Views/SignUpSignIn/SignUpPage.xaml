@@ -67,7 +67,7 @@
                 HeightRequest="60"
                 Grid.Row="3" 
                 Grid.ColumnSpan="2"
-                BackgroundColor="White" />
+                BackgroundColor="AliceBlue" />
 
     </Grid>
 

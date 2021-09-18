@@ -28,7 +28,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Text="Create Team Account" 
+        <Label Text="Change Team Information" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
@@ -37,7 +37,7 @@
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
 
-        <Editor Margin="2"   
+        <Entry Margin="2"   
                 Grid.Row="1" 
                 Placeholder="Team Email            " 
                 Text="{Binding TeamEmail}"
@@ -45,9 +45,10 @@
                 FontSize="17" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2"   
+        <Entry Margin="2"   
                 Grid.Row="2" 
                 Placeholder="Team Name            " 
                 Text="{Binding TeamNickname}"
@@ -55,10 +56,11 @@
                 FontSize="17" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"
+                ClearButtonVisibility="WhileEditing"/>
 
         <!--Add "MaxAge" and "MinAge" boxes for Age range required to join a team-->
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="3" 
                 Placeholder="Max age            " 
                 Text="{Binding MaxAge}"
@@ -67,9 +69,10 @@
                 FontSize="17" 
                 Grid.ColumnSpan="3"
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="3" 
                 Placeholder="Min age            " 
                 Text="{Binding MinAge}"
@@ -77,7 +80,8 @@
                 FontSize="17" 
                 Grid.ColumnSpan="2"
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                ClearButtonVisibility="WhileEditing"/>
 
         <Picker x:Name="State"
                 Title="State"
@@ -142,7 +146,7 @@
             </Picker.ItemsSource>
         </Picker>
 
-        <Editor Margin="2"   
+        <Entry Margin="2"   
                 Grid.Row="5" 
                 Placeholder="City            " 
                 Text="{Binding City}"
@@ -150,9 +154,10 @@
                 FontSize="17" 
                 BackgroundColor="White" 
                 Grid.ColumnSpan="4"
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="6" 
                 Placeholder="Zip code            " 
                 Text="{Binding Zipcode}"
@@ -160,7 +165,8 @@
                 FontSize="17" 
                 Grid.ColumnSpan="4"
                 BackgroundColor="White" 
-                HorizontalOptions="Center"/>
+                HorizontalOptions="Center"
+                ClearButtonVisibility="WhileEditing"/>
 
         <Picker x:Name="Gender"
                 Title="Gender requirements"
@@ -200,16 +206,17 @@
                Grid.Row="8"
                Grid.ColumnSpan="3"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="9" 
                 Placeholder="Bio                 " 
                 Text="{Binding Bio}"
                 TextColor="LightSlateGray" 
                 FontSize="17" 
                 BackgroundColor="White" 
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"
+                ClearButtonVisibility="WhileEditing"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="10" 
                 Placeholder="Schedule            " 
                 Text="{Binding Schedule}"
@@ -217,7 +224,8 @@
                 FontSize="17" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="4"/>
+                Grid.ColumnSpan="4"
+                ClearButtonVisibility="WhileEditing"/>
 
         <Button Margin="2" 
                 Grid.Row="11"                
@@ -227,7 +235,8 @@
                 FontSize="17" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Command ="{Binding SaveTeamCommand}"/>
+                Command ="{Binding SaveTeamCommand}"
+                Grid.ColumnSpan="2"/>
 
         <Button Margin="2" 
                 Grid.Row="11" 
@@ -237,7 +246,8 @@
                 FontSize="17" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
-                Clicked="Back2"/>
+                Clicked="Back2"
+                Grid.ColumnSpan="2"/>
 
     </Grid>
 
