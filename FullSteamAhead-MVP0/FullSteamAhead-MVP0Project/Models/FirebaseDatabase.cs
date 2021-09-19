@@ -80,13 +80,78 @@ namespace FullSteamAheadMVP0Project.Models
         public async Task UpdateAccount(User user) // updates User in database
         {
             await firebase.Child(Users).Child(user.Username).PatchAsync(user);
+
+            List<Team> teams = await GetTeamsAsync();
+            for (int i = 0; i < teams.Count; i++)
+            {
+                Team team = teams[i];
+                Dictionary<string, User> users1 = team.Students;
+                Dictionary<string, User> users2 = team.Mentors;
+                Dictionary<string, User> users3 = team.User_Requests;
+                foreach (KeyValuePair<string, User> entry in users1)
+                {
+                    if (entry.Key == user.Username)
+                    {
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(Students).Child(user.Username).PatchAsync(user);
+                    }
+                }
+                foreach (KeyValuePair<string, User> entry in users2)
+                {
+                    if (entry.Key == user.Username)
+                    {
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).Child(user.Username).PatchAsync(user);
+                    }
+                }
+                foreach (KeyValuePair<string, User> entry in users3)
+                {
+                    if (entry.Key == user.Username)
+                    {
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).Child(user.Username).PatchAsync(user);
+                    }
+                }
+            }
         }
 
         public async Task UpdateUsername(User user, string username) // updates User's username in database, deleting the old copy
         {
+            string old = user.Username;
+
             await firebase.Child(Users).Child(user.Username).DeleteAsync();
             user.Username = username;
             await SaveAccountAsync(user);
+
+            List<Team> teams = await GetTeamsAsync();
+            for (int i = 0; i < teams.Count; i++)
+            {
+                Team team = teams[i];
+                Dictionary<string, User> users1 = team.Students;
+                Dictionary<string, User> users2 = team.Mentors;
+                Dictionary<string, User> users3 = team.User_Requests;
+                foreach (KeyValuePair<string, User> entry in users1)
+                {
+                    if (entry.Key == old)
+                    {
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(Students).Child(old).DeleteAsync();
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(Students).Child(username).PutAsync(user);
+                    }
+                }
+                foreach (KeyValuePair<string, User> entry in users2)
+                {
+                    if (entry.Key == old)
+                    {
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).Child(old).DeleteAsync();
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).Child(username).PutAsync(user);
+                    }
+                }
+                foreach (KeyValuePair<string, User> entry in users3)
+                {
+                    if (entry.Key == old)
+                    {
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).Child(old).DeleteAsync();
+                        await firebase.Child(Teams).Child(team.Team_Username).Child(User_Requests).Child(username).PutAsync(user);
+                    }
+                }
+            }
         }
 
         public async Task<bool> IsAccountValid(User user) // returns if User has created an account and if the password matches
@@ -167,13 +232,44 @@ namespace FullSteamAheadMVP0Project.Models
         public async Task UpdateTeam(Team team) // updates Team in database
         {
             await firebase.Child(Teams).Child(team.Team_Username).PatchAsync(team);
+
+            List<User> users = await GetAccountsAsync();
+            for (int i = 0; i < users.Count; i++)
+            {
+                User user = users[i];
+                Dictionary<string, Team> teams = user.Team_Requests;
+                foreach (KeyValuePair<string, Team> entry in teams)
+                {
+                    if (entry.Key == team.Team_Username)
+                    {
+                        await firebase.Child(Users).Child(user.Username).Child(Team_Requests).Child(team.Team_Username).PatchAsync(team);
+                    }
+                }
+            }
         }
 
         public async Task UpdateTeamUsername(Team team, string username) // updates Team's username in database, deleting the old copy
         {
+            string old = team.Team_Username;
+
             await firebase.Child(Teams).Child(team.Team_Username).DeleteAsync();
             team.Team_Username = username;
             await SaveTeamAsync(team);
+
+            List<User> users = await GetAccountsAsync();
+            for (int i = 0; i < users.Count; i++)
+            {
+                User user = users[i];
+                Dictionary<string, Team> teams = user.Team_Requests;
+                foreach (KeyValuePair<string, Team> entry in teams)
+                {
+                    if (entry.Key == old)
+                    {
+                        await firebase.Child(Users).Child(user.Username).Child(Team_Requests).Child(old).DeleteAsync();
+                        await firebase.Child(Users).Child(user.Username).Child(Team_Requests).Child(username).PutAsync(team);
+                    }
+                }
+            }
         }
 
         public async Task<Admin> GetAdminAsync(string username) // returns the Admin that matches with the username
