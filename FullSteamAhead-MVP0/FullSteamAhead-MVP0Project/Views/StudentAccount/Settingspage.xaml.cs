@@ -27,6 +27,7 @@ namespace FullSteamAheadMVP0Project.Views
             if (action)
             {
                 Global.UserSignedIn = null;
+                Global.SelectedTeam = null;
                 await Navigation.PushAsync(new MainPage());
             }
             

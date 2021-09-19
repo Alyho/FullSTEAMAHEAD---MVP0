@@ -46,7 +46,7 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Nickname: " />
-                                            <Span Text="{Binding Nickname}"/>
+                                            <Span Text="{Binding Name}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
@@ -68,11 +68,11 @@
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Role: " />
-                                            <Span Text="{Binding UserRole}"/>
+                                            <Span Text="{Binding Role}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <Label LineBreakMode="WordWrap"
+                                <!--<Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
                                    VerticalOptions="FillAndExpand">
@@ -82,7 +82,19 @@
                                             <Span Text="{Binding Date}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
-                                </Label>
+                                </Label> /-->
+                                <Button Text="Accept"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    FontSize="15"
+                                    Command="{Binding AcceptCommand}">
+                                </Button>
+                                <Button Text="Decline" 
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    FontSize="15"
+                                    Command="{Binding DeclineCommand}">
+                                </Button>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

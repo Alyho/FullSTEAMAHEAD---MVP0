@@ -72,11 +72,11 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Role: " />
-                                        <Span Text="{Binding Role}" FontSize="16"/>
+                                        <Span Text="{Binding Location}" FontSize="16"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Label LineBreakMode="WordWrap"
+                            <!--<Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
                                    VerticalOptions="FillAndExpand" FontSize="16">
@@ -85,7 +85,7 @@
                                         <Span Text="{Binding Date}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
-                            </Label>
+                            </Label> /-->
                             <Button Text="Accept"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"

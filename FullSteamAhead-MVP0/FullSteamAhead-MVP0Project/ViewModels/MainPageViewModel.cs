@@ -82,6 +82,10 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 State = Global.UserSignedIn.Information.State;
                 PhoneNumber = Global.UserSignedIn.Information.Phone_Number;
                 Bio = Global.UserSignedIn.Information.Bio;
+                Gender = Global.UserSignedIn.Information.Preferences.Gender;
+                Distance = Global.UserSignedIn.Information.Preferences.Distance;
+                Privacy = Global.UserSignedIn.Information.Preferences.Privacy;
+                Role = Global.UserSignedIn.Information.Role;
             }
 
 

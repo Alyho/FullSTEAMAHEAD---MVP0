@@ -1,7 +1,9 @@
 ﻿using FullSteamAheadMVP0Project.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +14,14 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private IList<Admin> _AdminsListView; 
-        private IList<User> _UserListView;
-        public IList<Admin> AdminsListView
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private ObservableCollection<Admin> _AdminsListView; 
+        private ObservableCollection<User> _UserListView;
+        public ObservableCollection<Admin> AdminsListView
         {
             get
             {
@@ -23,10 +30,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
             set 
             {
                _AdminsListView = value;
+                NotifyPropertyChanged();
             }
         }
 
-        public IList<User> UserListView
+        public ObservableCollection<User> UserListView
         {
             get
             {
@@ -35,6 +43,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
             set 
             {
                 _UserListView = value;
+                NotifyPropertyChanged();
             }
         }
 
@@ -44,16 +53,20 @@ namespace FullSteamAheadMVP0Project.ViewModels
             Dictionary<string, User> StudentDict = new Dictionary<string, User>();
             Dictionary<string, User> MentorDict = new Dictionary<string, User>();
 
-            List<Admin> AdminList = new List<Admin>();
-            List<User> UserList = new List<User>();
+            ObservableCollection<Admin> AdminList = new ObservableCollection<Admin>();
+            ObservableCollection<User> UserList = new ObservableCollection<User>();
 
             Task.Run(new System.Action(async () =>
             {
+
+            
                 if (Global.SelectedTeam != null)
                 {
+
                     AdminDict = Global.SelectedTeam.Team_Admins;
                     StudentDict = await App.Database.GetTeamStudents(Global.SelectedTeam);
                     MentorDict = await App.Database.GetTeamMentors(Global.SelectedTeam);
+
                 }
 
                 if (Global.TeamSignedIn != null)
@@ -62,36 +75,38 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     StudentDict = await App.Database.GetTeamStudents(Global.TeamSignedIn);
                     MentorDict = await App.Database.GetTeamMentors(Global.TeamSignedIn);
                 }
-            }));
             
-            int i = 0;
+                int i = 0;
 
-            foreach (KeyValuePair<string, Admin> entry in AdminDict)
-            {
+                foreach (KeyValuePair<string, Admin> entry in AdminDict)
+                {
                 
-                AdminList.Add(entry.Value);
-                AdminList[i].Username = entry.Key;
+                    AdminList.Add(entry.Value);
+                    AdminList[i].Username = entry.Key;
+                    i++;
+                }
+
+                i = 0;
+
+                foreach (KeyValuePair<string, User> entry in StudentDict)
+                {
+                    UserList.Add(entry.Value);
+                    UserList[i].Username = entry.Key;
+                    i++;
+                }
+
+                foreach (KeyValuePair<string, User> entry in MentorDict)
+                {
+                    UserList.Add(entry.Value);
+                    UserList[i].Username = entry.Key;
+                    i++;
+                    
+                }
+
                 AdminsListView = AdminList;
-                i++;
-            }
-
-            i = 0;
-
-            foreach (KeyValuePair<string, User> entry in StudentDict)
-            {
-                UserList.Add(entry.Value);
-                UserList[i].Username = entry.Key;
-                i++;
                 UserListView = UserList;
-            }
 
-            foreach (KeyValuePair<string, User> entry in MentorDict)
-            {
-                UserList.Add(entry.Value);
-                UserList[i].Username = entry.Key;
-                i++;
-                UserListView = UserList;
-            }
+            }));
 
         }
     }

@@ -63,8 +63,10 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     {
                         UserRequestList.Add(new Container(Navigation)
                         {
-                            Username = entry.Value.Username
-                        });
+                            Username = entry.Value.Username,
+                            Name = entry.Value.Nickname,
+                            Role = entry.Value.Information.Role
+                        }) ; 
 
                     }
 
@@ -83,7 +85,9 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     {
                         TeamRequestList.Add(new Container(Navigation)
                         {
-                            Username = entry.Value.Team_Username
+                            Username = entry.Value.Team_Username,
+                            Name = entry.Value.Team_Nickname,
+                            Location = entry.Value.Team_Information.City + ", " + entry.Value.Team_Information.State
                         });
 
                     }
@@ -98,6 +102,9 @@ namespace FullSteamAheadMVP0Project.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public string Username { get; set; }
+        public string Role { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
         public string Date { get; set; }
         private INavigation _navigation;
         private bool _noEmail;
