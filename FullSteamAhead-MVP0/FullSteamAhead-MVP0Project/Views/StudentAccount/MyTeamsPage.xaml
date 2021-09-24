@@ -29,7 +29,7 @@
                 FontSize="26"
                 TextColor="LightSlateGray"
                 Text="My teams"/>
-        
+
         <ListView x:Name="MyTeams"
                   Grid.Column="0" 
                   Grid.Row="1" 

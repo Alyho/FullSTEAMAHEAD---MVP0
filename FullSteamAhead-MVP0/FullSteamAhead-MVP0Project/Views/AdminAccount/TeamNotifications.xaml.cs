@@ -58,7 +58,7 @@ namespace FullSteamAheadMVP0Project.Views
 
             var selectedItem2 = e.Item as FullSteamAheadMVP0Project.ViewModels.Container;
             var _selectedItem2 = await App.Database.GetAccountAsync(selectedItem2.Username);
-            await Navigation.PushAsync(new DisplayUserPage(_selectedItem2));
+            await Navigation.PushAsync(new Notifications_DisplayUserPage(_selectedItem2));
 
 
         }

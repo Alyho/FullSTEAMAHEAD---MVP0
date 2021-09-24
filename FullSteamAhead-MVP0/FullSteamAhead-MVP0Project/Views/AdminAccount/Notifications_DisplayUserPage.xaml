@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FullSteamAheadMVP0Project.Views.Notifications_DisplayUserPage"
+             BackgroundColor="AliceBlue">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height=".8*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="BackgroundPicture"
+               Grid.Column="0" 
+               Grid.Row="0" 
+               Grid.ColumnSpan="4"/>
+
+        <Image Source="{Binding User_ProfilePicture}"
+               Grid.Column="0" 
+               Grid.Row="1" 
+               Grid.ColumnSpan="1"
+               Grid.RowSpan="2"/>
+
+        <Label Grid.Row="2"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Username: " FontSize="16"/>
+                    <Span Text="{Binding User_Username}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="3"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Name: " FontSize="16"/>
+                    <Span Text="{Binding User_Nickname}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="4"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Email: " FontSize="16"/>
+                    <Span Text="{Binding User_Email}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="5"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Age: " FontSize="16"/>
+                    <Span Text="{Binding User_Age}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="6"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Grade: " FontSize="16"/>
+                    <Span Text="{Binding User_Grade}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="7"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="State: " FontSize="16"/>
+                    <Span Text="{Binding User_State}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="8"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="City: " FontSize="16"/>
+                    <Span Text="{Binding User_City}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="9"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Gender: " FontSize="16"/>
+                    <Span Text="{Binding User_Gender}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Label Grid.Row="10"
+               Grid.Column="1" 
+               Grid.ColumnSpan="3">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Bio: " FontSize="16"/>
+                    <Span Text="{Binding User_Bio}"  FontSize="16" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <Button Margin=".2"  
+                Grid.Row="11" 
+                Grid.Column="2"
+                Text="Back" 
+                CornerRadius="10" 
+                TextColor="LightSlateGray" 
+                FontSize="17" 
+                BackgroundColor="White" 
+                HorizontalOptions="Center" 
+                WidthRequest="400"
+                Clicked="TeamBack_Button_Clicked"/>
+
+        <Button Grid.Column="0" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search_Button_Clicked"/>
+        <Button Grid.Column="1" Grid.Row="12" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="MyTeam_Calendar_Button_Clicked"/>
+        <Button Grid.Column="2" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
+        <Button Grid.Column="3" Grid.Row="12" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
+
+    </Grid>
+
+</ContentPage>
