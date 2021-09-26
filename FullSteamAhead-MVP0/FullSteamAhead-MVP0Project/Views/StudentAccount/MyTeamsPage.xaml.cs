@@ -2,6 +2,7 @@
 using FullSteamAheadMVP0Project.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace FullSteamAheadMVP0Project.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyTeamsPage : ContentPage
     {
-        private MyTeamsPageViewModel _viewModel;
+        public MyTeamsPageViewModel _viewModel { get; set; }
+
         public MyTeamsPage()
         {
             InitializeComponent();

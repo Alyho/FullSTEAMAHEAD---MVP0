@@ -13,6 +13,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private User _user;
         private bool _teamRequestExists;
         private bool _noEmail;
+        private bool _userOnTeam;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -24,6 +25,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
         public bool NoEmail
         {
             get { return _noEmail; }
+        }
+
+        public bool UserOnTeam
+        {
+            get { return _userOnTeam; }
         }
 
         public Command InviteUserCommand { get; }
@@ -42,7 +48,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         public string User_Email
         {
-            get => _user.Username;
+            get => _user.Email;
             set { }
         }
 
@@ -88,10 +94,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             InviteUserCommand = new Command(async () =>
             {
-                if (await App.Database.TeamRequestExists(_user, Global.TeamSignedIn) ==false)
+                if (await App.Database.TeamRequestExists(_user, Global.TeamSignedIn) ==false && await App.Database.TeamUserExists(Global.TeamSignedIn, _user.Username)==false)
                 {
                     await App.Database.AddTeamRequest(_user, Global.TeamSignedIn.Team_Username);
                     _teamRequestExists = false;
+                    _userOnTeam = false;
 
                     try
                     {
@@ -120,16 +127,23 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         _noEmail = true;
                     }
                 }
-                else
+                else if (await App.Database.TeamRequestExists(_user, Global.TeamSignedIn) == true)
                 {
                     _teamRequestExists = true;
                     
+                }
+
+                else
+                {
+                    _userOnTeam = true;
                 }
 
                 var ar = new PropertyChangedEventArgs(nameof(TeamRequestExists));
                 PropertyChanged?.Invoke(this, ar);
                 var br = new PropertyChangedEventArgs(nameof(NoEmail));
                 PropertyChanged?.Invoke(this, br);
+                var cr = new PropertyChangedEventArgs(nameof(UserOnTeam));
+                PropertyChanged?.Invoke(this, cr);
 
             });
         }

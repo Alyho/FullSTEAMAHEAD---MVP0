@@ -33,6 +33,11 @@ namespace FullSteamAheadMVP0Project.Views
                     await DisplayAlert("Sorry", "You have already requested to join this team", "OK");
                 }
 
+                else if (displayTeamInformation.UserOnTeam)
+                {
+                    await DisplayAlert("Sorry", "You are already on this team.", "OK");
+                }
+
                 else
                 {
                     await DisplayAlert("Request was successful", "You have requested to join this team", "OK");
@@ -47,7 +52,7 @@ namespace FullSteamAheadMVP0Project.Views
                     await DisplayAlert("Email Not Supported", "In order to notify the team you requested, send a direct email manually.", "OK");
                 }
             }
-            
+
         }
 
         private async void HomePage_Button_Clicked(object sender, EventArgs e)

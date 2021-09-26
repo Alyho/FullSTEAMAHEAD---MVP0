@@ -12,7 +12,23 @@ namespace FullSteamAheadMVP0Project.ViewModels
     public class MyTeamsPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-       
+
+        private bool _loading = true;
+
+        public bool Loading
+        {
+            get { return _loading; }
+            set
+            {
+                if (_loading != value)
+                {
+                    _loading = value;
+                    var args = new PropertyChangedEventArgs(nameof(Loading));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
         private ObservableCollection<Team> _TeamListView;
         public ObservableCollection<Team> MyTeamsListView
         {
@@ -46,6 +62,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         myList.Add(team); 
                     }
                 }
+
+                Loading = false;
 
                 MyTeamsListView = myList;
             }));

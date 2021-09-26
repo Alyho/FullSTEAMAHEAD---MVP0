@@ -33,7 +33,12 @@ namespace FullSteamAheadMVP0Project.Views
                 {
                     await DisplayAlert("Sorry", "You have already invited this user", "OK");
                 }
-
+                
+                else if (displayUserPage.UserOnTeam)
+                {
+                    await DisplayAlert("Sorry", "This user is already on your team", "OK");
+                }
+                
                 else
                 {
                     await DisplayAlert("Invite was successful", "You have invited this user to join this team", "OK");
