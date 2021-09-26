@@ -475,23 +475,22 @@ namespace FullSteamAheadMVP0Project.Models
         public async Task RemoveAnnouncement(Team team, int index)
         {
             Team team2 = await GetTeamAsync(team.Team_Username);
-            int curInd = 0;
             foreach (KeyValuePair<string, string> entry in team2.Announcements)
             {
-                if (index == curInd)
+                if (index == Int32.Parse(entry.Key.Substring(0, entry.Key.Length - 1)))
                 {
                     team2.Announcements.Remove(entry.Key);
                     await UpdateAnnouncements(team2);
                     return;
                 }
-                curInd++;
             }
         }
 
         public async Task<Dictionary<string, string>> GetAnnouncements(Team team)
         {
             Team team2 = await GetTeamAsync(team.Team_Username);
-            return team2.Announcements;
+            Dictionary<string, string> d = team2.Announcements;
+            return (Dictionary<string, string>) d.OrderByDescending(x => Int32.Parse(x.Key.Substring(0, x.Key.Length - 1)));
         }
 
         public async Task UpdateAnnouncements(Team team)
