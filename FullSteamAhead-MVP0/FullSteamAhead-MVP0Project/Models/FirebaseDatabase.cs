@@ -490,7 +490,15 @@ namespace FullSteamAheadMVP0Project.Models
         {
             Team team2 = await GetTeamAsync(team.Team_Username);
             Dictionary<string, string> d = team2.Announcements;
-            return (Dictionary<string, string>) d.OrderByDescending(x => Int32.Parse(x.Key.Substring(0, x.Key.Length - 1)));
+            var orderedResults = d.OrderByDescending(x => Int32.Parse(x.Key.Substring(0, x.Key.Length - 1)));
+            var toreturn = new Dictionary<string, string>();
+            
+            foreach (var result in orderedResults)
+            {
+                toreturn.Add(result.Key, result.Value);
+            }
+
+            return toreturn;
         }
 
         public async Task UpdateAnnouncements(Team team)
