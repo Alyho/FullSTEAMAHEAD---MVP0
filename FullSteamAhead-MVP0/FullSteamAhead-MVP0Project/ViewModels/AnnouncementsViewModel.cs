@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace FullSteamAheadMVP0Project.ViewModels
@@ -42,24 +43,30 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
             if (Global.UserSignedIn != null)
             {
-                AnnouncementDict = Global.SelectedTeam.Announcements;
-
-                foreach (KeyValuePair<string, string> entry in AnnouncementDict)
+                Task.Run(new System.Action(async () =>
                 {
-                    AnnouncementList.Add(entry.Value);
-                    AnnouncementsListView = AnnouncementList;
-                }
+                    AnnouncementDict = await App.Database.GetAnnouncements(Global.SelectedTeam);
                 
+
+                    foreach (KeyValuePair<string, string> entry in AnnouncementDict)
+                    {
+                        AnnouncementList.Add(entry.Value);
+                        AnnouncementsListView = AnnouncementList;
+                    }
+                }));
             }
             else
             {
-                AnnouncementDict = Global.TeamSignedIn.Announcements;
-
-                foreach (KeyValuePair<string, string> entry in AnnouncementDict)
+                Task.Run(new System.Action(async () =>
                 {
-                    AnnouncementList.Add(entry.Value);
-                }
-                AnnouncementsListView = AnnouncementList;
+                    AnnouncementDict = await App.Database.GetAnnouncements(Global.TeamSignedIn);
+                
+                    foreach (KeyValuePair<string, string> entry in AnnouncementDict)
+                    {
+                        AnnouncementList.Add(entry.Value);
+                    }
+                    AnnouncementsListView = AnnouncementList;
+                }));
             }
 
             SendCommand = new Command(async () =>

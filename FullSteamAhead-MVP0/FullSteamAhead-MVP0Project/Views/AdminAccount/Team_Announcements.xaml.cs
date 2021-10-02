@@ -45,16 +45,20 @@ namespace FullSteamAheadMVP0Project.Views
         private async void DeleteAnnouncement_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var delete = await this.DisplayAlert("Would you like to delete this announcement?", "", "Yes", "No");
+            Dictionary<string, string> AnnouncementDict = new Dictionary<string, string>();
 
             if (delete == true)
             {
-                foreach (KeyValuePair<string, string> entry in Global.TeamSignedIn.Announcements)
+
+                AnnouncementDict = await App.Database.GetAnnouncements(Global.TeamSignedIn);
+
+                foreach (KeyValuePair<string, string> entry in AnnouncementDict)
                 {
                     if (entry.Value == _announcementViewModel.Item)
                     {
                         int Key = int.Parse(entry.Key.Substring(0, entry.Key.Length-1));
                         await App.Database.RemoveAnnouncement(Global.TeamSignedIn, Key);
-                        Teams.ItemsSource = Global.TeamSignedIn.Announcements;
+                        Teams.ItemsSource = await App.Database.GetAnnouncements(Global.TeamSignedIn); 
                         break;
                     }
                 }
