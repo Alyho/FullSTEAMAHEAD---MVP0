@@ -71,7 +71,7 @@
                                    VerticalOptions="FillAndExpand" FontSize="16">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Role: " />
+                                        <Span Text="Location: " />
                                         <Span Text="{Binding Location}" FontSize="16"/>
                                     </FormattedString>
                                 </Label.FormattedText>

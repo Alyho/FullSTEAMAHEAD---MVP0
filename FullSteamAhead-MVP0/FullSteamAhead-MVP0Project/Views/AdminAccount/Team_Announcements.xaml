@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FullSteamAheadMVP0Project.Views.Team_Announcements">
+             x:Class="FullSteamAheadMVP0Project.Views.Team_Announcements"
+             BackgroundColor="AliceBlue">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".2*"/>
             <RowDefinition Height=".2*"/>
             <RowDefinition Height="1.5*"/>
-            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".23*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.2*"/>
-            <ColumnDefinition Width=".9*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Announcements" 
@@ -121,7 +123,7 @@
 
 
         <Button Grid.Column="0" Grid.Row="3" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Chat_Button_CLicked"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="8" Clicked="Members_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Members_Button_CLicked"/>
         <Button Grid.Column="2" Grid.Row="3" Text="Calendar" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Back" HorizontalOptions="EndAndExpand" CornerRadius="3" FontSize="12" Clicked="Back_Button_MyTeam"/>
 

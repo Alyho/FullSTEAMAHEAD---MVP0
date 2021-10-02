@@ -55,7 +55,7 @@
 
 
         <Button Grid.Column="0" Grid.Row="3" Text="Chat" CornerRadius="3" HorizontalOptions="End" FontSize="12" Clicked="Chat_Button_CLicked"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="End" FontSize="8" Clicked="Members_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="End" FontSize="12" Clicked="Members_Button_CLicked"/>
         <Button Grid.Column="2" Grid.Row="3" Text="Calendar" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Calendar_Button_CLicked"/>
         <Button Grid.Column="3" Grid.Row="3" Text="Back" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Back_Button_MyTeams"/>
 
