@@ -109,7 +109,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                             Team_Information = new TeamInformation()
                         };
 
-                        if (_team.Team_Username != "" || _team.Team_Password != "")
+                        if (_team.Team_Username != null || _team.Team_Password != null)
                         {
                             //call the database to find teams
                             _teamCreated = await App.Database.TeamExists(_team);
@@ -151,7 +151,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         Team_Information = new TeamInformation()
                     };
 
-                    if (_team.Team_Username != "" || _team.Team_Password != "")
+                    if (_team.Team_Username != null && _team.Team_Password != null && _team.Team_Username != "" && _team.Team_Password != "")
                     {
                         //call the database to find teams
                         _teamCreated = await App.Database.TeamExists(_team);

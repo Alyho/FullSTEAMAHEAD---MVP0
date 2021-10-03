@@ -7,6 +7,7 @@ using System.ComponentModel;
 using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FullSteamAheadMVP0Project.Models;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -56,6 +57,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void Back_Button_Clicked(object sender, EventArgs e)
         {
+            Global.TeamSignedIn = null;
             await Navigation.PushAsync(new CreateTeamAccount());
         }
 

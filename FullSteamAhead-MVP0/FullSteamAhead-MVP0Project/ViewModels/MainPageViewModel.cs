@@ -93,7 +93,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
             {
                 if (Global.UserSignedIn != null)
                 {
-                    if (Username_ != Global.UserSignedIn.Username)
+                    if (Username_ != Global.UserSignedIn.Username && Username_ != null)
                     {
                         var _user = new User
                         {
@@ -126,7 +126,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                           
 
-                            if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
+                            if (Global.UserSignedIn.Password == null || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
                              Global.UserSignedIn.Information.Age == null)
                             {
                                 _unfilled = true;
@@ -161,7 +161,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         Global.UserSignedIn.Nickname = Nickname_;
                         Global.UserSignedIn.Email = Email_;
 
-                        if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
+                        if (Global.UserSignedIn.Password == null || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
                          Global.UserSignedIn.Information.Age == null)
                         {
                             _unfilled = true;
@@ -220,15 +220,18 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         Global.UserSignedIn.Information.Age = Age_;
                         Global.UserSignedIn.Information.Role = Role_;
 
-                        if (Global.UserSignedIn.Password == "" || Global.UserSignedIn.Username == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
+                        if (Global.UserSignedIn.Password == null || Global.UserSignedIn.Password == "" || Global.UserSignedIn.Username == null || 
+                        Global.UserSignedIn.Username == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
                         Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.State == null ||
                         Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age == null)
                         {
                             _unfilled = true;
 
+                            Global.UserSignedIn = null;
+
                             var ar = new PropertyChangedEventArgs(nameof(Unfilled));
                             PropertyChanged?.Invoke(this, ar);
-                            Global.UserSignedIn = null;
+                            
                         }
                         else
                         {

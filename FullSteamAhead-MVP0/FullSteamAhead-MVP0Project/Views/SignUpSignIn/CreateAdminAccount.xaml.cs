@@ -8,6 +8,7 @@ using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using FullSteamAheadMVP0Project.Models;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -51,7 +52,16 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void Back_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CreateTeamAccount2());
+            if (Global.TeamSignedIn.Team_Admins != null)
+            {
+                await Navigation.PushAsync(new CreateTeamAccount());
+                Global.TeamSignedIn = null;
+            }
+            else
+            {
+                await Navigation.PushAsync(new CreateTeamAccount2());
+            }
+            
         }
 
         protected void PrivacyPolicy(object sender, EventArgs e)
