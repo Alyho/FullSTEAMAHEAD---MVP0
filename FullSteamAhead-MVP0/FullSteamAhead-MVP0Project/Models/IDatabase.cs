@@ -54,7 +54,7 @@ namespace FullSteamAheadMVP0Project.Models
 
 
         // User searching and filtering methods
-        Task<List<User>> AccountSearch(string name);                                          // returns list of Users that match the name (either username or nickname)
+        Task<List<User>> AccountSearch(string name, Team team);                               // returns list of Users that match the name (either username or nickname)
         List<User> FilterBestAccountResults(List<User> users, Team team);                     // cleans out users for best results that match with the team variable
         List<User> FilterAccountGender(List<User> users, string gender);                      // cleans out users based on gender
         List<User> FilterAccountCity(List<User> users, string city, string state);            // cleans out users based on city AND state
@@ -67,7 +67,7 @@ namespace FullSteamAheadMVP0Project.Models
 
 
         // Team searching and filtering methods
-        Task<List<Team>> TeamSearch(string name);                                // returns list of Teams that match the name (either username or nickname)
+        Task<List<Team>> TeamSearch(string name, User user);                     // returns list of Teams that match the name (either username or nickname)
         List<Team> FilterBestTeamResults(List<Team> teams, User user);           // cleans out teams for best results that match with the user variable
         List<Team> FilterTeamGender(List<Team> teams, string gender);            // cleans out teams based on gender
         List<Team> FilterTeamCity(List<Team> teams, string city, string state);  // cleans out teams based on city AND state

@@ -29,7 +29,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
     {
         var normalizedQuery = query?.ToLower() ?? "";
 
-        var teams = await App.Database.TeamSearch(normalizedQuery);
+        var teams = await App.Database.TeamSearch(normalizedQuery, Global.UserSignedIn);
         if (teams != null)
         {
             list.Clear();
@@ -62,49 +62,24 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
         _navigation = Navigation;
 
 
-        if (Global.UserSignedIn.Information.Role == "Mentor")
+        Task.Run(new System.Action(async () =>
         {
-            Task.Run(new System.Action(async ()  =>
-            {
-                var teams = await App.Database.GetTeamsAsync();
-
-                list.Clear();
-                var teamPrivacies = App.Database.FilterTeamPrivacy(teams);
-                var teamCities = App.Database.FilterTeamCity(teamPrivacies, Global.UserSignedIn.Information.City, Global.UserSignedIn.Information.State);
-                foreach (var team in teamCities)
-                {
-                    list.Add(team);
-                }
-
-                if (list != null)
-                {
-                    TeamListView = list;
-                }
-
-            }));
-            
-        } 
-        
-        else
-        {
-            Task.Run(new System.Action(async () =>
-            {
-                var teams = await App.Database.GetTeamsAsync();
+            var teams = await App.Database.GetTeamsAsync();
                
-                list.Clear();
-                var teamBest = App.Database.FilterBestTeamResults(teams, Global.UserSignedIn);
-                foreach (var team in teamBest)
-                {
-                    list.Add(team);
-                }
+            list.Clear();
+            var teamBest = App.Database.FilterBestTeamResults(teams, Global.UserSignedIn);
+            foreach (var team in teamBest)
+            {
+                list.Add(team);
+            }
 
-                if (list != null)
-                {
-                    TeamListView = list;
-                }           
+            if (list != null)
+            {
+                TeamListView = list;
+            }           
 
-            }));
-        }
+        }));
+        
 
     }
 

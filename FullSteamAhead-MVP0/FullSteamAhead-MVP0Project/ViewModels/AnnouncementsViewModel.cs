@@ -72,7 +72,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
             SendCommand = new Command(async () =>
             {
                 await App.Database.AddAnnouncement(Global.TeamSignedIn, Announcement_);
-                AnnouncementList.Add(Announcement_);
+                AnnouncementList.Insert(0, Announcement_);
                 //AnnouncementsListView = AnnouncementList;
 
                 Announcements = string.Empty;

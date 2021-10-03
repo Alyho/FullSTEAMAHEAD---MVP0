@@ -23,7 +23,7 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
     {
        var normalizedQuery = query?.ToLower() ?? "";
 
-        var users = await App.Database.AccountSearch(normalizedQuery);
+        var users = await App.Database.AccountSearch(normalizedQuery, Global.TeamSignedIn);
         if (users != null)
         {
             list.Clear();

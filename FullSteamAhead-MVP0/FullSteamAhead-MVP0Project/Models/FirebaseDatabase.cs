@@ -81,6 +81,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             await firebase.Child(Users).Child(user.Username).PatchAsync(user);
 
+            string role = user.Information.Role;
             List<Team> teams = await GetTeamsAsync();
             for (int i = 0; i < teams.Count; i++)
             {
@@ -92,14 +93,28 @@ namespace FullSteamAheadMVP0Project.Models
                 {
                     if (entry.Key == user.Username)
                     {
-                        await firebase.Child(Teams).Child(team.Team_Username).Child(Students).Child(user.Username).PatchAsync(user);
+                        if (role == "Student")
+                        {
+                            await firebase.Child(Teams).Child(team.Team_Username).Child(Students).Child(user.Username).PatchAsync(user);
+                        } else
+                        {
+                            await firebase.Child(Teams).Child(team.Team_Username).Child(Students).Child(user.Username).DeleteAsync();
+                            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).Child(user.Username).PutAsync(user);
+                        }
                     }
                 }
                 foreach (KeyValuePair<string, User> entry in users2)
                 {
                     if (entry.Key == user.Username)
                     {
-                        await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).Child(user.Username).PatchAsync(user);
+                        if (role == "Mentor")
+                        {
+                            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).Child(user.Username).PatchAsync(user);
+                        } else
+                        {
+                            await firebase.Child(Teams).Child(team.Team_Username).Child(Mentors).Child(user.Username).DeleteAsync();
+                            await firebase.Child(Teams).Child(team.Team_Username).Child(Students).Child(user.Username).PutAsync(user);
+                        }
                     }
                 }
                 foreach (KeyValuePair<string, User> entry in users3)
@@ -565,12 +580,14 @@ namespace FullSteamAheadMVP0Project.Models
 
         // User searching and filtering methods
 
-        public async Task<List<User>> AccountSearch(string name) // returns list of Users that match the name (either username or nickname)
+        public async Task<List<User>> AccountSearch(string name, Team team) // returns list of Users that match the name (either username or nickname)
         {
             var allPersons = await GetAccountsAsync();
             name = name.ToLower();
             List<User> users = allPersons.Where(a => (a.Username != null && a.Username.ToLower() == name) || (a.Nickname != null && a.Nickname.ToLower() == name)).ToList();
             users = FilterAccountPrivacy(users);
+            users = FilterAccountGender(users, team.Team_Information.Gender);
+            users = FilterAccountAge(users, team.Team_Information.Min_Age, team.Team_Information.Max_Age);
             return users;
         }
 
@@ -579,6 +596,7 @@ namespace FullSteamAheadMVP0Project.Models
 
             users = FilterAccountPrivacy(users);
 
+
             Dictionary<User, int> matches = new Dictionary<User, int>();
             int max = 0;
 
@@ -586,12 +604,33 @@ namespace FullSteamAheadMVP0Project.Models
             {
                 int count = 0;
 
-                // gender
-                string userGender = users[i].Information.Preferences.Gender.ToLower();
-                string gender = team.Team_Information.Gender.ToLower();
-                if (userGender == gender || userGender == "all genders")
+                if (users[i].Information.Role == "Student")
                 {
-                    count++;
+                    // gender
+                    string userGender = users[i].Information.Preferences.Gender.ToLower();
+                    string gender = team.Team_Information.Gender.ToLower();
+                    if (!(userGender == gender || userGender == "all genders"))
+                    {
+                        users.RemoveAt(i);
+                        i--;
+                        continue;
+                    }
+
+                    // age
+                    string teamMinAge = team.Team_Information.Min_Age;
+                    string teamMaxAge = team.Team_Information.Max_Age;
+                    if (!(string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge)))
+                    {
+                        int minAge = Int32.Parse(teamMinAge);
+                        int maxAge = Int32.Parse(teamMaxAge);
+                        int userAge = Int32.Parse(users[i].Information.Age);
+                        if (!(userAge >= minAge && userAge <= maxAge))
+                        {
+                            users.RemoveAt(i);
+                            i--;
+                            continue;
+                        }
+                    }
                 }
 
                 // city
@@ -599,23 +638,9 @@ namespace FullSteamAheadMVP0Project.Models
                 string city = team.Team_Information.City.ToLower();
                 string userState = users[i].Information.State.ToLower();
                 string state = team.Team_Information.State.ToLower();
-                if (userCity == city || userState == state)
+                if (userCity == city || userState == state || state == "online team")
                 {
                     count++;
-                }
-
-                // age
-                string teamMinAge = team.Team_Information.Min_Age;
-                string teamMaxAge = team.Team_Information.Max_Age;
-                if (!(string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge)))
-                {
-                    int minAge = Int32.Parse(teamMinAge);
-                    int maxAge = Int32.Parse(teamMaxAge);
-                    int userAge = Int32.Parse(users[i].Information.Age);
-                    if (userAge >= minAge && userAge <= maxAge)
-                    {
-                        count++;
-                    }
                 }
 
                 max = Math.Max(count, max);
@@ -623,7 +648,7 @@ namespace FullSteamAheadMVP0Project.Models
             }
 
             List<User> newUsers = new List<User>();
-            for (int i = max; i > 0; i--)
+            for (int i = max; i >= 0; i--)
             {
                 for (int j = 0; j < users.Count; j++)
                 {
@@ -644,7 +669,7 @@ namespace FullSteamAheadMVP0Project.Models
             {
                 string userGender = users[i].Information.Preferences.Gender.ToLower();
                 gender = gender.ToLower();
-                if (!(userGender == gender || userGender == "all genders"))
+                if (!(userGender == gender || gender == "all genders"))
                 {
                     users.RemoveAt(i);
                     i--;
@@ -661,7 +686,7 @@ namespace FullSteamAheadMVP0Project.Models
                 city = city.ToLower();
                 string userState = users[i].Information.State.ToLower();
                 state = state.ToLower();
-                if (userCity != city || userState != state)
+                if (state != "online team" && (userCity != city || userState != state))
                 {
                     users.RemoveAt(i);
                     i--;
@@ -674,7 +699,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < users.Count; i++)
             {
-                if (users[i].Information.State.ToLower() != state.ToLower())
+                if (state.ToLower() != "online team" && users[i].Information.State.ToLower() != state.ToLower())
                 {
                     users.RemoveAt(i);
                     i--;
@@ -742,18 +767,28 @@ namespace FullSteamAheadMVP0Project.Models
 
         // Team searching and filtering methods
 
-        public async Task<List<Team>> TeamSearch(string name) // returns list of Teams that match the name (either username or nickname)
+        public async Task<List<Team>> TeamSearch(string name, User user) // returns list of Teams that match the name (either username or nickname)
         {
             var allPersons = await GetTeamsAsync();
             name = name.ToLower();
             List<Team> teams = allPersons.Where(a => (a.Team_Nickname != null && a.Team_Nickname.ToLower() == name) || a.Team_Username.ToLower() == name).ToList();
             teams = FilterTeamPrivacy(teams);
+            teams = FilterTeamAge(teams, user.Information.Age);
+            teams = FilterTeamGender(teams, user.Information.Preferences.Gender);
             return teams;
         }
 
         public List<Team> FilterBestTeamResults(List<Team> teams, User user) // cleans out teams for best results that match with the user variable
         {
             teams = FilterTeamPrivacy(teams);
+            string role = user.Information.Role;
+            if (role == "Student")
+            {
+                teams = FilterTeamGender(teams, user.Information.Preferences.Gender);
+                teams = FilterTeamAge(teams, user.Information.Age);
+            }
+            
+
 
             Dictionary<Team, int> matches = new Dictionary<Team, int>();
             int max = 0;
@@ -762,12 +797,12 @@ namespace FullSteamAheadMVP0Project.Models
                 int count = 0;
 
                 // gender
-                string teamGender = teams[i].Team_Information.Gender.ToLower();
-                string gender = user.Information.Preferences.Gender.ToLower();
-                if (teamGender == gender || teamGender == "all genders")
-                {
-                    count++;
-                }
+                //string teamGender = teams[i].Team_Information.Gender.ToLower();
+                //string gender = user.Information.Preferences.Gender.ToLower();
+                //if (teamGender == gender || teamGender == "all genders")
+                //{
+                //    count++;
+                //}
 
 
                 // city
@@ -775,25 +810,25 @@ namespace FullSteamAheadMVP0Project.Models
                 string city = user.Information.City.ToLower();
                 string teamState = teams[i].Team_Information.State.ToLower();
                 string state = user.Information.State.ToLower();
-                if (teamCity == city || teamState == state)
+                if (teamCity == city || teamState == state || teamState == "online team")
                 {
                     count++;
                 }
 
 
                 // age
-                string teamMinAge = teams[i].Team_Information.Min_Age;
-                string teamMaxAge = teams[i].Team_Information.Max_Age;
-                if (!(string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge)))
-                {
-                    int minAge = Int32.Parse(teamMinAge);
-                    int maxAge = Int32.Parse(teamMaxAge);
-                    int userAge = Int32.Parse(user.Information.Age);
-                    if (userAge >= minAge && userAge <= maxAge)
-                    {
-                        count++;
-                    }
-                }
+                //string teamMinAge = teams[i].Team_Information.Min_Age;
+                //string teamMaxAge = teams[i].Team_Information.Max_Age;
+                //if (!(string.IsNullOrWhiteSpace(teamMinAge) || string.IsNullOrWhiteSpace(teamMaxAge)))
+                //{
+                //    int minAge = Int32.Parse(teamMinAge);
+                //    int maxAge = Int32.Parse(teamMaxAge);
+                //    int userAge = Int32.Parse(user.Information.Age);
+                //    if (userAge >= minAge && userAge <= maxAge)
+                //    {
+                //        count++;
+                //    }
+                //}
 
 
                 max = Math.Max(count, max);
@@ -801,7 +836,7 @@ namespace FullSteamAheadMVP0Project.Models
             }
 
             List<Team> newTeams = new List<Team>();
-            for (int i = max; i > 0; i--)
+            for (int i = max; i >= 0; i--)
             {
                 for (int j = 0; j < teams.Count; j++)
                 {
@@ -839,7 +874,7 @@ namespace FullSteamAheadMVP0Project.Models
                 city = city.ToLower();
                 string teamState = teams[i].Team_Information.State.ToLower();
                 state = state.ToLower();
-                if (teamCity != city || teamState != state)
+                if (teamState != "online team" && (teamCity != city || teamState != state))
                 {
                     teams.RemoveAt(i);
                     i--;
@@ -852,7 +887,7 @@ namespace FullSteamAheadMVP0Project.Models
         {
             for (int i = 0; i < teams.Count; i++)
             {
-                if (teams[i].Team_Information.State.ToLower() != state.ToLower())
+                if (teams[i].Team_Information.State.ToLower() != "online team" && teams[i].Team_Information.State.ToLower() != state.ToLower())
                 {
                     teams.RemoveAt(i);
                     i--;
