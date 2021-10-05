@@ -18,10 +18,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Button Grid.Column="0" Grid.Row="3" Text="Calendar" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="TeamCalendar_Button_CLicked"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="Announcements" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="7" Clicked="TeamAnnouncements_Button_CLicked"/>
-        <Button Grid.Column="2" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="TeamMembers_Button_CLicked"/>
-        <Button Grid.Column="3" Grid.Row="3" Text="Back" HorizontalOptions="End" CornerRadius="3" FontSize="12" Clicked="Back_Button_Team"/>
+        <Button Grid.Column="0" Grid.Row="3" Text="Calendar" HorizontalOptions="End" CornerRadius="3" FontSize="13" Clicked="TeamCalendar_Button_CLicked"/>
+        <Button Grid.Column="1" Grid.Row="3" Text="Announce-ments" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="TeamAnnouncements_Button_CLicked"/>
+        <Button Grid.Column="2" Grid.Row="3" Text="Members" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="13" Clicked="TeamMembers_Button_CLicked"/>
+        <Button Grid.Column="3" Grid.Row="3" Text="Back" HorizontalOptions="End" CornerRadius="3" FontSize="13" Clicked="Back_Button_Team"/>
 
     </Grid>
 

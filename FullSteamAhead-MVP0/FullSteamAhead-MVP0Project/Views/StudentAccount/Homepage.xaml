@@ -43,7 +43,10 @@
                   ItemsSource="{Binding TeamListView}"
                   HorizontalOptions="Center"
                   HasUnevenRows="True"  
-                  ItemTapped="searchResults_ItemTapped">
+                  ItemTapped="searchResults_ItemTapped"
+                  SeparatorVisibility="Default"
+                  SeparatorColor="Black"
+                  Margin="10, 10, 10, 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
