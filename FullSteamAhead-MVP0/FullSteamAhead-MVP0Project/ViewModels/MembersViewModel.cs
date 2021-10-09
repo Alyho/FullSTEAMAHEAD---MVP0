@@ -14,6 +14,22 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private bool _loading = true;
+
+        public bool Loading
+        {
+            get { return _loading; }
+            set
+            {
+                if (_loading != value)
+                {
+                    _loading = value;
+                    var args = new PropertyChangedEventArgs(nameof(Loading));
+                    PropertyChanged?.Invoke(this, args);
+                }
+            }
+        }
+
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -102,6 +118,8 @@ namespace FullSteamAheadMVP0Project.ViewModels
                     i++;
                     
                 }
+
+                Loading = false;
 
                 AdminsListView = AdminList;
                 UserListView = UserList;

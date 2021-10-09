@@ -106,8 +106,10 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         var message = new EmailMessage
                         {
                             Subject = "Request to Join Team",
-                            Body = "Hello! I found you on the app Full STEAM Ahead and I am interested in joining your team. Is there an application process? " +
-                            "If I qualify, you can accept my request on your Full STEAM Ahead app notifications page.",
+                            Body = "Hello! I found you on the app Full STEAM Ahead and I am interested in joining your team. " +
+                            "You can learn more about me if you click on my request on your Full STEAM Ahead app notifications page. " +
+                            "Is there an application process? " +
+                            "If I qualify, you can then accept my request.",
                             To = emails
                         };
 

@@ -23,6 +23,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <ActivityIndicator IsRunning="{Binding Loading}" />
+
         <Label Text="Members" 
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 

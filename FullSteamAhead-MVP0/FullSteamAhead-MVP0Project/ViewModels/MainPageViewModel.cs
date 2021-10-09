@@ -219,11 +219,12 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         Global.UserSignedIn.Information.City = City_;
                         Global.UserSignedIn.Information.Age = Age_;
                         Global.UserSignedIn.Information.Role = Role_;
+                        Global.UserSignedIn.Information.Preferences.Gender = Gender_;
 
                         if (Global.UserSignedIn.Password == null || Global.UserSignedIn.Password == "" || Global.UserSignedIn.Username == null || 
                         Global.UserSignedIn.Username == "" || Global.UserSignedIn.Nickname == "" || Global.UserSignedIn.Email == "" ||
                         Global.UserSignedIn.Information.Role == null || Global.UserSignedIn.Information.State == null ||
-                        Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age == null)
+                        Global.UserSignedIn.Information.City == "" || Global.UserSignedIn.Information.Age == null || Global.UserSignedIn.Information.Preferences.Gender == null)
                         {
                             _unfilled = true;
 

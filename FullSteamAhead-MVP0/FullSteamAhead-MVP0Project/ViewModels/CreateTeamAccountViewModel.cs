@@ -251,7 +251,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                         if (_adminExists == false)
                         {
-
+                            await App.Database.SaveTeamAsync(Global.TeamSignedIn);
                             await App.Database.AddTeamAdmin(Global.TeamSignedIn, _admin);
                             Global.AdminSignedIn = _admin;
                         }
@@ -286,9 +286,11 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
                 
 
-                if (Global.TeamSignedIn.Team_Nickname == "" || Global.TeamSignedIn.Team_Information.Team_Email == "" ||
-                Global.TeamSignedIn.Team_Information.State == null || Global.TeamSignedIn.Team_Information.City == "" ||
-                Global.TeamSignedIn.Team_Information.Zip_Code == "" || Global.TeamSignedIn.Team_Information.Gender == null ||
+                if (Global.TeamSignedIn.Team_Nickname == null || Global.TeamSignedIn.Team_Nickname == "" ||
+                Global.TeamSignedIn.Team_Information.Team_Email == null || Global.TeamSignedIn.Team_Information.Team_Email == ""||
+                Global.TeamSignedIn.Team_Information.State == null || Global.TeamSignedIn.Team_Information.City == null || Global.TeamSignedIn.Team_Information.City == "" ||
+                Global.TeamSignedIn.Team_Information.Zip_Code == null || Global.TeamSignedIn.Team_Information.Zip_Code == ""
+                || Global.TeamSignedIn.Team_Information.Gender == null ||
                 Global.TeamSignedIn.Team_Information.Privacy == null || Global.TeamSignedIn.Team_Information.Min_Age == null || Global.TeamSignedIn.Team_Information.Max_Age == null)
                 {
                     _unfilled = true;
@@ -311,7 +313,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
                         }
                         else
                         {
-                            await App.Database.SaveTeamAsync(Global.TeamSignedIn);
+                            
                             await _navigation.PushAsync(new CreateAdminAccount());
                         } 
                             

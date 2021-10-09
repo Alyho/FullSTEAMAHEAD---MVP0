@@ -52,7 +52,7 @@ namespace FullSteamAheadMVP0Project.Views
 
         private async void Back_Button_Clicked(object sender, EventArgs e)
         {
-            if (Global.TeamSignedIn.Team_Admins != null)
+            if (Global.TeamSignedIn.Team_Admins.Count != 0)
             {
                 await Navigation.PushAsync(new CreateTeamAccount());
                 Global.TeamSignedIn = null;
