@@ -9,7 +9,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 {
     public class TeamAdminSignInViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
         public Command CheckUserCommand { get; }
 
         private string Username_;

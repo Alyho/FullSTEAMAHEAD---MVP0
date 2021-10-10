@@ -11,7 +11,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 {
     public class MyTeamsPageViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         private bool _loading = true;
 

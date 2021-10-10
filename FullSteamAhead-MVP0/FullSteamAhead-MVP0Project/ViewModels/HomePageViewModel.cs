@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 {
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public new event PropertyChangedEventHandler PropertyChanged;
 
     private INavigation _navigation;
 

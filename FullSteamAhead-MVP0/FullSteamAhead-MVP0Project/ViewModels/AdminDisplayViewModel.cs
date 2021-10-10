@@ -10,7 +10,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
     {
         private Admin _admin;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         public string Admin_Username
         {

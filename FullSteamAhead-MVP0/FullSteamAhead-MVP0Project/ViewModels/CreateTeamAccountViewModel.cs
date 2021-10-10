@@ -17,7 +17,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         public Command CreateTeamCommand { get; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         private string TeamUsername_;
         private string TeamPassword_;

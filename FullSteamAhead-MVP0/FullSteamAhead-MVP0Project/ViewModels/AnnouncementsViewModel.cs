@@ -13,7 +13,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
     public class AnnouncementsViewModel : INotifyPropertyChanged
     {
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
         private string Announcement_;
         private string Item_;
         public Command SendCommand { get; }

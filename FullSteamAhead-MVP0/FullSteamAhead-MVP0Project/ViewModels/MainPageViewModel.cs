@@ -21,7 +21,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 
         public Command SaveUserCommand { get; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         private string Username_;
         private string Password_;
