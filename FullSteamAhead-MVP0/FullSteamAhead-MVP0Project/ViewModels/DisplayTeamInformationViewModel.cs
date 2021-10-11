@@ -15,7 +15,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private bool _noEmail;
         private bool _userOnTeam;
 
-        public new event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool UserRequestExists
         {

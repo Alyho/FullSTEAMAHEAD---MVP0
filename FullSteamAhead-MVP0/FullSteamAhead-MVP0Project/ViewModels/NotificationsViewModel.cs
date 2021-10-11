@@ -13,7 +13,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
 {
     public class NotificationsViewModel : INotifyPropertyChanged
     {
-        public new event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private bool _noEmail;
 

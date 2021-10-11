@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 {
 
-    public new event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler PropertyChanged;
 
     protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
     {
