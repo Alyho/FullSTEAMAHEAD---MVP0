@@ -34,6 +34,14 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
+            if (e.PropertyName == "Dot")
+            {
+                if (createTeamAccountViewModel.Dot)
+                {
+                    await DisplayAlert("Error", "Username cannot contain periods", "OK");
+                }
+            }
+
         }
 
         private async void Back3(object sender, EventArgs e)
