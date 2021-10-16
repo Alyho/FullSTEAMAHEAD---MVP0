@@ -20,19 +20,24 @@
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height=".5*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.7*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".02*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Image Source="BackgroundPicture"
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="0" 
-               Grid.ColumnSpan="4"/>
+               Grid.ColumnSpan="4"
+               HorizontalOptions="FillAndExpand"/>
 
         <Image Source="{Binding User_ProfilePicture}"
                Grid.Column="0" 
@@ -130,7 +135,7 @@
 
         <Label Grid.Row="10"
                Grid.Column="1" 
-               Grid.ColumnSpan="3">
+               Grid.ColumnSpan="4">
             <Label.FormattedText>
                 <FormattedString>
                     <Span Text="Bio: " FontSize="16"/>
@@ -141,7 +146,7 @@
 
         <Button Margin=".2"  
                 Grid.Row="11" 
-                Grid.Column="1"
+                Grid.Column="2"
                 Grid.ColumnSpan="1"
                 Text="Invite" 
                 CornerRadius="10" 
@@ -154,7 +159,7 @@
 
         <Button Margin=".2"  
                 Grid.Row="11" 
-                Grid.Column="2"
+                Grid.Column="3"
                 Text="Back" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
@@ -164,10 +169,10 @@
                 WidthRequest="400"
                 Clicked="TeamBackToSearch_Button_Clicked"/>
 
-        <Button Grid.Column="0" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search_Button_Clicked"/>
-        <Button Grid.Column="1" Grid.Row="12" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="MyTeam_Calendar_Button_Clicked"/>
-        <Button Grid.Column="2" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
-        <Button Grid.Column="3" Grid.Row="12" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
+        <Button Grid.Column="1" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search_Button_Clicked"/>
+        <Button Grid.Column="2" Grid.Row="12" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="14" Clicked="MyTeam_Calendar_Button_Clicked"/>
+        <Button Grid.Column="3" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
+        <Button Grid.Column="4" Grid.Row="12" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
     
     </Grid>
     

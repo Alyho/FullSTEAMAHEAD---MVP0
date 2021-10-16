@@ -11,27 +11,32 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".04*"/>
             <RowDefinition Height=".3*"/>
             <RowDefinition Height=".29*"/>
             <RowDefinition Height=".29*"/>
             <RowDefinition Height=".29*"/>
             <RowDefinition Height=".29*"/>
-            <RowDefinition Height="1.1*"/>
+            <RowDefinition Height="1.6*"/>
             <RowDefinition Height=".29*"/>
             <RowDefinition Height=".29*"/>
             <RowDefinition Height=".29*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height=".8*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".02*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Image Source="BackgroundPicture"
                Grid.Row="0" 
                Grid.ColumnSpan="4"
+               Grid.Column="1"
                HorizontalOptions="FillAndExpand"/>
 
         <Image Source="{Binding Team_ProfilePicture}"
@@ -97,7 +102,7 @@
 
         <Label Grid.Row="7"
                Grid.Column="1" 
-               Grid.ColumnSpan="3">
+               Grid.ColumnSpan="4">
             <Label.FormattedText>
                 <FormattedString>
                     <Span Text="Bio: " FontSize="16"/>
@@ -155,7 +160,7 @@
 
         <Button Margin=".2"  
                 Grid.Row="11" 
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="Back" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
@@ -167,7 +172,7 @@
 
         <Button Margin=".2"  
                 Grid.Row="11" 
-                Grid.Column="2"
+                Grid.Column="3"
                 Text="Request to join" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
@@ -177,10 +182,10 @@
                 WidthRequest="200"
                 Command="{Binding RequestToJoinTeamCommand}"/>
 
-        <Button Grid.Column="0" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
-        <Button Grid.Column="1" Grid.Row="12" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked ="MyTeams_Button_Clicked"/>
-        <Button Grid.Column="2" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
-        <Button Grid.Column="3" Grid.Row="12" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
+        <Button Grid.Column="1" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
+        <Button Grid.Column="2" Grid.Row="12" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="14" Clicked ="MyTeams_Button_Clicked"/>
+        <Button Grid.Column="3" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
+        <Button Grid.Column="4" Grid.Row="12" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
 
 
     </Grid>
