@@ -8,6 +8,7 @@ using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using FullSteamAheadMVP0Project.Models;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -43,6 +44,7 @@ public partial class CreateStudentAccount : ContentPage
                 else
                 {
                     await DisplayAlert("Error", "This Username is already taken", "OK");
+                    Global.UserSignedIn = null;
                 }
                     
             }
@@ -52,6 +54,7 @@ public partial class CreateStudentAccount : ContentPage
                 if (mainPageViewModel.Unfilled)
                 {
                     await DisplayAlert("Error", "One or more questions unanswered", "OK");
+                    Global.UserSignedIn = null;
                 }
             }
 
@@ -60,6 +63,16 @@ public partial class CreateStudentAccount : ContentPage
                 if (mainPageViewModel.NoIntAge)
                 {
                     await DisplayAlert("Error", "Age must be a number", "OK");
+                    Global.UserSignedIn = null;
+                }
+            }
+
+            if (e.PropertyName == "Dot")
+            {
+                if (mainPageViewModel.Dot)
+                {
+                    await DisplayAlert("Error", "Username cannot contain periods", "OK");
+                    Global.UserSignedIn = null;
                 }
             }
         }

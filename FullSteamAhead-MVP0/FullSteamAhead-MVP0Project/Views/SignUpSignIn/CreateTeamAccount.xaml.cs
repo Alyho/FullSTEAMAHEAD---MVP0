@@ -7,6 +7,7 @@ using System.ComponentModel;
 using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FullSteamAheadMVP0Project.Models;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -57,6 +58,15 @@ namespace FullSteamAheadMVP0Project.Views
                 if (createTeamAccountViewModel.Unfilled)
                 {
                     await DisplayAlert("Error", "One or more questions unanswered.", "OK");
+                }
+            }
+
+            if (e.PropertyName == "Dot")
+            {
+                if (createTeamAccountViewModel.Dot)
+                {
+                    await DisplayAlert("Error", "Username cannot contain periods", "OK");
+                    Global.TeamSignedIn = null;
                 }
             }
 

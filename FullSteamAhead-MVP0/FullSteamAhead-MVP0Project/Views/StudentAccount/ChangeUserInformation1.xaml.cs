@@ -61,6 +61,14 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
+            if (e.PropertyName == "Dot")
+            {
+                if (mainPageViewModel.Dot)
+                {
+                    await DisplayAlert("Error", "Username cannot contain periods", "OK");
+                }
+            }
+
         }
 
     }

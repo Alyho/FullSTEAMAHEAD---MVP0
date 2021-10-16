@@ -55,6 +55,14 @@ namespace FullSteamAheadMVP0Project.Views
                     await DisplayAlert("Error", "One or more questions unanswered.", "OK");
                 }
             }
+
+            if (e.PropertyName == "Dot")
+            {
+                if (createTeamAccountViewModel.Dot)
+                {
+                    await DisplayAlert("Error", "Username cannot contain periods", "OK");
+                }
+            }
         }
 
 
