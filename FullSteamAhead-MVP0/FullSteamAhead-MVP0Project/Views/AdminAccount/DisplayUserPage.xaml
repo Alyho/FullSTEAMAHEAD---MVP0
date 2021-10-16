@@ -33,6 +33,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        
         <Image Source="BackgroundPicture"
                Grid.Column="1" 
                Grid.Row="0" 
