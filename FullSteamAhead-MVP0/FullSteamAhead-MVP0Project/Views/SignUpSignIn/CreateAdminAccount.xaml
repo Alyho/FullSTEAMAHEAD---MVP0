@@ -12,12 +12,14 @@
             <RowDefinition Height="280*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="50*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".01*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -26,14 +28,14 @@
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
                FontSize="32" 
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="0"
                Grid.ColumnSpan="2"
                FontAttributes="Italic"/>
 
         <Editor Margin="2" 
                 Grid.Row="1" 
-                Grid.Column="0"
+                Grid.Column="1"
                 Placeholder="Admin Username     " 
                 Text="{Binding TeamAdminUsername}"
                 TextColor="LightSlateGray" 
@@ -45,14 +47,15 @@
 
         <Editor Margin="2" 
                 Grid.Row="2" 
-                Grid.Column="0"
+                Grid.Column="1"
                 Placeholder="Team Admin Password       " 
                 Text="{Binding TeamAdminPassword}"
                 TextColor="LightSlateGray" 
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"/>
+                Grid.ColumnSpan="2"
+                WidthRequest="230"/>
 
         <Button Margin="2" 
                 Grid.Row="3" 
@@ -61,7 +64,7 @@
                 FontSize="15" 
                 BackgroundColor="White" 
                 Clicked="PrivacyPolicy"
-                Grid.Column="0"
+                Grid.Column="1"
                 HorizontalOptions="Center"
                 WidthRequest="150"
                 HeightRequest="180"/>
@@ -73,7 +76,7 @@
                 FontSize="15" 
                 BackgroundColor="White" 
                 Clicked="TermsAndConditions"
-                Grid.Column="1"
+                Grid.Column="2"
                 HorizontalOptions="Center"
                 WidthRequest="150"
                 HeightRequest="180"/>
@@ -87,7 +90,7 @@
         <Label Text="By clicking Next, you agree to our terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
                FontSize="15" 
-               Grid.Column="0" 
+               Grid.Column="1" 
                Grid.Row="4"
                Grid.ColumnSpan="2"
                HorizontalOptions="CenterAndExpand"
@@ -101,7 +104,7 @@
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveAdminCommand}"
-                Grid.Column="1"/>
+                Grid.Column="2"/>
 
         <Button Text="Back"
                 HorizontalOptions="Center"
@@ -111,7 +114,7 @@
                 Clicked="Back_Button_Clicked"
                 Grid.Row="5" 
                 BackgroundColor="AliceBlue" 
-                Grid.Column="0"/>
+                Grid.Column="1"/>
 
     </Grid>
 
