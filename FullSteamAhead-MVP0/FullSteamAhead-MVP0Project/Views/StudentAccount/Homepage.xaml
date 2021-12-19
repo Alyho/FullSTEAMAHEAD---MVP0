@@ -21,6 +21,7 @@
 
         <SearchBar x:Name="searchBar"
                    Grid.Column="0" 
+                   FontSize="20"
                    Grid.Row="0" 
                    Grid.ColumnSpan="4" 
                    TextColor="Black" 
@@ -30,10 +31,10 @@
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
-        <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked ="MyTeams_Button_Clicked"/>
-        <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
-        <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
+        <ImageButton Grid.Column="0" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End" Clicked="HomePage_Button_Clicked"/>
+        <ImageButton Grid.Column="1" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent"  Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked ="MyTeams_Button_Clicked"/>
+        <ImageButton Grid.Column="2" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent"  Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
+        <ImageButton Grid.Column="3" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent"  Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="Settings_Button_Clicked"/>
 
         <ListView x:Name="searchResults"
                   Grid.Column="0" 
@@ -55,7 +56,7 @@
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
                                    VerticalOptions="FillAndExpand"
-                                   FontSize="16">
+                                   FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
@@ -66,7 +67,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   FontSize="16" VerticalOptions="FillAndExpand">
+                                   FontSize="20" VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Bio: " />
@@ -77,7 +78,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="16">
+                                   VerticalOptions="FillAndExpand" FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Gender: " />
@@ -88,7 +89,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="16">
+                                   VerticalOptions="FillAndExpand" FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="City: " />
@@ -102,8 +103,8 @@
                                    VerticalOptions="FillAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="State: " />
-                                        <Span Text="{Binding Team_Information.State}" FontSize="16"/>
+                                        <Span Text="State: " FontSize="20"/>
+                                        <Span Text="{Binding Team_Information.State}" FontSize="20"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

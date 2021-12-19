@@ -2,45 +2,45 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FullSteamAheadMVP0Project.Views.TeamFAQ_page">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="FAQs" 
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="FAQs" 
                        HorizontalTextAlignment="Center" 
                        VerticalTextAlignment="Center" 
                        TextColor="LightSlateGray" 
-                       FontSize="32" />
+                       FontSize="34" />
             <ScrollView>
                 <StackLayout>
                     <Label Text="How do I Create a Team?"  
                            HorizontalTextAlignment="Center" 
                            VerticalTextAlignment="Center" 
-                           FontSize="20" />
-                    <Label Text="In order to create a team, it is most advised that you are already a leader in an existent STE(A)M team. However, if you decide that you want to start a new team on Full STEAM Ahead, you can do so. Follow the sign up instructions to add your team to Full STEAM Ahead. It is important that you include your email so that other members can inquire about your team. To understand more about how team admins are utilized in Full STEAM Ahead, see How do Teams and Team Admins Work. " />
+                           FontSize="27" />
+                    <Label FontSize="20" Text="In order to create a team, it is most advised that you are already a leader in an existent STE(A)M team. However, if you decide that you want to start a new team on Full STEAM Ahead, you can do so. Follow the sign up instructions to add your team to Full STEAM Ahead. It is important that you include your email so that other members can inquire about your team. To understand more about how team admins are utilized in Full STEAM Ahead, see How do Teams and Team Admins Work. " />
                     <Label  HorizontalTextAlignment="Center" 
                            VerticalTextAlignment="Center" 
-                           FontSize="20" Text="What Should I Look for When Joining a Team?" />
-                    <Label Text="In order to find a team that best fits you, look thoroughly at their team information. Make sure that you fit with all the requirements. Hopefully in their biography, the team will provide additional information regarding the competitions they do, availability and other important details. It is highly encouraged to always email the team with the email provided to be in direct contact with them. " />
+                           FontSize="27" Text="What Should I Look for When Joining a Team?" />
+                    <Label FontSize="20" Text="In order to find a team that best fits you, look thoroughly at their team information. Make sure that you fit with all the requirements. Hopefully in their biography, the team will provide additional information regarding the competitions they do, availability and other important details. It is highly encouraged to always email the team with the email provided to be in direct contact with them. " />
                     <Label  HorizontalTextAlignment="Center" 
                            VerticalTextAlignment="Center" 
-                           FontSize="20" Text="What Should I Look for When Inviting a User/Mentor?" />
-                    <Label Text="In order to find a user that best fits you, look thoroughly at their account information. Make sure that they fit with all the requirements that your team has. Hopefully in their biography, the user will provide additional information regarding their experience and other important details. It is highly encouraged to always email the user with the email provided to be in direct contact with them. If you are looking to have a mentor in your team, follow the same process as if you were to invite a user. Mentors are expected to have more than adequate information so that they can help guide your team. " />
+                           FontSize="27" Text="What Should I Look for When Inviting a User/Mentor?" />
+                    <Label FontSize="20" Text="In order to find a user that best fits you, look thoroughly at their account information. Make sure that they fit with all the requirements that your team has. Hopefully in their biography, the user will provide additional information regarding their experience and other important details. It is highly encouraged to always email the user with the email provided to be in direct contact with them. If you are looking to have a mentor in your team, follow the same process as if you were to invite a user. Mentors are expected to have more than adequate information so that they can help guide your team. " />
                     <Label  HorizontalTextAlignment="Center" 
                            VerticalTextAlignment="Center" 
-                           FontSize="20" Text="What is the Difference Between Users and Mentors?" />
-                    <Label Text="Users and mentors are expected to sign up in the same way besides the role they choose. Both are still considered members of a team and will have less capabilities than team admins. Users of a team are participants within the team. Mentors, while still part of a team, are expected to help guide the team. They should have significantly more experience than users. The age range is meant for the users, but the team can decide whether the age range is applicable for mentors. " />
+                           FontSize="27" Text="What is the Difference Between Users and Mentors?" />
+                    <Label FontSize="20" Text="Users and mentors are expected to sign up in the same way besides the role they choose. Both are still considered members of a team and will have less capabilities than team admins. Users of a team are participants within the team. Mentors, while still part of a team, are expected to help guide the team. They should have significantly more experience than users. The age range is meant for the users, but the team can decide whether the age range is applicable for mentors. " />
                     <Label  HorizontalTextAlignment="Center" 
                            VerticalTextAlignment="Center" 
-                           FontSize="20" Text="How do Teams and Team Admins Work?" />
-                    <Label Text="It is understandable that a team will have many leaders, or team admins, of a team. We have connected each team admin to their team. To first create a team, one admin must do so. They will also create a team password. When others wish to become admins of the same team, they will have to input the same credentials as the preexisting team that has already been created. The team nickname, username, and password must be the same. After that, the admin will be added to the team. Between each team admin of the team lie the same capabilities. If one team admin adds a notification or changes the information of their team, it will carry over to the other team admins. " />
+                           FontSize="27" Text="How do Teams and Team Admins Work?" />
+                    <Label FontSize="20" Text="It is understandable that a team will have many leaders, or team admins, of a team. We have connected each team admin to their team. To first create a team, one admin must do so. They will also create a team password. When others wish to become admins of the same team, they will have to input the same credentials as the preexisting team that has already been created. The team nickname, username, and password must be the same. After that, the admin will be added to the team. Between each team admin of the team lie the same capabilities. If one team admin adds a notification or changes the information of their team, it will carry over to the other team admins. " />
                     <Label  HorizontalTextAlignment="Center" 
                            VerticalTextAlignment="Center" 
-                           FontSize="20" Text="What is the Purpose of the App?" />
-                    <Label Text="Full STEAM Ahead is designed to better organize and promote STEAM teams. Very often, there are students who are interested in joining STEAM teams, but due to their location, opportunities, and other factors, they are unable to find a team suitable for them. Similarly, there are many teams that want to expand themselves and reach more individuals. Full STEAM Ahead is a platform for teams and members to create an account in order to search for members or teams accordingly. Once members are in a team, the app provides many features that help organize the team, allowing members and admins to all communicate with each other and be prepared for future plans. With an app, hopefully teams and members can have a greater reach to explore everything within a device. " />
+                           FontSize="27" Text="What is the Purpose of the App?" />
+                    <Label FontSize="20" Text="Full STEAM Ahead is designed to better organize and promote STEAM teams. Very often, there are students who are interested in joining STEAM teams, but due to their location, opportunities, and other factors, they are unable to find a team suitable for them. Similarly, there are many teams that want to expand themselves and reach more individuals. Full STEAM Ahead is a platform for teams and members to create an account in order to search for members or teams accordingly. Once members are in a team, the app provides many features that help organize the team, allowing members and admins to all communicate with each other and be prepared for future plans. With an app, hopefully teams and members can have a greater reach to explore everything within a device. " />
                     <Button Text="Back"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 CornerRadius="10"
-                FontSize="20"
+                FontSize="25"
                 TextColor="LightSlateGray"
                 Clicked="BackToTeamSettings2_Button_Clicked"
                 WidthRequest="200"

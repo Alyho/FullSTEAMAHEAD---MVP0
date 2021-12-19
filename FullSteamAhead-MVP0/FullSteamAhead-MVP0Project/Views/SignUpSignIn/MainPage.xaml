@@ -30,7 +30,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="36" 
+               FontSize="38" 
                Grid.Column="0" 
                Grid.Row="1"
                FontAttributes="Italic"
@@ -41,7 +41,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="30" 
+               FontSize="32" 
                Grid.Column="0" 
                Grid.Row="2"/>
 

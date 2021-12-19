@@ -9,7 +9,7 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".9*"/>
             <RowDefinition Height="8*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -26,14 +26,15 @@
                    TextColor="Black" 
                    BackgroundColor="LightCyan" 
                    Placeholder="Search..."
+                   FontSize="20"
                    CancelButtonColor="LightGray"
                    SearchCommand="{Binding SearchUserCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
-        <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
-        <Button Grid.Column="1" Grid.Row="3" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="MyTeam_Calendar_Button_Clicked"/>
-        <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
-        <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
+        <ImageButton Grid.Column="0" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End"/>
+        <ImageButton Grid.Column="1" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked="MyTeam_Calendar_Button_Clicked"/>
+        <ImageButton Grid.Column="2" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
+        <ImageButton Grid.Column="3" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="TeamSettings_Button_Clicked"/>
 
         <ListView x:Name="usersearchResults"
                   Grid.Column="0" 
@@ -54,7 +55,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="16">
+                                   VerticalOptions="FillAndExpand" FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Name: " />
@@ -65,7 +66,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="16">
+                                   VerticalOptions="FillAndExpand" FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Username: " />
@@ -76,7 +77,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="16">
+                                   VerticalOptions="FillAndExpand" FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Location: " />
@@ -87,7 +88,7 @@
                             <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="16">
+                                   VerticalOptions="FillAndExpand" FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Bio: " />

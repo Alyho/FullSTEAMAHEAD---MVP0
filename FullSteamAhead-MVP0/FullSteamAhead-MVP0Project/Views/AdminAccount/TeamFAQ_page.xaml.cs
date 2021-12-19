@@ -19,7 +19,7 @@ public partial class TeamFAQ_page : ContentPage
 
     private async void BackToTeamSettings2_Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Settingspage());
+            await Navigation.PushAsync(new TeamSettingspage());
         }
     }
 }

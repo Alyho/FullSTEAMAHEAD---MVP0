@@ -21,7 +21,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="26" 
+               FontSize="32" 
                Grid.Column="0" 
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
@@ -32,7 +32,7 @@
                 Placeholder="Type announcement     " 
                 Text="{Binding Announcements}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="3"

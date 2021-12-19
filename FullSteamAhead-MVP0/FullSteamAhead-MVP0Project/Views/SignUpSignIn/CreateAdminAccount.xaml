@@ -27,7 +27,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="32" 
+               FontSize="36" 
                Grid.Column="1" 
                Grid.Row="0"
                Grid.ColumnSpan="2"
@@ -39,11 +39,11 @@
                 Placeholder="Admin Username     " 
                 Text="{Binding TeamAdminUsername}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
-                WidthRequest="230"/>
+                WidthRequest="250"/>
 
         <Editor Margin="2" 
                 Grid.Row="2" 
@@ -51,11 +51,11 @@
                 Placeholder="Team Admin Password       " 
                 Text="{Binding TeamAdminPassword}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
-                WidthRequest="230"/>
+                WidthRequest="250"/>
 
         <Button Margin="2" 
                 Grid.Row="3" 
@@ -89,7 +89,7 @@
 
         <Label Text="By clicking Next, you agree to our terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
-               FontSize="15" 
+               FontSize="17" 
                Grid.Column="1" 
                Grid.Row="4"
                Grid.ColumnSpan="2"
@@ -100,7 +100,7 @@
                 Grid.Row="5" 
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveAdminCommand}"
@@ -109,7 +109,7 @@
         <Button Text="Back"
                 HorizontalOptions="Center"
                 CornerRadius="10"
-                FontSize="20"
+                FontSize="22"
                 TextColor="LightSlateGray"
                 Clicked="Back_Button_Clicked"
                 Grid.Row="5" 

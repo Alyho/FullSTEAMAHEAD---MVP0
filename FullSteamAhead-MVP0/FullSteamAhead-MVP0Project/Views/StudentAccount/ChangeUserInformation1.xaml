@@ -10,13 +10,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="400*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -28,7 +28,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="28" 
+               FontSize="31" 
                Grid.Column="0" 
                Grid.Row="0"
                Grid.ColumnSpan="2"/>
@@ -38,7 +38,7 @@
                 Placeholder="Email            " 
                 Text="{Binding Email}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
@@ -49,7 +49,7 @@
                 Placeholder="Name            " 
                 Text="{Binding Nickname}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                ClearButtonVisibility="WhileEditing"
@@ -60,7 +60,7 @@
                 Placeholder="Username            " 
                 Text="{Binding Username}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
@@ -71,7 +71,7 @@
                 Placeholder="Password            " 
                 Text="{Binding Password}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
@@ -82,7 +82,7 @@
                 Placeholder="Age            " 
                 Text="{Binding Age}"
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
@@ -94,7 +94,7 @@
                 Grid.Column="1"
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveCommand}"/>
@@ -103,7 +103,7 @@
                 Grid.Row="7" 
                 Text="Back" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Clicked="Back"

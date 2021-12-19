@@ -38,8 +38,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Username: " FontSize="16"/>
-                    <Span Text="{Binding Admin_Username}"  FontSize="16" />
+                    <Span Text="Username: " FontSize="18"/>
+                    <Span Text="{Binding Admin_Username}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -49,8 +49,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Name: " FontSize="16"/>
-                    <Span Text="{Binding Admin_Nickname}"  FontSize="16" />
+                    <Span Text="Name: " FontSize="18"/>
+                    <Span Text="{Binding Admin_Nickname}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -60,8 +60,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Email: " FontSize="16"/>
-                    <Span Text="{Binding Admin_Email}"  FontSize="16" />
+                    <Span Text="Email: " FontSize="18"/>
+                    <Span Text="{Binding Admin_Email}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -71,8 +71,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Phone number: " FontSize="16"/>
-                    <Span Text="{Binding TeamTeamAdminPhoneNumber}"  FontSize="16" />
+                    <Span Text="Phone number: " FontSize="18"/>
+                    <Span Text="{Binding TeamTeamAdminPhoneNumber}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>

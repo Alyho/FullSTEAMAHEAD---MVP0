@@ -31,7 +31,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="25" 
+               FontSize="30" 
                Grid.Column="0" 
                Grid.Row="0"
                Grid.ColumnSpan="3"
@@ -42,7 +42,7 @@
                 Placeholder="Team Email            " 
                 Text="{Binding TeamEmail}"
                 TextColor="LightSlateGray" 
-                FontSize="17" 
+                FontSize="22" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="3"
@@ -53,7 +53,7 @@
                 Placeholder="Team Name            " 
                 Text="{Binding TeamNickname}"
                 TextColor="LightSlateGray" 
-                FontSize="17" 
+                FontSize="22" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="3"
@@ -66,7 +66,7 @@
                 Text="{Binding MaxAge}"
                 TextColor="LightSlateGray" 
                 Grid.Column="1"
-                FontSize="17" 
+                FontSize="22" 
                 Grid.ColumnSpan="2"
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
@@ -76,7 +76,7 @@
                 Placeholder="Min age            " 
                 Text="{Binding MinAge}"
                 TextColor="LightSlateGray" 
-                FontSize="17" 
+                FontSize="22" 
                 Grid.ColumnSpan="2"
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/> 
@@ -87,6 +87,7 @@
                 Margin="2"   
                 Grid.Row="4" 
                 Grid.ColumnSpan="1"
+                FontSize="22"
                 WidthRequest="230"
                 SelectedItem="{Binding State}">
             <Picker.ItemsSource>
@@ -151,7 +152,7 @@
                 Placeholder="City            " 
                 Text="{Binding City}"
                 TextColor="LightSlateGray" 
-                FontSize="17" 
+                FontSize="22"
                 BackgroundColor="White" 
                 WidthRequest="230"
                 HorizontalOptions="Center"/>
@@ -161,7 +162,7 @@
                 Grid.Column="1" 
                 Text="Online Team" CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="13" 
+                FontSize="13.2" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Clicked="OnDisplayAlertButtonClicked3"/>
@@ -171,7 +172,7 @@
                 Placeholder="Zip code            " 
                 Text="{Binding Zipcode}"
                 TextColor="LightSlateGray" 
-                FontSize="17" 
+                FontSize="22"
                 WidthRequest="230"
                 BackgroundColor="White" 
                 HorizontalOptions="Center"/>
@@ -181,8 +182,9 @@
                 TitleColor="LightSlateGray"
                 Grid.Row="7" 
                 Grid.Column="0"
-                Grid.ColumnSpan="1"
-                SelectedItem="{Binding Gender}">
+                Grid.ColumnSpan="2"
+                SelectedItem="{Binding Gender}"
+                FontSize="22">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Female</x:String>
@@ -198,6 +200,7 @@
                 TitleColor="LightSlateGray"
                 Grid.Row="8" 
                 Grid.Column="0"
+                FontSize="22"
                 SelectedItem="{Binding Privacy}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -247,7 +250,7 @@
                 Grid.Row="9" 
                 Text="Next" CornerRadius="11" 
                 TextColor="LightSlateGray" 
-                FontSize="20" 
+                FontSize="22" 
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding SaveTeamCommand}"
@@ -257,7 +260,7 @@
         <Button Text="Back"
                 HorizontalOptions="Center"
                 CornerRadius="10"
-                FontSize="20"
+                FontSize="22"
                 TextColor="LightSlateGray"
                 Clicked="Back_Button_Clicked"
                 BackgroundColor="AliceBlue" 

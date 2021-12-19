@@ -45,8 +45,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Username: " FontSize="16"/>
-                    <Span Text="{Binding Team_Username}"  FontSize="16" />
+                    <Span Text="Username: " FontSize="18"/>
+                    <Span Text="{Binding Team_Username}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -56,8 +56,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Name: " FontSize="16"/>
-                    <Span Text="{Binding Team_Nickname}"  FontSize="16" />
+                    <Span Text="Name: " FontSize="18"/>
+                    <Span Text="{Binding Team_Nickname}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -67,8 +67,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Location: " FontSize="16"/>
-                    <Span Text="{Binding Team_Location}"  FontSize="16" />
+                    <Span Text="Location: " FontSize="18"/>
+                    <Span Text="{Binding Team_Location}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -78,8 +78,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Gender: " FontSize="16"/>
-                    <Span Text="{Binding Team_Gender}"  FontSize="16" />
+                    <Span Text="Gender: " FontSize="18"/>
+                    <Span Text="{Binding Team_Gender}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -89,8 +89,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Email: " FontSize="16"/>
-                    <Span Text="{Binding Team_Email}"  FontSize="16" />
+                    <Span Text="Email: " FontSize="18"/>
+                    <Span Text="{Binding Team_Email}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -100,8 +100,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Bio: " FontSize="16"/>
-                    <Span Text="{Binding Team_Bio}"  FontSize="16" />
+                    <Span Text="Bio: " FontSize="18"/>
+                    <Span Text="{Binding Team_Bio}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -111,10 +111,10 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Minimum age: " FontSize="16"/>
-                    <Span Text="{Binding Team_MinAge}"  FontSize="16" />
-                    <Span Text=" Maximum age: " FontSize="16"/>
-                    <Span Text="{Binding Team_MaxAge}"  FontSize="16" />
+                    <Span Text="Minimum age: " FontSize="18"/>
+                    <Span Text="{Binding Team_MinAge}"  FontSize="18" />
+                    <Span Text=" Maximum age: " FontSize="18"/>
+                    <Span Text="{Binding Team_MaxAge}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -124,8 +124,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Gender requirements: " FontSize="16"/>
-                    <Span Text="{Binding Team_Gender}"  FontSize="16" />
+                    <Span Text="Gender requirements: " FontSize="18"/>
+                    <Span Text="{Binding Team_Gender}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -135,8 +135,8 @@
                Grid.ColumnSpan="3">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Schedule: " FontSize="16"/>
-                    <Span Text="{Binding Team_Schedule}"  FontSize="16" />
+                    <Span Text="Schedule: " FontSize="18"/>
+                    <Span Text="{Binding Team_Schedule}"  FontSize="18" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -159,16 +159,16 @@
                 Text="Back" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
-                FontSize="17" 
+                FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center" 
                 WidthRequest="200"
                 Clicked="Back_Button_Clicked"/>
 
-        <Button Grid.Column="0" Grid.Row="12" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="HomePage_Button_Clicked"/>
-        <Button Grid.Column="1" Grid.Row="12" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked ="MyTeams_Button_Clicked"/>
-        <Button Grid.Column="2" Grid.Row="12" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
-        <Button Grid.Column="3" Grid.Row="12" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Settings_Button_Clicked"/>
+        <ImageButton Grid.Column="0" Grid.Row="12" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End" Clicked="HomePage_Button_Clicked"/>
+        <ImageButton Grid.Column="1" Grid.Row="12" HeightRequest="100" BackgroundColor="Transparent" Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked ="MyTeams_Button_Clicked"/>
+        <ImageButton Grid.Column="2" Grid.Row="12" HeightRequest="100" BackgroundColor="Transparent" Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
+        <ImageButton Grid.Column="3" Grid.Row="12" HeightRequest="100" BackgroundColor="Transparent" Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="Settings_Button_Clicked"/>
 
 
     </Grid>

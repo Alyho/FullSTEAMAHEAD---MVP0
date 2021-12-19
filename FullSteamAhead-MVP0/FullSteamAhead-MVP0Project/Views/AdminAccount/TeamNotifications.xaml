@@ -25,7 +25,7 @@
                 Grid.Row="0" 
                 Grid.ColumnSpan="4"
                 HorizontalOptions="Center"
-                FontSize="25"
+                FontSize="32"
                 TextColor="LightSlateGray"
                 Text="Notifications"/>
 
@@ -44,7 +44,8 @@
                                 <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand"
+                                   FontSize="20">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Nickname: " />
@@ -55,7 +56,8 @@
                                 <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand"
+                                       FontSize="20">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Username: " />
@@ -66,7 +68,8 @@
                                 <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
+                                   VerticalOptions="FillAndExpand"
+                                       FontSize="20">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="Role: " />
@@ -88,13 +91,13 @@
                                 <Button Text="Accept"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
-                                    FontSize="15"
+                                    FontSize="20"
                                     Command="{Binding AcceptCommand}">
                                 </Button>
                                 <Button Text="Decline" 
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand"
-                                    FontSize="15"
+                                    FontSize="20"
                                     Command="{Binding DeclineCommand}">
                                 </Button>
                             </StackLayout>
@@ -103,10 +106,10 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Grid.Column="0" Grid.Row="3" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="Search_Button_Clicked"/>
-            <Button Grid.Column="1" Grid.Row="3" Text="My Team" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamChat_Button_Clicked"/>
-            <Button Grid.Column="2" Grid.Row="3" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10"/>
-            <Button Grid.Column="3" Grid.Row="3" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="TeamSettings_Button_Clicked"/>
+            <ImageButton Grid.Column="0" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End" Clicked="Search_Button_Clicked"/>
+            <ImageButton Grid.Column="1" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked="TeamChat_Button_Clicked"/>
+            <ImageButton Grid.Column="2" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon3" CornerRadius="5" VerticalOptions="End"/>
+            <ImageButton Grid.Column="3" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="TeamSettings_Button_Clicked"/>
             
         </Grid>
 

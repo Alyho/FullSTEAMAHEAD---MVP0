@@ -28,7 +28,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="28" 
+               FontSize="31" 
                Grid.Row="0"
                Grid.ColumnSpan="2"/>
 

@@ -15,6 +15,7 @@
             <RowDefinition Height=".7*"/>
             <RowDefinition Height=".7*"/>
             <RowDefinition Height=".7*"/>
+            <RowDefinition Height=".3*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -25,7 +26,7 @@
                HorizontalTextAlignment="Center" 
                VerticalTextAlignment="Center" 
                TextColor="LightSlateGray" 
-               FontSize="26" 
+               FontSize="32" 
                Grid.Row="0"
                Grid.ColumnSpan="4"/>
 
@@ -81,10 +82,10 @@
                 HeightRequest="70"
                 BackgroundColor="White"/>
 
-        <Button Grid.Column="0" Grid.Row="5" Text="Search" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked="AHomePage_Button_Clicked"/>
-        <Button Grid.Column="1" Grid.Row="5" Text="My Teams" CornerRadius="5" VerticalOptions="End" FontSize="15" Clicked ="MyTeams_Button_Clicked"/>
-        <Button Grid.Column="2" Grid.Row="5" Text="Notifications" CornerRadius="5" VerticalOptions="End" FontSize="10" Clicked ="Notifications_Button_Clicked"/>
-        <Button Grid.Column="3" Grid.Row="5" Text="Settings" CornerRadius="5" VerticalOptions="End" FontSize="15"/>
+        <ImageButton Grid.Column="0" Grid.Row="5" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End" Clicked="AHomePage_Button_Clicked"/>
+        <ImageButton Grid.Column="1" Grid.Row="5" HeightRequest="100" BackgroundColor="Transparent" Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked ="MyTeams_Button_Clicked"/>
+        <ImageButton Grid.Column="2" Grid.Row="5" HeightRequest="100" BackgroundColor="Transparent" Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
+        <ImageButton Grid.Column="3" Grid.Row="5" HeightRequest="100" BackgroundColor="Transparent" Source="icon4" CornerRadius="5" VerticalOptions="End"/>
 
     </Grid>
 
