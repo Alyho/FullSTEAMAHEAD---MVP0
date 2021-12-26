@@ -9,13 +9,19 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height=".9*"/>
+            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".4*"/>
             <RowDefinition Height="8*"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -31,14 +37,75 @@
                    SearchCommand="{Binding SearchUserCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
-        <ImageButton Grid.Column="0" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End"/>
-        <ImageButton Grid.Column="1" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked="MyTeam_Calendar_Button_Clicked"/>
-        <ImageButton Grid.Column="2" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
-        <ImageButton Grid.Column="3" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="TeamSettings_Button_Clicked"/>
+        <CheckBox
+            x:Name="Agecheckbox"
+            Grid.Column="0" 
+            Grid.Row="2"
+            IsChecked="{Binding AgeCheckbox}"/>
+
+        <Label Text="Age" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="0" 
+               Grid.Row="1"/>
+
+        <CheckBox
+            x:Name="Statecheckbox"
+            Grid.Column="1" 
+            Grid.Row="2"
+            IsChecked="{Binding StateCheckbox}"/>
+
+        <Label Text="State" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="1" 
+               Grid.Row="1"
+               Grid.ColumnSpan="2"/>
+
+        <CheckBox
+            x:Name="Gendercheckbox"
+            Grid.Column="2" 
+            Grid.Row="2"
+            IsChecked="{Binding GenderCheckbox}"/>
+
+        <Label Text="Gender" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="2" 
+               Grid.Row="1"/>
+
+        <CheckBox
+            x:Name="Mentorscheckbox"
+            Grid.Column="1" 
+            Grid.Row="4"
+            IsChecked="{Binding MentorsCheckbox}"/>
+
+        <Label Text="Mentors" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="1" 
+               Grid.Row="3"/>
+
+        <CheckBox
+            x:Name="Studentscheckbox"
+            Grid.Column="0" 
+            Grid.Row="4"
+            IsChecked="{Binding StudentsCheckbox}"/>
+
+        <Label Text="Students" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="0" 
+               Grid.Row="3"/>
+
+        <ImageButton Grid.Column="0" Grid.Row="6" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End"/>
+        <ImageButton Grid.Column="1" Grid.Row="6" HeightRequest="100" BackgroundColor="Transparent" Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked="MyTeam_Calendar_Button_Clicked"/>
+        <ImageButton Grid.Column="2" Grid.Row="6" HeightRequest="100" BackgroundColor="Transparent" Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
+        <ImageButton Grid.Column="3" Grid.Row="6" HeightRequest="100" BackgroundColor="Transparent" Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="TeamSettings_Button_Clicked"/>
 
         <ListView x:Name="usersearchResults"
                   Grid.Column="0" 
-                  Grid.Row="1" 
+                  Grid.Row="5" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HorizontalOptions="Center"
@@ -80,7 +147,7 @@
                                    VerticalOptions="FillAndExpand" FontSize="20">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Location: " />
+                                        <Span Text="City: " />
                                         <Span Text="{Binding Information.City}"/>
                                     </FormattedString>
                                 </Label.FormattedText>

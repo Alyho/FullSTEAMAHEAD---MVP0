@@ -6,8 +6,8 @@
              mc:Ignorable="d"
              x:Class="FullSteamAheadMVP0Project.Views.CreateStudentAccount"
              BackgroundColor="AliceBlue">
-
-    <Grid>
+    <ScrollView>
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="107*"/>
@@ -20,8 +20,8 @@
             <RowDefinition Height="105*"/>
             <RowDefinition Height="90*"/>
             <RowDefinition Height="90*"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="110*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="120*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -247,7 +247,7 @@
 
         <Label Text="By clicking Create Account, you agree to our terms and conditions and privacy policy" 
                TextColor="LightSlateGray" 
-               FontSize="10.2" 
+               FontSize="12" 
                Grid.Column="0" 
                Grid.Row="11"
                Grid.ColumnSpan="2"
@@ -280,5 +280,6 @@
                 Grid.Column="0"
                 BackgroundColor="AliceBlue" />
     </Grid>
+    </ScrollView>
 
 </ContentPage>

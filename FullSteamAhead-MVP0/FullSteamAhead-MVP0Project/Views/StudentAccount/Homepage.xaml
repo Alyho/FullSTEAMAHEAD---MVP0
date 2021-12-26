@@ -6,16 +6,21 @@
              mc:Ignorable="d"
              x:Class="FullSteamAheadMVP0Project.Views.Homepage"
              BackgroundColor="AliceBlue">
-       
+
     <Grid>
         
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height=".4*"/>
+            <RowDefinition Height=".3*"/>
             <RowDefinition Height="7*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height=".8*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -30,17 +35,66 @@
                    CancelButtonColor="LightGray"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+        <CheckBox
+            x:Name="Agecheckbox"
+            Grid.Column="0" 
+            Grid.Row="2"
+            IsChecked="{Binding AgeCheckbox}"/>
 
-        <ImageButton Grid.Column="0" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End" Clicked="HomePage_Button_Clicked"/>
-        <ImageButton Grid.Column="1" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent"  Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked ="MyTeams_Button_Clicked"/>
-        <ImageButton Grid.Column="2" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent"  Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
-        <ImageButton Grid.Column="3" Grid.Row="3" HeightRequest="100" BackgroundColor="Transparent"  Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="Settings_Button_Clicked"/>
+        <Label Text="Age" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="0" 
+               Grid.Row="1"/>
+
+        <CheckBox
+            x:Name="Statecheckbox"
+            Grid.Column="1" 
+            Grid.Row="2"
+            IsChecked="{Binding StateCheckbox}"/>
+
+        <Label Text="State" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="1" 
+               Grid.Row="1"
+               Grid.ColumnSpan="2"/>
+
+        <CheckBox
+            x:Name="Gendercheckbox"
+            Grid.Column="2" 
+            Grid.Row="2"
+            IsChecked="{Binding GenderCheckbox}"/>
+
+        <Label Text="Gender" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="2" 
+               Grid.Row="1"/>
+        
+        <CheckBox
+            x:Name="Distancecheckbox"
+            Grid.Column="3" 
+            Grid.Row="2"
+            IsChecked="{Binding DistanceCheckbox}"/>
+
+        <Label Text="Distance" 
+               TextColor="LightSlateGray" 
+               FontSize="20" 
+               Grid.Column="3" 
+               Grid.Row="1"/>
+
+        <ImageButton Grid.Column="0" WidthRequest="100" Grid.Row="4" HeightRequest="100" BackgroundColor="Transparent" Source="icon1" CornerRadius="5" VerticalOptions="End" Clicked="HomePage_Button_Clicked"/>
+        <ImageButton Grid.Column="1" WidthRequest="100" Grid.Row="4" HeightRequest="100" BackgroundColor="Transparent"  Source="icon2" CornerRadius="5" VerticalOptions="End" Clicked ="MyTeams_Button_Clicked"/>
+        <ImageButton Grid.Column="2" WidthRequest="100" Grid.Row="4" HeightRequest="100" BackgroundColor="Transparent"  Source="icon3" CornerRadius="5" VerticalOptions="End" Clicked ="Notifications_Button_Clicked"/>
+        <ImageButton Grid.Column="3" WidthRequest="100" Grid.Row="4" HeightRequest="100" BackgroundColor="Transparent"  Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="Settings_Button_Clicked"/>
+        <ImageButton Grid.Column="3" WidthRequest="100" Grid.Row="4" HeightRequest="100" BackgroundColor="Transparent"  Source="icon4" CornerRadius="5" VerticalOptions="End" Clicked="Settings_Button_Clicked"/>
 
         <ListView x:Name="searchResults"
                   Grid.Column="0" 
-                  Grid.Row="1" 
+                  Grid.Row="3" 
                   Grid.ColumnSpan="4"
-                  Grid.RowSpan="2"
+                  Grid.RowSpan="1"
                   ItemsSource="{Binding TeamListView}"
                   HorizontalOptions="Center"
                   HasUnevenRows="True"  
