@@ -6,6 +6,7 @@ using FullSteamAheadMVP0Project.Models;
 using FullSteamAheadMVP0Project;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 {
@@ -48,6 +49,123 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
             NotifyPropertyChanged();
         }
     }
+
+    private bool AgeChecked = false;
+    public bool AgeCheckbox
+    {
+        get { return AgeChecked; }
+        set
+        {
+            AgeChecked = value;
+            FilterTeams();
+        }
+    }
+
+    private bool GenderChecked = false;
+    public bool GenderCheckbox
+    {
+        get { return GenderChecked; }
+        set
+        {
+            GenderChecked = value;
+            FilterTeams();
+        }
+    }
+
+    private bool StateChecked = false;
+    public bool StateCheckbox
+    {
+        get { return StateChecked; }
+        set
+        {
+            StateChecked = value;
+            FilterTeams();
+        }
+    }
+    private bool MentorsChecked = false;
+    public bool MentorsCheckbox
+    {
+        get { return MentorsChecked; }
+        set
+        {
+            MentorsChecked = value;
+            FilterTeams();
+        }
+    }
+
+    private bool StudentsChecked = false;
+    public bool StudentsCheckbox
+    {
+        get { return StudentsChecked; }
+        set
+        {
+            StudentsChecked = value;
+            FilterTeams();
+        }
+    }
+
+
+    public void FilterTeams()
+    {
+        Task.Run(new System.Action(async () =>
+        {
+            var users = await App.Database.GetAccountsAsync();
+            var userlist = new List<User>();
+
+            list.Clear();
+            if (AgeChecked == true)
+            {
+                users = App.Database.FilterAccountAge(users, Global.TeamSignedIn.Team_Information.Min_Age, Global.TeamSignedIn.Team_Information.Max_Age);
+            }
+
+            if (GenderChecked == true)
+            {
+                users = App.Database.FilterAccountGender(users, Global.TeamSignedIn.Team_Information.Gender);
+            }
+
+            if (StateChecked == true)
+            {
+                users = App.Database.FilterAccountState(users, Global.TeamSignedIn.Team_Information.State);
+            }
+
+            if (MentorsChecked == true)
+            {
+                userlist = App.Database.FilterAccountRole(users, "Mentor");
+                if (StudentsChecked == false)
+                {
+                    users = userlist;
+                }
+            }
+
+            if (StudentsChecked == true)
+            {
+                userlist = App.Database.FilterAccountRole(users, "Student");
+                if (MentorsChecked == false)
+                {
+                    users = userlist;
+                }
+            }
+
+            if ((StudentsChecked == true && MentorsChecked == true) || (AgeChecked == false && GenderChecked == false && StateChecked == false &&
+            StudentsChecked == false && MentorsChecked == false))
+            {
+                users = await App.Database.GetAccountsAsync();
+                users = App.Database.FilterBestAccountResults(users, Global.TeamSignedIn);
+            }
+
+            foreach (var user in users)
+            {
+                list.Add(user);
+            }
+
+            if (list != null)
+            {
+                UserListView = list;
+            }
+
+        }));
+    }
+
 
     public DisplayUser_HomePageViewModel()
     {   

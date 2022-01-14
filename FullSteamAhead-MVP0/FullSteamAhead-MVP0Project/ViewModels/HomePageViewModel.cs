@@ -41,6 +41,8 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
         }
     });
 
+
+
     private ObservableCollection<Team> _TeamListView;
     public ObservableCollection<Team> TeamListView
     {
@@ -53,6 +55,99 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
             _TeamListView = value;
             NotifyPropertyChanged();
         }
+    }
+
+    private bool AgeChecked = false;
+    public bool AgeCheckbox 
+    { 
+        get { return AgeChecked; }
+        set 
+        {
+            AgeChecked = value;
+            FilterTeams();
+        }
+    }
+
+    private bool GenderChecked = false;
+    public bool GenderCheckbox
+    {
+        get { return GenderChecked; }
+        set
+        {
+            GenderChecked = value;
+            FilterTeams();
+        }
+    }
+
+    private bool StateChecked = false;
+    public bool StateCheckbox
+    {
+        get { return StateChecked; }
+        set
+        {
+            StateChecked = value;
+            FilterTeams();
+        }
+    }
+
+
+    public void FilterTeams()
+    {
+        Task.Run(new System.Action(async () =>
+        {
+            var teams = await App.Database.GetTeamsAsync();
+            var teamlist = new List<Team>();
+
+            list.Clear();
+            if (AgeChecked == true && GenderChecked == true && StateChecked == true)
+            {
+                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
+                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
+                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State); 
+            }
+            else if (AgeChecked == true && GenderChecked == true)
+            {
+                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
+                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
+            }
+            else if (AgeChecked == true && StateChecked == true)
+            {
+                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
+                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State);
+            }
+            else if (AgeChecked == true)
+            {
+                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
+            }
+            else if (GenderChecked == true && StateChecked == true)
+            {
+                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
+                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State);
+            }
+            else if (GenderChecked == true)
+            {
+                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
+            }
+            else if (StateChecked == true)
+            {
+                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State);
+            }
+            else
+            {
+               teamlist = App.Database.FilterBestTeamResults(teams, Global.UserSignedIn);
+            }
+
+            foreach (var team in teamlist)
+            {
+                list.Add(team);
+            }
+
+            if (list != null)
+            {
+                TeamListView = list;
+            }
+
+        }));
     }
 
     public HomePageViewModel(INavigation Navigation)
