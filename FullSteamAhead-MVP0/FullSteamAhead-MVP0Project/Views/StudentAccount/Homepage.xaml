@@ -73,12 +73,12 @@
                Grid.Row="1"/>
         
         <CheckBox
-            x:Name="Distancecheckbox"
+            x:Name="Onlinecheckbox"
             Grid.Column="3" 
             Grid.Row="2"
-            IsChecked="{Binding DistanceCheckbox}"/>
+            IsChecked="{Binding OnlineCheckbox}"/>
 
-        <Label Text="Distance" 
+        <Label Text="Online" 
                TextColor="LightSlateGray" 
                FontSize="20" 
                Grid.Column="3" 
