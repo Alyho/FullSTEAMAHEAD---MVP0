@@ -69,6 +69,7 @@ namespace FullSteamAheadMVP0Project.Models
         // Team searching and filtering methods
         Task<List<Team>> TeamSearch(string name, User user);                     // returns list of Teams that match the name (either username or nickname)
         List<Team> FilterBestTeamResults(List<Team> teams, User user);           // cleans out teams for best results that match with the user variable
+        List<Team> GetOnlineTeams(List<Team> teams);                             // gets all online teams
         List<Team> FilterTeamGender(List<Team> teams, string gender);            // cleans out teams based on gender
         List<Team> FilterTeamCity(List<Team> teams, string city, string state);  // cleans out teams based on city AND state
         List<Team> FilterTeamState(List<Team> teams, string state);              // cleans out teams based on state
