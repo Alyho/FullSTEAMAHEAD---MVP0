@@ -851,6 +851,21 @@ namespace FullSteamAheadMVP0Project.Models
             return teams;
         }
 
+        public List<Team> GetOnlineTeams(List<Team> teams) // gets all online teams
+        {
+            List<Team> onlineTeams = new List<Team>();
+            for (int i = 0; i < teams.Count; i++)
+            {
+                Team team = teams[i];
+                string teamState = team.Team_Information.State.ToLower();
+                if (teamState == "online team")
+                {
+                    onlineTeams.Add(team);
+                }
+            }
+            return onlineTeams;
+        }
+
         public List<Team> FilterTeamGender(List<Team> teams, string gender) // cleans out teams based on gender
         {
             for (int i = 0; i < teams.Count; i++)

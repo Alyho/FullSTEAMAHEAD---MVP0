@@ -90,6 +90,17 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
         }
     }
 
+    private bool OnlineChecked = false;
+    public bool OnlineCheckbox
+    {
+        get { return OnlineChecked; }
+        set
+        {
+            OnlineChecked = value;
+            FilterTeams();
+        }
+    }
+
 
     public void FilterTeams()
     {
@@ -99,45 +110,35 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
             var teamlist = new List<Team>();
 
             list.Clear();
-            if (AgeChecked == true && GenderChecked == true && StateChecked == true)
+            if (AgeChecked == true)
             {
-                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
-                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
-                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State); 
-            }
-            else if (AgeChecked == true && GenderChecked == true)
-            {
-                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
-                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
-            }
-            else if (AgeChecked == true && StateChecked == true)
-            {
-                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
-                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State);
-            }
-            else if (AgeChecked == true)
-            {
-                teamlist = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
-            }
-            else if (GenderChecked == true && StateChecked == true)
-            {
-                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
-                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State);
-            }
-            else if (GenderChecked == true)
-            {
-                teamlist = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
-            }
-            else if (StateChecked == true)
-            {
-                teamlist = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State);
-            }
-            else
-            {
-               teamlist = App.Database.FilterBestTeamResults(teams, Global.UserSignedIn);
+                teams = App.Database.FilterTeamAge(teams, Global.UserSignedIn.Information.Age);
             }
 
-            foreach (var team in teamlist)
+            if (GenderChecked == true)
+            {
+                teams = App.Database.FilterTeamGender(teams, Global.UserSignedIn.Information.Preferences.Gender);
+            }
+
+            if (StateChecked == true)
+            {
+                teams = App.Database.FilterTeamState(teams, Global.UserSignedIn.Information.State);
+            }
+
+            if (OnlineChecked == true)
+            {
+                teams = App.Database.GetOnlineTeams(teams);
+            }
+
+            if (AgeChecked == false && GenderChecked == false && StateChecked == false &&
+            OnlineChecked == false)
+            {
+                teams = await App.Database.GetTeamsAsync();
+                teams = App.Database.FilterBestTeamResults(teams, Global.UserSignedIn);
+            }
+
+
+            foreach (var team in teams)
             {
                 list.Add(team);
             }
