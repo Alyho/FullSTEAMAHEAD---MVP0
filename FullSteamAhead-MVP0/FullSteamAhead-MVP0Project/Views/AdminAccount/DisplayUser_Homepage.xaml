@@ -114,7 +114,7 @@
                   ItemTapped="searchResults_ItemTapped"
                   SeparatorVisibility="Default"
                   SeparatorColor="Black"
-                  Margin="10, 10, 10, 10">
+                  Margin="10, 10, 10, 10"> 
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
