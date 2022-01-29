@@ -21,7 +21,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.8*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Change Account Information" 
@@ -31,7 +31,15 @@
                FontSize="31" 
                Grid.Column="0" 
                Grid.Row="0"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="3"/>
+
+        <Label Text="Grade:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="1"/>
 
         <Entry Margin="2" 
                 Grid.Row="1" 
@@ -43,14 +51,23 @@
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+                Grid.Column="1"/>
+
+        <Label Text="State:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="2"/>
 
         <Picker x:Name="State"
                 Title="State"
                 TitleColor="LightSlateGray"
                 Margin="2"   
-                Grid.ColumnSpan="2"
                 Grid.Row="2" 
+                Grid.Column="1"
                 WidthRequest="200"
                 FontSize="22"
                 SelectedItem="{Binding State}">
@@ -110,6 +127,14 @@
             </Picker.ItemsSource>
         </Picker>
 
+        <Label Text="City:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="3"/>
+
         <Entry Margin="2"   
                 Grid.Row="3" 
                 Placeholder="City            " 
@@ -120,7 +145,16 @@
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+               Grid.Column="1"/>
+
+        <Label Text="Zip code:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="4"/>
 
         <Entry Margin="2" 
                 Grid.Row="4" 
@@ -132,7 +166,16 @@
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+               Grid.Column="1"/>
+
+        <Label Text="Phone number:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="5"/>
 
         <Entry Margin="2" 
                 Grid.Row="5" 
@@ -144,7 +187,16 @@
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+               Grid.Column="1"/>
+
+        <Label Text="Bio:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="6"/>
 
         <Entry Margin="2" 
                 Grid.Row="6" 
@@ -156,11 +208,12 @@
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+               Grid.Column="1"/>
 
         <Button Margin="2" 
                 Grid.Row="7" 
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="22" 

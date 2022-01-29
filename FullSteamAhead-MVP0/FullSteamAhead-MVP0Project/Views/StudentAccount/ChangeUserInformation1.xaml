@@ -21,7 +21,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.8*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Change Account Information" 
@@ -31,10 +31,19 @@
                FontSize="31" 
                Grid.Column="0" 
                Grid.Row="0"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="3"/>
+
+        <Label Text="Email:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="1"/>
 
         <Entry Margin="2"   
                 Grid.Row="1" 
+               Grid.Column="1"
                 Placeholder="Email            " 
                 Text="{Binding Email}"
                 TextColor="LightSlateGray" 
@@ -43,6 +52,14 @@
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
                WidthRequest="200"/>
+
+        <Label Text="Name:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="2"/>
 
         <Entry Margin="2"   
                 Grid.Row="2" 
@@ -53,7 +70,16 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+               Grid.Column="1"/>
+
+        <Label Text="Username:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="3"/>
 
         <Entry Margin="2"   
                 Grid.Row="3" 
@@ -64,7 +90,16 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+               Grid.Column="1"/>
+
+        <Label Text="Password:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="4"/>
 
         <Entry Margin="2" 
                 Grid.Row="4" 
@@ -76,8 +111,16 @@
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
                 WidthRequest="200"
-               IsPassword="True">
+               Grid.Column="1">
         </Entry>
+
+        <Label Text="Age:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="5"/>
 
         <Entry Margin="2" 
                 Grid.Row="5" 
@@ -88,12 +131,13 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center" Grid.ColumnSpan="2"
                 ClearButtonVisibility="WhileEditing"
-                WidthRequest="200"/>
+                WidthRequest="200"
+               Grid.Column="1"/>
 
 
         <Button Margin="2" 
                 Grid.Row="7" 
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="22" 

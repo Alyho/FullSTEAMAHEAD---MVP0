@@ -17,7 +17,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.2*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Change Team Account Information" 
@@ -27,7 +27,15 @@
                FontSize="26" 
                Grid.Column="0" 
                Grid.Row="0"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="3"/>
+
+        <Label Text="Team username:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="1"/>
 
         <Entry Margin="2"   
                 Grid.Row="1" 
@@ -38,11 +46,21 @@
                 FontSize="20" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                ClearButtonVisibility="WhileEditing"/>
+                ClearButtonVisibility="WhileEditing"
+                              Grid.Column="1"/>
+
+        <Label Text="Team password:" 
+               HorizontalTextAlignment="Center" 
+               VerticalTextAlignment="Center" 
+               TextColor="LightSlateGray" 
+               FontSize="21" 
+               Grid.Column="0" 
+               Grid.Row="2"/>
 
         <Entry Margin="2" 
                 Grid.Row="2" 
                 Grid.ColumnSpan="2"
+               Grid.Column="1"
                 Placeholder="Team Password            " 
                 Text="{Binding TeamPassword}"
                 TextColor="LightSlateGray" 
@@ -50,11 +68,11 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                ClearButtonVisibility="WhileEditing"
-               IsPassword="True"/>
+              />
 
         <Button Margin="2" 
                 Grid.Row="3" 
-                Grid.Column="1"
+                Grid.Column="2"
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 
