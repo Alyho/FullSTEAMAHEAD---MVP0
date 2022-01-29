@@ -75,6 +75,7 @@
     <Compile Include="CustomPageRenderer.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="ShowHidePassEffect.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +85,9 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\BackgroundPicture.imageset\IMG_9221 (1).jpg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Hidepass.imageset\HidePass.jpg">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\icon1.imageset\Contents.json">
@@ -108,6 +112,12 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\icon4.imageset\icon4.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Hidepass.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ShowPass.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Logo.imageset\Contents.json">
@@ -138,6 +148,9 @@
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Notifications.imageset\Notifications.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ShowPass.imageset\ShowPass.jpg">
       <Visible>false</Visible>
     </ImageAsset>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -205,5 +218,11 @@
       <Project>{EC4E024B-B09F-4AAD-B734-233CEAF6212B}</Project>
       <Name>FullSteamAhead-MVP0Project</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ShowPass.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\HidePass.jpg" />
   </ItemGroup>
 </Project>

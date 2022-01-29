@@ -50,7 +50,8 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 WidthRequest="230"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="2"
+               IsPassword="True"/>
 
         <Button Margin="2" 
                 Grid.Row="3" 

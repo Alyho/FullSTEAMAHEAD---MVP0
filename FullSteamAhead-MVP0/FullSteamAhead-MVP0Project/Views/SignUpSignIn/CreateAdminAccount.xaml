@@ -33,7 +33,7 @@
                Grid.ColumnSpan="2"
                FontAttributes="Italic"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="1" 
                 Grid.Column="1"
                 Placeholder="Admin Username     " 
@@ -45,7 +45,7 @@
                 Grid.ColumnSpan="2"
                 WidthRequest="250"/>
 
-        <Editor Margin="2" 
+        <Entry Margin="2" 
                 Grid.Row="2" 
                 Grid.Column="1"
                 Placeholder="Team Admin Password       " 
@@ -55,7 +55,8 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="2"
-                WidthRequest="250"/>
+                WidthRequest="250"
+               IsPassword="True"/>
 
         <Button Margin="2" 
                 Grid.Row="3" 
