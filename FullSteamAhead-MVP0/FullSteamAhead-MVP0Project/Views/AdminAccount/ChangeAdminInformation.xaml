@@ -59,7 +59,7 @@
                 ClearButtonVisibility="WhileEditing"
                IsPassword="True"/>
 
-        <Entry Margin="2" 
+        <Entry Margin="2"  
                 Grid.Row="3" 
                 Grid.Column="0"
                 Placeholder="Admin email     " 
