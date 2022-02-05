@@ -43,6 +43,7 @@ namespace FullSteamAheadMVP0Project.Views
                 {
                     await DisplayAlert("Invite was successful", "You have invited this user to join this team", "OK");
                 }
+
             }
 
             if (e.PropertyName == "NoEmail")
@@ -53,6 +54,12 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
+            Button invitebutton = sender as Button;
+            {
+                inviteButton.Text = "Invite sent";
+            }
+
+            inviteButton.IsEnabled = false;
 
         }
 

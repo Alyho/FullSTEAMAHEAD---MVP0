@@ -177,6 +177,7 @@
 
         <Button Margin=".2"  
                 Grid.Row="11" 
+                x:Name="requestButton"
                 Grid.Column="3"
                 Text="Request to join" 
                 CornerRadius="10" 
