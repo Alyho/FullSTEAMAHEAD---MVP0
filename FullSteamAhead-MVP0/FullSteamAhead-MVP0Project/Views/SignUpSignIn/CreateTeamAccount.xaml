@@ -9,8 +9,10 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="480*"/>
+            <RowDefinition Height="380*"/>
             <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
@@ -53,8 +55,18 @@
                Grid.ColumnSpan="2"
                IsPassword="True"/>
 
+        <Label Text="Team profile picture:"   
+               TextColor="LightSlateGray" 
+               FontSize="22" 
+               Grid.Column="0" 
+               Grid.Row="4"/>
+
+        <Button x:Name="btnUpload"  TextColor="LightSlateGray" 
+                FontSize="20" CornerRadius="20"
+                BackgroundColor="White"  WidthRequest="100" Text="Upload" Grid.Row="4" Grid.Column="1"/> <!--Clicked ="BtnUpload_Clicked"--> 
+
         <Button Margin="2" 
-                Grid.Row="3" 
+                Grid.Row="5" 
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="22" 
@@ -70,7 +82,7 @@
                 TextColor="LightSlateGray"
                 Clicked="Back_Button_Clicked"
                 BackgroundColor="AliceBlue" 
-                Grid.Row="3" 
+                Grid.Row="5" 
                 Grid.Column="0"/>
 
     </Grid>

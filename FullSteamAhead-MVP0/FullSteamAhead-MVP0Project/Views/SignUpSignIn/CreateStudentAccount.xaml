@@ -22,7 +22,8 @@
             <RowDefinition Height="90*"/>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="120*"/>
-        </Grid.RowDefinitions>
+            <RowDefinition Height="120*"/>
+            </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -220,8 +221,18 @@
             
              They're an experienced adult who voluntarily selects teams to be a mentor for, providing information and help when needed" -->
 
+            <Label Text="Profile picture:"   
+               TextColor="LightSlateGray" 
+               FontSize="22" 
+               Grid.Column="0" 
+               Grid.Row="10"/>
+
+            <Button x:Name="btnUpload"  TextColor="LightSlateGray" 
+                FontSize="20" CornerRadius="20"
+                BackgroundColor="White"  WidthRequest="100" Text="Upload" Grid.Row="10" Grid.Column="1"/> <!--Clicked ="BtnUpload_Clicked"--> 
+
             <Button Margin="2" 
-                Grid.Row="10" 
+                Grid.Row="11" 
                 Text="Privacy Policy" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="13" 
@@ -230,7 +241,7 @@
                 Clicked="PrivacyPolicy"/>
 
         <Button Margin="2" 
-                Grid.Row="10" 
+                Grid.Row="11" 
                 Text="Terms and Conditions" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="10" 
@@ -250,7 +261,7 @@
                TextColor="LightSlateGray" 
                FontSize="12" 
                Grid.Column="0" 
-               Grid.Row="11"
+               Grid.Row="12"
                Grid.ColumnSpan="2"
                VerticalOptions="CenterAndExpand"/>
 
@@ -262,7 +273,7 @@
                Grid.ColumnSpan="2"/> -->
 
         <Button Margin="2" 
-                Grid.Row="12" 
+                Grid.Row="13" 
                 Text="Create account" CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="22" 
@@ -277,7 +288,7 @@
                 FontSize="22"
                 TextColor="LightSlateGray"
                 Clicked="Back_Button_Clicked"
-                Grid.Row="12" 
+                Grid.Row="13" 
                 Grid.Column="0"
                 BackgroundColor="AliceBlue" />
     </Grid>

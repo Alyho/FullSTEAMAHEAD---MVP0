@@ -29,6 +29,40 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new Settingspage());
         }
 
+        //private async void BtnDelete_Clicked(object sender, EventArgs e)
+        //{
+        //    await firebaseStorageHelper.DeleteFile(Username.Text);
+        //    lblPath.Text = string.Empty;
+        //    await DisplayAlert("Success", "Deleted", "OK");
+        //}
+
+        //private async void BtnUpload_Clicked(object sender, EventArgs e)
+        //{
+
+        //    await CrossMedia.Current.Initialize();
+        //    try
+        //    {
+        //        file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+        //        {
+        //            PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+        //        });
+        //        if (file == null)
+        //            return;
+        //        imgChoosed.Source = ImageSource.FromStream(() =>
+        //        {
+        //            var imageStram = file.GetStream();
+        //            return imageStram;
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(ex.Message);
+        //    }
+
+        //    await firebaseStorageHelper.UploadFile(file.GetStream(), Username.Text);
+
+        //}
+
         private async void MainPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "UserCreated")

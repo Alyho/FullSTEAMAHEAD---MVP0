@@ -13,6 +13,7 @@
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
             <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -70,8 +71,24 @@
                ClearButtonVisibility="WhileEditing"
               />
 
+        <Label Text="Team profile picture:"   
+               TextColor="LightSlateGray" 
+               FontSize="22" 
+               Grid.Column="0" 
+               Grid.Row="3"/>
+
+        <Button x:Name="btnUpload"  TextColor="LightSlateGray" 
+                FontSize="20" CornerRadius="20"
+                BackgroundColor="White"  WidthRequest="50" Text="Upload" Grid.Row="3" Grid.Column="1"/>
+        <!--Clicked ="BtnUpload_Clicked"-->
+
+        <Button x:Name="btnDelete"  TextColor="LightSlateGray" 
+                FontSize="20" CornerRadius="20"
+                BackgroundColor="White"  WidthRequest="50" Text="Delete" Grid.Row="3" Grid.Column="2"/>
+        <!--Clicked ="BtnDelete_Clicked"-->
+
         <Button Margin="2" 
-                Grid.Row="3" 
+                Grid.Row="4" 
                 Grid.Column="2"
                 Text="Next" CornerRadius="10" 
                 TextColor="LightSlateGray" 
@@ -81,7 +98,7 @@
                 Command ="{Binding CreateTeamCommand}"/>
 
         <Button Margin="2" 
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="0"
                 Text="Back" CornerRadius="10" 
                 TextColor="LightSlateGray" 

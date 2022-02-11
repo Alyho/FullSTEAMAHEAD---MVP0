@@ -9,6 +9,10 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using FullSteamAheadMVP0Project.Models;
+using Plugin.Media.Abstractions;
+using System.Diagnostics;
+using System.IO;
+using Plugin.Media;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -21,6 +25,9 @@ public partial class CreateStudentAccount : ContentPage
 
         public CreateStudentAccount()
         {
+
+            //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+            MediaFile file;
             InitializeComponent();
 
             mainPageViewModel = new MainPageViewModel(this.Navigation);
@@ -76,6 +83,33 @@ public partial class CreateStudentAccount : ContentPage
                 }
             }
         }
+
+        //private async void BtnUpload_Clicked(object sender, EventArgs e)
+        //{
+
+        //    await CrossMedia.Current.Initialize();
+        //    try
+        //    {
+        //        file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+        //        {
+        //            PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+        //        });
+        //        if (file == null)
+        //            return;
+        //        imgChoosed.Source = ImageSource.FromStream(() =>
+        //        {
+        //            var imageStram = file.GetStream();
+        //            return imageStram;
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Debug.WriteLine(ex.Message);
+        //    }
+
+        //    await firebaseStorageHelper.UploadFile(file.GetStream(), Username.Text);
+
+        //}
 
         void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
