@@ -53,13 +53,6 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
-            Button requestbutton = sender as Button;
-            {
-                requestButton.Text = "Request sent";
-            }
-
-            requestButton.IsEnabled = false;
-
         }
 
         private async void HomePage_Button_Clicked(object sender, EventArgs e)

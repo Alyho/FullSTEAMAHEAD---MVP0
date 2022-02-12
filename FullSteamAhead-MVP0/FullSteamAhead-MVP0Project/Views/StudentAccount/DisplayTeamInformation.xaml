@@ -179,7 +179,7 @@
                 Grid.Row="11" 
                 x:Name="requestButton"
                 Grid.Column="3"
-                Text="Request to join" 
+                Text="{Binding RequestText}" 
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="15" 

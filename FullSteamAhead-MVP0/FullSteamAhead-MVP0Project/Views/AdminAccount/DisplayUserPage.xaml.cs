@@ -54,13 +54,6 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
-            Button invitebutton = sender as Button;
-            {
-                inviteButton.Text = "Invite sent";
-            }
-
-            inviteButton.IsEnabled = false;
-
         }
 
         private async void TeamSettings_Button_Clicked(object sender, EventArgs e)

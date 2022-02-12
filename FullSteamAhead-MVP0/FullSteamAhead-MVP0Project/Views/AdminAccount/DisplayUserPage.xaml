@@ -152,7 +152,7 @@
                 Grid.Row="11" 
                 Grid.Column="3"
                 Grid.ColumnSpan="1"
-                Text="Invite" 
+                Text= "{Binding InviteText}"
                 CornerRadius="10" 
                 TextColor="LightSlateGray" 
                 FontSize="20" 

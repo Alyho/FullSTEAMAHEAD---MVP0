@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace FullSteamAheadMVP0Project.ViewModels
 {
@@ -14,8 +16,13 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private bool _userRequestExists;
         private bool _noEmail;
         private bool _userOnTeam;
+        private string _RequestText;
 
         public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public bool UserRequestExists
         {
@@ -85,11 +92,37 @@ namespace FullSteamAheadMVP0Project.ViewModels
             set { }
         }
 
+        public string RequestText
+        {
+            get
+            {
+                return _RequestText;
+            }
+            set
+            {
+                _RequestText = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public Command RequestToJoinTeamCommand { get; }
 
         public DisplayTeamInformationViewModel(Team team)
         {
             _team = team;
+
+            Task.Run(new System.Action(async () =>
+            {
+                if (await App.Database.UserRequestExists(_team, Global.UserSignedIn) == true || await App.Database.TeamUserExists(_team, Global.UserSignedIn.Username) == true)
+                {
+                    RequestText = "Request Sent";
+                }
+                else
+                {
+                    RequestText = "Request";
+                }
+            }));
+            
             
             RequestToJoinTeamCommand = new Command(async () =>
             {

@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -14,8 +16,14 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private bool _teamRequestExists;
         private bool _noEmail;
         private bool _userOnTeam;
+        private string _InviteText;
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public bool TeamRequestExists
         {
@@ -88,9 +96,34 @@ namespace FullSteamAheadMVP0Project.ViewModels
             set { }
         }
 
+        public string InviteText
+        {
+            get
+            {
+                return _InviteText;
+            }
+            set
+            {
+                _InviteText = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         public DisplayUserPageViewModel(User user)
         {
             _user = user;
+
+            Task.Run(new System.Action(async () =>
+            {
+                if (await App.Database.TeamRequestExists(_user, Global.TeamSignedIn) == true || await App.Database.TeamUserExists(Global.TeamSignedIn, _user.Username) == true)
+                {
+                    InviteText = "Invite Sent";
+                }
+                else
+                {
+                    InviteText = "Invite";
+                }
+            }));
 
             InviteUserCommand = new Command(async () =>
             {
