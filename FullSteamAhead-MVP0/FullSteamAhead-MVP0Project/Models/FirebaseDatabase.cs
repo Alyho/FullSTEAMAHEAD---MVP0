@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
+using Firebase.Storage;
+
 
 namespace FullSteamAheadMVP0Project.Models
 {
@@ -30,10 +33,12 @@ namespace FullSteamAheadMVP0Project.Models
 
 
         readonly FirebaseClient firebase;
+        readonly FirebaseStorage firebaseStorage;
 
-        public FirebaseDatabase(string dbPath)
+        public FirebaseDatabase(string dbPath, string storagePath)
         {
             firebase = new FirebaseClient(dbPath);
+            firebaseStorage = new FirebaseStorage(storagePath);
         }
 
 
@@ -135,6 +140,9 @@ namespace FullSteamAheadMVP0Project.Models
             user.Username = username;
             await SaveAccountAsync(user);
 
+            //await UploadUserFile(await firebaseStorage.Child("Users").Child(username), username);
+            //await DeleteUserFile(old);
+
             List<Team> teams = await GetTeamsAsync();
             for (int i = 0; i < teams.Count; i++)
             {
@@ -217,6 +225,31 @@ namespace FullSteamAheadMVP0Project.Models
             return allTeamRequests.ContainsKey(team.Team_Username);
         }
 
+        public async Task<string> UploadUserFile(Stream fileStream, string username)
+        {
+            var imageUrl = await firebaseStorage
+                .Child("Users")
+                .Child(username)
+                .PutAsync(fileStream);
+            return imageUrl;
+        }
+
+        public async Task<string> GetUserFile(string username)
+        {
+            return await firebaseStorage
+                .Child("Users")
+                .Child(username)
+                .GetDownloadUrlAsync();
+        }
+
+        public async Task DeleteUserFile(string username)
+        {
+            await firebaseStorage
+                 .Child("Users")
+                 .Child(username)
+                 .DeleteAsync();
+
+        }
 
 
 
@@ -558,6 +591,64 @@ namespace FullSteamAheadMVP0Project.Models
         {
             Dictionary<string, User> allUserRequests = await GetUserRequests(team);
             return allUserRequests.ContainsKey(user.Username);
+        }
+
+        public async Task<string> UploadTeamFile(Stream fileStream, string username)
+        {
+            var imageUrl = await firebaseStorage
+                .Child("Teams")
+                .Child(username)
+                .Child("profile")
+                .PutAsync(fileStream);
+            return imageUrl;
+        }
+
+        public async Task<string> GetTeamFile(string username)
+        {
+            return await firebaseStorage
+                .Child("Teams")
+                .Child(username)
+                .Child("profile")
+                .GetDownloadUrlAsync();
+        }
+
+        public async Task DeleteTeamFile(string username)
+        {
+            await firebaseStorage
+                 .Child("Teams")
+                 .Child(username)
+                 .Child("profile")
+                 .DeleteAsync();
+
+        }
+
+        public async Task<string> UploadTeamAdminFile(Stream fileStream, string teamusername, string adminusername)
+        {
+            var imageUrl = await firebaseStorage
+                .Child("Teams")
+                .Child(teamusername)
+                .Child(adminusername)
+                .PutAsync(fileStream);
+            return imageUrl;
+        }
+
+        public async Task<string> GetTeamAdminFile(string teamusername, string adminusername)
+        {
+            return await firebaseStorage
+                .Child("Teams")
+                .Child(teamusername)
+                .Child(adminusername)
+                .GetDownloadUrlAsync();
+        }
+
+        public async Task DeleteTeamAdminFile(string teamusername, string adminusername)
+        {
+            await firebaseStorage
+                 .Child("Teams")
+                 .Child(teamusername)
+                 .Child(adminusername)
+                 .DeleteAsync();
+
         }
 
 

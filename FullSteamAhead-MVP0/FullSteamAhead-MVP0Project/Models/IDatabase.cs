@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using SQLite;
 
@@ -18,8 +19,11 @@ namespace FullSteamAheadMVP0Project.Models
         Task<Dictionary<string, Team>> GetTeamRequests(User user);     // returns team requests
         Task UpdateTeamRequests(User user);                            // updates Team_Requests list in database
         Task<bool> TeamRequestExists(User user, Team team);            // returns if Team username already exists in Team_Requests for a specific User
+        Task<string> UploadUserFile(Stream fileStream, string username);
+        Task<string> GetUserFile(string username);
+        Task DeleteUserFile(string username);
 
-  
+
 
         // Team methods
         Task<Team> GetTeamAsync(string username);                         // returns the Team that matches with the username
@@ -50,6 +54,12 @@ namespace FullSteamAheadMVP0Project.Models
         Task<Dictionary<string, User>> GetUserRequests(Team team);        // returns user requests
         Task UpdateUserRequests(Team team);                               // updates User_Requests list in database
         Task<bool> UserRequestExists(Team team, User user);               // returns if User username already exists in User_Requests for a specific Team
+        Task<string> UploadTeamFile(Stream fileStream, string username);
+        Task<string> GetTeamFile(string username);
+        Task DeleteTeamFile(string username);
+        Task<string> UploadTeamAdminFile(Stream fileStream, string teamusername, string adminusername);
+        Task<string> GetTeamAdminFile(string teamusername, string adminusername);
+        Task DeleteTeamAdminFile(string teamusername, string adminusername);
 
 
 
