@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="FullSteamAheadMVP0Project.Views.DisplayUserPage"
              BackgroundColor="AliceBlue">
 
@@ -33,19 +34,20 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        
-        <Image Source="BackgroundPicture"
+
+        <ff:CachedImage 
+               Source="{Binding username}"
                Grid.Column="1" 
                Grid.Row="0" 
                Grid.ColumnSpan="4"
-               HorizontalOptions="FillAndExpand"/>
+               HorizontalOptions="FillAndExpand"
+               BackgroundColor="Pink"
+               x:Name="Team_ProfilePicture"
+               DownsampleToViewSize="true">
+        </ff:CachedImage>
 
-        <Image Source="{Binding User_ProfilePicture}"
-               Grid.Column="0" 
-               Grid.Row="1" 
-               Grid.ColumnSpan="1"
-               Grid.RowSpan="2"/>
-        
+        <Label x:Name="lblPath"></Label>
+
         <Label Grid.Row="2"
                Grid.Column="1" 
                Grid.ColumnSpan="3">

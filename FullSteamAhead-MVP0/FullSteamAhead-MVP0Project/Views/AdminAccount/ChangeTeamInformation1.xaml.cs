@@ -7,12 +7,42 @@ using System.ComponentModel;
 using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Media.Abstractions;
 
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeTeamInformation1 : ContentPage
     {
+
+
+        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _teamusername;
+        public string teamusername
+        {
+            get
+            {
+                return _teamusername;
+            }
+            set
+            {
+                _teamusername = value;
+                var args = new PropertyChangedEventArgs(nameof(teamusername));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+
         public CreateTeamAccountViewModel createTeamAccountViewModel { get; set; }
 
         public ChangeTeamInformation1()
@@ -22,6 +52,7 @@ namespace FullSteamAheadMVP0Project.Views
             createTeamAccountViewModel = new CreateTeamAccountViewModel(this.Navigation);
             createTeamAccountViewModel.PropertyChanged += CreateTeamAccountViewModel_PropertyChanged;
             this.BindingContext = createTeamAccountViewModel;
+
         }
 
         private async void Back1(object sender, EventArgs e)

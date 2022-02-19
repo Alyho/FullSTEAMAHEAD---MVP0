@@ -22,12 +22,11 @@ public partial class CreateStudentAccount : ContentPage
         public MainPageViewModel mainPageViewModel { get; set; }
         public Xamarin.Forms.EditorAutoSizeOption AutoSize { get; set; }
 
-
+        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+        MediaFile file;
         public CreateStudentAccount()
         {
 
-            //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
-            MediaFile file;
             InitializeComponent();
 
             mainPageViewModel = new MainPageViewModel(this.Navigation);
@@ -107,7 +106,7 @@ public partial class CreateStudentAccount : ContentPage
         //        Debug.WriteLine(ex.Message);
         //    }
 
-        //    await firebaseStorageHelper.UploadFile(file.GetStream(), Username.Text);
+        //    await firebaseStorageHelper.UploadFile(file.GetStream(), username.Text);
 
         //}
 

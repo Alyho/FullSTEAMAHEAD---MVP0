@@ -7,12 +7,40 @@ using System.ComponentModel;
 using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Media.Abstractions;
 
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeUserInformation1 : ContentPage
     {
+
+        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _username;
+        public string username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                _username = value;
+                var args = new PropertyChangedEventArgs(nameof(username));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+
         public MainPageViewModel mainPageViewModel { get; set; }
 
         public ChangeUserInformation1()

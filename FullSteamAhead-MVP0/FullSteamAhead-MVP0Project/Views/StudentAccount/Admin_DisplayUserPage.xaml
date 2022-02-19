@@ -22,16 +22,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="BackgroundPicture"
-               Grid.Column="0" 
-               Grid.Row="0" 
-               Grid.ColumnSpan="4"/>
-
         <Image Source="{Binding Admin_ProfilePicture}"
                Grid.Column="0" 
-               Grid.Row="1" 
-               Grid.ColumnSpan="1"
-               Grid.RowSpan="2"/>
+               Grid.Row="0" 
+               Grid.ColumnSpan="4"
+               BackgroundColor="Pink"/>
 
         <Label Grid.Row="1"
                Grid.Column="1" 

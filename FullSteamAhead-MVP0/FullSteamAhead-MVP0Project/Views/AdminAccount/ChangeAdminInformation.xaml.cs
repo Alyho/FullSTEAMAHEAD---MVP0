@@ -8,12 +8,40 @@ using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using Plugin.Media.Abstractions;
 
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeAdminInformation : ContentPage
     {
+
+        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _adminusername;
+        public string adminusername
+        {
+            get
+            {
+                return _adminusername;
+            }
+            set
+            {
+                _adminusername = value;
+                var args = new PropertyChangedEventArgs(nameof(adminusername));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         public CreateTeamAccountViewModel createTeamAccountViewModel { get; set; }
 
         public ChangeAdminInformation()

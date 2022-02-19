@@ -1,20 +1,53 @@
 ﻿using FullSteamAheadMVP0Project.Models;
 using FullSteamAheadMVP0Project.ViewModels;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
+using System.Diagnostics;
+using System.IO;
+using Plugin.Media;
+using Firebase.Storage;
 
 namespace FullSteamAheadMVP0Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DisplayTeamInformation : ContentPage
     {
+
+
+        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _teamusername;
+        public string teamusername {
+            get
+            {
+                return _teamusername;
+            }
+            set
+            {
+                _teamusername = value;
+                var args = new PropertyChangedEventArgs(nameof(teamusername));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+
+
         public DisplayTeamInformationViewModel displayTeamInformation { get; set; }
         public DisplayTeamInformation(Team team)
         {

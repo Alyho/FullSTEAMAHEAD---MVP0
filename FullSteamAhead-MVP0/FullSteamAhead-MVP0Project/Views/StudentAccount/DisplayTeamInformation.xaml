@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              x:Class="FullSteamAheadMVP0Project.Views.DisplayTeamInformation"
              BackgroundColor="AliceBlue">
@@ -34,17 +35,34 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="BackgroundPicture"
+        <!--<Image Source="BackgroundPicture"
                Grid.Row="0" 
                Grid.ColumnSpan="4"
                Grid.Column="1"
-               HorizontalOptions="FillAndExpand"/>
+               HorizontalOptions="FillAndExpand"/>-->
 
-        <Image Source="{Binding Team_ProfilePicture}"
-               Grid.Column="0" 
-               Grid.Row="1" 
-               Grid.ColumnSpan="1"
-               Grid.RowSpan="2"/>
+        <!--<Image Source="{Binding Team_ProfilePicture}"
+               Grid.Column="1" 
+               Grid.Row="0" 
+               Grid.ColumnSpan="4"
+               HorizontalOptions="FillAndExpand"
+               BackgroundColor="Pink"
+               x:Name="Team_ProfilePicture"
+               DownloadsampleToViewSize="true"/>-->
+
+        <ff:CachedImage 
+               Source="{Binding teamusername}"
+               Grid.Column="1" 
+               Grid.Row="0" 
+               Grid.ColumnSpan="4"
+               HorizontalOptions="FillAndExpand"
+               BackgroundColor="Pink"
+               x:Name="Team_ProfilePicture"
+               DownsampleToViewSize="true">
+        </ff:CachedImage>
+
+        <Label x:Name="lblPath"> </Label>
+
 
         <Label Grid.Row="2"
                Grid.Column="1" 

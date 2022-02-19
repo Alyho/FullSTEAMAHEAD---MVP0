@@ -1,5 +1,6 @@
 ﻿using FullSteamAheadMVP0Project.Models;
 using FullSteamAheadMVP0Project.ViewModels;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,32 @@ namespace FullSteamAheadMVP0Project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DisplayUserPage : ContentPage
     {
+
+        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private string _username;
+        public string username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                _username = value;
+                var args = new PropertyChangedEventArgs(nameof(username));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
         public DisplayUserPageViewModel displayUserPage { get; set; }
 
         public DisplayUserPage(User user)
