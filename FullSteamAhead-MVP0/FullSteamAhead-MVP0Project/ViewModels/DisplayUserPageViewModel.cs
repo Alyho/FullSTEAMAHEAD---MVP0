@@ -109,6 +109,24 @@ namespace FullSteamAheadMVP0Project.ViewModels
             }
         }
 
+        private string _profile;
+
+
+        public string User_Profile
+        {
+            get
+            {
+                return _profile;
+            }
+            set
+            {
+                _profile = value;
+                var args = new PropertyChangedEventArgs(nameof(User_Profile));
+                PropertyChanged?.Invoke(this, args);
+
+            }
+        }
+
         public DisplayUserPageViewModel(User user)
         {
             _user = user;
@@ -123,6 +141,13 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     InviteText = "Invite";
                 }
+
+                string path = await App.Database.GetUserFile(user.Username);
+                if (path != null)
+                {
+                   User_Profile = path;
+                }
+
             }));
 
             InviteUserCommand = new Command(async () =>

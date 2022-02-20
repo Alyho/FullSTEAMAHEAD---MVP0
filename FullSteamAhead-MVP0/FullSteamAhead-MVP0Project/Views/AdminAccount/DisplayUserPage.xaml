@@ -36,7 +36,7 @@
 
 
         <ff:CachedImage 
-               Source="{Binding username}"
+               Source="{Binding User_Profile}"
                Grid.Column="1" 
                Grid.Row="0" 
                Grid.ColumnSpan="4"

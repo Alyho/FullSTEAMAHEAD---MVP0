@@ -17,6 +17,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
         private bool _noEmail;
         private bool _userOnTeam;
         private string _RequestText;
+        private string _profile;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -105,6 +106,20 @@ namespace FullSteamAheadMVP0Project.ViewModels
             }
         }
 
+        public string Team_Profile
+        {
+            get
+            {
+                return _profile;
+            }
+            set
+            {
+                _profile = value;
+                var args = new PropertyChangedEventArgs(nameof(_profile));
+                PropertyChanged?.Invoke(this, args);
+            }
+        }
+
         public Command RequestToJoinTeamCommand { get; }
 
         public DisplayTeamInformationViewModel(Team team)
@@ -121,6 +136,14 @@ namespace FullSteamAheadMVP0Project.ViewModels
                 {
                     RequestText = "Request";
                 }
+
+
+                string path = await App.Database.GetTeamFile(team.Team_Username);
+                if (path != null)
+                {
+                    Team_Profile = path;
+                }
+
             }));
             
             

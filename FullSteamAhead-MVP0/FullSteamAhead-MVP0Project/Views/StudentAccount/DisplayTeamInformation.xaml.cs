@@ -21,8 +21,6 @@ namespace FullSteamAheadMVP0Project.Views
     public partial class DisplayTeamInformation : ContentPage
     {
 
-
-        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
         MediaFile file;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -55,6 +53,7 @@ namespace FullSteamAheadMVP0Project.Views
             displayTeamInformation = new DisplayTeamInformationViewModel(team);
             displayTeamInformation.PropertyChanged += DisplayTeamInformationViewModel_PropertyChanged;
             this.BindingContext = displayTeamInformation;
+
         }
 
         private async void DisplayTeamInformationViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

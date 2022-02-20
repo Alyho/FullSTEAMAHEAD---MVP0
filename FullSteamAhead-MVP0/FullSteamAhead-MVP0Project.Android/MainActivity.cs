@@ -15,6 +15,9 @@ namespace FullSteamAheadMVP0.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

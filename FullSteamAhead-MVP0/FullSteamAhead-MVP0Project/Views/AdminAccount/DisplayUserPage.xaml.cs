@@ -22,20 +22,6 @@ namespace FullSteamAheadMVP0Project.Views
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string _username;
-        public string username
-        {
-            get
-            {
-                return _username;
-            }
-            set
-            {
-                _username = value;
-                var args = new PropertyChangedEventArgs(nameof(username));
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
 
         protected async override void OnAppearing()
         {
@@ -50,6 +36,8 @@ namespace FullSteamAheadMVP0Project.Views
             displayUserPage = new DisplayUserPageViewModel(user);
             displayUserPage.PropertyChanged += DisplayUserPageViewModel_PropertyChanged;
             this.BindingContext = displayUserPage;
+
+          
         }
 
         private async void DisplayUserPageViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)

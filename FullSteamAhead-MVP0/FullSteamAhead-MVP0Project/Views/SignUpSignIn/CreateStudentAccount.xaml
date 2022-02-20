@@ -227,9 +227,12 @@
                Grid.Column="0" 
                Grid.Row="10"/>
 
+            <Image x:Name="imgChoosed" HeightRequest="150"></Image>
+
             <Button x:Name="btnUpload"  TextColor="LightSlateGray" 
                 FontSize="20" CornerRadius="20"
-                BackgroundColor="White"  WidthRequest="100" Text="Upload" Grid.Row="10" Grid.Column="1"/> <!--Clicked ="BtnUpload_Clicked"--> 
+                BackgroundColor="White"  WidthRequest="100" Text="Upload" Grid.Row="10" Grid.Column="1"
+                    Clicked ="BtnUpload_Clicked" />
 
             <Button Margin="2" 
                 Grid.Row="11" 

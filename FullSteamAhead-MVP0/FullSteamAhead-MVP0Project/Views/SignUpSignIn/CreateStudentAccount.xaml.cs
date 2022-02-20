@@ -42,8 +42,9 @@ public partial class CreateStudentAccount : ContentPage
             {
                 if (mainPageViewModel.UserCreated)
                 {
-                    
+
                     //if checkbox is checked:  
+                    await App.Database.UploadUserFile(file.GetStream(), Global.UserSignedIn.Username);
                     await Navigation.PushAsync(new Homepage());
                 }
 
@@ -83,32 +84,30 @@ public partial class CreateStudentAccount : ContentPage
             }
         }
 
-        //private async void BtnUpload_Clicked(object sender, EventArgs e)
-        //{
+        private async void BtnUpload_Clicked(object sender, EventArgs e)
+        {
 
-        //    await CrossMedia.Current.Initialize();
-        //    try
-        //    {
-        //        file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-        //        {
-        //            PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
-        //        });
-        //        if (file == null)
-        //            return;
-        //        imgChoosed.Source = ImageSource.FromStream(() =>
-        //        {
-        //            var imageStram = file.GetStream();
-        //            return imageStram;
-        //        });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex.Message);
-        //    }
+            await CrossMedia.Current.Initialize();
+            try
+            {
+                file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+                });
+                if (file == null)
+                    return;
+                imgChoosed.Source = ImageSource.FromStream(() =>
+                {
+                    var imageStram = file.GetStream();
+                    return imageStram;
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
 
-        //    await firebaseStorageHelper.UploadFile(file.GetStream(), username.Text);
-
-        //}
+        }
 
         void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
         {
