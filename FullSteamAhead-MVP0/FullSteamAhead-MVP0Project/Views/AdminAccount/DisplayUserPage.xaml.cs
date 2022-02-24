@@ -17,7 +17,6 @@ namespace FullSteamAheadMVP0Project.Views
     public partial class DisplayUserPage : ContentPage
     {
 
-        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
         MediaFile file;
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="FullSteamAheadMVP0Project.Views.Homepage"
              BackgroundColor="AliceBlue">
 
@@ -105,65 +106,94 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label LineBreakMode="WordWrap"
+                        <ViewCell.View>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27*"></RowDefinition>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
                                    VerticalOptions="FillAndExpand"
-                                   FontSize="20">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Username: " />
-                                        <Span Text="{Binding Team_Username}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label LineBreakMode="WordWrap"
+                                   FontSize="20"
+                                       Grid.Column="1" 
+                                       Grid.Row="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Username: " />
+                                                <Span Text="{Binding Team_Username}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   FontSize="20" VerticalOptions="FillAndExpand">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Bio: " />
-                                        <Span Text="{Binding Team_Information.Bio}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label LineBreakMode="WordWrap"
+                                   FontSize="20" VerticalOptions="FillAndExpand" Grid.Column="1" 
+                                       Grid.Row="4">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Bio: " />
+                                                <Span Text="{Binding Team_Information.Bio}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="20">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Gender: " />
-                                        <Span Text="{Binding Team_Information.Gender}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label LineBreakMode="WordWrap"
+                                   VerticalOptions="FillAndExpand" FontSize="20" Grid.Column="1" 
+                                       Grid.Row="2">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="Gender: " />
+                                                <Span Text="{Binding Team_Information.Gender}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="20">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="City: " />
-                                        <Span Text="{Binding Team_Information.City}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label LineBreakMode="WordWrap"
+                                   VerticalOptions="FillAndExpand" FontSize="20" Grid.Column="1" 
+                                       Grid.Row="3">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="City: " />
+                                                <Span Text="{Binding Team_Information.City}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="State: " FontSize="20"/>
-                                        <Span Text="{Binding Team_Information.State}" FontSize="20"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Image Source="{Binding Team_ProfilePicture}"/>
-                        </StackLayout>
+                                   VerticalOptions="FillAndExpand" Grid.Column="1" 
+                                       Grid.Row="1">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="State: " FontSize="20"/>
+                                                <Span Text="{Binding Team_Information.State}" FontSize="20"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                <ff:CachedImage 
+                                       Source="{Binding Team_Profile}"
+                                       Grid.Column="0" 
+                                       Grid.Row="1" 
+                                       Grid.RowSpan="2"
+                                       BackgroundColor="Pink"
+                                       x:Name="Team_ProfilePicture"
+                                       DownsampleToViewSize="true">
+                                </ff:CachedImage>
+                            </Grid>
+                        </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

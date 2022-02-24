@@ -8,6 +8,8 @@ using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Media.Abstractions;
+using Plugin.Media;
+using System.Diagnostics;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -15,25 +17,34 @@ namespace FullSteamAheadMVP0Project.Views
     public partial class ChangeTeamInformation1 : ContentPage
     {
 
-
-        //FirebaseStorageModel firebaseStorageHelper = new FirebaseStorageModel();
+        public Xamarin.Forms.EditorAutoSizeOption AutoSize { get; set; }
         MediaFile file;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string _teamusername;
-        public string teamusername
+        private async void BtnUpload_Clicked(object sender, EventArgs e)
         {
-            get
+
+            await CrossMedia.Current.Initialize();
+            try
             {
-                return _teamusername;
+                file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+                });
+                if (file == null)
+                    return;
+                imgChoosed.Source = ImageSource.FromStream(() =>
+                {
+                    var imageStram = file.GetStream();
+                    return imageStram;
+                });
             }
-            set
+            catch (Exception ex)
             {
-                _teamusername = value;
-                var args = new PropertyChangedEventArgs(nameof(teamusername));
-                PropertyChanged?.Invoke(this, args);
+                Debug.WriteLine(ex.Message);
             }
+
         }
 
 

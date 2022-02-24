@@ -8,6 +8,9 @@ using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FullSteamAheadMVP0Project.Models;
+using Plugin.Media.Abstractions;
+using Plugin.Media;
+using System.Diagnostics;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -15,6 +18,10 @@ namespace FullSteamAheadMVP0Project.Views
     public partial class CreateTeamAccount : ContentPage
     {
         public CreateTeamAccountViewModel createTeamAccountViewModel { get; set; }
+
+        public Xamarin.Forms.EditorAutoSizeOption AutoSize { get; set; }
+        MediaFile file;
+
 
         public CreateTeamAccount()
         {
@@ -30,32 +37,30 @@ namespace FullSteamAheadMVP0Project.Views
             await Navigation.PushAsync(new SignUpPage());
         }
 
-        //private async void BtnUpload_Clicked(object sender, EventArgs e)
-        //{
+        private async void BtnUpload_Clicked(object sender, EventArgs e)
+        {
 
-        //    await CrossMedia.Current.Initialize();
-        //    try
-        //    {
-        //        file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-        //        {
-        //            PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
-        //        });
-        //        if (file == null)
-        //            return;
-        //        imgChoosed.Source = ImageSource.FromStream(() =>
-        //        {
-        //            var imageStram = file.GetStream();
-        //            return imageStram;
-        //        });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Debug.WriteLine(ex.Message);
-        //    }
+            await CrossMedia.Current.Initialize();
+            try
+            {
+                file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+                });
+                if (file == null)
+                    return;
+                imgChoosed.Source = ImageSource.FromStream(() =>
+                {
+                    var imageStram = file.GetStream();
+                    return imageStram;
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
 
-        //    await firebaseStorageHelper.UploadFile(file.GetStream(), Teamusername.Text);
-
-        //}
+        }
 
         private async void CreateTeamAccountViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -75,6 +80,7 @@ namespace FullSteamAheadMVP0Project.Views
                 else if (createTeamAccountViewModel.TeamCreated == 2)
                 {
                     await DisplayAlert("New Team", "New team account created", "OK");
+                    //await App.Database.UploadTeamFile(file.GetStream(), Global.TeamSignedIn.Team_Username);
                     await Navigation.PushAsync(new CreateTeamAccount2());
                 }
 

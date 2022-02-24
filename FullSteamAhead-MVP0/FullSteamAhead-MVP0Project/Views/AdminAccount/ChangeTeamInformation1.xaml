@@ -82,8 +82,8 @@
 
         <Button x:Name="btnUpload"  TextColor="LightSlateGray" 
                 FontSize="20" CornerRadius="20"
-                BackgroundColor="White"  WidthRequest="50" Text="Upload" Grid.Row="3" Grid.Column="2"/>
-        <!--Clicked ="BtnUpload_Clicked"-->
+                BackgroundColor="White"  WidthRequest="50" Text="Upload" Grid.Row="3" Grid.Column="2" Clicked ="BtnUpload_Clicked"/>
+
 
         <Button x:Name="btnDelete"  TextColor="LightSlateGray" 
                 FontSize="20" CornerRadius="20"
@@ -91,7 +91,7 @@
         <!--Clicked ="BtnDelete_Clicked"-->
 
         <ff:CachedImage 
-               Source="{Binding teamusername}"
+               Source="{Binding Team_Profile}"
                Grid.Column="1" 
                Grid.Row="3" 
                HorizontalOptions="FillAndExpand"
@@ -99,6 +99,9 @@
                x:Name="Team_ProfilePicture"
                DownsampleToViewSize="true">
         </ff:CachedImage>
+
+        <Image x:Name="imgChoosed" Grid.Row="3" Grid.Column="1"></Image>
+
 
         <Label x:Name="lblPath"></Label>
 

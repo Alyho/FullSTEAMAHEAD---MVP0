@@ -20,6 +20,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width=".6*"/>
+            <ColumnDefinition Width=".1*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Create Team Account" 
@@ -30,7 +32,7 @@
                Grid.Column="0" 
                Grid.Row="0"
                FontAttributes="Italic"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="3"/>
 
         <Entry Margin="2"   
                 Grid.Row="1" 
@@ -41,7 +43,7 @@
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
                 WidthRequest="230"
-               Grid.ColumnSpan="2"/>
+               Grid.ColumnSpan="3"/>
 
         <Entry Margin="2" 
                 Grid.Row="2" 
@@ -52,7 +54,7 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 WidthRequest="230"
-               Grid.ColumnSpan="2"
+               Grid.ColumnSpan="3"
                IsPassword="True"/>
 
         <Label Text="Team profile picture:"   
@@ -61,9 +63,12 @@
                Grid.Column="0" 
                Grid.Row="4"/>
 
+        <Image x:Name="imgChoosed" HeightRequest="150" Grid.Row="4" Grid.Column="2"></Image>
+
+
         <Button x:Name="btnUpload"  TextColor="LightSlateGray" 
                 FontSize="20" CornerRadius="20"
-                BackgroundColor="White"  WidthRequest="100" Text="Upload" Grid.Row="4" Grid.Column="1"/> <!--Clicked ="BtnUpload_Clicked"--> 
+                BackgroundColor="White"  WidthRequest="100" Text="Upload" Grid.Row="4" Grid.Column="1" Clicked ="BtnUpload_Clicked"/>
 
         <Button Margin="2" 
                 Grid.Row="5" 
@@ -73,7 +78,7 @@
                 BackgroundColor="AliceBlue" 
                 HorizontalOptions="Center"
                 Command ="{Binding CreateTeamCommand}"
-                Grid.Column="1"/>
+                Grid.Column="2"/>
 
         <Button Text="Back"
                 HorizontalOptions="Center"

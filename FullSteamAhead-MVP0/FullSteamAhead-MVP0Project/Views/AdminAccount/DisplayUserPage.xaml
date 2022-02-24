@@ -42,7 +42,7 @@
                Grid.ColumnSpan="4"
                HorizontalOptions="FillAndExpand"
                BackgroundColor="Pink"
-               x:Name="Team_ProfilePicture"
+               x:Name="User_ProfilePicture"
                DownsampleToViewSize="true">
         </ff:CachedImage>
 

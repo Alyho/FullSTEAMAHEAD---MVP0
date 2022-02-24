@@ -9,6 +9,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using FullSteamAheadMVP0Project.Models;
+using Plugin.Media.Abstractions;
+using Plugin.Media;
+using System.Diagnostics;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -16,6 +19,9 @@ namespace FullSteamAheadMVP0Project.Views
     public partial class CreateAdminAccount : ContentPage
     {
         public CreateTeamAccountViewModel createTeamAccountViewModel { get; set; }
+
+        public Xamarin.Forms.EditorAutoSizeOption AutoSize { get; set; }
+        MediaFile file;
 
         public CreateAdminAccount()
         {
@@ -37,6 +43,7 @@ namespace FullSteamAheadMVP0Project.Views
                 else 
                 {
                     await DisplayAlert("Success", "New Admin Created", "OK");
+                    //await App.Database.UploadTeamFile(file.GetStream(), Global.TeamSignedIn.Admin_Username);
                     await Navigation.PushAsync(new DisplayUser_Homepage());
                 }
             }
@@ -57,6 +64,31 @@ namespace FullSteamAheadMVP0Project.Views
                     Global.AdminSignedIn = null;
                 }
             }
+        }
+
+        private async void BtnUpload_Clicked(object sender, EventArgs e)
+        {
+
+            await CrossMedia.Current.Initialize();
+            try
+            {
+                file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+                });
+                if (file == null)
+                    return;
+                imgChoosed.Source = ImageSource.FromStream(() =>
+                {
+                    var imageStram = file.GetStream();
+                    return imageStram;
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
         }
 
         private async void Back_Button_Clicked(object sender, EventArgs e)

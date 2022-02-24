@@ -9,26 +9,28 @@
     <ScrollView>
         <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="107*"/>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="107*"/>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="90*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="120*"/>
-            <RowDefinition Height="120*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="7*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width=".2*"/>
+            <ColumnDefinition Width=".7*"/>
+            <ColumnDefinition Width=".4*"/>
+            <ColumnDefinition Width=".01*"/>
         </Grid.ColumnDefinitions>
 
         <Label Text="Create Student Account" 
@@ -37,7 +39,7 @@
                TextColor="LightSlateGray" 
                FontSize="29" 
                Grid.Row="0"
-               Grid.ColumnSpan="2"
+               Grid.ColumnSpan="3"
                FontAttributes="Italic"/>
 
         <Editor Margin="2"   
@@ -48,7 +50,7 @@
                 FontSize="20" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 AutoSize="TextChanges" 
                 WidthRequest="230"/>
 
@@ -60,7 +62,7 @@
                 FontSize="20" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 WidthRequest="230"/>
 
         <Editor Margin="2"   
@@ -71,7 +73,7 @@
                 FontSize="20" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 WidthRequest="230"/>
         
         <Entry Margin="2" 
@@ -82,7 +84,7 @@
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 WidthRequest="230"
                 IsPassword="True"/>
         
@@ -94,7 +96,7 @@
                 FontSize="20" 
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 WidthRequest="230"/>
 
         <Picker x:Name="State"
@@ -104,7 +106,7 @@
                 Grid.Row="6"
                 WidthRequest="230"
                 SelectedItem="{Binding State}"
-                Grid.ColumnSpan="2">
+                Grid.ColumnSpan="3">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Alabama</x:String>
@@ -169,7 +171,7 @@
                 FontSize="20" 
                 BackgroundColor="White"  
                 HorizontalOptions="Center"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 WidthRequest="230"/>
 
         <Picker x:Name="Role"
@@ -227,7 +229,7 @@
                Grid.Column="0" 
                Grid.Row="10"/>
 
-            <Image x:Name="imgChoosed" HeightRequest="150"></Image>
+            <Image x:Name="imgChoosed" Grid.Row="10" Grid.Column="2"></Image>
 
             <Button x:Name="btnUpload"  TextColor="LightSlateGray" 
                 FontSize="20" CornerRadius="20"

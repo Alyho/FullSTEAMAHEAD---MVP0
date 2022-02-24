@@ -25,19 +25,6 @@ namespace FullSteamAheadMVP0Project.Views
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string _teamusername;
-        public string teamusername {
-            get
-            {
-                return _teamusername;
-            }
-            set
-            {
-                _teamusername = value;
-                var args = new PropertyChangedEventArgs(nameof(teamusername));
-                PropertyChanged?.Invoke(this, args);
-            }
-        }
 
         protected async override void OnAppearing()
         {
