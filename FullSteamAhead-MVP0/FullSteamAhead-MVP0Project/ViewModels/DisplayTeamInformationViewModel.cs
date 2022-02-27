@@ -115,7 +115,7 @@ namespace FullSteamAheadMVP0Project.ViewModels
             set
             {
                 _profile = value;
-                var args = new PropertyChangedEventArgs(nameof(_profile));
+                var args = new PropertyChangedEventArgs(nameof(Team_Profile));
                 PropertyChanged?.Invoke(this, args);
             }
         }

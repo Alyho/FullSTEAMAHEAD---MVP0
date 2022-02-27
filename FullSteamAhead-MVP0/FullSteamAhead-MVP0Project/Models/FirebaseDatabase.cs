@@ -605,11 +605,19 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<string> GetTeamFile(string username)
         {
-            return await firebaseStorage
+            try
+            {
+                return await firebaseStorage
                 .Child("Teams")
                 .Child(username)
                 .Child("profile")
                 .GetDownloadUrlAsync();
+            }
+            catch
+            {
+                return null;
+            }
+            
         }
 
         public async Task DeleteTeamFile(string username)

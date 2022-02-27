@@ -43,7 +43,7 @@ namespace FullSteamAheadMVP0Project.Views
                 else 
                 {
                     await DisplayAlert("Success", "New Admin Created", "OK");
-                    //await App.Database.UploadTeamFile(file.GetStream(), Global.TeamSignedIn.Admin_Username);
+                    await App.Database.UploadTeamAdminFile(file.GetStream(), Global.TeamSignedIn.Team_Username, Global.AdminSignedIn.Username);
                     await Navigation.PushAsync(new DisplayUser_Homepage());
                 }
             }

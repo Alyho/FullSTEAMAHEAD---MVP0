@@ -210,6 +210,7 @@
             </Picker.ItemsSource>
         </Picker>
 
+
         <!-- <Label Text="Public teams are available to all searching members. Private teams will be invite only and will not be searchable." 
                TextColor="LightSlateGray" 
                FontSize="14" 
@@ -245,7 +246,7 @@
                 BackgroundColor="White" 
                 HorizontalOptions="Center"
                 Grid.ColumnSpan="4"/> -->
-         
+
         <Button Margin="2" 
                 Grid.Row="9" 
                 Text="Next" CornerRadius="11" 

@@ -8,6 +8,9 @@ using FullSteamAheadMVP0Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FullSteamAheadMVP0Project.Models;
+using Plugin.Media.Abstractions;
+using Plugin.Media;
+using System.Diagnostics;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -15,7 +18,7 @@ namespace FullSteamAheadMVP0Project.Views
     public partial class CreateTeamAccount2 : ContentPage
     {
         public CreateTeamAccountViewModel createTeamAccountViewModel { get; set; }
-
+        MediaFile file;
         public CreateTeamAccount2()
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace FullSteamAheadMVP0Project.Views
                 }
             }
 
-            if (e.PropertyName == "NoIntAge")
+            else if (e.PropertyName == "NoIntAge")
             {
                 if (createTeamAccountViewModel.NoIntAge)
                 {

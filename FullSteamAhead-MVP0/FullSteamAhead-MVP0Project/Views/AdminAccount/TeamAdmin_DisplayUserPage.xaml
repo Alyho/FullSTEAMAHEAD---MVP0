@@ -27,7 +27,7 @@
                Grid.Row="0" 
                Grid.ColumnSpan="4"/>
 
-        <Image Source="{Binding Admin_ProfilePicture}"
+        <Image Source="{Binding Admin_Profile}"
                Grid.Column="0" 
                Grid.Row="1" 
                Grid.ColumnSpan="1"

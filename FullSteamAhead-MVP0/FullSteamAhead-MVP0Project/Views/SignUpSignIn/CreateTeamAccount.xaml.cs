@@ -80,7 +80,15 @@ namespace FullSteamAheadMVP0Project.Views
                 else if (createTeamAccountViewModel.TeamCreated == 2)
                 {
                     await DisplayAlert("New Team", "New team account created", "OK");
-                    //await App.Database.UploadTeamFile(file.GetStream(), Global.TeamSignedIn.Team_Username);
+                    if (await App.Database.GetTeamFile(Global.TeamSignedIn.Team_Username) != null)
+                    {
+                        await App.Database.DeleteTeamFile(Global.TeamSignedIn.Team_Username);
+                    }
+                    else
+                    {
+                        await App.Database.UploadTeamFile(file.GetStream(), Global.TeamSignedIn.Team_Username);
+                    }
+
                     await Navigation.PushAsync(new CreateTeamAccount2());
                 }
 
