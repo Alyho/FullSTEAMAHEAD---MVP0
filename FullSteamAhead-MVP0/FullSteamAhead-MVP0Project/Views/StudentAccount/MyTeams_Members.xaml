@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              mc:Ignorable="d"
              x:Class="FullSteamAheadMVP0Project.Views.MyTeams_Members"
              BackgroundColor="AliceBlue">
@@ -76,7 +77,14 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Image Source="{Binding User_ProfilePicture}"/>
+                            <ff:CachedImage 
+                                       Source="{Binding User_Profile}"
+                                       Grid.Column="0" 
+                                       Grid.Row="1" 
+                                       Grid.RowSpan="2"
+                                       BackgroundColor="Pink"
+                                       DownsampleToViewSize="true">
+                            </ff:CachedImage>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -120,7 +128,14 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Image Source="{Binding User_ProfilePicture}"/>
+                            <ff:CachedImage 
+                                       Source="{Binding User_Profile}"
+                                       Grid.Column="0" 
+                                       Grid.Row="1" 
+                                       Grid.RowSpan="2"
+                                       BackgroundColor="Pink"
+                                       DownsampleToViewSize="true">
+                            </ff:CachedImage>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

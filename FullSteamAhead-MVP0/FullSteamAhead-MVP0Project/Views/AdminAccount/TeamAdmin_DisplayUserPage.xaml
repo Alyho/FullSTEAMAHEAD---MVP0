@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="FullSteamAheadMVP0Project.Views.TeamAdmin_DisplayUserPage"
              BackgroundColor="AliceBlue">
 
@@ -22,16 +23,18 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Image Source="BackgroundPicture"
+        <ff:CachedImage 
+               Source="{Binding User_Profile}"
                Grid.Column="0" 
                Grid.Row="0" 
-               Grid.ColumnSpan="4"/>
+               Grid.ColumnSpan="4"
+               HorizontalOptions="FillAndExpand"
+               BackgroundColor="Pink"
+               x:Name="User_ProfilePicture"
+               DownsampleToViewSize="true">
+        </ff:CachedImage>
 
-        <Image Source="{Binding Admin_Profile}"
-               Grid.Column="0" 
-               Grid.Row="1" 
-               Grid.ColumnSpan="1"
-               Grid.RowSpan="2"/>
+        <Label x:Name="lblPath"></Label>
 
         <Label Grid.Row="1"
                Grid.Column="1" 

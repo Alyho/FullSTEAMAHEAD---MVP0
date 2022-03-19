@@ -1,6 +1,8 @@
 ﻿using FullSteamAheadMVP0Project.Models;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +21,15 @@ namespace FullSteamAheadMVP0Project.Views
 
             BindingContext = new DisplayUser_HomePageViewModel();
 
+        }
+
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
         }
 
         private async void searchResults_ItemTapped(object sender, ItemTappedEventArgs e)

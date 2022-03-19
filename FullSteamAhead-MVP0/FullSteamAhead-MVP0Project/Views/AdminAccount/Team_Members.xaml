@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="FullSteamAheadMVP0Project.Views.Team_Members"
              BackgroundColor="AliceBlue">
 
@@ -47,9 +48,12 @@
                   Grid.Row="2" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding AdminsListView}"
-                  HorizontalOptions="Center"
                   HasUnevenRows="True"                                    
-                  ItemTapped="Admins_ItemTapped">
+                  ItemTapped="Admins_ItemTapped"
+                  HorizontalOptions="Center"
+                  SeparatorVisibility="Default"
+                  SeparatorColor="Black"
+                  Margin="10, 10, 10, 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -58,32 +62,57 @@
                       CommandParameter="{Binding .}"
                       Text="Delete admin" IsDestructive="True" />
                         </ViewCell.ContextActions>
-                        <StackLayout>
-                            <Label LineBreakMode="WordWrap"
+                        <ViewCell.View>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27*"></RowDefinition>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label LineBreakMode="WordWrap"
                                    MaxLines="10"
                                    HorizontalOptions="FillAndExpand"
                                    VerticalOptions="FillAndExpand"
-                                   FontSize="18">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Name: " />
-                                        <Span Text="{Binding Nickname}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label LineBreakMode="WordWrap"
-                                   MaxLines="10"
+                                   FontSize="20"
+                                       Grid.Column="1" 
+                                       Grid.Row="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Username: " />
+                                            <Span Text="{Binding Username}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label LineBreakMode="WordWrap"
+                                   MaxLines="10" FontSize="20"
                                    HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="18">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Username: " />
-                                        <Span Text="{Binding Username}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Image Source="{Binding User_ProfilePicture}"/>
-                        </StackLayout>
+                                   VerticalOptions="FillAndExpand" Grid.Column="1" 
+                                       Grid.Row="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Name: " />
+                                            <Span Text="{Binding Nickname}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <ff:CachedImage 
+                                       Source="{Binding User_Profile}"
+                                       Grid.Column="0" 
+                                       Grid.Row="1" 
+                                       Grid.RowSpan="2"
+                                       BackgroundColor="Pink"
+                                       x:Name="Team_ProfilePicture"
+                                       DownsampleToViewSize="true">
+                                </ff:CachedImage>
+                            </Grid>
+                        </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -98,45 +127,80 @@
                Grid.Row="3"
                Grid.ColumnSpan="4"/>
 
-        <ListView x:Name="Members"
-                  Grid.Column="0" 
-                  Grid.Row="4" 
+        <ListView x:Name="Members" 
+                  Grid.Row="2" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
+                  HasUnevenRows="True"                                    
+                  ItemTapped="Admins_ItemTapped"
                   HorizontalOptions="Center"
-                  HasUnevenRows="True"
-                  ItemTapped="Members_ItemTapped">
+                  SeparatorVisibility="Default"
+                  SeparatorColor="Black"
+                  Margin="10, 10, 10, 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem Clicked="OnDelete2"
                       CommandParameter="{Binding .}"
-                      Text="Delete user" IsDestructive="True" />
+                      Text="Delete admin" IsDestructive="True" />
                         </ViewCell.ContextActions>
-                        <StackLayout>
-                            <Label FontSize="18">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Name: " />
-                                        <Span Text="{Binding Nickname}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label FontSize="18">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Username: " />
-                                        <Span Text="{Binding Username}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Image Source="{Binding User_ProfilePicture}"/>
-                        </StackLayout>
+                        <ViewCell.View>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27"></RowDefinition>
+                                    <RowDefinition Height="27*"></RowDefinition>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   FontSize="20"
+                                       Grid.Column="1" 
+                                       Grid.Row="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Username: " />
+                                            <Span Text="{Binding Username}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label LineBreakMode="WordWrap"
+                                   MaxLines="10" FontSize="20"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand" Grid.Column="1" 
+                                       Grid.Row="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Name: " />
+                                            <Span Text="{Binding Nickname}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <ff:CachedImage 
+                                       Source="{Binding User_Profile}"
+                                       Grid.Column="0" 
+                                       Grid.Row="1" 
+                                       Grid.RowSpan="2"
+                                       BackgroundColor="Pink"
+                                       x:Name="Team_ProfilePicture"
+                                       DownsampleToViewSize="true">
+                                </ff:CachedImage>
+                            </Grid>
+                        </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
 
         <Button Grid.Column="0" Grid.Row="5" Text="Chat" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="13" Clicked="Chat_Button_CLicked"/>
         <Button Grid.Column="1" Grid.Row="5" Text="Announce-ments" CornerRadius="3" HorizontalOptions="EndAndExpand" FontSize="12" Clicked="Announcements_Button_CLicked"/>

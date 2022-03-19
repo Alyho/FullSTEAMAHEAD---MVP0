@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Media.Abstractions;
+using System.ComponentModel;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -19,6 +21,15 @@ public partial class MyTeams_Members : ContentPage
         InitializeComponent();
         BindingContext = new MembersViewModel();
     }
+
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
 
         private async void Members_ItemTapped(object sender, ItemTappedEventArgs e)
         {

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Media.Abstractions;
+using System.ComponentModel;
 
 namespace FullSteamAheadMVP0Project.Views
 {
@@ -16,6 +18,15 @@ namespace FullSteamAheadMVP0Project.Views
     {
         public Admin_DisplayUserPage()
         {
+        }
+
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
         }
 
         public Admin_DisplayUserPage(Admin admin)
