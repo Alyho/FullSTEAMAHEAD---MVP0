@@ -21,8 +21,28 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public ObservableCollection<Team> list { get; }
-    public ObservableCollection<Team> myList { get; }
+    private TeamEx CopyTeam (Team team)
+    {
+        var t = new TeamEx();
+        t.Mentors = team.Mentors;
+        t.Students = team.Students;
+        t.Team_Admins = team.Team_Admins;
+        t.Team_Information = team.Team_Information;
+        t.Team_Nickname = team.Team_Nickname;
+        t.Team_Password = team.Team_Password;
+        t.Team_Username = team.Team_Username;
+        t.Announcements = team.Announcements;
+        t.User_Requests = team.User_Requests;
+        Task.Run(new System.Action(async () =>
+        {
+            t.ImageFilePath = await App.Database.GetTeamFile(t.Team_Username);
+        }));
+
+        return t;
+    }
+
+    public ObservableCollection<TeamEx> list { get; }
+    public ObservableCollection<TeamEx> myList { get; }
     public Command MyTeamsCommand { get; }
 
     public ICommand SearchCommand => new Command<string>(async (string query) =>
@@ -35,7 +55,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
             list.Clear();
             foreach (var team in teams)
             {
-                list.Add(team);
+                list.Add(CopyTeam(team));
             }
             TeamListView = list;
         }
@@ -43,8 +63,8 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 
 
 
-    private ObservableCollection<Team> _TeamListView;
-    public ObservableCollection<Team> TeamListView
+    private ObservableCollection<TeamEx> _TeamListView;
+    public ObservableCollection<TeamEx> TeamListView
     {
         get
         {
@@ -140,7 +160,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 
             foreach (var team in teams)
             {
-                list.Add(team);
+                list.Add(CopyTeam(team));
             }
 
             if (list != null)
@@ -153,8 +173,8 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
 
     public HomePageViewModel(INavigation Navigation)
     {
-        list = new ObservableCollection<Team>();
-        myList = new ObservableCollection<Team>();
+        list = new ObservableCollection<TeamEx>();
+        myList = new ObservableCollection<TeamEx>();
         _navigation = Navigation;
 
 
@@ -166,7 +186,7 @@ public class HomePageViewModel : ContentPage, INotifyPropertyChanged
             var teamBest = App.Database.FilterBestTeamResults(teams, Global.UserSignedIn);
             foreach (var team in teamBest)
             {
-                list.Add(team);
+                list.Add(CopyTeam(team));
             }
 
             if (list != null)

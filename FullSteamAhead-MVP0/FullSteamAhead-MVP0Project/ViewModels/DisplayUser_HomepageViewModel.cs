@@ -17,8 +17,25 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+    private UserEx CopyUser(User user)
+    {
+        var u = new UserEx();
+        u.Email = user.Email;
+        u.Information = user.Information;
+        u.Nickname = user.Nickname;
+        u.Password = user.Password;
+        u.Team_Requests = user.Team_Requests;
+        u.Username = user.Username;
+       
+        Task.Run(new System.Action(async () =>
+        {
+            u.ImageFilePath = await App.Database.GetUserFile(u.Username);
+        }));
 
-    public ObservableCollection<User> list { get; }
+        return u;
+    }
+
+    public ObservableCollection<UserEx> list { get; }
 
     public ICommand SearchUserCommand => new Command<string>(async (string query) =>
     {
@@ -30,14 +47,14 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
             list.Clear();
             foreach (var user in users)
             {
-                list.Add(user);
+                list.Add(CopyUser(user));
             }
             UserListView = list;
         }
     });
 
-    private ObservableCollection<User> _UserListView;
-    public ObservableCollection<User> UserListView
+    private ObservableCollection<UserEx> _UserListView;
+    public ObservableCollection<UserEx> UserListView
     {
         get
         {
@@ -155,7 +172,7 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 
             foreach (var user in users)
             {
-                list.Add(user);
+                list.Add(CopyUser(user));
             }
 
             if (list != null)
@@ -169,7 +186,7 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 
     public DisplayUser_HomePageViewModel()
     {   
-        list = new ObservableCollection<User>();
+        list = new ObservableCollection<UserEx>();
         
         Task.Run(new System.Action(async () =>
         {
@@ -180,7 +197,7 @@ public class DisplayUser_HomePageViewModel : INotifyPropertyChanged
 
             foreach (var user in userBest)
             {
-                list.Add(user);
+                list.Add(CopyUser(user));
             }
             UserListView = list;
         }));

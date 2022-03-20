@@ -184,7 +184,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <ff:CachedImage 
-                                       Source="{Binding User_Profile}"
+                                       Source="{Binding ImageFilePath}"
                                        Grid.Column="0" 
                                        Grid.Row="1" 
                                        Grid.RowSpan="2"

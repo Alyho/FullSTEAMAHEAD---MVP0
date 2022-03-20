@@ -236,10 +236,19 @@ namespace FullSteamAheadMVP0Project.Models
 
         public async Task<string> GetUserFile(string username)
         {
-            return await firebaseStorage
-                .Child("Users")
-                .Child(username)
-                .GetDownloadUrlAsync();
+            try
+            {
+                return await firebaseStorage
+                    .Child("Users")
+                    .Child(username)
+                    .GetDownloadUrlAsync();
+            }
+
+            catch
+            {
+                return null;
+            }
+
         }
 
         public async Task DeleteUserFile(string username)
