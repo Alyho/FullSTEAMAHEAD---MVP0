@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FullSteamAheadMVP0Project.Views.MyTeamsPage"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              BackgroundColor="AliceBlue">
 
     
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height=".3*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height=".8*"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height=".4*"/>
         </Grid.RowDefinitions>
@@ -41,37 +42,66 @@
                   HorizontalOptions="Center"
                   HasUnevenRows="True"
                   Grid.RowSpan="2"
-                  ItemTapped="MyTeams_ItemTapped">
+                  ItemTapped="MyTeams_ItemTapped"
+                  SeparatorVisibility="Default"
+                  SeparatorColor="Black"
+                  Margin="10, 10, 10, 10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.View>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="19*"></RowDefinition>
+                                    <RowDefinition Height="25*"></RowDefinition>
+                                    <RowDefinition Height="10"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".3*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   FontSize="20"
+                                       Grid.Column="1" 
+                                       Grid.Row="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Username: " />
+                                            <Span Text="{Binding Team_Username}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label LineBreakMode="WordWrap"
+                                   MaxLines="10"
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="20" VerticalOptions="FillAndExpand" Grid.Column="1" 
+                                       Grid.Row="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Bio: " />
+                                            <Span Text="{Binding Team_Information.Bio}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <ff:CachedImage 
+                                       Source="{Binding ImageFilePath}"
+                                       Grid.Column="0" 
+                                       Grid.Row="0" 
+                                       BackgroundColor="Pink"
+                                       x:Name="Team_ProfilePicture"
+                                       DownsampleToViewSize="true">
+                                </ff:CachedImage>
+                            </Grid>
+                        </ViewCell.View>
                         <ViewCell.ContextActions>
                             <MenuItem Clicked="OnDelete"
                       CommandParameter="{Binding .}"
                       Text="Exit Team" IsDestructive="True" />
                         </ViewCell.ContextActions>
-                        <StackLayout>
-                            <Label FontSize="20">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Team: " FontSize="20"/>
-                                        <Span Text="{Binding Team_Username}" FontSize="20"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Label LineBreakMode="WordWrap"
-                                   MaxLines="10"
-                                   HorizontalOptions="FillAndExpand"
-                                   VerticalOptions="FillAndExpand" FontSize="20">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="Bio: " />
-                                        <Span Text="{Binding Team_Information.Bio}"/>
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
-                            <Image Source="{Binding Team_ProfilePicture}"/>
-                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -103,7 +103,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <ff:CachedImage 
-                                       Source="{Binding User_Profile}"
+                                       Source="{Binding ImageFilePath}"
                                        Grid.Column="0" 
                                        Grid.Row="1" 
                                        Grid.RowSpan="2"
@@ -128,7 +128,7 @@
                Grid.ColumnSpan="4"/>
 
         <ListView x:Name="Members" 
-                  Grid.Row="2" 
+                  Grid.Row="4" 
                   Grid.ColumnSpan="4"
                   ItemsSource="{Binding UserListView}"
                   HasUnevenRows="True"                                    
@@ -186,7 +186,7 @@
                                     </Label.FormattedText>
                                 </Label>
                                 <ff:CachedImage 
-                                       Source="{Binding User_Profile}"
+                                       Source="{Binding ImageFilePath}"
                                        Grid.Column="0" 
                                        Grid.Row="1" 
                                        Grid.RowSpan="2"

@@ -31,7 +31,7 @@
         </Grid.ColumnDefinitions>
         
         <ff:CachedImage 
-               Source="{Binding User_Profile}"
+               Source="{Binding ImageFilePath}"
                Grid.Column="0" 
                Grid.Row="0" 
                Grid.ColumnSpan="4"

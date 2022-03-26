@@ -1,5 +1,6 @@
 ﻿using FullSteamAheadMVP0Project.Models;
 using FullSteamAheadMVP0Project.ViewModels;
+using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,16 @@ namespace FullSteamAheadMVP0Project.Views
             InitializeComponent();
             _viewModel = new MyTeamsPageViewModel();
             BindingContext = _viewModel;
+        }
+
+        MediaFile file;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
         }
 
         private async void MyTeams_ItemTapped(object sender, ItemTappedEventArgs e)
